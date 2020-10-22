@@ -416,7 +416,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="OrdenesDeTrabajoEntities" annotation:LazyLoadingEnabled="true">
+        <EntityContainer Name="Entities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Cliente" EntityType="Self.Cliente" />
           <EntitySet Name="Mecanico" EntityType="Self.Mecanico" />
           <EntitySet Name="Modulo" EntityType="Self.Modulo" />
@@ -461,7 +461,7 @@
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="OrdenesDeTrabajoModelStoreContainer" CdmEntityContainer="OrdenesDeTrabajoEntities">
+        <EntityContainerMapping StorageEntityContainer="OrdenesDeTrabajoModelStoreContainer" CdmEntityContainer="Entities">
           <EntitySetMapping Name="Cliente">
             <EntityTypeMapping TypeName="OrdenesDeTrabajoModel.Cliente">
               <MappingFragment StoreEntitySet="Cliente">

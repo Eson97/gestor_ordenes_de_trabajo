@@ -51,12 +51,14 @@ namespace GestorOrdenesDeTrabajo.Ventanas.Ordenes
             string observaciones = txtObservaciones.Text;
             DateTime recepcion = cdtpFechaRecepcion.Value;
 
-            var cliente = ClienteController.I.Add(new Cliente()
+            var cliente = new Cliente()
             {
                 Nombre = nombreCliente,
                 Direccion = direccion,
                 Telefono = telefono,
-            });
+            };
+
+            //Se crea la entidad cliente automaticamente TODO revisar si el cliente existe y solo agregar ID
 
             var orden = OrdenController.I.Add(new Orden()
             {
@@ -65,13 +67,11 @@ namespace GestorOrdenesDeTrabajo.Ventanas.Ordenes
                 FechaRecepcion = recepcion,
                 Observaciones = observaciones,
                 Status = (int)OrdenStatus.ESPERA,
-                Cliente = cliente,
-                IdCliente = cliente.Id,
+                Cliente = cliente,                
             });
 
 
             Console.WriteLine(orden.ToString());
-            //TODO revisar consulta
         }
     }
 }

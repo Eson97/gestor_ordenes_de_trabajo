@@ -25,7 +25,7 @@ namespace BussinessLayer.UsesCases
         {
             try
             {
-                using (OrdenesDeTrabajoEntities db = new OrdenesDeTrabajoEntities())
+                using (Entities db = new Entities())
                 {
                     element = db.Orden.Add(element);
                     db.SaveChanges();
@@ -45,7 +45,7 @@ namespace BussinessLayer.UsesCases
 
             try
             {
-                using (OrdenesDeTrabajoEntities db = new OrdenesDeTrabajoEntities())
+                using (Entities db = new Entities())
                 {
                     Orden toDelete = db.Orden.Find(id);
                     db.Orden.Remove(toDelete);
@@ -65,7 +65,7 @@ namespace BussinessLayer.UsesCases
             if (element.Id <= 0) return null;
             try
             {
-                using (OrdenesDeTrabajoEntities db = new OrdenesDeTrabajoEntities())
+                using (Entities db = new Entities())
                 {
                     db.Entry(element).State = EntityState.Modified;
                     db.SaveChanges();
@@ -84,7 +84,7 @@ namespace BussinessLayer.UsesCases
             List<Orden> lista = null;
             try
             {
-                using (OrdenesDeTrabajoEntities db = new OrdenesDeTrabajoEntities())
+                using (Entities db = new Entities())
                 {
                     db.Configuration.LazyLoadingEnabled = false;
                     lista = db.Orden.OrderBy(cp => cp.Folio).ToList();

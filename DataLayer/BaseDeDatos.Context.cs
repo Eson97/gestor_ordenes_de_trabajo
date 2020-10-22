@@ -13,10 +13,10 @@ namespace DataLayer
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class OrdenesDeTrabajoEntities : DbContext
+    public partial class Entities : DbContext
     {
-        public OrdenesDeTrabajoEntities()
-            : base("name=OrdenesDeTrabajoEntities")
+        public Entities()
+            : base("name=Entities")
         {
         }
     

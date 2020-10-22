@@ -5,8 +5,6 @@ using System;
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace BussinessLayer.UsesCases
 {
@@ -27,7 +25,7 @@ namespace BussinessLayer.UsesCases
         {
             try
             {
-                using (OrdenesDeTrabajoEntities db = new OrdenesDeTrabajoEntities())
+                using (Entities db = new Entities())
                 {
                     element = db.Cliente.Add(element);
                     db.SaveChanges();
@@ -47,7 +45,7 @@ namespace BussinessLayer.UsesCases
 
             try
             {
-                using (OrdenesDeTrabajoEntities db = new OrdenesDeTrabajoEntities())
+                using (Entities db = new Entities())
                 {
                     Cliente toDelete = db.Cliente.Find(id);
                     db.Cliente.Remove(toDelete);
@@ -67,7 +65,7 @@ namespace BussinessLayer.UsesCases
             if (element.Id <= 0) return null;
             try
             {
-                using (OrdenesDeTrabajoEntities db = new OrdenesDeTrabajoEntities())
+                using (Entities db = new Entities())
                 {
                     db.Entry(element).State = EntityState.Modified;
                     db.SaveChanges();
@@ -86,7 +84,7 @@ namespace BussinessLayer.UsesCases
             List<Cliente> lista = null;
             try
             {
-                using (OrdenesDeTrabajoEntities db = new OrdenesDeTrabajoEntities())
+                using (Entities db = new Entities())
                 {
                     db.Configuration.LazyLoadingEnabled = false;
                     lista = db.Cliente.OrderBy(cp => cp.Nombre).ToList();
