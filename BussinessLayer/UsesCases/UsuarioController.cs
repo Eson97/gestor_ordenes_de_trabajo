@@ -6,27 +6,28 @@ using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
 
+
 namespace BussinessLayer.UsesCases
 {
-    public class RefaccionController : IEntityManager<Refaccion>
+    public class UsuarioController : IEntityManager<Usuario>
     {
-        private static RefaccionController Instance;
+        private static UsuarioController Instance;
 
-        public static RefaccionController I
+        public static UsuarioController I
         {
             get
             {
-                if (Instance == null) Instance = new RefaccionController();
+                if (Instance == null) Instance = new UsuarioController();
                 return Instance;
             }
         }
-        public Refaccion Add(Refaccion element)
+        public Usuario Add(Usuario element)
         {
             try
             {
                 using (Entities db = new Entities())
                 {
-                    element = db.Refaccion.Add(element);
+                    element = db.Usuario.Add(element);
                     db.SaveChanges();
                 }
                 return element;
@@ -46,8 +47,8 @@ namespace BussinessLayer.UsesCases
             {
                 using (Entities db = new Entities())
                 {
-                    Refaccion toDelete = db.Refaccion.Find(id);
-                    db.Refaccion.Remove(toDelete);
+                    Usuario toDelete = db.Usuario.Find(id);
+                    db.Usuario.Remove(toDelete);
                     db.SaveChanges();
                 }
                 return true;
@@ -59,7 +60,7 @@ namespace BussinessLayer.UsesCases
             return false;
         }
 
-        public Refaccion Edit(Refaccion element)
+        public Usuario Edit(Usuario element)
         {
             if (element.Id <= 0) return null;
             try
@@ -78,14 +79,15 @@ namespace BussinessLayer.UsesCases
             return null;
         }
 
-        public List<Refaccion> GetLista()
+        public List<Usuario> GetLista()
         {
-            List<Refaccion> lista = null;
+            List<Usuario> lista = null;
             try
             {
                 using (Entities db = new Entities())
                 {
-                    lista = db.Refaccion.OrderBy(cp => cp.Descripcion).ToList();
+                    //TODO revisar campo
+                    lista = db.Usuario.OrderBy(cp => cp.Usuario1).ToList();
                 }
                 return lista;
             }
@@ -95,7 +97,7 @@ namespace BussinessLayer.UsesCases
                 Log.Write("Ha ocurrido un error " + s);
             }
             //Retorna lista vacia para evitar excepciones en llamada
-            return new List<Refaccion>();
+            return new List<Usuario>();
         }
     }
 }

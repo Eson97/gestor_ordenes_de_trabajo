@@ -60,6 +60,7 @@
     <Compile Include="UsesCases\ModuloController.cs" />
     <Compile Include="UsesCases\OrdenController.cs" />
     <Compile Include="UsesCases\RefaccionController.cs" />
+    <Compile Include="UsesCases\UsuarioController.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\DataLayer\DataLayer.csproj">
