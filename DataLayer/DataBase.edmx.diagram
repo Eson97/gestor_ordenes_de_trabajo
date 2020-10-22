@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="6547302d2b174b72902b751c1ae29c99" Name="Diagram1">
+        <EntityTypeShape EntityType="OrdenesDeTrabajoModel.Cliente" Width="1.5" PointX="0.75" PointY="4" IsExpanded="true" />
+        <EntityTypeShape EntityType="OrdenesDeTrabajoModel.Mecanico" Width="1.5" PointX="3" PointY="11.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="OrdenesDeTrabajoModel.Modulo" Width="1.5" PointX="5.75" PointY="7.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="OrdenesDeTrabajoModel.Orden" Width="1.5" PointX="3" PointY="3.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="OrdenesDeTrabajoModel.OrdenMecanico" Width="1.5" PointX="5.25" PointY="3.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="OrdenesDeTrabajoModel.OrdenRefaccion" Width="1.5" PointX="5.25" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="OrdenesDeTrabajoModel.Refaccion" Width="1.5" PointX="3" PointY="7.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="OrdenesDeTrabajoModel.sysdiagrams" Width="1.5" PointX="7.75" PointY="2" IsExpanded="true" />
+        <EntityTypeShape EntityType="OrdenesDeTrabajoModel.Usuario" Width="1.5" PointX="5.75" PointY="10.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="OrdenesDeTrabajoModel.UsuarioModulo" Width="1.5" PointX="8" PointY="7.125" IsExpanded="true" />
+        <AssociationConnector Association="OrdenesDeTrabajoModel.FK_Orden_Cliente" ManuallyRouted="false" />
+        <AssociationConnector Association="OrdenesDeTrabajoModel.FK_OrdenMecanico_Mecanico" ManuallyRouted="false" />
+        <AssociationConnector Association="OrdenesDeTrabajoModel.FK_UsuarioMod_ID_Modulo" ManuallyRouted="false" />
+        <AssociationConnector Association="OrdenesDeTrabajoModel.FK_OrdenMecanico_Orden" ManuallyRouted="false" />
+        <AssociationConnector Association="OrdenesDeTrabajoModel.FK_OrdenRefaccion_Orden" ManuallyRouted="false" />
+        <AssociationConnector Association="OrdenesDeTrabajoModel.FK_OrdenRefaccion_Refaccion" ManuallyRouted="false" />
+        <AssociationConnector Association="OrdenesDeTrabajoModel.FK_UsuarioMod_ID_Usuario" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

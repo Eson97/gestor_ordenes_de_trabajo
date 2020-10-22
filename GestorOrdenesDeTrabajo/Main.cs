@@ -109,7 +109,7 @@ namespace GestorOrdenesDeTrabajo
             collapseSidePanel(true);
             btnClosePanel.Visible = false;
             openPanel(new Inicio(), "Inicio", null);
-            lblDate.Text = DateTime.Now.Date.ToString("D");
+            lblDate.Text = DateTime.Now.Date.ToString("D");            
         }
 
         private void btnMenu_Click(object sender, EventArgs e)

@@ -1,14 +1,9 @@
-﻿using GestorOrdenesDeTrabajo.Clases;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
+﻿using System;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using System.Xml.Schema;
+using BussinessLayer.Enum;
+using BussinessLayer.UsesCases;
+using DataLayer;
 
 namespace GestorOrdenesDeTrabajo.Ventanas.Ordenes
 {
@@ -48,19 +43,35 @@ namespace GestorOrdenesDeTrabajo.Ventanas.Ordenes
 
         private void btnAceptar_Click(object sender, EventArgs e)
         {
-            int Folio = int.Parse(txtFolio.Text);
-            string Cliente = txtCliente.Text;
-            string Direccion = txtDireccion.Text;
-            string Telefono = txtTelefono.Text;
-            string Equipo = txtEquipo.Text;
-            string Observaciones = txtObservaciones.Text;
-            DateTime Recepcion = cdtpFechaRecepcion.Value;
+            int folio = int.Parse(txtFolio.Text);
+            string nombreCliente = txtCliente.Text;
+            string direccion = txtDireccion.Text;
+            string telefono = txtTelefono.Text;
+            string equipo = txtEquipo.Text;
+            string observaciones = txtObservaciones.Text;
+            DateTime recepcion = cdtpFechaRecepcion.Value;
 
-            orden = new Orden(Folio, Cliente, Direccion, Telefono, Equipo, Observaciones, Recepcion);
+            var cliente = ClienteController.I.Add(new Cliente()
+            {
+                Nombre = nombreCliente,
+                Direccion = direccion,
+                Telefono = telefono,
+            });
+
+            var orden = OrdenController.I.Add(new Orden()
+            {
+                Folio = folio,
+                Equipo = equipo,
+                FechaRecepcion = recepcion,
+                Observaciones = observaciones,
+                Status = (int)OrdenStatus.ESPERA,
+                Cliente = cliente,
+                IdCliente = cliente.Id,
+            });
+
 
             Console.WriteLine(orden.ToString());
-
-            //Agregar a la base de datos
+            //TODO revisar consulta
         }
     }
 }

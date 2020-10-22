@@ -40,17 +40,17 @@ namespace GestorOrdenesDeTrabajo.Clases
             this.estado = estado;
         }
 
-        public Orden(int folio, string cliente, string direccion, string telefono, string maquina,string observaciones,DateTime recepcion)
-        {
-            this.folio = folio;
-            this.cliente = cliente;
-            this.direccion = direccion;
-            this.telefono = telefono;
-            this.equipo = maquina;
-            this.observaciones = observaciones;
-            this.recepcion = recepcion;
-            this.estado = (int)Clases.Estado.EN_ESPERA;
-        }
+        //public Orden(int folio, string cliente, string direccion, string telefono, string maquina,string observaciones,DateTime recepcion)
+        //{
+        //    this.folio = folio;
+        //    this.cliente = cliente;
+        //    this.direccion = direccion;
+        //    this.telefono = telefono;
+        //    this.equipo = maquina;
+        //    this.observaciones = observaciones;
+        //    this.recepcion = recepcion;
+        //    this.estado = (int)Clases.Estado.EN_ESPERA;
+        //}
 
         public Orden(int id, int folio, string cliente, string direccion, string telefono, string maquina, string mecanico, string observaciones, DateTime recepcion, DateTime entrega, int estado, int metodo_pago, string referencia)
         {

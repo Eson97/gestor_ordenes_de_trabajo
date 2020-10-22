@@ -205,5 +205,15 @@
   <ItemGroup>
     <Folder Include="Ventanas\Estadisticas\" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\BussinessLayer\BussinessLayer.csproj">
+      <Project>{d4702a4e-5485-4dce-b61e-e52dd1b05bf5}</Project>
+      <Name>BussinessLayer</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\DataLayer\DataLayer.csproj">
+      <Project>{6f490263-c323-4b0b-87f5-bb4a867fedfa}</Project>
+      <Name>DataLayer</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
