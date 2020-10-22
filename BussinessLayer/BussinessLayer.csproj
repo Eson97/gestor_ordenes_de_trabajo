@@ -56,6 +56,7 @@
     <Compile Include="Logger\Log.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="UsesCases\ClienteController.cs" />
+    <Compile Include="UsesCases\ModuloController.cs" />
     <Compile Include="UsesCases\OrdenController.cs" />
   </ItemGroup>
   <ItemGroup>
