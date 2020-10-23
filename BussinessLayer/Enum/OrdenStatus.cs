@@ -11,10 +11,10 @@
 
     }
 
-    public class OrdenStatusMan
+    public class OrdenStatusManager
     {
-        private string ToString(int status)
-        {           
+        public string ToString(int status)
+        {
             switch (status)
             {
                 case (int)OrdenStatus.ESPERA:

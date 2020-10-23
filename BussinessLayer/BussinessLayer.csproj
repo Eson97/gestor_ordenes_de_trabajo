@@ -51,6 +51,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Enum\OrdenStatus.cs" />
+    <Compile Include="Enum\TipoPago.cs" />
     <Compile Include="Interfaces\IDb.cs" />
     <Compile Include="Interfaces\IEntityManager.cs" />
     <Compile Include="Logger\Log.cs" />
