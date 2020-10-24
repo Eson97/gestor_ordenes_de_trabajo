@@ -1,48 +1,55 @@
-﻿using GestorOrdenesDeTrabajo.Clases;
+﻿using BussinessLayer.UsesCases;
+using DataLayer;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace GestorOrdenesDeTrabajo.Ventanas.Inventario
 {
     public partial class invNuevo_Mod : Form
     {
+        private readonly bool nuevo;
         private Refaccion refaccion;
-        private bool nuevo;
         public invNuevo_Mod()
         {
             InitializeComponent();
             nuevo = true;
         }
 
-        public invNuevo_Mod(object refaccion)
+        public invNuevo_Mod(Refaccion refaccion)
         {
             InitializeComponent();
-            this.refaccion = refaccion as Refaccion;
+            this.refaccion = refaccion;
             nuevo = false;
         }
 
         private void btnAceptar_Click(object sender, EventArgs e)
         {
+            //TODO agregar validaciones al agregar y editar, decimal no soporta 3 decimales en la DB, truncar o formatear
             if (nuevo)
             {
                 string code = txtCodigo.Text;
                 string descripcion = txtDescripcion.Text;
-                double minimo = double.Parse(txtPrecioMinimo.Text);
-                refaccion = new Refaccion(-1, code, descripcion, minimo);
+                decimal minimo = decimal.Parse(txtPrecioMinimo.Text);
+                refaccion = RefaccionController.I.Add(new Refaccion()
+                {
+                    Codigo = code,
+                    Descripcion = descripcion,
+                    PrecioMinimo = minimo,
+                });
             }
             else
             {
-                refaccion.Code = txtCodigo.Text;
+                //Excepcion al editar por segunda vez ->Limpiar valores despues de agregar o editar
+                refaccion.Codigo = txtCodigo.Text;
                 refaccion.Descripcion = txtDescripcion.Text;
-                refaccion.Minimo = double.Parse(txtPrecioMinimo.Text);
+                refaccion.PrecioMinimo = decimal.Parse(txtPrecioMinimo.Text);
+
+                refaccion = RefaccionController.I.Edit(refaccion);
             }
+
+            //TODO agregar mensaje de confirmacion?
+            if (refaccion == null)
+                MessageBox.Show("Codigo de refaccion repetido, introduzca otro", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
 
         private void btnCancelar_Click(object sender, EventArgs e)
@@ -54,9 +61,9 @@ namespace GestorOrdenesDeTrabajo.Ventanas.Inventario
         {
             if (!nuevo)
             {
-                txtCodigo.Text = refaccion.Code;
+                txtCodigo.Text = refaccion.Codigo;
                 txtDescripcion.Text = refaccion.Descripcion;
-                txtPrecioMinimo.Text = refaccion.Minimo.ToString();
+                txtPrecioMinimo.Text = refaccion.PrecioMinimo.ToString();
             }
         }
     }

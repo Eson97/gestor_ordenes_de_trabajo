@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace GestorOrdenesDeTrabajo.Clases
 {
-    class Refaccion
+    public class Refaccion
     {
         private readonly int id;
         private string code;

@@ -53,6 +53,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Clases\Refacciones.cs" />
     <Compile Include="Clases\RefaccionUso.cs" />
     <Compile Include="CustomComponents\CustomDateTimePicker.cs">
       <SubType>Component</SubType>
@@ -62,7 +63,6 @@
     <Compile Include="Clases\MessageDialogResult.cs" />
     <Compile Include="Clases\Orden.cs" />
     <Compile Include="Clases\Pago.cs" />
-    <Compile Include="Clases\Refaccion.cs" />
     <Compile Include="CustomComponents\infoPanel.cs">
       <SubType>UserControl</SubType>
     </Compile>

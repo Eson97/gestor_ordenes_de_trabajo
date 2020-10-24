@@ -20,13 +20,28 @@ namespace BussinessLayer.UsesCases
                 return Instance;
             }
         }
+        /// <summary>
+        /// Agrega el elemento si no existe, si existe actualiza los datos e isDeleted=false
+        /// </summary>
+        /// <param name="element"></param>
+        /// <returns>el elemento con ID o null </returns>
         public Refaccion Add(Refaccion element)
         {
             try
             {
                 using (Entities db = new Entities())
                 {
-                    element = db.Refaccion.Add(element);
+                    Refaccion exist = db.Refaccion.Where(el => el.Codigo.Equals(element.Codigo)).FirstOrDefault();
+                    if (exist == null)
+                    { element = db.Refaccion.Add(element); }
+                    else
+                    {
+                        exist.Codigo = element.Codigo;
+                        exist.Descripcion = element.Descripcion;
+                        exist.PrecioMinimo = element.PrecioMinimo;
+                        exist.IsDeleted = false;
+                        db.Entry(exist).State = EntityState.Modified;
+                    }
                     db.SaveChanges();
                 }
                 return element;
@@ -38,6 +53,11 @@ namespace BussinessLayer.UsesCases
             return null;
         }
 
+        /// <summary>
+        /// Actualiza isDeleted=true para eliminar
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns>bool true si es eliminado</returns>
         public bool Delete(int id)
         {
             if (id <= 0) return false;
@@ -47,7 +67,8 @@ namespace BussinessLayer.UsesCases
                 using (Entities db = new Entities())
                 {
                     Refaccion toDelete = db.Refaccion.Find(id);
-                    db.Refaccion.Remove(toDelete);
+                    toDelete.IsDeleted = true;
+                    db.Entry(toDelete).State = EntityState.Modified;
                     db.SaveChanges();
                 }
                 return true;
@@ -59,6 +80,11 @@ namespace BussinessLayer.UsesCases
             return false;
         }
 
+        /// <summary>
+        /// No edita el elemento si el codigo existe y no coincide con la refaccion
+        /// </summary>
+        /// <param name="element"></param>
+        /// <returns>Editada o null si el codigo existe</returns>
         public Refaccion Edit(Refaccion element)
         {
             if (element.Id <= 0) return null;
@@ -66,6 +92,9 @@ namespace BussinessLayer.UsesCases
             {
                 using (Entities db = new Entities())
                 {
+                    var codeExist = db.Refaccion.Any(el => el.Codigo.Equals(element.Codigo) && el.Id != element.Id);
+                    if (codeExist)
+                        return null;
                     db.Entry(element).State = EntityState.Modified;
                     db.SaveChanges();
                 }
@@ -78,6 +107,10 @@ namespace BussinessLayer.UsesCases
             return null;
         }
 
+        /// <summary>
+        /// Consulta lista
+        /// </summary>
+        /// <returns>Retorna lista sin eliminados o lista vacia</returns>
         public List<Refaccion> GetLista()
         {
             List<Refaccion> lista = null;
@@ -85,7 +118,7 @@ namespace BussinessLayer.UsesCases
             {
                 using (Entities db = new Entities())
                 {
-                    lista = db.Refaccion.OrderBy(cp => cp.Descripcion).ToList();
+                    lista = db.Refaccion.Where(el => !el.IsDeleted).OrderBy(cp => cp.Descripcion).ToList();
                 }
                 return lista;
             }

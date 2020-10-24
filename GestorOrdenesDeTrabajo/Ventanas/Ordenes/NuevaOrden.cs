@@ -51,6 +51,8 @@ namespace GestorOrdenesDeTrabajo.Ventanas.Ordenes
             string observaciones = txtObservaciones.Text;
             DateTime recepcion = cdtpFechaRecepcion.Value;
 
+            //TODO agregar validaciones
+
             var cliente = new Cliente()
             {
                 Nombre = nombreCliente,
