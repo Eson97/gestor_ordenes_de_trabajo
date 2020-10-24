@@ -1,8 +1,11 @@
-﻿using GestorOrdenesDeTrabajo.Clases;
-using GestorOrdenesDeTrabajo.CustomComponents;
-using System;
+﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Windows.Forms;
+using BussinessLayer.Enum;
+using BussinessLayer.UsesCases;
+using DataLayer;
+using GestorOrdenesDeTrabajo.CustomComponents;
 
 namespace GestorOrdenesDeTrabajo.Ventanas.Ordenes
 {
@@ -14,17 +17,8 @@ namespace GestorOrdenesDeTrabajo.Ventanas.Ordenes
         public OrdenesEnEspera()
         {
             InitializeComponent();
-            ListaOrdenes = new List<OrdenItemList>();
-            ListaOrdenes.Add(new OrdenItemList(new Clases.Orden(1, 123456, "Radamez", "Equipo1")));
-            ListaOrdenes.Add(new OrdenItemList(new Clases.Orden(2, 123123, "Gregorio", "Equipo2")));
-            ListaOrdenes.Add(new OrdenItemList(new Clases.Orden(3, 456456, "Geronimo", "Equipo3")));
-            ListaOrdenes.Add(new OrdenItemList(new Clases.Orden(4, 789789, "Nabucodonosor", "Equipo4")));
-            ListaOrdenes.Add(new OrdenItemList(new Clases.Orden(4, 789789, "Ramiro", "Equipo5")));
-            ListaOrdenes.Add(new OrdenItemList(new Clases.Orden(4, 789789, "Nayelli", "Equipo6")));
-            ListaOrdenes.Add(new OrdenItemList(new Clases.Orden(4, 789789, "Jennice", "Equipo7")));
-            ListaOrdenes.Add(new OrdenItemList(new Clases.Orden(4, 789789, "Montse", "Equipo8")));
-            ListaOrdenes.Add(new OrdenItemList(new Clases.Orden(4, 789789, "Jesus", "Equipo9")));
-            ListaOrdenes.Add(new OrdenItemList(new Clases.Orden(4, 789789, "Beto", "Equipo10")));
+            ListaOrdenes = OrdenController.I.GetLista((int)OrdenStatus.ESPERA).Select(el => new OrdenItemList(el)).ToList();
+
             showOrdenes();
         }
 

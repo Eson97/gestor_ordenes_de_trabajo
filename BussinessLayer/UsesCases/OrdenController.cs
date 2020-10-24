@@ -1,4 +1,5 @@
-﻿using BussinessLayer.Interfaces;
+﻿using BussinessLayer.Enum;
+using BussinessLayer.Interfaces;
 using BussinessLayer.Logger;
 using DataLayer;
 using System;
@@ -77,6 +78,27 @@ namespace BussinessLayer.UsesCases
                 Log.Write("Ha ocurrido un error " + e.Message);
             }
             return null;
+        }
+
+        public List<Orden> GetLista(int status)
+        {
+            List<Orden> lista = null;
+            try
+            {
+                using (Entities db = new Entities())
+                {
+                    db.Configuration.LazyLoadingEnabled = false;
+                    lista = db.Orden.Where(el => el.Status == status).OrderBy(cp => cp.Folio).Include(el => el.Cliente).ToList();
+                }
+                return lista;
+            }
+            catch (Exception e)
+            {
+                string s = e.Message;
+                Log.Write("Ha ocurrido un error " + s);
+            }
+            //Retorna lista vacia para evitar excepciones en llamada
+            return new List<Orden>();
         }
 
         public List<Orden> GetLista()

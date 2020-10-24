@@ -1,39 +1,31 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Drawing;
-using System.Data;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using DataLayer;
 using System.Windows.Forms;
-using GestorOrdenesDeTrabajo.Clases;
 
 namespace GestorOrdenesDeTrabajo.CustomComponents
 {
     public partial class OrdenItemList : UserControl
     {
-        private Clases.Orden orden;
+        private Orden orden;
 
         public OrdenItemList()
         {
             InitializeComponent();
         }
-        public OrdenItemList(object orden)
+        public OrdenItemList(Orden orden)
         {
             InitializeComponent();
-            this.orden = orden as Clases.Orden;
+            this.orden = orden;
             this.lblOrden.Text = this.orden.Folio.ToString();
             this.lblEquipo.Text = this.orden.Equipo;
-            this.lblCliente.Text = this.orden.Cliente;
+            this.lblCliente.Text = this.orden.Cliente.Nombre;
         }
 
-        public void setData(object orden)
+        public void setData(Orden orden)
         {
-            this.orden = orden as Clases.Orden;
+            this.orden = orden;
             this.lblOrden.Text = this.orden.Folio.ToString();
             this.lblEquipo.Text = this.orden.Equipo;
-            this.lblCliente.Text = this.orden.Cliente;
+            this.lblCliente.Text = this.orden.Cliente.Nombre;
         }
 
         public object getData()
