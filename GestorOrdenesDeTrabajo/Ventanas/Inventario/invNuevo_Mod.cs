@@ -24,7 +24,6 @@ namespace GestorOrdenesDeTrabajo.Ventanas.Inventario
 
         private void btnAceptar_Click(object sender, EventArgs e)
         {
-            //TODO agregar validaciones al agregar y editar, decimal no soporta 3 decimales en la DB, truncar o formatear
             if (!Helper.Llenos(txtCodigo, txtDescripcion, txtPrecioMinimo))
             { MessageBox.Show("Llene todos los campos, por favor", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning); return; }
 
@@ -32,9 +31,8 @@ namespace GestorOrdenesDeTrabajo.Ventanas.Inventario
             string descripcion = txtDescripcion.Text;
             decimal minimo = decimal.Parse(txtPrecioMinimo.Text);
 
-            //FIXED se trunca el valor con solo dos decimales (Ya no deberia de ser un problema con esto)
             minimo = Math.Round(minimo, 2);
-            
+
             Helper.VaciarTexto(txtCodigo, txtDescripcion, txtPrecioMinimo);
 
             if (refaccion == null)
@@ -48,7 +46,6 @@ namespace GestorOrdenesDeTrabajo.Ventanas.Inventario
             }
             else
             {
-                //Excepcion al editar por segunda vez ->Limpiar valores despues de agregar o editar
                 refaccion.Codigo = code;
                 refaccion.Descripcion = descripcion;
                 refaccion.PrecioMinimo = minimo;
