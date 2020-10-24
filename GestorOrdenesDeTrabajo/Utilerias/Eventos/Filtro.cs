@@ -73,9 +73,19 @@ namespace GestorOrdenesDeTrabajo.Utilerias.Eventos
             char c = e.KeyChar;
             if (c == (char)Keys.Space) return;
             if (c == (char)Keys.Back) return;
+            if (c == (char)',') return;
+            if (c == (char)'.') return;
             if (char.IsLetterOrDigit(c)) return;
-            //Falta agregar coma
-
+            e.Handled = true;
+        }
+        public static void AlfanumericoSpaceComaPunto(KeyPressEventArgs e)
+        {
+            char c = e.KeyChar;
+            if (c == (char)Keys.Space) return;
+            if (c == (char)Keys.Back) return;
+            if (c == (char)',') return;
+            if (c == (char)'.') return;
+            if (char.IsLetterOrDigit(c)) return;
             e.Handled = true;
         }
 
