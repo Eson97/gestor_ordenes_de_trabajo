@@ -1,12 +1,7 @@
 ﻿using GestorOrdenesDeTrabajo.Clases;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace GestorOrdenesDeTrabajo.Ventanas.Buscar
@@ -20,7 +15,7 @@ namespace GestorOrdenesDeTrabajo.Ventanas.Buscar
         {
             InitializeComponent();
             tablaOrdenes.CellBorderStyle = DataGridViewCellBorderStyle.None;
-            
+
             datatable = new DataTable();
             datatable.Columns.Add("ID");
             datatable.Columns.Add("Folio");
@@ -75,7 +70,7 @@ namespace GestorOrdenesDeTrabajo.Ventanas.Buscar
             tablaOrdenes.Columns[3].Resizable = DataGridViewTriState.True;
             tablaOrdenes.Columns[0].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
             tablaOrdenes.Columns[1].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            tablaOrdenes.Columns[3].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter; 
+            tablaOrdenes.Columns[3].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
 
         }
 
@@ -109,6 +104,7 @@ namespace GestorOrdenesDeTrabajo.Ventanas.Buscar
             openSubPanel(new SrchDetailInfo());
         }
 
+        //Al cambiar el enum falla, mejor usar enum y conversiones
         private void tablaOrdenes_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
         {
             foreach (DataGridViewRow row in tablaOrdenes.Rows)
@@ -120,7 +116,7 @@ namespace GestorOrdenesDeTrabajo.Ventanas.Buscar
         {
             if (txtSrchFolio.TextLength != 0)
             {
-                //MOSTRAR DIRECTAMENTE EN LA VENTANA LA INFORMACION DE LA ORDEN DE TRABAJO
+                //TODO MOSTRAR DIRECTAMENTE EN LA VENTANA LA INFORMACION DE LA ORDEN DE TRABAJO
                 Console.WriteLine("Buscando...");
                 openSubPanel(new SrchDetailInfo());
             }
@@ -148,7 +144,7 @@ namespace GestorOrdenesDeTrabajo.Ventanas.Buscar
 
         private void txtSrchFolio_KeyDown(object sender, KeyEventArgs e)
         {
-            if(e.KeyCode == Keys.Enter)
+            if (e.KeyCode == Keys.Enter)
             {
                 btnBuscarFolio_Click(this, new EventArgs());
             }

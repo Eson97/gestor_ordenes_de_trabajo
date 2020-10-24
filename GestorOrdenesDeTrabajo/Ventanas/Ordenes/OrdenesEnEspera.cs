@@ -2,12 +2,6 @@
 using GestorOrdenesDeTrabajo.CustomComponents;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace GestorOrdenesDeTrabajo.Ventanas.Ordenes
@@ -41,10 +35,11 @@ namespace GestorOrdenesDeTrabajo.Ventanas.Ordenes
 
         void showOrdenes()
         {
-            foreach(OrdenItemList item in ListaOrdenes)
+            foreach (OrdenItemList item in ListaOrdenes)
             {
                 this.flpList.Controls.Add(item);
-                item.btnAction.Click += (s, e) => {
+                item.btnAction.Click += (s, e) =>
+                {
                     orden = item.getData() as Orden;
                     Console.WriteLine(orden.Cliente);
                 };
