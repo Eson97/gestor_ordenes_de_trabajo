@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace GestorOrdenesDeTrabajo.Clases
 {
-    enum MessageDialogResult : short
+    enum MessageDialogResult
     {
         Yes,
         No,

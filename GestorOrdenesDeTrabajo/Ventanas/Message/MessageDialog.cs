@@ -15,7 +15,7 @@ namespace GestorOrdenesDeTrabajo.Ventanas.Message
         private extern static void SendMessage(System.IntPtr hwnd, int wmsg, int wparam, int lparam);
 
         static MessageDialog MD;
-        static int DR = (int)MessageDialogResult.No;
+        static int _DialogResult = (int)MessageDialogResult.No;
 
         public MessageDialog()
         {
@@ -35,18 +35,18 @@ namespace GestorOrdenesDeTrabajo.Ventanas.Message
                 MD.btnNo.Text = "OK";
             }
             MD.ShowDialog();
-            return DR;
+            return _DialogResult;
         }
 
         private void btnSi_Click(object sender, EventArgs e)
         {
-            DR = (int)MessageDialogResult.Yes;
+            _DialogResult = (int)MessageDialogResult.Yes;
             MD.Dispose();
         }
 
         private void btnNo_Click(object sender, EventArgs e)
         {
-            DR = (int)MessageDialogResult.No;
+            _DialogResult = (int)MessageDialogResult.No;
             MD.Dispose();
         }
 

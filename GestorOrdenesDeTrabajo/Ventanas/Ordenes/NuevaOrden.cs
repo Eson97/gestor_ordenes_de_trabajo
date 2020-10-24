@@ -9,8 +9,11 @@ namespace GestorOrdenesDeTrabajo.Ventanas.Ordenes
 {
     public partial class NuevaOrden : Form
     {
-        Orden orden;
-
+        /**
+         * TODO cambiar funcionamiento para agregar cliente
+         * Suplir el ingreso de datos por el ususario con el uso de <SrchClienteDialog> 
+         */
+        
         public NuevaOrden()
         {
             InitializeComponent();
@@ -43,6 +46,9 @@ namespace GestorOrdenesDeTrabajo.Ventanas.Ordenes
 
         private void btnAceptar_Click(object sender, EventArgs e)
         {
+
+            //TODO Obtener cliente como objeto desde SrchClienteDialog
+
             int folio = int.Parse(txtFolio.Text);
             string nombreCliente = txtCliente.Text;
             string direccion = txtDireccion.Text;

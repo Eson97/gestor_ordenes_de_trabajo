@@ -3,6 +3,7 @@ using DataLayer;
 using GestorOrdenesDeTrabajo.Utilerias.Controles;
 using GestorOrdenesDeTrabajo.Utilerias.Eventos;
 using System;
+using System.Text.RegularExpressions;
 using System.Windows.Forms;
 
 namespace GestorOrdenesDeTrabajo.Ventanas.Inventario
@@ -30,6 +31,10 @@ namespace GestorOrdenesDeTrabajo.Ventanas.Inventario
             string code = txtCodigo.Text;
             string descripcion = txtDescripcion.Text;
             decimal minimo = decimal.Parse(txtPrecioMinimo.Text);
+
+            //FIXED se trunca el valor con solo dos decimales (Ya no deberia de ser un problema con esto)
+            minimo = Math.Round(minimo, 2);
+            
             Helper.VaciarTexto(txtCodigo, txtDescripcion, txtPrecioMinimo);
 
             if (refaccion == null)

@@ -35,17 +35,17 @@
             this.pbPiezaImg = new System.Windows.Forms.PictureBox();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.panel4 = new System.Windows.Forms.Panel();
-            this.panel5 = new System.Windows.Forms.Panel();
-            this.panel6 = new System.Windows.Forms.Panel();
-            this.panel7 = new System.Windows.Forms.Panel();
-            this.panel8 = new System.Windows.Forms.Panel();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.panel9 = new System.Windows.Forms.Panel();
-            this.label1 = new System.Windows.Forms.Label();
             this.lblPieza = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
+            this.panel9 = new System.Windows.Forms.Panel();
+            this.panel7 = new System.Windows.Forms.Panel();
+            this.panel5 = new System.Windows.Forms.Panel();
             this.lblCantidad = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.panel8 = new System.Windows.Forms.Panel();
+            this.panel6 = new System.Windows.Forms.Panel();
             this.lblTotal = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
             this.panel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbPiezaImg)).BeginInit();
             this.tableLayoutPanel1.SuspendLayout();
@@ -121,77 +121,17 @@
             this.panel4.Size = new System.Drawing.Size(374, 64);
             this.panel4.TabIndex = 0;
             // 
-            // panel5
+            // lblPieza
             // 
-            this.panel5.Controls.Add(this.lblCantidad);
-            this.panel5.Controls.Add(this.label2);
-            this.panel5.Controls.Add(this.panel8);
-            this.panel5.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel5.Location = new System.Drawing.Point(383, 3);
-            this.panel5.Name = "panel5";
-            this.panel5.Size = new System.Drawing.Size(94, 64);
-            this.panel5.TabIndex = 1;
-            // 
-            // panel6
-            // 
-            this.panel6.Controls.Add(this.lblTotal);
-            this.panel6.Controls.Add(this.label3);
-            this.panel6.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel6.Location = new System.Drawing.Point(483, 3);
-            this.panel6.Name = "panel6";
-            this.panel6.Size = new System.Drawing.Size(144, 64);
-            this.panel6.TabIndex = 2;
-            // 
-            // panel7
-            // 
-            this.panel7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(35)))), ((int)(((byte)(35)))));
-            this.panel7.Dock = System.Windows.Forms.DockStyle.Right;
-            this.panel7.Location = new System.Drawing.Point(371, 0);
-            this.panel7.Name = "panel7";
-            this.panel7.Size = new System.Drawing.Size(3, 64);
-            this.panel7.TabIndex = 1;
-            // 
-            // panel8
-            // 
-            this.panel8.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(35)))), ((int)(((byte)(35)))));
-            this.panel8.Dock = System.Windows.Forms.DockStyle.Right;
-            this.panel8.Location = new System.Drawing.Point(91, 0);
-            this.panel8.Name = "panel8";
-            this.panel8.Size = new System.Drawing.Size(3, 64);
-            this.panel8.TabIndex = 2;
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Dock = System.Windows.Forms.DockStyle.Top;
-            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.label2.Location = new System.Drawing.Point(0, 0);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(73, 20);
-            this.label2.TabIndex = 3;
-            this.label2.Text = "Cantidad";
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Dock = System.Windows.Forms.DockStyle.Top;
-            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.label3.Location = new System.Drawing.Point(0, 0);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(44, 20);
-            this.label3.TabIndex = 3;
-            this.label3.Text = "Total";
-            // 
-            // panel9
-            // 
-            this.panel9.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(35)))), ((int)(((byte)(35)))));
-            this.panel9.Dock = System.Windows.Forms.DockStyle.Left;
-            this.panel9.Location = new System.Drawing.Point(0, 0);
-            this.panel9.Name = "panel9";
-            this.panel9.Size = new System.Drawing.Size(3, 64);
-            this.panel9.TabIndex = 3;
+            this.lblPieza.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.lblPieza.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblPieza.ForeColor = System.Drawing.SystemColors.ControlDark;
+            this.lblPieza.Location = new System.Drawing.Point(3, 20);
+            this.lblPieza.Name = "lblPieza";
+            this.lblPieza.Size = new System.Drawing.Size(368, 44);
+            this.lblPieza.TabIndex = 5;
+            this.lblPieza.Text = "XXXXXXXXXXXXXXXXX";
+            this.lblPieza.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // label1
             // 
@@ -205,17 +145,34 @@
             this.label1.TabIndex = 4;
             this.label1.Text = "Pieza";
             // 
-            // lblPieza
+            // panel9
             // 
-            this.lblPieza.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.lblPieza.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblPieza.ForeColor = System.Drawing.SystemColors.ControlDark;
-            this.lblPieza.Location = new System.Drawing.Point(3, 20);
-            this.lblPieza.Name = "lblPieza";
-            this.lblPieza.Size = new System.Drawing.Size(368, 44);
-            this.lblPieza.TabIndex = 5;
-            this.lblPieza.Text = "XXXXXXXXXXXXXXXXX";
-            this.lblPieza.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.panel9.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(35)))), ((int)(((byte)(35)))));
+            this.panel9.Dock = System.Windows.Forms.DockStyle.Left;
+            this.panel9.Location = new System.Drawing.Point(0, 0);
+            this.panel9.Name = "panel9";
+            this.panel9.Size = new System.Drawing.Size(3, 64);
+            this.panel9.TabIndex = 3;
+            // 
+            // panel7
+            // 
+            this.panel7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(35)))), ((int)(((byte)(35)))));
+            this.panel7.Dock = System.Windows.Forms.DockStyle.Right;
+            this.panel7.Location = new System.Drawing.Point(371, 0);
+            this.panel7.Name = "panel7";
+            this.panel7.Size = new System.Drawing.Size(3, 64);
+            this.panel7.TabIndex = 1;
+            // 
+            // panel5
+            // 
+            this.panel5.Controls.Add(this.lblCantidad);
+            this.panel5.Controls.Add(this.label2);
+            this.panel5.Controls.Add(this.panel8);
+            this.panel5.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel5.Location = new System.Drawing.Point(383, 3);
+            this.panel5.Name = "panel5";
+            this.panel5.Size = new System.Drawing.Size(94, 64);
+            this.panel5.TabIndex = 1;
             // 
             // lblCantidad
             // 
@@ -229,6 +186,37 @@
             this.lblCantidad.Text = "0";
             this.lblCantidad.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Dock = System.Windows.Forms.DockStyle.Top;
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.label2.Location = new System.Drawing.Point(0, 0);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(73, 20);
+            this.label2.TabIndex = 3;
+            this.label2.Text = "Cantidad";
+            // 
+            // panel8
+            // 
+            this.panel8.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(35)))), ((int)(((byte)(35)))));
+            this.panel8.Dock = System.Windows.Forms.DockStyle.Right;
+            this.panel8.Location = new System.Drawing.Point(91, 0);
+            this.panel8.Name = "panel8";
+            this.panel8.Size = new System.Drawing.Size(3, 64);
+            this.panel8.TabIndex = 2;
+            // 
+            // panel6
+            // 
+            this.panel6.Controls.Add(this.lblTotal);
+            this.panel6.Controls.Add(this.label3);
+            this.panel6.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel6.Location = new System.Drawing.Point(483, 3);
+            this.panel6.Name = "panel6";
+            this.panel6.Size = new System.Drawing.Size(144, 64);
+            this.panel6.TabIndex = 2;
+            // 
             // lblTotal
             // 
             this.lblTotal.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -240,6 +228,18 @@
             this.lblTotal.TabIndex = 4;
             this.lblTotal.Text = "0";
             this.lblTotal.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Dock = System.Windows.Forms.DockStyle.Top;
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.label3.Location = new System.Drawing.Point(0, 0);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(44, 20);
+            this.label3.TabIndex = 3;
+            this.label3.Text = "Total";
             // 
             // PiezaItemList
             // 

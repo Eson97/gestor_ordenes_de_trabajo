@@ -67,11 +67,6 @@ namespace GestorOrdenesDeTrabajo.OrdenWindow.Inventario
             newPanel.Show();
         }
 
-
-        private void tablaInventario_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
-        {
-        }
-
         private void subPanel_ControlRemoved(object sender, ControlEventArgs e)
         {
             this.lblActionTittle.Hide();
@@ -123,6 +118,9 @@ namespace GestorOrdenesDeTrabajo.OrdenWindow.Inventario
                 if ((int)MessageDialogResult.Yes == MessageDialog.ShowMessageDialog("Eliminar", $"¿Esta seguro de que desea eliminar '{pieza}' del inventario?", false))
                 {
                     //TODO RAMIRO SOLO SI NO CUENTA CON NINGUNA ORDEN ? o Solo actualizar status
+                    
+                    //AMBAS, POR SI AGREGAN ALGO QUE NO DEBIAN NO ESTE USANDO ESPACIO EN LA BD, EN CASO DE QUE
+                    // YA ESTE EN USO SOLO CAMBIAR ESTATUS
                     bool deleted = RefaccionController.I.Delete(id);
                     if (deleted)
                         MessageBox.Show("Eliminado con exito", "Exito", MessageBoxButtons.OK, MessageBoxIcon.Information);
