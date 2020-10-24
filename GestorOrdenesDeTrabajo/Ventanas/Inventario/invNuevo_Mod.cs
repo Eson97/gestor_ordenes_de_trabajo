@@ -3,7 +3,6 @@ using DataLayer;
 using GestorOrdenesDeTrabajo.Utilerias.Controles;
 using GestorOrdenesDeTrabajo.Utilerias.Eventos;
 using System;
-using System.Text.RegularExpressions;
 using System.Windows.Forms;
 
 namespace GestorOrdenesDeTrabajo.Ventanas.Inventario

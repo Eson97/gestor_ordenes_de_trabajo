@@ -117,10 +117,7 @@ namespace GestorOrdenesDeTrabajo.OrdenWindow.Inventario
                 double minimo = double.Parse(row.Cells[3].Value as string);
                 if ((int)MessageDialogResult.Yes == MessageDialog.ShowMessageDialog("Eliminar", $"¿Esta seguro de que desea eliminar '{pieza}' del inventario?", false))
                 {
-                    //TODO RAMIRO SOLO SI NO CUENTA CON NINGUNA ORDEN ? o Solo actualizar status
-                    
-                    //AMBAS, POR SI AGREGAN ALGO QUE NO DEBIAN NO ESTE USANDO ESPACIO EN LA BD, EN CASO DE QUE
-                    // YA ESTE EN USO SOLO CAMBIAR ESTATUS
+                    //TODO agregar comprobacion de OrdenRefaccion is empty eliminar definitivo
                     bool deleted = RefaccionController.I.Delete(id);
                     if (deleted)
                         MessageBox.Show("Eliminado con exito", "Exito", MessageBoxButtons.OK, MessageBoxIcon.Information);

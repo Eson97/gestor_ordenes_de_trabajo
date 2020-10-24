@@ -20,17 +20,17 @@ namespace GestorOrdenesDeTrabajo.CustomComponents
             this.lblCliente.Text = this.orden.Cliente.Nombre;
         }
 
-        public void setData(Orden orden)
+        //TODO si existe el constructor para que necesitariamos set?
+        public Orden Orden
         {
-            this.orden = orden;
-            this.lblOrden.Text = this.orden.Folio.ToString();
-            this.lblEquipo.Text = this.orden.Equipo;
-            this.lblCliente.Text = this.orden.Cliente.Nombre;
-        }
-
-        public object getData()
-        {
-            return this.orden;
+            get { return orden; }
+            set
+            {
+                this.orden = value as Orden;
+                this.lblOrden.Text = this.orden.Folio.ToString();
+                this.lblEquipo.Text = this.orden.Equipo;
+                this.lblCliente.Text = this.orden.Cliente.Nombre;
+            }
         }
 
     }

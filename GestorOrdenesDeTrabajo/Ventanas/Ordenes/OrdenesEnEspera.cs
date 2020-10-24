@@ -11,14 +11,13 @@ namespace GestorOrdenesDeTrabajo.Ventanas.Ordenes
 {
     public partial class OrdenesEnEspera : Form
     {
-        List<OrdenItemList> ListaOrdenes;
-        Orden orden;
+        private readonly List<OrdenItemList> ListaOrdenes;
+        private Orden orden;
 
         public OrdenesEnEspera()
         {
             InitializeComponent();
             ListaOrdenes = OrdenController.I.GetLista((int)OrdenStatus.ESPERA).Select(el => new OrdenItemList(el)).ToList();
-
             showOrdenes();
         }
 
@@ -34,8 +33,8 @@ namespace GestorOrdenesDeTrabajo.Ventanas.Ordenes
                 this.flpList.Controls.Add(item);
                 item.btnAction.Click += (s, e) =>
                 {
-                    orden = item.getData() as Orden;
-                    Console.WriteLine(orden.Cliente);
+                    orden = item.Orden;
+                    Console.WriteLine(orden.Cliente.Nombre);
                 };
             }
         }

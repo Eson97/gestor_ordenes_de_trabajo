@@ -52,8 +52,8 @@ namespace GestorOrdenesDeTrabajo.Ventanas.Message
             while (tablaClientes.RowCount != 0)
                 tablaClientes.Rows.RemoveAt(0);
 
-            var refacciones = ClienteController.I.GetLista();
-            foreach (Cliente item in refacciones)
+            var clientes = ClienteController.I.GetLista();
+            foreach (Cliente item in clientes)
                 datatable.Rows.Add(new object[] { item.Id, item.Nombre, item.Direccion, item.Telefono });
 
             tablaClientes.DataSource = datatable;
