@@ -95,6 +95,8 @@
     <Compile Include="Main.Designer.cs">
       <DependentUpon>Main.cs</DependentUpon>
     </Compile>
+    <Compile Include="Utilerias\Controles\Helper.cs" />
+    <Compile Include="Utilerias\Eventos\Filtro.cs" />
     <Compile Include="Ventanas\Buscar\SrchDetailInfo.cs">
       <SubType>Form</SubType>
     </Compile>
