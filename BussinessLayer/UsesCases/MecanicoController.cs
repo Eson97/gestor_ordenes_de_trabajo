@@ -98,5 +98,27 @@ namespace BussinessLayer.UsesCases
             //Retorna lista vacia para evitar excepciones en llamada
             return new List<Mecanico>();
         }
+        public List<Mecanico> searchMecanicosByOrden(int idOrden)
+        {
+            if (idOrden <= 0) return new List<Mecanico>();
+
+            List<Mecanico> lista;
+            try
+            {
+                using (Entities db = new Entities())
+                {
+                    lista = db.OrdenMecanico.Where(el => el.IdOrden.Equals(idOrden)).Select(el => el.Mecanico).ToList();
+                }
+                return lista;
+            }
+            catch (Exception e)
+            {
+                string s = e.Message;
+                Log.Write("Ha ocurrido un error " + s);
+            }
+            //Retorna lista vacia para evitar excepciones en llamada
+            return new List<Mecanico>();
+
+        }
     }
 }

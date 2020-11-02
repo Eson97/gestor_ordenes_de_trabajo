@@ -52,7 +52,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Auxiliares\EntityExample.cs" />
+    <Compile Include="Auxiliares\Mecanico.cs" />
     <Compile Include="BaseDeDatos.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>

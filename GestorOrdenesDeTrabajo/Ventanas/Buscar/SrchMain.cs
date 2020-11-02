@@ -1,5 +1,8 @@
-﻿using GestorOrdenesDeTrabajo.Clases;
+﻿using BussinessLayer.Enum;
+using BussinessLayer.UsesCases;
+using DataLayer;
 using System;
+using System.Collections.Generic;
 using System.Data;
 using System.Drawing;
 using System.Windows.Forms;
@@ -46,18 +49,15 @@ namespace GestorOrdenesDeTrabajo.Ventanas.Buscar
             newPanel.Show();
         }
 
-
-        //TODO resaltar las filas con ordenes canceladas
         void Actualizar()
         {
             if (tablaOrdenes.RowCount != 0)
                 tablaOrdenes.Rows.Clear();
+            
+            var ordenes = OrdenController.I.GetLista();
+            foreach (Orden item in ordenes)
+                datatable.Rows.Add(item.Id, item.Folio, item.Cliente.Nombre, OrdenStatusManager.ToString(item.Status));
 
-            datatable.Rows.Add(new Orden(1, 123123, "Lorem Ipsum", (int)Estado.EN_ESPERA).ToArraySimpleInfo());
-            datatable.Rows.Add(new Orden(2, 123456, "Lorem Ipsum", (int)Estado.EN_PROCESO).ToArraySimpleInfo());
-            datatable.Rows.Add(new Orden(3, 123789, "Lorem Ipsum", (int)Estado.GARANTIA).ToArraySimpleInfo());
-            datatable.Rows.Add(new Orden(4, 456123, "Lorem Ipsum", (int)Estado.CANCELADA).ToArraySimpleInfo());
-            datatable.Rows.Add(new Orden(5, 456456, "Lorem Ipsum", (int)Estado.EN_ESPERA).ToArraySimpleInfo());
             tablaOrdenes.DataSource = datatable;
 
             tablaOrdenes.Columns[0].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
@@ -101,24 +101,34 @@ namespace GestorOrdenesDeTrabajo.Ventanas.Buscar
 
         private void btnBuscar_Click(object sender, EventArgs e)
         {
-            openSubPanel(new SrchDetailInfo());
+            //TODO implement search between dates?
+            //openSubPanel(new SrchDetailInfo());
         }
-
-        //Al cambiar el enum falla, mejor usar enum y conversiones
         private void tablaOrdenes_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
         {
             foreach (DataGridViewRow row in tablaOrdenes.Rows)
-                if (row.Cells["Estado"].Value.ToString() == "CANCELADA") row.DefaultCellStyle.BackColor = Color.Firebrick;
+            {
+                bool cancelada = row.Cells["Estado"].Value.ToString() == OrdenStatusManager.ToString((int)OrdenStatus.CANCELADA);
+                if (cancelada)
+                    row.DefaultCellStyle.BackColor = Color.Firebrick;
                 else row.DefaultCellStyle.BackColor = Color.FromKnownColor(KnownColor.ControlDark);
+            }
         }
 
         private void btnBuscarFolio_Click(object sender, EventArgs e)
         {
             if (txtSrchFolio.TextLength != 0)
             {
-                //TODO MOSTRAR DIRECTAMENTE EN LA VENTANA LA INFORMACION DE LA ORDEN DE TRABAJO
-                Console.WriteLine("Buscando...");
-                openSubPanel(new SrchDetailInfo());
+                int folio = int.Parse(txtSrchFolio.Text);
+                var orden = OrdenController.I.SearchByFolio(folio);
+
+                if (orden != null)
+                {
+                    var mecanicosByOrden = MecanicoController.I.searchMecanicosByOrden(orden.Id);
+                    openSubPanel(new SrchDetailInfo(orden, mecanicosByOrden));
+                }
+                else
+                { MessageBox.Show("No se encuentra la orden, revice el folio", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error); }
             }
         }
 

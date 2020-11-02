@@ -11,9 +11,9 @@
 
     }
 
-    public class OrdenStatusManager
+    public static class OrdenStatusManager
     {
-        public string ToString(int status)
+        public static string ToString(int status)
         {
             switch (status)
             {

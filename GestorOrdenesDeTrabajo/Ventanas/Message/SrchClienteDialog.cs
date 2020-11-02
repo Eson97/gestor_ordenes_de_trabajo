@@ -1,14 +1,9 @@
 ﻿using BussinessLayer.UsesCases;
 using DataLayer;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
 using System.Drawing;
-using System.Linq;
 using System.Runtime.InteropServices;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace GestorOrdenesDeTrabajo.Ventanas.Message
@@ -126,6 +121,16 @@ namespace GestorOrdenesDeTrabajo.Ventanas.Message
         {
             if (txtFilter.Text != "Ingrese el nombre del cliente")
                 datatable.DefaultView.RowFilter = $"Codigo LIKE '%{txtFilter.Text}%'";
+        }
+
+        private void btnNew_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

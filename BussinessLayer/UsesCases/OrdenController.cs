@@ -109,7 +109,7 @@ namespace BussinessLayer.UsesCases
                 using (Entities db = new Entities())
                 {
                     db.Configuration.LazyLoadingEnabled = false;
-                    lista = db.Orden.OrderBy(cp => cp.Folio).ToList();
+                    lista = db.Orden.Include(el=>el.Cliente).OrderBy(cp => cp.Folio).ToList();
                 }
                 return lista;
             }
@@ -120,6 +120,27 @@ namespace BussinessLayer.UsesCases
             }
             //Retorna lista vacia para evitar excepciones en llamada
             return new List<Orden>();
+        }
+
+        public Orden SearchByFolio(int folio)
+        {
+            Orden orden;
+            try
+            {
+                using (Entities db = new Entities())
+                {
+                    orden = db.Orden
+                        .Include(el=>el.Cliente)
+                        .Where(el => el.Folio.Equals(folio)).FirstOrDefault();
+                }
+                return orden;
+            }
+            catch (Exception e)
+            {
+                string s = e.Message;
+                Log.Write("Ha ocurrido un error " + s);
+                return null;
+            }
         }
     }
 }
