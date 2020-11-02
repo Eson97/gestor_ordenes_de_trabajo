@@ -61,7 +61,6 @@
     <Compile Include="Clases\Estado.cs" />
     <Compile Include="Clases\Mecanico.cs" />
     <Compile Include="Clases\MessageDialogResult.cs" />
-    <Compile Include="Clases\Orden.cs" />
     <Compile Include="Clases\Pago.cs" />
     <Compile Include="CustomComponents\infoPanel.cs">
       <SubType>UserControl</SubType>
