@@ -44,10 +44,9 @@ namespace GestorOrdenesDeTrabajo.Ventanas.Message
 
         public void Actualizar()
         {
-            while (tablaClientes.RowCount != 0)
-                tablaClientes.Rows.RemoveAt(0);
-
+            tablaClientes.Rows.Clear();
             var clientes = ClienteController.I.GetLista();
+
             foreach (Cliente item in clientes)
                 datatable.Rows.Add(new object[] { item.Id, item.Nombre, item.Direccion, item.Telefono });
 
@@ -62,6 +61,51 @@ namespace GestorOrdenesDeTrabajo.Ventanas.Message
             tablaClientes.Columns[3].Resizable = DataGridViewTriState.True;
         }
 
+        private void tablaClientes_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            Console.WriteLine("Se dio doble click :D");
+            //TODO añadir validacion para permiso de usuario
+            if (e.RowIndex <= -1)
+                return;
+
+                DataGridViewRow row = tablaClientes.CurrentRow;
+                int id = int.Parse(row.Cells[0].Value as string);
+                string nombre = row.Cells[1].Value as string;
+                string dir = row.Cells[2].Value as string;
+                string tel = row.Cells[3].Value as string;
+
+                _DialogResult = new Cliente()
+                {
+                    Id = id,
+                    Nombre = nombre,
+                    Direccion = dir,
+                    Telefono = tel
+                };
+
+                Console.WriteLine($"ID:{_DialogResult.Id}\nNombre:{_DialogResult.Nombre}");
+
+                this.Dispose();       
+        }
+
+        private void btnUpdate_Click(object sender, EventArgs e)
+        {
+            Actualizar();
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            this.Dispose();
+        }
+
+        private void btnNew_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+
+        }
         private void txtFilter_Enter(object sender, EventArgs e)
         {
             if (txtFilter.Text == "Ingrese el nombre del cliente")
@@ -80,57 +124,10 @@ namespace GestorOrdenesDeTrabajo.Ventanas.Message
             }
         }
 
-        private void btnUpdate_Click(object sender, EventArgs e)
-        {
-            Actualizar();
-        }
-
-        private void button3_Click(object sender, EventArgs e)
-        {
-            this.Dispose();
-        }
-
-        private void tablaClientes_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
-        {
-            Console.WriteLine("Se dio doble click :D");
-            //TODO añadir validacion para permiso de usuario
-            if (e.RowIndex > -1)
-            {
-                DataGridViewRow row = tablaClientes.CurrentRow;
-                int id = int.Parse(row.Cells[0].Value as string);
-                string nombre = row.Cells[1].Value as string;
-                string dir = row.Cells[2].Value as string;
-                string tel = row.Cells[3].Value as string;
-
-                _DialogResult = new Cliente()
-                {
-                    Id = id,
-                    Nombre = nombre,
-                    Direccion = dir,
-                    Telefono = tel
-                };
-
-                Console.WriteLine($"ID:{_DialogResult.Id}\nNombre:{_DialogResult.Nombre}");
-
-                this.Dispose();
-
-            }
-        }
-
         private void txtFilter_TextChanged(object sender, EventArgs e)
         {
             if (txtFilter.Text != "Ingrese el nombre del cliente")
                 datatable.DefaultView.RowFilter = $"Codigo LIKE '%{txtFilter.Text}%'";
-        }
-
-        private void btnNew_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void button1_Click(object sender, EventArgs e)
-        {
-
         }
     }
 }
