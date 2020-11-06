@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="OrdenesDeTrabajoModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+      <Schema Namespace="DbContext.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Cliente">
           <Key>
             <PropertyRef Name="Id" />
@@ -67,7 +67,7 @@
           <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Codigo" Type="varchar" MaxLength="20" Nullable="false" />
           <Property Name="Descripcion" Type="varchar" MaxLength="50" Nullable="false" />
-          <Property Name="PrecioMinimo" Type="decimal" Precision="4" Scale="2" Nullable="false" />
+          <Property Name="PrecioMinimo" Type="decimal" Precision="10" Scale="2" Nullable="false" />
           <Property Name="IsDeleted" Type="bit" Nullable="false" />
         </EntityType>
         <EntityType Name="sysdiagrams">
@@ -181,7 +181,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="OrdenesDeTrabajoModelStoreContainer">
+        <EntityContainer Name="DbContextStoreContainer">
           <EntitySet Name="Cliente" EntityType="Self.Cliente" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Mecanico" EntityType="Self.Mecanico" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Modulo" EntityType="Self.Modulo" Schema="dbo" store:Type="Tables" />
@@ -225,7 +225,7 @@
     </edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
-      <Schema Namespace="OrdenesDeTrabajoModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+      <Schema Namespace="DbContext" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
         <EntityType Name="Cliente">
           <Key>
             <PropertyRef Name="Id" />
@@ -298,7 +298,7 @@
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Codigo" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="Descripcion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="PrecioMinimo" Type="Decimal" Precision="4" Scale="2" Nullable="false" />
+          <Property Name="PrecioMinimo" Type="Decimal" Precision="10" Scale="2" Nullable="false" />
           <Property Name="IsDeleted" Type="Boolean" Nullable="false" />
           <NavigationProperty Name="OrdenRefaccion" Relationship="Self.FK_OrdenRefaccion_Refaccion" FromRole="Refaccion" ToRole="OrdenRefaccion" />
         </EntityType>
@@ -461,9 +461,9 @@
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="OrdenesDeTrabajoModelStoreContainer" CdmEntityContainer="Entities">
+        <EntityContainerMapping StorageEntityContainer="DbContextStoreContainer" CdmEntityContainer="Entities">
           <EntitySetMapping Name="Cliente">
-            <EntityTypeMapping TypeName="OrdenesDeTrabajoModel.Cliente">
+            <EntityTypeMapping TypeName="DbContext.Cliente">
               <MappingFragment StoreEntitySet="Cliente">
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="Nombre" ColumnName="Nombre" />
@@ -473,7 +473,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Mecanico">
-            <EntityTypeMapping TypeName="OrdenesDeTrabajoModel.Mecanico">
+            <EntityTypeMapping TypeName="DbContext.Mecanico">
               <MappingFragment StoreEntitySet="Mecanico">
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="Nombre" ColumnName="Nombre" />
@@ -481,7 +481,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Modulo">
-            <EntityTypeMapping TypeName="OrdenesDeTrabajoModel.Modulo">
+            <EntityTypeMapping TypeName="DbContext.Modulo">
               <MappingFragment StoreEntitySet="Modulo">
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
@@ -489,7 +489,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Orden">
-            <EntityTypeMapping TypeName="OrdenesDeTrabajoModel.Orden">
+            <EntityTypeMapping TypeName="DbContext.Orden">
               <MappingFragment StoreEntitySet="Orden">
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="Folio" ColumnName="Folio" />
@@ -503,7 +503,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="OrdenMecanico">
-            <EntityTypeMapping TypeName="OrdenesDeTrabajoModel.OrdenMecanico">
+            <EntityTypeMapping TypeName="DbContext.OrdenMecanico">
               <MappingFragment StoreEntitySet="OrdenMecanico">
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="IdOrden" ColumnName="IdOrden" />
@@ -513,7 +513,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="OrdenRefaccion">
-            <EntityTypeMapping TypeName="OrdenesDeTrabajoModel.OrdenRefaccion">
+            <EntityTypeMapping TypeName="DbContext.OrdenRefaccion">
               <MappingFragment StoreEntitySet="OrdenRefaccion">
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="IdOrden" ColumnName="IdOrden" />
@@ -524,7 +524,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Refaccion">
-            <EntityTypeMapping TypeName="OrdenesDeTrabajoModel.Refaccion">
+            <EntityTypeMapping TypeName="DbContext.Refaccion">
               <MappingFragment StoreEntitySet="Refaccion">
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="Codigo" ColumnName="Codigo" />
@@ -535,7 +535,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="sysdiagrams">
-            <EntityTypeMapping TypeName="OrdenesDeTrabajoModel.sysdiagrams">
+            <EntityTypeMapping TypeName="DbContext.sysdiagrams">
               <MappingFragment StoreEntitySet="sysdiagrams">
                 <ScalarProperty Name="name" ColumnName="name" />
                 <ScalarProperty Name="principal_id" ColumnName="principal_id" />
@@ -546,7 +546,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Usuario">
-            <EntityTypeMapping TypeName="OrdenesDeTrabajoModel.Usuario">
+            <EntityTypeMapping TypeName="DbContext.Usuario">
               <MappingFragment StoreEntitySet="Usuario">
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="Usuario1" ColumnName="Usuario" />
@@ -555,7 +555,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="UsuarioModulo">
-            <EntityTypeMapping TypeName="OrdenesDeTrabajoModel.UsuarioModulo">
+            <EntityTypeMapping TypeName="DbContext.UsuarioModulo">
               <MappingFragment StoreEntitySet="UsuarioModulo">
                 <ScalarProperty Name="IdUsuarioModulo" ColumnName="IdUsuarioModulo" />
                 <ScalarProperty Name="IdUsuario" ColumnName="IdUsuario" />

@@ -105,13 +105,11 @@
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="App.Config" />
     <EntityDeploy Include="BaseDeDatos.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>BaseDeDatos.Designer.cs</LastGenOutput>
     </EntityDeploy>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="App.Config" />
     <None Include="BaseDeDatos.edmx.diagram">
       <DependentUpon>BaseDeDatos.edmx</DependentUpon>
     </None>
@@ -120,8 +118,8 @@
   <ItemGroup>
     <Content Include="BaseDeDatos.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>BaseDeDatos.Context.cs</LastGenOutput>
       <DependentUpon>BaseDeDatos.edmx</DependentUpon>
+      <LastGenOutput>BaseDeDatos.Context.cs</LastGenOutput>
     </Content>
     <Content Include="BaseDeDatos.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
