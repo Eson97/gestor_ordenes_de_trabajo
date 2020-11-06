@@ -84,6 +84,7 @@ namespace GestorOrdenesDeTrabajo.OrdenWindow.Inventario
 
         private void btnModificar_Click(object sender, EventArgs e)
         {
+            if (tablaInventario.RowCount <= 0) return;
             if (tablaInventario.CurrentRow.Index != -1)
             {
                 DataGridViewRow row = tablaInventario.CurrentRow;

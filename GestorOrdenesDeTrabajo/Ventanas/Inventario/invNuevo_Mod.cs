@@ -15,6 +15,11 @@ namespace GestorOrdenesDeTrabajo.Ventanas.Inventario
             InitializeComponent();
         }
 
+        /**FIXME
+         * DESCRIPCION Y CODIGO DEBE DE ACEPTAR TAMBIEN CARACTERES ESPECIALES COMO '-' , '(' , ')' Y CREO QUE NOMAS
+         * PRECIO MINIMO DEBE DE ACEPTAR TAMBIEN '.'
+         */
+
         public invNuevo_Mod(Refaccion refaccion)
         {
             InitializeComponent();

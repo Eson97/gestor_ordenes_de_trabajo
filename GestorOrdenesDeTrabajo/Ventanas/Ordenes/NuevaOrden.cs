@@ -4,6 +4,7 @@ using System.Windows.Forms;
 using BussinessLayer.Enum;
 using BussinessLayer.UsesCases;
 using DataLayer;
+using GestorOrdenesDeTrabajo.Ventanas.Message;
 
 namespace GestorOrdenesDeTrabajo.Ventanas.Ordenes
 {
@@ -13,7 +14,9 @@ namespace GestorOrdenesDeTrabajo.Ventanas.Ordenes
          * TODO cambiar funcionamiento para agregar cliente
          * Suplir el ingreso de datos por el ususario con el uso de <SrchClienteDialog> 
          */
-        
+
+        Cliente c;
+
         public NuevaOrden()
         {
             InitializeComponent();
@@ -28,6 +31,16 @@ namespace GestorOrdenesDeTrabajo.Ventanas.Ordenes
             txtFolio.Clear();
             txtObservaciones.Clear();
             cdtpFechaRecepcion.Value = DateTime.Now;
+        }
+
+        void fillData(Cliente c)
+        {
+            if (c != null)
+            {
+                txtCliente.Text = c.Nombre;
+                txtDireccion.Text = c.Direccion;
+                txtTelefono.Text = c.Telefono;
+            }
         }
 
         private void btnCancelar_Click(object sender, EventArgs e)
@@ -50,21 +63,12 @@ namespace GestorOrdenesDeTrabajo.Ventanas.Ordenes
             //TODO Obtener cliente como objeto desde SrchClienteDialog
 
             int folio = int.Parse(txtFolio.Text);
-            string nombreCliente = txtCliente.Text;
-            string direccion = txtDireccion.Text;
-            string telefono = txtTelefono.Text;
             string equipo = txtEquipo.Text;
             string observaciones = txtObservaciones.Text;
             DateTime recepcion = cdtpFechaRecepcion.Value;
 
             //TODO agregar validaciones
 
-            var cliente = new Cliente()
-            {
-                Nombre = nombreCliente,
-                Direccion = direccion,
-                Telefono = telefono,
-            };
 
             //Se crea la entidad cliente automaticamente TODO revisar si el cliente existe y solo agregar ID
 
@@ -75,11 +79,26 @@ namespace GestorOrdenesDeTrabajo.Ventanas.Ordenes
                 FechaRecepcion = recepcion,
                 Observaciones = observaciones,
                 Status = (int)OrdenStatus.ESPERA,
-                Cliente = cliente,                
+                Cliente = c,                
             });
 
 
             Console.WriteLine(orden.ToString());
+        }
+
+        private void txtCliente_KeyDown(object sender, KeyEventArgs e)
+        {
+            if(e.KeyCode == Keys.F2)
+            {
+                c = SrchClienteDialog.showClientDialog();
+                fillData(c);
+            }
+        }
+
+        private void btnSrchCliente_Click(object sender, EventArgs e)
+        {
+            c = SrchClienteDialog.showClientDialog();
+            fillData(c);
         }
     }
 }
