@@ -178,7 +178,7 @@
             this.tlpCont.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 5F));
             this.tlpCont.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 38F));
             this.tlpCont.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 62F));
-            this.tlpCont.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 11F));
+            this.tlpCont.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 12F));
             this.tlpCont.Controls.Add(this.txtFilter, 2, 1);
             this.tlpCont.Controls.Add(this.tablaMecanicos, 2, 2);
             this.tlpCont.Controls.Add(this.dataPanel, 1, 2);
@@ -203,7 +203,7 @@
             this.txtFilter.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
             this.txtFilter.Location = new System.Drawing.Point(329, 8);
             this.txtFilter.Name = "txtFilter";
-            this.txtFilter.Size = new System.Drawing.Size(519, 31);
+            this.txtFilter.Size = new System.Drawing.Size(518, 31);
             this.txtFilter.TabIndex = 0;
             this.txtFilter.Text = "Ingrese el nombre del mecanico";
             this.txtFilter.Enter += new System.EventHandler(this.txtFilter_Enter);
@@ -238,7 +238,7 @@
             dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.ControlLight;
             this.tablaMecanicos.RowsDefaultCellStyle = dataGridViewCellStyle2;
             this.tablaMecanicos.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.tablaMecanicos.Size = new System.Drawing.Size(519, 208);
+            this.tablaMecanicos.Size = new System.Drawing.Size(518, 208);
             this.tablaMecanicos.TabIndex = 1;
             this.tablaMecanicos.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.tablaMecanicos_CellClick);
             this.tablaMecanicos.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.tablaMecanicos_CellDoubleClick);
