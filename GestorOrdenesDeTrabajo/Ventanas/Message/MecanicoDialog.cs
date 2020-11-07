@@ -66,7 +66,7 @@ namespace GestorOrdenesDeTrabajo.Ventanas.Message
 
             tablaMecanicos.DataSource = datatable;
             tablaMecanicos.Columns[0].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
-            tablaMecanicos.Columns[1].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+            tablaMecanicos.Columns[1].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
             tablaMecanicos.Columns[0].Resizable = DataGridViewTriState.False;
             tablaMecanicos.Columns[1].Resizable = DataGridViewTriState.True;
             tablaMecanicos.Columns[0].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
