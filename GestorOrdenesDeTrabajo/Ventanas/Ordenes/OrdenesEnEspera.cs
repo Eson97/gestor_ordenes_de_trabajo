@@ -11,20 +11,22 @@ using GestorOrdenesDeTrabajo.Ventanas.Message;
 namespace GestorOrdenesDeTrabajo.Ventanas.Ordenes
 {
     public partial class OrdenesEnEspera : Form
-    {
-        private readonly List<OrdenItemList> ListaOrdenes;
+    {        
+        private List<OrdenItemList> ListaOrdenes;
         private Orden orden;
         private Mecanico mecanico;
 
         public OrdenesEnEspera()
         {
             InitializeComponent();
-            ListaOrdenes = OrdenController.I.GetLista((int)OrdenStatus.ESPERA).Select(el => new OrdenItemList(el)).ToList();
             showOrdenes();
         }
 
         void showOrdenes()
-        {
+        {           
+            this.flpList.Controls.Clear();
+            ListaOrdenes = OrdenController.I.GetLista((int)OrdenStatus.ESPERA).Select(el => new OrdenItemList(el)).ToList();
+
             foreach (OrdenItemList item in ListaOrdenes)
             {
                 this.flpList.Controls.Add(item);
@@ -32,13 +34,28 @@ namespace GestorOrdenesDeTrabajo.Ventanas.Ordenes
                 {
                     orden = item.Orden;
                     mecanico = MecanicoDialog.showClientDialog();
-                    //TODO agregar mecanico a orden
+                    if (mecanico == null) return;
+
+                    orden.Status = (int)OrdenStatus.PROCESO;
+                    orden = OrdenController.I.Edit(orden);
+
+                    var ordenMecanico = OrdenMecanicoController.I.Add(new OrdenMecanico()
+                    {
+                        IdOrden = orden.Id,
+                        IdMecanico = mecanico.Id
+                    });
+
+                    if (ordenMecanico == null)
+                        MessageBox.Show("No se puede asignar el mecanico a la orden", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+                    //Repaint controls with new data
+                    showOrdenes();
                 };
             }
         }
 
         private void pictureBox2_Click(object sender, EventArgs e)
-        {            
+        {
         }
     }
 }

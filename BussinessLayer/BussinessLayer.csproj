@@ -60,6 +60,7 @@
     <Compile Include="UsesCases\MecanicoController.cs" />
     <Compile Include="UsesCases\ModuloController.cs" />
     <Compile Include="UsesCases\OrdenController.cs" />
+    <Compile Include="UsesCases\OrdenMecanicoController.cs" />
     <Compile Include="UsesCases\RefaccionController.cs" />
     <Compile Include="UsesCases\UsuarioController.cs" />
   </ItemGroup>

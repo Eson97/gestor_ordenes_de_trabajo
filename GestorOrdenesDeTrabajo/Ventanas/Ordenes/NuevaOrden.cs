@@ -78,11 +78,10 @@ namespace GestorOrdenesDeTrabajo.Ventanas.Ordenes
             if (orden != null)
             {
                 Helper.VaciarTexto(txtFolio, txtEquipo, txtObservaciones, txtTelefono, txtDireccion, txtCliente);
+                Console.WriteLine(orden.ToString());
                 orden = null;
                 cliente = null;
             }
-
-            Console.WriteLine(orden.ToString());
         }
 
         private void txtCliente_KeyDown(object sender, KeyEventArgs e)
