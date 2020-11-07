@@ -6,6 +6,7 @@ using BussinessLayer.Enum;
 using BussinessLayer.UsesCases;
 using DataLayer;
 using GestorOrdenesDeTrabajo.CustomComponents;
+using GestorOrdenesDeTrabajo.Ventanas.Message;
 
 namespace GestorOrdenesDeTrabajo.Ventanas.Ordenes
 {
@@ -13,6 +14,7 @@ namespace GestorOrdenesDeTrabajo.Ventanas.Ordenes
     {
         private readonly List<OrdenItemList> ListaOrdenes;
         private Orden orden;
+        private Mecanico mecanico;
 
         public OrdenesEnEspera()
         {
@@ -33,6 +35,20 @@ namespace GestorOrdenesDeTrabajo.Ventanas.Ordenes
                 };
             }
         }
+        void fillData(Mecanico m)
+        {
+            if (m != null)
+            {
+                //txtCliente.Text = c.Nombre;
+                //txtDireccion.Text = c.Direccion;
+                //txtTelefono.Text = c.Telefono;
+            }
+        }
 
+        private void pictureBox2_Click(object sender, EventArgs e)
+        {
+            mecanico = MecanicoDialog.showClientDialog();
+            fillData(mecanico);
+        }
     }
 }

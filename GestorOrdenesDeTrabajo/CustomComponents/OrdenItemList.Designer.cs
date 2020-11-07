@@ -51,27 +51,30 @@
             // 
             this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(55)))), ((int)(((byte)(55)))));
             this.panel1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel1.Location = new System.Drawing.Point(0, 77);
+            this.panel1.Location = new System.Drawing.Point(0, 94);
+            this.panel1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(600, 3);
+            this.panel1.Size = new System.Drawing.Size(800, 4);
             this.panel1.TabIndex = 6;
             // 
             // panel2
             // 
             this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(55)))), ((int)(((byte)(55)))));
             this.panel2.Dock = System.Windows.Forms.DockStyle.Right;
-            this.panel2.Location = new System.Drawing.Point(597, 0);
+            this.panel2.Location = new System.Drawing.Point(796, 0);
+            this.panel2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(3, 77);
+            this.panel2.Size = new System.Drawing.Size(4, 94);
             this.panel2.TabIndex = 7;
             // 
             // panel3
             // 
             this.panel3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(35)))), ((int)(((byte)(35)))));
             this.panel3.Dock = System.Windows.Forms.DockStyle.Right;
-            this.panel3.Location = new System.Drawing.Point(494, 0);
+            this.panel3.Location = new System.Drawing.Point(659, 0);
+            this.panel3.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(3, 77);
+            this.panel3.Size = new System.Drawing.Size(4, 94);
             this.panel3.TabIndex = 9;
             // 
             // panel4
@@ -79,8 +82,9 @@
             this.panel4.Controls.Add(this.pictureBox1);
             this.panel4.Dock = System.Windows.Forms.DockStyle.Left;
             this.panel4.Location = new System.Drawing.Point(0, 0);
+            this.panel4.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(62, 77);
+            this.panel4.Size = new System.Drawing.Size(83, 94);
             this.panel4.TabIndex = 10;
             // 
             // pictureBox1
@@ -88,8 +92,9 @@
             this.pictureBox1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
             this.pictureBox1.Location = new System.Drawing.Point(0, 0);
+            this.pictureBox1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(62, 77);
+            this.pictureBox1.Size = new System.Drawing.Size(83, 94);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
@@ -103,9 +108,10 @@
             this.panel5.Controls.Add(this.lblOrden);
             this.panel5.Controls.Add(this.label1);
             this.panel5.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel5.Location = new System.Drawing.Point(62, 0);
+            this.panel5.Location = new System.Drawing.Point(83, 0);
+            this.panel5.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.panel5.Name = "panel5";
-            this.panel5.Size = new System.Drawing.Size(432, 77);
+            this.panel5.Size = new System.Drawing.Size(576, 94);
             this.panel5.TabIndex = 11;
             // 
             // lblCliente
@@ -113,9 +119,10 @@
             this.lblCliente.AutoSize = true;
             this.lblCliente.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblCliente.ForeColor = System.Drawing.SystemColors.ControlDark;
-            this.lblCliente.Location = new System.Drawing.Point(74, 52);
+            this.lblCliente.Location = new System.Drawing.Point(99, 64);
+            this.lblCliente.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblCliente.Name = "lblCliente";
-            this.lblCliente.Size = new System.Drawing.Size(218, 20);
+            this.lblCliente.Size = new System.Drawing.Size(278, 25);
             this.lblCliente.TabIndex = 11;
             this.lblCliente.Text = "XXXXXXXXXXXXXXXXXXX";
             // 
@@ -124,9 +131,10 @@
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label6.ForeColor = System.Drawing.SystemColors.ControlDark;
-            this.label6.Location = new System.Drawing.Point(6, 52);
+            this.label6.Location = new System.Drawing.Point(8, 64);
+            this.label6.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(62, 20);
+            this.label6.Size = new System.Drawing.Size(79, 25);
             this.label6.TabIndex = 10;
             this.label6.Text = "Cliente:";
             // 
@@ -135,9 +143,10 @@
             this.lblEquipo.AutoSize = true;
             this.lblEquipo.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblEquipo.ForeColor = System.Drawing.SystemColors.ControlDark;
-            this.lblEquipo.Location = new System.Drawing.Point(75, 28);
+            this.lblEquipo.Location = new System.Drawing.Point(100, 34);
+            this.lblEquipo.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblEquipo.Name = "lblEquipo";
-            this.lblEquipo.Size = new System.Drawing.Size(185, 20);
+            this.lblEquipo.Size = new System.Drawing.Size(236, 25);
             this.lblEquipo.TabIndex = 9;
             this.lblEquipo.Text = "XXXXXXXXXXXXXXXX";
             // 
@@ -146,9 +155,10 @@
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label4.ForeColor = System.Drawing.SystemColors.ControlDark;
-            this.label4.Location = new System.Drawing.Point(6, 28);
+            this.label4.Location = new System.Drawing.Point(8, 34);
+            this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(63, 20);
+            this.label4.Size = new System.Drawing.Size(79, 25);
             this.label4.TabIndex = 8;
             this.label4.Text = "Equipo:";
             // 
@@ -157,9 +167,10 @@
             this.lblOrden.AutoSize = true;
             this.lblOrden.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblOrden.ForeColor = System.Drawing.SystemColors.ControlDark;
-            this.lblOrden.Location = new System.Drawing.Point(69, 4);
+            this.lblOrden.Location = new System.Drawing.Point(92, 5);
+            this.lblOrden.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblOrden.Name = "lblOrden";
-            this.lblOrden.Size = new System.Drawing.Size(54, 20);
+            this.lblOrden.Size = new System.Drawing.Size(67, 25);
             this.lblOrden.TabIndex = 7;
             this.lblOrden.Text = "00000";
             // 
@@ -168,9 +179,10 @@
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.SystemColors.ControlDark;
-            this.label1.Location = new System.Drawing.Point(6, 4);
+            this.label1.Location = new System.Drawing.Point(8, 5);
+            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(57, 20);
+            this.label1.Size = new System.Drawing.Size(73, 25);
             this.label1.TabIndex = 6;
             this.label1.Text = "Orden:";
             // 
@@ -184,16 +196,18 @@
             this.btnAction.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnAction.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnAction.ForeColor = System.Drawing.SystemColors.ControlDark;
-            this.btnAction.Location = new System.Drawing.Point(497, 0);
+            this.btnAction.Location = new System.Drawing.Point(663, 0);
+            this.btnAction.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnAction.Name = "btnAction";
-            this.btnAction.Size = new System.Drawing.Size(100, 77);
+            this.btnAction.Size = new System.Drawing.Size(133, 94);
             this.btnAction.TabIndex = 8;
             this.btnAction.Text = "➤";
             this.btnAction.UseVisualStyleBackColor = false;
+            this.btnAction.Click += new System.EventHandler(this.btnAction_Click);
             // 
             // OrdenItemList
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
             this.Controls.Add(this.panel5);
@@ -202,9 +216,10 @@
             this.Controls.Add(this.btnAction);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
-            this.MinimumSize = new System.Drawing.Size(590, 80);
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.MinimumSize = new System.Drawing.Size(787, 98);
             this.Name = "OrdenItemList";
-            this.Size = new System.Drawing.Size(600, 80);
+            this.Size = new System.Drawing.Size(800, 98);
             this.panel4.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.panel5.ResumeLayout(false);

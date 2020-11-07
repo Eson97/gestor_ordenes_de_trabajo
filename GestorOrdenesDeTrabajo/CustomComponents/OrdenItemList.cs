@@ -33,5 +33,9 @@ namespace GestorOrdenesDeTrabajo.CustomComponents
             }
         }
 
+        private void btnAction_Click(object sender, System.EventArgs e)
+        {
+            
+        }
     }
 }

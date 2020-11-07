@@ -1,15 +1,11 @@
 ﻿using BussinessLayer.UsesCases;
 using DataLayer;
 using GestorOrdenesDeTrabajo.Utilerias.Controles;
+using GestorOrdenesDeTrabajo.Utilerias.Eventos;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
 using System.Drawing;
-using System.Linq;
 using System.Runtime.InteropServices;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace GestorOrdenesDeTrabajo.Ventanas.Message
@@ -63,10 +59,10 @@ namespace GestorOrdenesDeTrabajo.Ventanas.Message
         public void Actualizar()
         {
             while (tablaMecanicos.RowCount > 0) tablaMecanicos.Rows.RemoveAt(0);
-            var clientes = ClienteController.I.GetLista();
+            var mecanicos = MecanicoController.I.GetLista();
 
-            foreach (Cliente item in clientes)
-                datatable.Rows.Add(new object[] { item.Id, item.Nombre, item.Direccion, item.Telefono });
+            foreach (Mecanico item in mecanicos)
+                datatable.Rows.Add(new object[] { item.Id, item.Nombre });
 
             tablaMecanicos.DataSource = datatable;
             tablaMecanicos.Columns[0].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
@@ -184,12 +180,6 @@ namespace GestorOrdenesDeTrabajo.Ventanas.Message
                 $"\n*****************************");
         }
 
-        private void topPanel_MouseDown(object sender, MouseEventArgs e)
-        {
-            ReleaseCapture();
-            SendMessage(this.Handle, 0x112, 0xf012, 0);
-        }
-
         private void txtFilter_Enter(object sender, EventArgs e)
         {
             if (txtFilter.Text == "Ingrese el nombre del mecanico")
@@ -206,6 +196,23 @@ namespace GestorOrdenesDeTrabajo.Ventanas.Message
                 txtFilter.ForeColor = Color.FromKnownColor(KnownColor.ControlDarkDark);
                 txtFilter.Text = "Ingrese el nombre del cliente";
             }
+        }
+
+        private void txtNombre_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtNombre_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            Filtro.AlfanumericoSpace(e);
+            if (e.KeyChar == (char)Keys.Enter) btnAceptar_Click(sender, e);
+
+        }
+        private void topPanel_MouseDown(object sender, MouseEventArgs e)
+        {
+            ReleaseCapture();
+            SendMessage(this.Handle, 0x112, 0xf012, 0);
         }
     }
 }
