@@ -87,7 +87,7 @@ namespace BussinessLayer.UsesCases
             {
                 using (Entities db = new Entities())
                 {
-                    db.Configuration.LazyLoadingEnabled = false;
+                    db.Configuration.LazyLoadingEnabled = true;
                     lista = db.Orden.Where(el => el.Status == status).OrderBy(cp => cp.Folio).Include(el => el.Cliente).ToList();
                 }
                 return lista;

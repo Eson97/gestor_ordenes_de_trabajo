@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 using BussinessLayer.Enum;
 using BussinessLayer.UsesCases;
@@ -11,7 +12,7 @@ using GestorOrdenesDeTrabajo.Ventanas.Message;
 namespace GestorOrdenesDeTrabajo.Ventanas.Ordenes
 {
     public partial class OrdenesEnEspera : Form
-    {        
+    {
         private List<OrdenItemList> ListaOrdenes;
         private Orden orden;
         private Mecanico mecanico;
@@ -22,11 +23,11 @@ namespace GestorOrdenesDeTrabajo.Ventanas.Ordenes
             showOrdenes();
         }
 
-        void showOrdenes()
-        {           
-            this.flpList.Controls.Clear();
-            ListaOrdenes = OrdenController.I.GetLista((int)OrdenStatus.ESPERA).Select(el => new OrdenItemList(el)).ToList();
+        async void showOrdenes()
+        {
+            ListaOrdenes = await Task.Run(() => OrdenController.I.GetLista((int)OrdenStatus.ESPERA).Select(el => new OrdenItemList(el)).ToList());
 
+            this.flpList.Controls.Clear();
             foreach (OrdenItemList item in ListaOrdenes)
             {
                 this.flpList.Controls.Add(item);
