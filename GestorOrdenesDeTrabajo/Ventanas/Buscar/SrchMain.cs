@@ -99,11 +99,6 @@ namespace GestorOrdenesDeTrabajo.Ventanas.Buscar
             }
         }
 
-        private void btnBuscar_Click(object sender, EventArgs e)
-        {
-            //TODO implement search between dates?
-            //openSubPanel(new SrchDetailInfo());
-        }
         private void tablaOrdenes_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
         {
             foreach (DataGridViewRow row in tablaOrdenes.Rows)
@@ -130,6 +125,10 @@ namespace GestorOrdenesDeTrabajo.Ventanas.Buscar
                 else
                 { MessageBox.Show("No se encuentra la orden, revice el folio", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error); }
             }
+        }
+        private void btnBuscar_Click(object sender, EventArgs e)
+        {
+
         }
 
         private void txtSrchFolio_Leave(object sender, EventArgs e)

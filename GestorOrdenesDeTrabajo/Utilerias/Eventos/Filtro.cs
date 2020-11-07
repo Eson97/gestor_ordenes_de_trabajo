@@ -20,7 +20,7 @@ namespace GestorOrdenesDeTrabajo.Utilerias.Eventos
             e.Handled = true;
         }
 
-        public static void SoloLetras(KeyPressEventArgs e)
+        public static void Letras(KeyPressEventArgs e)
         {
             char c = e.KeyChar;
             if (char.IsLetter(c)) return;
@@ -30,10 +30,18 @@ namespace GestorOrdenesDeTrabajo.Utilerias.Eventos
         }
 
 
-        public static void SoloNumeros(KeyPressEventArgs e)
+        public static void Numeros(KeyPressEventArgs e)
         {
             char c = e.KeyChar;
             if (c == (char)Keys.Back) return;
+            if (char.IsNumber(c)) return;
+            e.Handled = true;
+        }
+        public static void NumerosDecimales(KeyPressEventArgs e)
+        {
+            char c = e.KeyChar;
+            if (c == (char)Keys.Back) return;
+            if (c == (char)'.') return;
             if (char.IsNumber(c)) return;
             e.Handled = true;
         }
@@ -84,6 +92,27 @@ namespace GestorOrdenesDeTrabajo.Utilerias.Eventos
             if (c == (char)Keys.Space) return;
             if (c == (char)Keys.Back) return;
             if (c == (char)',') return;
+            if (c == (char)'.') return;
+            if (char.IsLetterOrDigit(c)) return;
+            e.Handled = true;
+        }
+        public static void AlfanumericoComaPuntoGuion(KeyPressEventArgs e)
+        {
+            char c = e.KeyChar;
+            if (c == (char)Keys.Back) return;
+            if (c == (char)',') return;
+            if (c == (char)'-') return;
+            if (c == (char)'.') return;
+            if (char.IsLetterOrDigit(c)) return;
+            e.Handled = true;
+        }
+        public static void AlfanumericoSpaceComaPuntoGuion(KeyPressEventArgs e)
+        {
+            char c = e.KeyChar;
+            if (c == (char)Keys.Space) return;
+            if (c == (char)Keys.Back) return;
+            if (c == (char)',') return;
+            if (c == (char)'-') return;
             if (c == (char)'.') return;
             if (char.IsLetterOrDigit(c)) return;
             e.Handled = true;

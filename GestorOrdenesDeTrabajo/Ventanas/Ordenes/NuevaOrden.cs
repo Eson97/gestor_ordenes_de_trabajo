@@ -101,7 +101,7 @@ namespace GestorOrdenesDeTrabajo.Ventanas.Ordenes
 
         private void txtFolio_KeyPress(object sender, KeyPressEventArgs e)
         {
-            Filtro.SoloNumeros(e);
+            Filtro.Numeros(e);
         }
 
         private void txtEquipo_KeyPress(object sender, KeyPressEventArgs e)

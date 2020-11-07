@@ -15,11 +15,6 @@ namespace GestorOrdenesDeTrabajo.Ventanas.Inventario
             InitializeComponent();
         }
 
-        /**FIXME
-         * DESCRIPCION Y CODIGO DEBE DE ACEPTAR TAMBIEN CARACTERES ESPECIALES COMO '-' , '(' , ')' Y CREO QUE NOMAS
-         * PRECIO MINIMO DEBE DE ACEPTAR TAMBIEN '.'
-         */
-
         public invNuevo_Mod(Refaccion refaccion)
         {
             InitializeComponent();
@@ -28,16 +23,20 @@ namespace GestorOrdenesDeTrabajo.Ventanas.Inventario
 
         private void btnAceptar_Click(object sender, EventArgs e)
         {
-            if (!Helper.Llenos(txtCodigo, txtDescripcion, txtPrecioMinimo))
+            bool isEmpty = !Helper.Llenos(txtCodigo, txtDescripcion, txtPrecioMinimo);
+
+            if (isEmpty)
             { MessageBox.Show("Llene todos los campos, por favor", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning); return; }
+
+            decimal minimo;
 
             string code = txtCodigo.Text;
             string descripcion = txtDescripcion.Text;
-            decimal minimo = decimal.Parse(txtPrecioMinimo.Text);
+            bool parseIncorrect = !decimal.TryParse(txtPrecioMinimo.Text, out minimo);
 
+            if (parseIncorrect)
+            { MessageBox.Show("El precio no es valido", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning); return; }
             minimo = Math.Round(minimo, 2);
-
-            Helper.VaciarTexto(txtCodigo, txtDescripcion, txtPrecioMinimo);
 
             if (refaccion == null)
             {
@@ -56,10 +55,11 @@ namespace GestorOrdenesDeTrabajo.Ventanas.Inventario
                 refaccion = RefaccionController.I.Edit(refaccion);
             }
 
-            //TODO agregar mensaje de confirmacion?
             if (refaccion == null)
                 MessageBox.Show("Codigo de refaccion repetido, introduzca otro", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            
             refaccion = null;
+            Helper.VaciarTexto(txtCodigo, txtDescripcion, txtPrecioMinimo);
         }
 
         private void btnCancelar_Click(object sender, EventArgs e)
@@ -79,19 +79,19 @@ namespace GestorOrdenesDeTrabajo.Ventanas.Inventario
 
         private void txtPrecioMinimo_KeyPress(object sender, KeyPressEventArgs e)
         {
-            Filtro.SoloNumeros(e);
+            Filtro.NumerosDecimales(e);
             if (e.KeyChar == (char)Keys.Enter) btnAceptar_Click(sender, e);
         }
 
         private void txtCodigo_KeyPress(object sender, KeyPressEventArgs e)
         {
-            Filtro.Alfanumerico(e);
+            Filtro.AlfanumericoComaPuntoGuion(e);
             if (e.KeyChar == (char)Keys.Enter) btnAceptar_Click(sender, e);
         }
 
         private void txtDescripcion_KeyPress(object sender, KeyPressEventArgs e)
         {
-            Filtro.AlfanumericoSpaceComaPunto(e);
+            Filtro.AlfanumericoSpaceComaPuntoGuion(e);
             if (e.KeyChar == (char)Keys.Enter) btnAceptar_Click(sender, e);
         }
     }

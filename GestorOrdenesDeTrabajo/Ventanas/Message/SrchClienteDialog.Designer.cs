@@ -63,7 +63,7 @@
             this.panel1.Controls.Add(this.label1);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 0);
-            this.panel1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.panel1.Margin = new System.Windows.Forms.Padding(4);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(1392, 37);
             this.panel1.TabIndex = 0;
@@ -96,7 +96,7 @@
             this.tableLayoutPanel1.Controls.Add(this.btnClose, 4, 1);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 37);
-            this.tableLayoutPanel1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tableLayoutPanel1.Margin = new System.Windows.Forms.Padding(4);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 3;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 6F));
@@ -117,7 +117,7 @@
             this.btnNew.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnNew.ForeColor = System.Drawing.SystemColors.ControlDark;
             this.btnNew.Location = new System.Drawing.Point(11, 10);
-            this.btnNew.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnNew.Margin = new System.Windows.Forms.Padding(4);
             this.btnNew.Name = "btnNew";
             this.btnNew.Size = new System.Drawing.Size(336, 42);
             this.btnNew.TabIndex = 0;
@@ -136,7 +136,7 @@
             this.btnEdit.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnEdit.ForeColor = System.Drawing.SystemColors.ControlDark;
             this.btnEdit.Location = new System.Drawing.Point(355, 10);
-            this.btnEdit.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnEdit.Margin = new System.Windows.Forms.Padding(4);
             this.btnEdit.Name = "btnEdit";
             this.btnEdit.Size = new System.Drawing.Size(336, 42);
             this.btnEdit.TabIndex = 1;
@@ -155,7 +155,7 @@
             this.btnUpdate.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnUpdate.ForeColor = System.Drawing.SystemColors.ControlDark;
             this.btnUpdate.Location = new System.Drawing.Point(699, 10);
-            this.btnUpdate.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnUpdate.Margin = new System.Windows.Forms.Padding(4);
             this.btnUpdate.Name = "btnUpdate";
             this.btnUpdate.Size = new System.Drawing.Size(336, 42);
             this.btnUpdate.TabIndex = 2;
@@ -174,7 +174,7 @@
             this.btnClose.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnClose.ForeColor = System.Drawing.SystemColors.ControlDark;
             this.btnClose.Location = new System.Drawing.Point(1043, 10);
-            this.btnClose.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnClose.Margin = new System.Windows.Forms.Padding(4);
             this.btnClose.Name = "btnClose";
             this.btnClose.Size = new System.Drawing.Size(336, 42);
             this.btnClose.TabIndex = 3;
@@ -188,14 +188,14 @@
             this.tlpCont.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 7F));
             this.tlpCont.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 38F));
             this.tlpCont.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 62F));
-            this.tlpCont.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 8F));
+            this.tlpCont.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 9F));
             this.tlpCont.Controls.Add(this.txtFilter, 2, 1);
             this.tlpCont.Controls.Add(this.tablaClientes, 2, 2);
             this.tlpCont.Controls.Add(this.dataPanel, 1, 2);
             this.tlpCont.Controls.Add(this.lblTittle, 1, 1);
             this.tlpCont.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tlpCont.Location = new System.Drawing.Point(0, 99);
-            this.tlpCont.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tlpCont.Margin = new System.Windows.Forms.Padding(4);
             this.tlpCont.Name = "tlpCont";
             this.tlpCont.RowCount = 4;
             this.tlpCont.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 6F));
@@ -212,8 +212,8 @@
             this.txtFilter.Dock = System.Windows.Forms.DockStyle.Fill;
             this.txtFilter.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtFilter.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.txtFilter.Location = new System.Drawing.Point(534, 10);
-            this.txtFilter.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtFilter.Location = new System.Drawing.Point(533, 10);
+            this.txtFilter.Margin = new System.Windows.Forms.Padding(4);
             this.txtFilter.Name = "txtFilter";
             this.txtFilter.Size = new System.Drawing.Size(845, 37);
             this.txtFilter.TabIndex = 0;
@@ -239,8 +239,8 @@
             this.tablaClientes.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.tablaClientes.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tablaClientes.EnableHeadersVisualStyles = false;
-            this.tablaClientes.Location = new System.Drawing.Point(534, 59);
-            this.tablaClientes.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tablaClientes.Location = new System.Drawing.Point(533, 59);
+            this.tablaClientes.Margin = new System.Windows.Forms.Padding(4);
             this.tablaClientes.Name = "tablaClientes";
             this.tablaClientes.ReadOnly = true;
             this.tablaClientes.RowHeadersVisible = false;
@@ -270,9 +270,9 @@
             this.dataPanel.Controls.Add(this.label2);
             this.dataPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dataPanel.Location = new System.Drawing.Point(11, 59);
-            this.dataPanel.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.dataPanel.Margin = new System.Windows.Forms.Padding(4);
             this.dataPanel.Name = "dataPanel";
-            this.dataPanel.Size = new System.Drawing.Size(515, 461);
+            this.dataPanel.Size = new System.Drawing.Size(514, 461);
             this.dataPanel.TabIndex = 2;
             this.dataPanel.Visible = false;
             // 
@@ -287,7 +287,7 @@
             this.btnCancelar.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnCancelar.ForeColor = System.Drawing.SystemColors.ControlDark;
             this.btnCancelar.Location = new System.Drawing.Point(268, 364);
-            this.btnCancelar.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnCancelar.Margin = new System.Windows.Forms.Padding(4);
             this.btnCancelar.Name = "btnCancelar";
             this.btnCancelar.Size = new System.Drawing.Size(228, 52);
             this.btnCancelar.TabIndex = 7;
@@ -306,7 +306,7 @@
             this.btnAceptar.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnAceptar.ForeColor = System.Drawing.SystemColors.ControlDark;
             this.btnAceptar.Location = new System.Drawing.Point(24, 364);
-            this.btnAceptar.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnAceptar.Margin = new System.Windows.Forms.Padding(4);
             this.btnAceptar.Name = "btnAceptar";
             this.btnAceptar.Size = new System.Drawing.Size(228, 52);
             this.btnAceptar.TabIndex = 6;
@@ -320,7 +320,7 @@
             this.txtTel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtTel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtTel.Location = new System.Drawing.Point(32, 241);
-            this.txtTel.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtTel.Margin = new System.Windows.Forms.Padding(4);
             this.txtTel.Name = "txtTel";
             this.txtTel.Size = new System.Drawing.Size(457, 30);
             this.txtTel.TabIndex = 5;
@@ -343,7 +343,7 @@
             this.txtDir.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtDir.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtDir.Location = new System.Drawing.Point(32, 166);
-            this.txtDir.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtDir.Margin = new System.Windows.Forms.Padding(4);
             this.txtDir.Name = "txtDir";
             this.txtDir.Size = new System.Drawing.Size(457, 30);
             this.txtDir.TabIndex = 3;
@@ -366,7 +366,7 @@
             this.txtNombre.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtNombre.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtNombre.Location = new System.Drawing.Point(32, 90);
-            this.txtNombre.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtNombre.Margin = new System.Windows.Forms.Padding(4);
             this.txtNombre.Name = "txtNombre";
             this.txtNombre.Size = new System.Drawing.Size(457, 30);
             this.txtNombre.TabIndex = 1;
@@ -392,7 +392,7 @@
             this.lblTittle.Location = new System.Drawing.Point(11, 6);
             this.lblTittle.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblTittle.Name = "lblTittle";
-            this.lblTittle.Size = new System.Drawing.Size(515, 49);
+            this.lblTittle.Size = new System.Drawing.Size(514, 49);
             this.lblTittle.TabIndex = 3;
             this.lblTittle.Text = "Titulo Accion";
             this.lblTittle.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -408,7 +408,7 @@
             this.Controls.Add(this.tableLayoutPanel1);
             this.Controls.Add(this.panel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "SrchClienteDialog";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "SrchClienteDialog";
