@@ -1,5 +1,6 @@
 ﻿using BussinessLayer.UsesCases;
 using DataLayer;
+using GestorOrdenesDeTrabajo.Clases;
 using GestorOrdenesDeTrabajo.Utilerias.Controles;
 using GestorOrdenesDeTrabajo.Utilerias.Eventos;
 using System;
@@ -21,10 +22,12 @@ namespace GestorOrdenesDeTrabajo.Ventanas.Message
         static MecanicoDialog _Dialog;
         static Mecanico _DialogResult = null;
         private Mecanico mecanico;
+        private readonly Orden orden;
 
-        public MecanicoDialog()
+        public MecanicoDialog(Orden o)
         {
             InitializeComponent();
+            orden = o;
             datatable = new DataTable();
             datatable.Columns.Add("ID");
             datatable.Columns.Add("Nombre");
@@ -33,9 +36,9 @@ namespace GestorOrdenesDeTrabajo.Ventanas.Message
             Actualizar();
         }
 
-        public static Mecanico showClientDialog()
+        public static Mecanico showClientDialog(Orden o)
         {
-            _Dialog = new MecanicoDialog();
+            _Dialog = new MecanicoDialog(o);
             _Dialog.ShowDialog();
             return _DialogResult;
         }
@@ -155,7 +158,9 @@ namespace GestorOrdenesDeTrabajo.Ventanas.Message
 
             Console.WriteLine($"ID:{_DialogResult.Id}\nNombre:{_DialogResult.Nombre}");
 
-            this.Dispose();
+            if (MessageDialog.ShowMessageDialog("Asignar mecanico", $"¿Desea asignarle a {nombre} la orden de trabajo {orden.Folio}?", false) == (int)MessageDialogResult.Yes)
+                this.Dispose();
+            else _DialogResult = null; //por si se cierra la ventana regrese null y no se asigne un mecanico por error
         }
 
         private void tablaMecanicos_CellClick(object sender, DataGridViewCellEventArgs e)

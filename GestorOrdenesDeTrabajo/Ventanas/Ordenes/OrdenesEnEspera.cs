@@ -34,7 +34,7 @@ namespace GestorOrdenesDeTrabajo.Ventanas.Ordenes
                 item.btnAction.Click += (s, e) =>
                 {
                     orden = item.Orden;
-                    mecanico = MecanicoDialog.showClientDialog();
+                    mecanico = MecanicoDialog.showClientDialog(orden);
                     if (mecanico == null) return;
 
                     orden.Status = (int)OrdenStatus.PROCESO;
