@@ -1,5 +1,6 @@
 ﻿using BussinessLayer.UsesCases;
 using DataLayer;
+using GestorOrdenesDeTrabajo.Utilerias.Controles;
 using System;
 using System.Data;
 using System.Drawing;
@@ -16,11 +17,10 @@ namespace GestorOrdenesDeTrabajo.Ventanas.Message
         [DllImport("user32.DLL", EntryPoint = "SendMessage")]
         private extern static void SendMessage(System.IntPtr hwnd, int wmsg, int wparam, int lparam);
 
-        DataTable datatable; 
+        DataTable datatable;
         static SrchClienteDialog _Dialog;
         static Cliente _DialogResult = null;
-        private Cliente c;
-
+        private Cliente cliente;
         public SrchClienteDialog()
         {
             InitializeComponent();
@@ -45,7 +45,7 @@ namespace GestorOrdenesDeTrabajo.Ventanas.Message
 
         public void Actualizar()
         {
-            while (tablaClientes.RowCount > 0) tablaClientes.Rows.RemoveAt(0); //LE VOLVI A PONER EL WHILE PORQUE ME TIRABA ERROR CON EL .CLEAR()
+            while (tablaClientes.RowCount > 0) tablaClientes.Rows.RemoveAt(0);
             var clientes = ClienteController.I.GetLista();
 
             foreach (Cliente item in clientes)
@@ -62,29 +62,6 @@ namespace GestorOrdenesDeTrabajo.Ventanas.Message
             tablaClientes.Columns[3].Resizable = DataGridViewTriState.True;
         }
 
-        private void EditMode(Cliente c)
-        {
-            if (c == null)
-            {
-                lblTittle.Text = "Nuevo";
-                txtNombre.Clear();//Les dejo esto para asegurarme que no contienen nada al desplegar el panel
-                txtDir.Clear();
-                txtTel.Clear();
-            }
-            else
-            {
-                lblTittle.Text = "Editar";
-                txtNombre.Text = c.Nombre;
-                txtDir.Text = c.Direccion;
-                txtTel.Text = c.Telefono;
-            }
-
-            dataPanel.Show();
-            lblTittle.Show();
-        }
-
-        void enablePanel(){ }
-
         private void tablaClientes_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
             Console.WriteLine("Se dio doble click :D");
@@ -92,34 +69,65 @@ namespace GestorOrdenesDeTrabajo.Ventanas.Message
             if (e.RowIndex <= -1)
                 return;
 
-                DataGridViewRow row = tablaClientes.CurrentRow;
-                int id = int.Parse(row.Cells[0].Value as string);
-                string nombre = row.Cells[1].Value as string;
-                string dir = row.Cells[2].Value as string;
-                string tel = row.Cells[3].Value as string;
+            DataGridViewRow row = tablaClientes.CurrentRow;
+            int id = int.Parse(row.Cells[0].Value as string);
+            string nombre = row.Cells[1].Value as string;
+            string dir = row.Cells[2].Value as string;
+            string tel = row.Cells[3].Value as string;
 
-                _DialogResult = new Cliente()
-                {
-                    Id = id,
-                    Nombre = nombre,
-                    Direccion = dir,
-                    Telefono = tel
-                };
+            _DialogResult = new Cliente()
+            {
+                Id = id,
+                Nombre = nombre,
+                Direccion = dir,
+                Telefono = tel
+            };
 
-                Console.WriteLine($"ID:{_DialogResult.Id}\nNombre:{_DialogResult.Nombre}");
+            Console.WriteLine($"ID:{_DialogResult.Id}\nNombre:{_DialogResult.Nombre}");
 
-                this.Dispose();       
+            this.Dispose();
         }
 
-        private void btnUpdate_Click(object sender, EventArgs e)
+        private void tablaClientes_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            Actualizar();
+            if (e.RowIndex <= -1)
+                return;
+
+            DataGridViewRow row = tablaClientes.CurrentRow;
+            int id = int.Parse(row.Cells[0].Value as string);
+            string nombre = row.Cells[1].Value as string;
+            string dir = row.Cells[2].Value as string;
+            string tel = row.Cells[3].Value as string;
+
+            cliente = new Cliente()
+            {
+                Id = id,
+                Nombre = nombre,
+                Direccion = dir,
+                Telefono = tel
+            };
+
+
         }
 
-        private void btnNew_Click(object sender, EventArgs e)
+        private void ShowAddEditCliente()
         {
-            EditMode(null);
+            Helper.VaciarTexto(txtNombre, txtDir, txtTel);//Esta clase hace lo mismo y otras cosillas mas, hechale un ojo           
+
+            if (cliente == null)
+            { lblTittle.Text = "Nuevo"; }
+            else
+            {
+                lblTittle.Text = "Editar";
+                txtNombre.Text = cliente.Nombre;
+                txtDir.Text = cliente.Direccion;
+                txtTel.Text = cliente.Telefono;
+            }
+
+            dataPanel.Show();
+            lblTittle.Show();
         }
+
         private void txtFilter_Enter(object sender, EventArgs e)
         {
             if (txtFilter.Text == "Ingrese el nombre del cliente")
@@ -127,6 +135,72 @@ namespace GestorOrdenesDeTrabajo.Ventanas.Message
                 txtFilter.ForeColor = Color.Black;
                 txtFilter.Text = "";
             }
+        }
+
+        private void btnCancelar_Click(object sender, EventArgs e)
+        {
+            cliente = null;
+
+            lblTittle.Hide();
+            dataPanel.Hide();
+        }
+
+        private void btnAceptar_Click(object sender, EventArgs e)
+        {
+            bool isValid = Helper.Llenos(txtNombre, txtDir, txtTel);
+            if (!isValid)
+                return;
+
+            if (cliente == null)
+            {
+                cliente = ClienteController.I.Add(new Cliente
+                {
+                    Direccion = txtDir.Text,
+                    Nombre = txtNombre.Text,
+                    Telefono = txtTel.Text
+                });
+            }
+            else
+            {
+                cliente.Direccion = txtDir.Text;
+                cliente.Nombre = txtNombre.Text;
+                cliente.Telefono = txtTel.Text;
+                cliente = ClienteController.I.Edit(cliente);
+            }
+
+            if (cliente == null)
+                MessageBox.Show("No se pudo agregar o editar el cliente, intente de nuevo", "Eror", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+            Actualizar();
+
+            Helper.VaciarTexto(txtNombre, txtDir, txtTel);
+            cliente = null;
+
+            lblTittle.Hide();
+            dataPanel.Hide();
+        }
+
+        private void btnNew_Click(object sender, EventArgs e)
+        {
+            cliente = null;
+            ShowAddEditCliente();
+        }
+        private void btnEdit_Click(object sender, EventArgs e)
+        {
+            if (cliente == null)
+                MessageBox.Show("Seleccione un Cliente de la lista", "Informacion", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+            ShowAddEditCliente();
+        }
+
+        private void btnUpdate_Click(object sender, EventArgs e)
+        {
+            Actualizar();
+        }
+
+        private void btnClose_Click(object sender, EventArgs e)
+        {
+            this.Dispose();
         }
 
         private void txtFilter_Leave(object sender, EventArgs e)
@@ -144,52 +218,7 @@ namespace GestorOrdenesDeTrabajo.Ventanas.Message
                 datatable.DefaultView.RowFilter = $"Nombre LIKE '%{txtFilter.Text}%'";
         }
 
-        private void tablaClientes_CellClick(object sender, DataGridViewCellEventArgs e)
-        {
-            if (e.RowIndex <= -1)
-                return;
-
-            DataGridViewRow row = tablaClientes.CurrentRow;
-            int id = int.Parse(row.Cells[0].Value as string);
-            string nombre = row.Cells[1].Value as string;
-            string dir = row.Cells[2].Value as string;
-            string tel = row.Cells[3].Value as string;
-
-            c = new Cliente()
-            {
-                Id = id,
-                Nombre = nombre,
-                Direccion = dir,
-                Telefono = tel
-            };
-
-
-        }
-
-        private void btnCancelar_Click(object sender, EventArgs e)
-        {
-            lblTittle.Hide();
-            dataPanel.Hide();
-        }
-
-        private void btnAceptar_Click(object sender, EventArgs e)
-        {
-            //TODO AGREGAR CODIGO PARA AGREGAR/EDTAR
-
-            lblTittle.Hide();
-            dataPanel.Hide();
-            Actualizar();
-        }
-
-        private void btnEdit_Click(object sender, EventArgs e)
-        {
-            EditMode(c);
-        }
-
-        private void btnClose_Click(object sender, EventArgs e)
-        {
-            this.Dispose();
-        }
+        void enablePanel() { }
 
         private void panel1_MouseDown(object sender, MouseEventArgs e)
         {
