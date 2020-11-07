@@ -53,13 +53,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Clases\Refacciones.cs" />
-    <Compile Include="Clases\RefaccionUso.cs" />
     <Compile Include="CustomComponents\CustomDateTimePicker.cs">
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="Clases\Estado.cs" />
-    <Compile Include="Clases\Mecanico.cs" />
     <Compile Include="Clases\MessageDialogResult.cs" />
     <Compile Include="Clases\Pago.cs" />
     <Compile Include="CustomComponents\infoPanel.cs">
@@ -80,8 +77,6 @@
     <Compile Include="CustomComponents\PiezaItemList.Designer.cs">
       <DependentUpon>PiezaItemList.cs</DependentUpon>
     </Compile>
-    <Compile Include="DatabaseCon\Commands.cs" />
-    <Compile Include="DatabaseCon\Connection.cs" />
     <Compile Include="Inicio.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -128,17 +123,23 @@
     <Compile Include="Ventanas\Inventario\invNuevo_Mod.Designer.cs">
       <DependentUpon>invNuevo_Mod.cs</DependentUpon>
     </Compile>
+    <Compile Include="Ventanas\Message\MecanicoDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Ventanas\Message\MecanicoDialog.Designer.cs">
+      <DependentUpon>MecanicoDialog.cs</DependentUpon>
+    </Compile>
     <Compile Include="Ventanas\Message\MessageDialog.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Ventanas\Message\MessageDialog.Designer.cs">
       <DependentUpon>MessageDialog.cs</DependentUpon>
     </Compile>
-    <Compile Include="Ventanas\Message\SrchClienteDialog.cs">
+    <Compile Include="Ventanas\Message\ClienteDialog.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Ventanas\Message\SrchClienteDialog.Designer.cs">
-      <DependentUpon>SrchClienteDialog.cs</DependentUpon>
+    <Compile Include="Ventanas\Message\ClienteDialog.Designer.cs">
+      <DependentUpon>ClienteDialog.cs</DependentUpon>
     </Compile>
     <Compile Include="Ventanas\Ordenes\NuevaOrden.cs">
       <SubType>Form</SubType>
@@ -191,11 +192,14 @@
     <EmbeddedResource Include="Ventanas\Inventario\invNuevo_Mod.resx">
       <DependentUpon>invNuevo_Mod.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Ventanas\Message\MecanicoDialog.resx">
+      <DependentUpon>MecanicoDialog.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Ventanas\Message\MessageDialog.resx">
       <DependentUpon>MessageDialog.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Ventanas\Message\SrchClienteDialog.resx">
-      <DependentUpon>SrchClienteDialog.cs</DependentUpon>
+    <EmbeddedResource Include="Ventanas\Message\ClienteDialog.resx">
+      <DependentUpon>ClienteDialog.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Ventanas\Ordenes\NuevaOrden.resx">
       <DependentUpon>NuevaOrden.cs</DependentUpon>
@@ -216,9 +220,6 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="AdminWindow\TextFile1.txt" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Ventanas\Estadisticas\" />

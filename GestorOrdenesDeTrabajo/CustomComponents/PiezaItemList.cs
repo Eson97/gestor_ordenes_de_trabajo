@@ -10,12 +10,15 @@ using System.Windows.Forms;
 using GestorOrdenesDeTrabajo.Clases;
 using System.Globalization;
 using System.Diagnostics.PerformanceData;
+using DataLayer;
 
 namespace GestorOrdenesDeTrabajo.CustomComponents
 {
     public partial class PiezaItemList : UserControl
     {
-        private RefaccionUso refaccion;
+        //TODO hacer funcionar este control con refacciones en ordenes de compra
+
+        Refaccion refaccion;
 
         public PiezaItemList()
         {
@@ -30,10 +33,7 @@ namespace GestorOrdenesDeTrabajo.CustomComponents
 
         public void setData(object refaccion)
         {
-            this.refaccion = refaccion as RefaccionUso;
-            lblPieza.Text = this.refaccion.Descripcion;
-            lblCantidad.Text = this.refaccion.Cantidad.ToString();
-            lblTotal.Text = string.Format(new CultureInfo("es-MX"), "{0:C2}", this.refaccion.Precio_total);
+
         }
 
         public object getData()

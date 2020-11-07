@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace GestorOrdenesDeTrabajo.Clases
 {
-    public enum Estado : short
+    public enum Estado
     {
         EN_ESPERA = 01,
         EN_PROCESO = 02,

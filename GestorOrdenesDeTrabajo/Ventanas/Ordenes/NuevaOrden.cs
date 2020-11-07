@@ -12,11 +12,6 @@ namespace GestorOrdenesDeTrabajo.Ventanas.Ordenes
 {
     public partial class NuevaOrden : Form
     {
-        /**
-         * TODO cambiar funcionamiento para agregar cliente
-         * Suplir el ingreso de datos por el ususario con el uso de <SrchClienteDialog> 
-         */
-
         Cliente c;
 
         public NuevaOrden()
@@ -88,14 +83,14 @@ namespace GestorOrdenesDeTrabajo.Ventanas.Ordenes
         {
             if (e.KeyCode == Keys.F2)
             {
-                c = SrchClienteDialog.showClientDialog();
+                c = ClienteDialog.showClientDialog();
                 fillData(c);
             }
         }
 
         private void btnSrchCliente_Click(object sender, EventArgs e)
         {
-            c = SrchClienteDialog.showClientDialog();
+            c = ClienteDialog.showClientDialog();
             fillData(c);
         }
 

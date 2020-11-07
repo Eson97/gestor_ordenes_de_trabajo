@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace GestorOrdenesDeTrabajo.Clases
 {
-    enum Pago : short
+    enum Pago
     {
         EFECTIVO = 01,
         TERMINAL = 02,
