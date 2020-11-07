@@ -16,7 +16,7 @@ namespace GestorOrdenesDeTrabajo.CustomComponents
 {
     public partial class PiezaItemList : UserControl
     {
-        //TODO hacer funcionar este control con refacciones en ordenes de compra
+        //TODO hacer funcionar este control con las refacciones en ordenes
 
         Refaccion refaccion;
 

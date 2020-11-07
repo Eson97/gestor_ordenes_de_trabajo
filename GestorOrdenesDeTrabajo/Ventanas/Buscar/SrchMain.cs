@@ -49,6 +49,12 @@ namespace GestorOrdenesDeTrabajo.Ventanas.Buscar
             newPanel.Show();
         }
 
+       
+        /**
+         * @todo Modificar Actualizar por rango de fechas
+         * @body Se tiene que agregar el filtro por fechas ya que a la larga se hara mas pesada la consulta, igual y que por default solo se muestren las del dia o ninguna
+         */
+
         void Actualizar()
         {
             if (tablaOrdenes.RowCount != 0)
@@ -126,7 +132,7 @@ namespace GestorOrdenesDeTrabajo.Ventanas.Buscar
                 { MessageBox.Show("No se encuentra la orden, revice el folio", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error); }
             }
         }
-        private void btnBuscar_Click(object sender, EventArgs e)
+        private void btnMostrar_Click(object sender, EventArgs e)
         {
 
         }
@@ -156,6 +162,22 @@ namespace GestorOrdenesDeTrabajo.Ventanas.Buscar
             if (e.KeyCode == Keys.Enter)
             {
                 btnBuscarFolio_Click(this, new EventArgs());
+            }
+        }
+
+        private void tablaOrdenes_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex <= -1) return;
+
+            DataGridViewRow row = tablaOrdenes.CurrentRow;
+            int folio = int.Parse(row.Cells[1].Value as string);
+
+            var orden = OrdenController.I.SearchByFolio(folio);
+            
+            if (orden != null)
+            {
+                var mecanicosByOrden = MecanicoController.I.searchMecanicosByOrden(orden.Id);
+                openSubPanel(new SrchDetailInfo(orden, mecanicosByOrden));
             }
         }
     }

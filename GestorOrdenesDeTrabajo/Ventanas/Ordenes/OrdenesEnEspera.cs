@@ -21,11 +21,6 @@ namespace GestorOrdenesDeTrabajo.Ventanas.Ordenes
             showOrdenes();
         }
 
-        void openSubPanel()
-        {
-
-        }
-
         void showOrdenes()
         {
             foreach (OrdenItemList item in ListaOrdenes)

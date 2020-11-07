@@ -163,6 +163,7 @@
             this.tablaOrdenes.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.tablaOrdenes.Size = new System.Drawing.Size(491, 507);
             this.tablaOrdenes.TabIndex = 4;
+            this.tablaOrdenes.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.tablaOrdenes_CellDoubleClick);
             this.tablaOrdenes.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.tablaOrdenes_CellFormatting);
             // 
             // txtBuscarCodigo_Cliente
@@ -266,7 +267,7 @@
             this.btnMostrar.Text = "Mostrar";
             this.btnMostrar.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             this.btnMostrar.UseVisualStyleBackColor = false;
-            this.btnMostrar.Click += new System.EventHandler(this.btnBuscar_Click);
+            this.btnMostrar.Click += new System.EventHandler(this.btnMostrar_Click);
             // 
             // panel4
             // 

@@ -12,7 +12,7 @@ namespace GestorOrdenesDeTrabajo.Ventanas.Ordenes
 {
     public partial class NuevaOrden : Form
     {
-        Cliente c;
+        Cliente cliente;
 
         public NuevaOrden()
         {
@@ -52,7 +52,7 @@ namespace GestorOrdenesDeTrabajo.Ventanas.Ordenes
         private void btnAceptar_Click(object sender, EventArgs e)
         {
             bool isEmpty = !Helper.Llenos(txtEquipo, txtObservaciones, txtFolio);
-            if (c == null && isEmpty)
+            if (cliente == null && isEmpty)
                 return;
 
             int folio = int.Parse(txtFolio.Text);
@@ -72,9 +72,15 @@ namespace GestorOrdenesDeTrabajo.Ventanas.Ordenes
                 FechaRecepcion = recepcion,
                 Observaciones = observaciones,
                 Status = (int)OrdenStatus.ESPERA,
-                Cliente = c,
+                Cliente = cliente,
             });
 
+            if (orden != null)
+            {
+                Helper.VaciarTexto(txtFolio, txtEquipo, txtObservaciones, txtTelefono, txtDireccion, txtCliente);
+                orden = null;
+                cliente = null;
+            }
 
             Console.WriteLine(orden.ToString());
         }
@@ -83,15 +89,15 @@ namespace GestorOrdenesDeTrabajo.Ventanas.Ordenes
         {
             if (e.KeyCode == Keys.F2)
             {
-                c = ClienteDialog.showClientDialog();
-                fillData(c);
+                cliente = ClienteDialog.showClientDialog();
+                fillData(cliente);
             }
         }
 
         private void btnSrchCliente_Click(object sender, EventArgs e)
         {
-            c = ClienteDialog.showClientDialog();
-            fillData(c);
+            cliente = ClienteDialog.showClientDialog();
+            fillData(cliente);
         }
 
         private void txtFolio_KeyPress(object sender, KeyPressEventArgs e)

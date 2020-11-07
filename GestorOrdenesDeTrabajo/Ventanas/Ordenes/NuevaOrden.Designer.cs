@@ -472,7 +472,7 @@
         private System.Windows.Forms.TextBox txtEquipo;
         private System.Windows.Forms.RichTextBox txtObservaciones;
         private System.Windows.Forms.Panel panel3;
-        private System.Windows.Forms.Button btnSrchCliente;
         private System.Windows.Forms.TextBox txtCliente;
+        private System.Windows.Forms.Button btnSrchCliente;
     }
 }
