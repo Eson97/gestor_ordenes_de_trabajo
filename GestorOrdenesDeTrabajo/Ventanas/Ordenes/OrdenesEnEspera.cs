@@ -31,24 +31,14 @@ namespace GestorOrdenesDeTrabajo.Ventanas.Ordenes
                 item.btnAction.Click += (s, e) =>
                 {
                     orden = item.Orden;
-                    Console.WriteLine(orden.Cliente.Nombre);
+                    mecanico = MecanicoDialog.showClientDialog();
+                    //TODO agregar mecanico a orden
                 };
-            }
-        }
-        void fillData(Mecanico m)
-        {
-            if (m != null)
-            {
-                //txtCliente.Text = c.Nombre;
-                //txtDireccion.Text = c.Direccion;
-                //txtTelefono.Text = c.Telefono;
             }
         }
 
         private void pictureBox2_Click(object sender, EventArgs e)
-        {
-            mecanico = MecanicoDialog.showClientDialog();
-            fillData(mecanico);
+        {            
         }
     }
 }

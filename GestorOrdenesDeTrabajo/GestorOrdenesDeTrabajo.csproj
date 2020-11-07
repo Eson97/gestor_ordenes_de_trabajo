@@ -141,6 +141,12 @@
     <Compile Include="Ventanas\Message\ClienteDialog.Designer.cs">
       <DependentUpon>ClienteDialog.cs</DependentUpon>
     </Compile>
+    <Compile Include="Ventanas\Ordenes\ChooseMecanico.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Ventanas\Ordenes\ChooseMecanico.Designer.cs">
+      <DependentUpon>ChooseMecanico.cs</DependentUpon>
+    </Compile>
     <Compile Include="Ventanas\Ordenes\NuevaOrden.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -200,6 +206,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Ventanas\Message\ClienteDialog.resx">
       <DependentUpon>ClienteDialog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Ventanas\Ordenes\ChooseMecanico.resx">
+      <DependentUpon>ChooseMecanico.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Ventanas\Ordenes\NuevaOrden.resx">
       <DependentUpon>NuevaOrden.cs</DependentUpon>
