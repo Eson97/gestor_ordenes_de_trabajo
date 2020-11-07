@@ -4,6 +4,8 @@ using System.Windows.Forms;
 using BussinessLayer.Enum;
 using BussinessLayer.UsesCases;
 using DataLayer;
+using GestorOrdenesDeTrabajo.Utilerias.Controles;
+using GestorOrdenesDeTrabajo.Utilerias.Eventos;
 using GestorOrdenesDeTrabajo.Ventanas.Message;
 
 namespace GestorOrdenesDeTrabajo.Ventanas.Ordenes
@@ -24,12 +26,7 @@ namespace GestorOrdenesDeTrabajo.Ventanas.Ordenes
 
         void Limpiar()
         {
-            clientDataContainer.Controls
-                .OfType<TextBox>().ToList()
-                .ForEach(textbox => { textbox.Clear(); });
-            txtEquipo.Clear();
-            txtFolio.Clear();
-            txtObservaciones.Clear();
+            Helper.VaciarTexto(txtEquipo, txtFolio, txtObservaciones, txtCliente, txtDireccion, txtTelefono);
             cdtpFechaRecepcion.Value = DateTime.Now;
         }
 
@@ -59,8 +56,9 @@ namespace GestorOrdenesDeTrabajo.Ventanas.Ordenes
 
         private void btnAceptar_Click(object sender, EventArgs e)
         {
-
-            //TODO Obtener cliente como objeto desde SrchClienteDialog
+            bool isEmpty = !Helper.Llenos(txtEquipo, txtObservaciones, txtFolio);
+            if (c == null && isEmpty)
+                return;
 
             int folio = int.Parse(txtFolio.Text);
             string equipo = txtEquipo.Text;
@@ -79,7 +77,7 @@ namespace GestorOrdenesDeTrabajo.Ventanas.Ordenes
                 FechaRecepcion = recepcion,
                 Observaciones = observaciones,
                 Status = (int)OrdenStatus.ESPERA,
-                Cliente = c,                
+                Cliente = c,
             });
 
 
@@ -88,7 +86,7 @@ namespace GestorOrdenesDeTrabajo.Ventanas.Ordenes
 
         private void txtCliente_KeyDown(object sender, KeyEventArgs e)
         {
-            if(e.KeyCode == Keys.F2)
+            if (e.KeyCode == Keys.F2)
             {
                 c = SrchClienteDialog.showClientDialog();
                 fillData(c);
@@ -99,6 +97,21 @@ namespace GestorOrdenesDeTrabajo.Ventanas.Ordenes
         {
             c = SrchClienteDialog.showClientDialog();
             fillData(c);
+        }
+
+        private void txtFolio_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            Filtro.SoloNumeros(e);
+        }
+
+        private void txtEquipo_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            Filtro.AlfanumericoSpaceComaPunto(e);
+        }
+
+        private void txtObservaciones_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            Filtro.AlfanumericoSpaceComaPunto(e);
         }
     }
 }
