@@ -130,5 +130,25 @@ namespace BussinessLayer.UsesCases
             //Retorna lista vacia para evitar excepciones en llamada
             return new List<Refaccion>();
         }
+
+        public List<Refaccion> GetListaByOrden(int IdOrden)
+        {
+            List<Refaccion> lista = null;
+            try
+            {
+                using (Entities db = new Entities())
+                {
+                    lista = db.OrdenRefaccion.Where(el => el.IdOrden.Equals(IdOrden)).Select(el => el.Refaccion).ToList();
+                }
+                return lista;
+            }
+            catch (Exception e)
+            {
+                string s = e.Message;
+                Log.Write("Ha ocurrido un error " + s);
+            }
+            //Retorna lista vacia para evitar excepciones en llamada
+            return new List<Refaccion>();
+        }
     }
 }

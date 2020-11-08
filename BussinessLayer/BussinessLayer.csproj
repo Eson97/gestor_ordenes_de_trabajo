@@ -63,6 +63,7 @@
     <Compile Include="UsesCases\OrdenMecanicoController.cs" />
     <Compile Include="UsesCases\RefaccionController.cs" />
     <Compile Include="UsesCases\UsuarioController.cs" />
+    <Compile Include="UsesCases\UsuarioPermisoController.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\DataLayer\DataLayer.csproj">
