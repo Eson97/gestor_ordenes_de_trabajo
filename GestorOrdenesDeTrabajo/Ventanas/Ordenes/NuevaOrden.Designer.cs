@@ -354,7 +354,7 @@
             // txtObservaciones
             // 
             this.txtObservaciones.BackColor = System.Drawing.SystemColors.ControlDark;
-            this.txtObservaciones.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtObservaciones.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txtObservaciones.Dock = System.Windows.Forms.DockStyle.Fill;
             this.txtObservaciones.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtObservaciones.Location = new System.Drawing.Point(23, 143);

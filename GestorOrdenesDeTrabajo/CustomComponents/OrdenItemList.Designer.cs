@@ -107,6 +107,7 @@
             this.panel5.Name = "panel5";
             this.panel5.Size = new System.Drawing.Size(412, 77);
             this.panel5.TabIndex = 11;
+            this.panel5.Paint += new System.Windows.Forms.PaintEventHandler(this.panel5_Paint);
             // 
             // lblCliente
             // 

@@ -71,11 +71,23 @@
     <Compile Include="CustomComponents\OrdenItemList.Designer.cs">
       <DependentUpon>OrdenItemList.cs</DependentUpon>
     </Compile>
+    <Compile Include="CustomComponents\PermisoItemList.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="CustomComponents\PermisoItemList.Designer.cs">
+      <DependentUpon>PermisoItemList.cs</DependentUpon>
+    </Compile>
     <Compile Include="CustomComponents\PiezaItemList.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="CustomComponents\PiezaItemList.Designer.cs">
       <DependentUpon>PiezaItemList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CustomComponents\UserCard.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="CustomComponents\UserCard.Designer.cs">
+      <DependentUpon>UserCard.cs</DependentUpon>
     </Compile>
     <Compile Include="Inicio.cs">
       <SubType>Form</SubType>
@@ -165,8 +177,14 @@
     <EmbeddedResource Include="CustomComponents\OrdenItemList.resx">
       <DependentUpon>OrdenItemList.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="CustomComponents\PermisoItemList.resx">
+      <DependentUpon>PermisoItemList.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="CustomComponents\PiezaItemList.resx">
       <DependentUpon>PiezaItemList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CustomComponents\UserCard.resx">
+      <DependentUpon>UserCard.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Inicio.resx">
       <DependentUpon>Inicio.cs</DependentUpon>
@@ -232,6 +250,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Ventanas\Estadisticas\" />
+    <Folder Include="Ventanas\Usuarios\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\BussinessLayer\BussinessLayer.csproj">
