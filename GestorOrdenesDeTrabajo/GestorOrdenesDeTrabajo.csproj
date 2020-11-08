@@ -171,6 +171,12 @@
     <Compile Include="Ventanas\Ordenes\OrdenesEnEspera.Designer.cs">
       <DependentUpon>OrdenesEnEspera.cs</DependentUpon>
     </Compile>
+    <Compile Include="Ventanas\Usuarios\Usuarios.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Ventanas\Usuarios\Usuarios.Designer.cs">
+      <DependentUpon>Usuarios.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="CustomComponents\infoPanel.resx">
       <DependentUpon>infoPanel.cs</DependentUpon>
     </EmbeddedResource>
@@ -234,6 +240,9 @@
     <EmbeddedResource Include="Ventanas\Ordenes\OrdenesEnEspera.resx">
       <DependentUpon>OrdenesEnEspera.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Ventanas\Usuarios\Usuarios.resx">
+      <DependentUpon>Usuarios.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -250,7 +259,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Ventanas\Estadisticas\" />
-    <Folder Include="Ventanas\Usuarios\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\BussinessLayer\BussinessLayer.csproj">

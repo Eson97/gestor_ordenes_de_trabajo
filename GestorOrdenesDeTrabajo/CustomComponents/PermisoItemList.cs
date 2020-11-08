@@ -13,6 +13,10 @@ namespace GestorOrdenesDeTrabajo.CustomComponents
 {
     public partial class PermisoItemList : UserControl
     {
+        /**
+         * @todo Funcionamiento de PermisoItemList
+         */
+
         bool isOn = false;
         Modulo modulo;
         public PermisoItemList(Modulo m)
