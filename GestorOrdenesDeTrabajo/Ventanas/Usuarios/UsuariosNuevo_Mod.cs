@@ -18,9 +18,19 @@ namespace GestorOrdenesDeTrabajo.Ventanas.Usuarios
         public UsuariosNuevo_Mod(object user)
         {
             InitializeComponent();
-            user = user as Usuario;
+            this.user = user as Usuario;
+            fillData();
+        }
+        public UsuariosNuevo_Mod()
+        {
+            InitializeComponent();
         }
 
+        void fillData()
+        {
+            txtUsuario.Text = user.Usuario1;
+            txtPassword.Text = user.Password;
+        }
         void FillPermisos()
         {
             for (int i = 0; i < 5; i++)

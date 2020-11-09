@@ -42,7 +42,7 @@
             this.panel1.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.panel1.Location = new System.Drawing.Point(0, 59);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(200, 3);
+            this.panel1.Size = new System.Drawing.Size(145, 3);
             this.panel1.TabIndex = 0;
             // 
             // pbImg
@@ -67,7 +67,7 @@
             this.lblID.ForeColor = System.Drawing.SystemColors.ControlDark;
             this.lblID.Location = new System.Drawing.Point(43, 0);
             this.lblID.Name = "lblID";
-            this.lblID.Size = new System.Drawing.Size(157, 19);
+            this.lblID.Size = new System.Drawing.Size(102, 19);
             this.lblID.TabIndex = 6;
             this.lblID.Text = "ID: 00000";
             this.lblID.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -79,13 +79,13 @@
             // lblUsuario
             // 
             this.lblUsuario.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.lblUsuario.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblUsuario.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblUsuario.ForeColor = System.Drawing.SystemColors.ControlDark;
             this.lblUsuario.Location = new System.Drawing.Point(43, 19);
             this.lblUsuario.Name = "lblUsuario";
-            this.lblUsuario.Size = new System.Drawing.Size(157, 40);
+            this.lblUsuario.Size = new System.Drawing.Size(102, 40);
             this.lblUsuario.TabIndex = 7;
-            this.lblUsuario.Text = "USUARIO";
+            this.lblUsuario.Text = "Usuario";
             this.lblUsuario.MouseDown += new System.Windows.Forms.MouseEventHandler(this.UserCard_MouseDown);
             this.lblUsuario.MouseEnter += new System.EventHandler(this.UserCard_MouseEnter);
             this.lblUsuario.MouseLeave += new System.EventHandler(this.UserCard_MouseLeave);
@@ -100,9 +100,9 @@
             this.Controls.Add(this.lblID);
             this.Controls.Add(this.pbImg);
             this.Controls.Add(this.panel1);
-            this.MaximumSize = new System.Drawing.Size(200, 62);
+            this.MaximumSize = new System.Drawing.Size(145, 62);
             this.Name = "UserCard";
-            this.Size = new System.Drawing.Size(200, 62);
+            this.Size = new System.Drawing.Size(145, 62);
             ((System.ComponentModel.ISupportInitialize)(this.pbImg)).EndInit();
             this.ResumeLayout(false);
 

@@ -38,10 +38,11 @@
             this.btnNuevoUsuario = new System.Windows.Forms.Button();
             this.btnModificar = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.userContainerPanel = new System.Windows.Forms.FlowLayoutPanel();
-            this.label1 = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
             this.ContainerPanel = new System.Windows.Forms.Panel();
+            this.panelSep = new System.Windows.Forms.Panel();
+            this.userContainerPanel = new System.Windows.Forms.FlowLayoutPanel();
+            this.label1 = new System.Windows.Forms.Label();
             this.tableLayoutPanel1.SuspendLayout();
             this.tlpContainer.SuspendLayout();
             this.tableLayoutPanel3.SuspendLayout();
@@ -190,35 +191,16 @@
             // 
             this.panel1.Controls.Add(this.userContainerPanel);
             this.panel1.Controls.Add(this.label1);
+            this.panel1.Controls.Add(this.panelSep);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel1.Location = new System.Drawing.Point(3, 63);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(387, 487);
             this.panel1.TabIndex = 2;
             // 
-            // userContainerPanel
-            // 
-            this.userContainerPanel.AutoScroll = true;
-            this.userContainerPanel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.userContainerPanel.Location = new System.Drawing.Point(0, 34);
-            this.userContainerPanel.Name = "userContainerPanel";
-            this.userContainerPanel.Size = new System.Drawing.Size(387, 453);
-            this.userContainerPanel.TabIndex = 4;
-            // 
-            // label1
-            // 
-            this.label1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.ForeColor = System.Drawing.SystemColors.ControlDark;
-            this.label1.Location = new System.Drawing.Point(0, 0);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(387, 34);
-            this.label1.TabIndex = 3;
-            this.label1.Text = "USUARIOS";
-            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
             // panel2
             // 
+            this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(55)))), ((int)(((byte)(55)))));
             this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel2.ForeColor = System.Drawing.SystemColors.ControlDark;
             this.panel2.Location = new System.Drawing.Point(402, 3);
@@ -233,6 +215,36 @@
             this.ContainerPanel.Name = "ContainerPanel";
             this.ContainerPanel.Size = new System.Drawing.Size(594, 553);
             this.ContainerPanel.TabIndex = 3;
+            // 
+            // panelSep
+            // 
+            this.panelSep.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(55)))), ((int)(((byte)(55)))));
+            this.panelSep.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panelSep.Location = new System.Drawing.Point(0, 0);
+            this.panelSep.Name = "panelSep";
+            this.panelSep.Size = new System.Drawing.Size(387, 1);
+            this.panelSep.TabIndex = 0;
+            // 
+            // userContainerPanel
+            // 
+            this.userContainerPanel.AutoScroll = true;
+            this.userContainerPanel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.userContainerPanel.Location = new System.Drawing.Point(0, 41);
+            this.userContainerPanel.Name = "userContainerPanel";
+            this.userContainerPanel.Size = new System.Drawing.Size(387, 446);
+            this.userContainerPanel.TabIndex = 6;
+            // 
+            // label1
+            // 
+            this.label1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.SystemColors.ControlDark;
+            this.label1.Location = new System.Drawing.Point(0, 1);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(387, 40);
+            this.label1.TabIndex = 5;
+            this.label1.Text = "USUARIOS";
+            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // Usuarios
             // 
@@ -261,13 +273,14 @@
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel3;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel4;
         private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.FlowLayoutPanel userContainerPanel;
-        private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button btnEliminar;
         private System.Windows.Forms.Button btnNuevoUsuario;
         private System.Windows.Forms.Button btnModificar;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Button btnCrudPermisos;
         private System.Windows.Forms.Panel ContainerPanel;
+        private System.Windows.Forms.FlowLayoutPanel userContainerPanel;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Panel panelSep;
     }
 }

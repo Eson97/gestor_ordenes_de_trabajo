@@ -24,6 +24,7 @@ namespace GestorOrdenesDeTrabajo.CustomComponents
         public PermisoItemList(Modulo m)
         {
             InitializeComponent();
+            StatusPanel.DoubleBuffered(true);
             this.modulo = m;
 
             /**
@@ -32,11 +33,12 @@ namespace GestorOrdenesDeTrabajo.CustomComponents
              */
 
             resaltarItem(isOn);
-
         }
         public PermisoItemList()
         {
             InitializeComponent();
+            StatusPanel.DoubleBuffered(true);
+            resaltarItem(isOn);
         }
 
         public bool Status { get => isOn; }
@@ -44,12 +46,12 @@ namespace GestorOrdenesDeTrabajo.CustomComponents
         void resaltarItem(bool b)
         {
             if (b)
-                this.BackColor = Color.FromArgb(55, 55, 55);
+                this.StatusPanel.BackColor = Color.Green;
             else
-                this.BackColor = Color.FromArgb(45, 45, 45);
+                this.StatusPanel.BackColor = Color.Firebrick;
         }
 
-        private void lblDesc_Click(object sender, EventArgs e)
+        private void PermisoItemList_Click(object sender, EventArgs e)
         {
             isOn = !isOn; //se cambia el estado
             resaltarItem(isOn);

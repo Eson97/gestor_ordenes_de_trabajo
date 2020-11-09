@@ -35,7 +35,8 @@ namespace GestorOrdenesDeTrabajo.Ventanas.Usuarios
                 UserCard uc = new UserCard(new Usuario()
                 {
                     Id = new Random().Next(0, 50),
-                    Usuario1 = "a"
+                    Usuario1 = "a",
+                    Password = new Random().Next(0,100).ToString()
                 });
                 uc.lblID.Click += (s, e) => { user = uc.User; openSubPanel(new UsuariosNuevo_Mod(user)); };
                 uc.lblUsuario.Click += (s, e) => { user = uc.User; openSubPanel(new UsuariosNuevo_Mod(user)); };
