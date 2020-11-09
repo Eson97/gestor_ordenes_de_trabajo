@@ -188,7 +188,7 @@ namespace GestorOrdenesDeTrabajo
 
         private void btnLogOut_Click(object sender, EventArgs e)
         {
-            //agregar codigo para cerrar sesion y abrir ventana login
+            //TODO agregar codigo para cerrar sesion y abrir ventana login
         }
 
         private void DateTimeGetter_Tick(object sender, EventArgs e)
