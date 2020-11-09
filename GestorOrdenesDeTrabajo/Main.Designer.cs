@@ -41,6 +41,7 @@
             this.btnCloseWindow = new System.Windows.Forms.Button();
             this.lblWindowTit = new System.Windows.Forms.Label();
             this.sidePanel = new System.Windows.Forms.Panel();
+            this.btnUsuarios = new System.Windows.Forms.Button();
             this.btnStats = new System.Windows.Forms.Button();
             this.btnBuscar = new System.Windows.Forms.Button();
             this.dynamicPanel = new System.Windows.Forms.Panel();
@@ -59,7 +60,6 @@
             this.lblTitle = new System.Windows.Forms.Label();
             this.containerPanel = new System.Windows.Forms.Panel();
             this.TimeGetter = new System.Windows.Forms.Timer(this.components);
-            this.btnUsuarios = new System.Windows.Forms.Button();
             this.bottomPanel.SuspendLayout();
             this.topPanel.SuspendLayout();
             this.sidePanel.SuspendLayout();
@@ -220,6 +220,25 @@
             this.sidePanel.Name = "sidePanel";
             this.sidePanel.Size = new System.Drawing.Size(230, 655);
             this.sidePanel.TabIndex = 2;
+            // 
+            // btnUsuarios
+            // 
+            this.btnUsuarios.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnUsuarios.FlatAppearance.BorderSize = 0;
+            this.btnUsuarios.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(35)))), ((int)(((byte)(35)))));
+            this.btnUsuarios.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(55)))), ((int)(((byte)(55)))));
+            this.btnUsuarios.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnUsuarios.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnUsuarios.ForeColor = System.Drawing.SystemColors.ControlDark;
+            this.btnUsuarios.Image = ((System.Drawing.Image)(resources.GetObject("btnUsuarios.Image")));
+            this.btnUsuarios.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnUsuarios.Location = new System.Drawing.Point(0, 473);
+            this.btnUsuarios.Name = "btnUsuarios";
+            this.btnUsuarios.Size = new System.Drawing.Size(230, 50);
+            this.btnUsuarios.TabIndex = 12;
+            this.btnUsuarios.Text = "Usuarios";
+            this.btnUsuarios.UseVisualStyleBackColor = true;
+            this.btnUsuarios.Click += new System.EventHandler(this.btnUsuarios_Click);
             // 
             // btnStats
             // 
@@ -489,7 +508,7 @@
             // 
             // containerPanel
             // 
-            this.containerPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(15)))), ((int)(((byte)(15)))), ((int)(((byte)(15)))));
+            this.containerPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(25)))), ((int)(((byte)(25)))));
             this.containerPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.containerPanel.Location = new System.Drawing.Point(230, 85);
             this.containerPanel.Name = "containerPanel";
@@ -501,25 +520,6 @@
             // 
             this.TimeGetter.Interval = 10;
             this.TimeGetter.Tick += new System.EventHandler(this.DateTimeGetter_Tick);
-            // 
-            // btnUsuarios
-            // 
-            this.btnUsuarios.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btnUsuarios.FlatAppearance.BorderSize = 0;
-            this.btnUsuarios.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(35)))), ((int)(((byte)(35)))));
-            this.btnUsuarios.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(55)))), ((int)(((byte)(55)))));
-            this.btnUsuarios.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnUsuarios.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnUsuarios.ForeColor = System.Drawing.SystemColors.ControlDark;
-            this.btnUsuarios.Image = ((System.Drawing.Image)(resources.GetObject("btnUsuarios.Image")));
-            this.btnUsuarios.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnUsuarios.Location = new System.Drawing.Point(0, 473);
-            this.btnUsuarios.Name = "btnUsuarios";
-            this.btnUsuarios.Size = new System.Drawing.Size(230, 50);
-            this.btnUsuarios.TabIndex = 12;
-            this.btnUsuarios.Text = "Usuarios";
-            this.btnUsuarios.UseVisualStyleBackColor = true;
-            this.btnUsuarios.Click += new System.EventHandler(this.btnUsuarios_Click);
             // 
             // Main
             // 
