@@ -24,15 +24,31 @@ namespace GestorOrdenesDeTrabajo.CustomComponents
             this.usuario = usuario;
             InitializeComponent();
             this.lblUsuario.Text = this.usuario.Usuario1;
+            this.lblID.Text = $"ID: {usuario.Id}";
         }
-        public Usuario Usuario
+        public Usuario User
         {
             get { return usuario; }
-            set
-            {
-                this.usuario = value as Usuario;
-                this.lblUsuario.Text = this.usuario.Usuario1;
-            }
+        }
+
+        private void UserCard_MouseEnter(object sender, EventArgs e)
+        {
+           this.BackColor = Color.FromArgb(55, 55, 55);
+        }
+
+        private void UserCard_MouseDown(object sender, MouseEventArgs e)
+        {
+            this.BackColor = Color.FromArgb(35, 35, 35);
+        }
+
+        private void UserCard_MouseUp(object sender, MouseEventArgs e)
+        {
+            this.BackColor = Color.FromArgb(55,55,55);
+        }
+
+        private void UserCard_MouseLeave(object sender, EventArgs e)
+        {
+            this.BackColor = Color.FromArgb(45, 45, 45);
         }
     }
 }

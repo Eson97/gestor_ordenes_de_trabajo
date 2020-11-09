@@ -19,6 +19,8 @@ namespace GestorOrdenesDeTrabajo.CustomComponents
 
         bool isOn = false;
         Modulo modulo;
+
+
         public PermisoItemList(Modulo m)
         {
             InitializeComponent();
@@ -36,6 +38,8 @@ namespace GestorOrdenesDeTrabajo.CustomComponents
         {
             InitializeComponent();
         }
+
+        public bool Status { get => isOn; }
 
         void resaltarItem(bool b)
         {

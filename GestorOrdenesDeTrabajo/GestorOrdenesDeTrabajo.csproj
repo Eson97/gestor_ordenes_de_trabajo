@@ -177,6 +177,12 @@
     <Compile Include="Ventanas\Usuarios\Usuarios.Designer.cs">
       <DependentUpon>Usuarios.cs</DependentUpon>
     </Compile>
+    <Compile Include="Ventanas\Usuarios\UsuariosNuevo_Mod.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Ventanas\Usuarios\UsuariosNuevo_Mod.Designer.cs">
+      <DependentUpon>UsuariosNuevo_Mod.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="CustomComponents\infoPanel.resx">
       <DependentUpon>infoPanel.cs</DependentUpon>
     </EmbeddedResource>
@@ -242,6 +248,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Ventanas\Usuarios\Usuarios.resx">
       <DependentUpon>Usuarios.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Ventanas\Usuarios\UsuariosNuevo_Mod.resx">
+      <DependentUpon>UsuariosNuevo_Mod.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">

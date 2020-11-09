@@ -5,6 +5,7 @@ using GestorOrdenesDeTrabajo.OrdenWindow.Inventario;
 using System.Reflection;
 using GestorOrdenesDeTrabajo.Ventanas.Ordenes;
 using GestorOrdenesDeTrabajo.Ventanas.Buscar;
+using GestorOrdenesDeTrabajo.Ventanas.Usuarios;
 
 namespace GestorOrdenesDeTrabajo
 {
@@ -72,6 +73,7 @@ namespace GestorOrdenesDeTrabajo
                 btnOrdenes.Text = "";
                 btnBuscar.Text = "";
                 btnStats.Text = "";
+                btnUsuarios.Text = "";
                 this.sidePanel.Width = 50;
                 isSidePanelContracted = collapse;
             }
@@ -81,6 +83,7 @@ namespace GestorOrdenesDeTrabajo
                 btnOrdenes.Text = "Ordenes";
                 btnBuscar.Text = "Buscar";
                 btnStats.Text = "Estadisticas";
+                btnUsuarios.Text = "Usuarios";
                 this.sidePanel.Width = 230;
                 isSidePanelContracted = collapse;
             }
@@ -205,6 +208,12 @@ namespace GestorOrdenesDeTrabajo
         {
             if(containerPanel.Controls.Equals(new NuevaOrden()))
                 openPanel(new Inicio(), "Inicio", null);
+        }
+
+        private void btnUsuarios_Click(object sender, EventArgs e)
+        {
+            collapseSidePanel(true);
+            openPanel(new Usuarios(), "Usuarios", sender);
         }
     }
 

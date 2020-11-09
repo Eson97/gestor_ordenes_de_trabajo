@@ -53,18 +53,17 @@
             this.btnOrdenes = new System.Windows.Forms.Button();
             this.btnInventario = new System.Windows.Forms.Button();
             this.logoPanel = new System.Windows.Forms.Panel();
-            this.label2 = new System.Windows.Forms.Label();
             this.btnMenu = new System.Windows.Forms.Button();
             this.titlePanel = new System.Windows.Forms.Panel();
             this.btnClosePanel = new System.Windows.Forms.Button();
             this.lblTitle = new System.Windows.Forms.Label();
             this.containerPanel = new System.Windows.Forms.Panel();
             this.TimeGetter = new System.Windows.Forms.Timer(this.components);
+            this.btnUsuarios = new System.Windows.Forms.Button();
             this.bottomPanel.SuspendLayout();
             this.topPanel.SuspendLayout();
             this.sidePanel.SuspendLayout();
             this.dynamicPanel.SuspendLayout();
-            this.logoPanel.SuspendLayout();
             this.titlePanel.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -207,6 +206,7 @@
             // sidePanel
             // 
             this.sidePanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.sidePanel.Controls.Add(this.btnUsuarios);
             this.sidePanel.Controls.Add(this.btnStats);
             this.sidePanel.Controls.Add(this.btnBuscar);
             this.sidePanel.Controls.Add(this.dynamicPanel);
@@ -232,7 +232,7 @@
             this.btnStats.ForeColor = System.Drawing.SystemColors.ControlDark;
             this.btnStats.Image = ((System.Drawing.Image)(resources.GetObject("btnStats.Image")));
             this.btnStats.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnStats.Location = new System.Drawing.Point(0, 520);
+            this.btnStats.Location = new System.Drawing.Point(0, 423);
             this.btnStats.Name = "btnStats";
             this.btnStats.Size = new System.Drawing.Size(230, 50);
             this.btnStats.TabIndex = 11;
@@ -251,7 +251,7 @@
             this.btnBuscar.ForeColor = System.Drawing.SystemColors.ControlDark;
             this.btnBuscar.Image = ((System.Drawing.Image)(resources.GetObject("btnBuscar.Image")));
             this.btnBuscar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnBuscar.Location = new System.Drawing.Point(0, 470);
+            this.btnBuscar.Location = new System.Drawing.Point(0, 373);
             this.btnBuscar.Name = "btnBuscar";
             this.btnBuscar.Size = new System.Drawing.Size(230, 50);
             this.btnBuscar.TabIndex = 10;
@@ -268,7 +268,7 @@
             this.dynamicPanel.Controls.Add(this.btnEnEspera);
             this.dynamicPanel.Controls.Add(this.btnNueva);
             this.dynamicPanel.Dock = System.Windows.Forms.DockStyle.Top;
-            this.dynamicPanel.Location = new System.Drawing.Point(0, 270);
+            this.dynamicPanel.Location = new System.Drawing.Point(0, 173);
             this.dynamicPanel.Name = "dynamicPanel";
             this.dynamicPanel.Size = new System.Drawing.Size(230, 200);
             this.dynamicPanel.TabIndex = 9;
@@ -395,7 +395,7 @@
             this.btnOrdenes.ForeColor = System.Drawing.SystemColors.ControlDark;
             this.btnOrdenes.Image = ((System.Drawing.Image)(resources.GetObject("btnOrdenes.Image")));
             this.btnOrdenes.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnOrdenes.Location = new System.Drawing.Point(0, 220);
+            this.btnOrdenes.Location = new System.Drawing.Point(0, 123);
             this.btnOrdenes.Name = "btnOrdenes";
             this.btnOrdenes.Size = new System.Drawing.Size(230, 50);
             this.btnOrdenes.TabIndex = 3;
@@ -414,7 +414,7 @@
             this.btnInventario.ForeColor = System.Drawing.SystemColors.ControlDark;
             this.btnInventario.Image = ((System.Drawing.Image)(resources.GetObject("btnInventario.Image")));
             this.btnInventario.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnInventario.Location = new System.Drawing.Point(0, 170);
+            this.btnInventario.Location = new System.Drawing.Point(0, 73);
             this.btnInventario.Name = "btnInventario";
             this.btnInventario.Size = new System.Drawing.Size(230, 50);
             this.btnInventario.TabIndex = 2;
@@ -424,24 +424,12 @@
             // 
             // logoPanel
             // 
-            this.logoPanel.Controls.Add(this.label2);
             this.logoPanel.Dock = System.Windows.Forms.DockStyle.Top;
             this.logoPanel.Location = new System.Drawing.Point(0, 50);
             this.logoPanel.Name = "logoPanel";
-            this.logoPanel.Size = new System.Drawing.Size(230, 120);
+            this.logoPanel.Size = new System.Drawing.Size(230, 23);
             this.logoPanel.TabIndex = 1;
             this.logoPanel.Visible = false;
-            // 
-            // label2
-            // 
-            this.label2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label2.Font = new System.Drawing.Font("Mistral", 36F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(0, 0);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(230, 120);
-            this.label2.TabIndex = 0;
-            this.label2.Text = "GOT";
-            this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // btnMenu
             // 
@@ -514,6 +502,25 @@
             this.TimeGetter.Interval = 10;
             this.TimeGetter.Tick += new System.EventHandler(this.DateTimeGetter_Tick);
             // 
+            // btnUsuarios
+            // 
+            this.btnUsuarios.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnUsuarios.FlatAppearance.BorderSize = 0;
+            this.btnUsuarios.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(35)))), ((int)(((byte)(35)))));
+            this.btnUsuarios.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(55)))), ((int)(((byte)(55)))));
+            this.btnUsuarios.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnUsuarios.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnUsuarios.ForeColor = System.Drawing.SystemColors.ControlDark;
+            this.btnUsuarios.Image = ((System.Drawing.Image)(resources.GetObject("btnUsuarios.Image")));
+            this.btnUsuarios.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnUsuarios.Location = new System.Drawing.Point(0, 473);
+            this.btnUsuarios.Name = "btnUsuarios";
+            this.btnUsuarios.Size = new System.Drawing.Size(230, 50);
+            this.btnUsuarios.TabIndex = 12;
+            this.btnUsuarios.Text = "Usuarios";
+            this.btnUsuarios.UseVisualStyleBackColor = true;
+            this.btnUsuarios.Click += new System.EventHandler(this.btnUsuarios_Click);
+            // 
             // Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
@@ -543,7 +550,6 @@
             this.sidePanel.ResumeLayout(false);
             this.sidePanel.PerformLayout();
             this.dynamicPanel.ResumeLayout(false);
-            this.logoPanel.ResumeLayout(false);
             this.titlePanel.ResumeLayout(false);
             this.ResumeLayout(false);
 
@@ -560,7 +566,6 @@
         private System.Windows.Forms.Button btnCloseWindow;
         private System.Windows.Forms.Label lblWindowTit;
         private System.Windows.Forms.Panel logoPanel;
-        private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label lblDate;
         private System.Windows.Forms.Label lblHour;
         private System.Windows.Forms.Label lblUser;
@@ -581,6 +586,7 @@
         private System.Windows.Forms.Timer TimeGetter;
         private System.Windows.Forms.Button btnMinWindow;
         private System.Windows.Forms.Button btnMax;
+        private System.Windows.Forms.Button btnUsuarios;
     }
 }
 
