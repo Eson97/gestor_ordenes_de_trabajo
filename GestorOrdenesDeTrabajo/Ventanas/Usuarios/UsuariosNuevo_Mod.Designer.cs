@@ -58,7 +58,7 @@
             this.tblAddEditPanel.Controls.Add(this.panel1, 0, 1);
             this.tblAddEditPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tblAddEditPanel.Location = new System.Drawing.Point(0, 0);
-            this.tblAddEditPanel.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tblAddEditPanel.Margin = new System.Windows.Forms.Padding(4);
             this.tblAddEditPanel.Name = "tblAddEditPanel";
             this.tblAddEditPanel.RowCount = 3;
             this.tblAddEditPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 185F));
@@ -73,7 +73,7 @@
             this.dataContainerPanel.Controls.Add(this.tableLayoutPanel6);
             this.dataContainerPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dataContainerPanel.Location = new System.Drawing.Point(4, 4);
-            this.dataContainerPanel.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.dataContainerPanel.Margin = new System.Windows.Forms.Padding(4);
             this.dataContainerPanel.Name = "dataContainerPanel";
             this.dataContainerPanel.Size = new System.Drawing.Size(784, 177);
             this.dataContainerPanel.TabIndex = 2;
@@ -90,7 +90,7 @@
             this.tableLayoutPanel6.Controls.Add(this.txtPassword, 1, 4);
             this.tableLayoutPanel6.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel6.Location = new System.Drawing.Point(0, 0);
-            this.tableLayoutPanel6.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tableLayoutPanel6.Margin = new System.Windows.Forms.Padding(4);
             this.tableLayoutPanel6.Name = "tableLayoutPanel6";
             this.tableLayoutPanel6.RowCount = 6;
             this.tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 6F));
@@ -135,10 +135,11 @@
             this.txtUsuario.Dock = System.Windows.Forms.DockStyle.Fill;
             this.txtUsuario.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtUsuario.Location = new System.Drawing.Point(31, 51);
-            this.txtUsuario.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtUsuario.Margin = new System.Windows.Forms.Padding(4);
             this.txtUsuario.Name = "txtUsuario";
             this.txtUsuario.Size = new System.Drawing.Size(549, 34);
             this.txtUsuario.TabIndex = 2;
+            this.txtUsuario.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtUsuario_KeyPress);
             // 
             // txtPassword
             // 
@@ -147,10 +148,11 @@
             this.txtPassword.Dock = System.Windows.Forms.DockStyle.Fill;
             this.txtPassword.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtPassword.Location = new System.Drawing.Point(31, 133);
-            this.txtPassword.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtPassword.Margin = new System.Windows.Forms.Padding(4);
             this.txtPassword.Name = "txtPassword";
             this.txtPassword.Size = new System.Drawing.Size(549, 34);
             this.txtPassword.TabIndex = 3;
+            this.txtPassword.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtPassword_KeyPress);
             // 
             // tableLayoutPanel7
             // 
@@ -162,7 +164,7 @@
             this.tableLayoutPanel7.Controls.Add(this.btnAcept, 0, 0);
             this.tableLayoutPanel7.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel7.Location = new System.Drawing.Point(4, 623);
-            this.tableLayoutPanel7.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tableLayoutPanel7.Margin = new System.Windows.Forms.Padding(4);
             this.tableLayoutPanel7.Name = "tableLayoutPanel7";
             this.tableLayoutPanel7.RowCount = 1;
             this.tableLayoutPanel7.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
@@ -180,7 +182,7 @@
             this.btnCancel.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnCancel.ForeColor = System.Drawing.SystemColors.ControlDark;
             this.btnCancel.Location = new System.Drawing.Point(396, 4);
-            this.btnCancel.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnCancel.Margin = new System.Windows.Forms.Padding(4);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(384, 46);
             this.btnCancel.TabIndex = 3;
@@ -199,7 +201,7 @@
             this.btnAcept.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnAcept.ForeColor = System.Drawing.SystemColors.ControlDark;
             this.btnAcept.Location = new System.Drawing.Point(4, 4);
-            this.btnAcept.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnAcept.Margin = new System.Windows.Forms.Padding(4);
             this.btnAcept.Name = "btnAcept";
             this.btnAcept.Size = new System.Drawing.Size(384, 46);
             this.btnAcept.TabIndex = 2;
@@ -214,7 +216,7 @@
             this.panel1.Controls.Add(this.panel2);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel1.Location = new System.Drawing.Point(4, 189);
-            this.panel1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.panel1.Margin = new System.Windows.Forms.Padding(4);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(784, 426);
             this.panel1.TabIndex = 4;
@@ -224,7 +226,7 @@
             this.permisosContainerPanel.AutoScroll = true;
             this.permisosContainerPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.permisosContainerPanel.Location = new System.Drawing.Point(0, 44);
-            this.permisosContainerPanel.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.permisosContainerPanel.Margin = new System.Windows.Forms.Padding(4);
             this.permisosContainerPanel.Name = "permisosContainerPanel";
             this.permisosContainerPanel.Size = new System.Drawing.Size(784, 382);
             this.permisosContainerPanel.TabIndex = 4;
@@ -247,7 +249,7 @@
             this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(55)))), ((int)(((byte)(55)))));
             this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel2.Location = new System.Drawing.Point(0, 0);
-            this.panel2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.panel2.Margin = new System.Windows.Forms.Padding(4);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(784, 1);
             this.panel2.TabIndex = 1;
@@ -260,7 +262,7 @@
             this.ClientSize = new System.Drawing.Size(792, 681);
             this.Controls.Add(this.tblAddEditPanel);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "UsuariosNuevo_Mod";
             this.Text = "UsuariosNuevo_Mod";
             this.Load += new System.EventHandler(this.UsuariosNuevo_Mod_Load);

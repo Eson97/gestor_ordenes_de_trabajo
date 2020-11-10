@@ -2,6 +2,7 @@
 using DataLayer;
 using GestorOrdenesDeTrabajo.CustomComponents;
 using GestorOrdenesDeTrabajo.Utilerias.Controles;
+using GestorOrdenesDeTrabajo.Utilerias.Eventos;
 using System;
 using System.Linq;
 using System.Windows.Forms;
@@ -31,6 +32,8 @@ namespace GestorOrdenesDeTrabajo.Ventanas.Usuarios
         }
         void FillPermisos()
         {
+            if (currentUser == null)
+                return;
             permisosContainerPanel.Controls.Clear();
             var asigned = UsuarioPermisoController.I.GetListaPermisoByUsuario(currentUser.Id).Select(el => new PermisoItemList(el, currentUser.Id, true));
             var notAsigned = UsuarioPermisoController.I.GetListaExcludePermisoByUsuario(currentUser.Id).Select(el => new PermisoItemList(el, currentUser.Id, false));
@@ -47,6 +50,7 @@ namespace GestorOrdenesDeTrabajo.Ventanas.Usuarios
 
         private void btnAcept_Click(object sender, EventArgs e)
         {
+            //TODO min length password?
             bool isValid = Helper.Llenos(txtUsuario, txtPassword);
             if (!isValid)
             { MessageBox.Show("Introduzca un usuario y una contraseña", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning); return; }
@@ -76,6 +80,18 @@ namespace GestorOrdenesDeTrabajo.Ventanas.Usuarios
         private void btnCancel_Click(object sender, EventArgs e)
         {
             this.Dispose();
+        }
+
+        private void txtUsuario_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            Filtro.Alfanumerico(e);
+        }
+
+        private void txtPassword_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            //Filtro.Alfanumerico(e);
+            Char c = e.KeyChar;
+            if (c == (char)Keys.Enter) btnAcept_Click(sender, e);
         }
     }
 }

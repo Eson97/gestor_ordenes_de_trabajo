@@ -56,6 +56,7 @@ namespace BussinessLayer.UsesCases
             return null;
         }
 
+        //TODO to delete user , add delete on cascade on UsuarioPermiso
         public bool Delete(int id)
         {
             if (id <= 0) return false;

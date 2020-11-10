@@ -1,15 +1,9 @@
 ﻿using BussinessLayer.UsesCases;
 using DataLayer;
 using GestorOrdenesDeTrabajo.Utilerias.Controles;
+using GestorOrdenesDeTrabajo.Utilerias.Eventos;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
 using System.Runtime.InteropServices;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace GestorOrdenesDeTrabajo.Ventanas.Ventanas_Emergentes
@@ -52,6 +46,17 @@ namespace GestorOrdenesDeTrabajo.Ventanas.Ventanas_Emergentes
 
             currentUser = user;
 
+        }
+
+        private void txtUser_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            Filtro.Alfanumerico(e);
+        }
+
+        private void txtPass_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            Char c = e.KeyChar;
+            if (c == (char)Keys.Enter) btnIngresar_Click(sender, e);
         }
     }
 }

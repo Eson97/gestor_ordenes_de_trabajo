@@ -5,6 +5,7 @@ using GestorOrdenesDeTrabajo.Ventanas.Message;
 using System;
 using System.Data;
 using System.Linq;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace GestorOrdenesDeTrabajo.Ventanas.Usuarios
@@ -20,11 +21,10 @@ namespace GestorOrdenesDeTrabajo.Ventanas.Usuarios
         }
 
         //TODO refresh Users after operation
-        void fillUsers()
+        async void fillUsers()
         {
             userContainerPanel.Controls.Clear();
-
-            var usuarios = UsuarioController.I.GetLista().Select(el => new UserCard(el));
+            var usuarios = await Task.Run(() => UsuarioController.I.GetLista().Select(el => new UserCard(el)));
             foreach (UserCard userCard in usuarios)
             {
                 userCard.lblID.Click += (s, e) => { currentUser = userCard.User; openSubPanel(new UsuariosNuevo_Mod(currentUser)); };
