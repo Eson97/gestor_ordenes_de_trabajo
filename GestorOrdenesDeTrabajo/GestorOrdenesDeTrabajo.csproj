@@ -56,9 +56,6 @@
     <Compile Include="CustomComponents\CustomDateTimePicker.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="Clases\Estado.cs" />
-    <Compile Include="Clases\MessageDialogResult.cs" />
-    <Compile Include="Clases\Pago.cs" />
     <Compile Include="CustomComponents\infoPanel.cs">
       <SubType>UserControl</SubType>
     </Compile>

@@ -50,6 +50,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Enum\MessageDialogResult.cs" />
     <Compile Include="Enum\OrdenStatus.cs" />
     <Compile Include="Enum\TipoPago.cs" />
     <Compile Include="Interfaces\IDb.cs" />
