@@ -84,7 +84,7 @@ namespace GestorOrdenesDeTrabajo.Ventanas.Usuarios
 
         private void btnCrudPermisos_Click(object sender, EventArgs e)
         {
-            ModuloDialog.showClientDialog();
+            ModuloDialog.showDialog();
         }
     }
 }

@@ -58,7 +58,7 @@ namespace GestorOrdenesDeTrabajo.Ventanas.Message
 
             tablaModulos.DataSource = datatable;
             tablaModulos.Columns[0].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
-            tablaModulos.Columns[1].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+            tablaModulos.Columns[1].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
             tablaModulos.Columns[0].Resizable = DataGridViewTriState.False;
             tablaModulos.Columns[1].Resizable = DataGridViewTriState.True;
             tablaModulos.Columns[0].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
@@ -162,7 +162,7 @@ namespace GestorOrdenesDeTrabajo.Ventanas.Message
                 $"\n*****************************");
         }
 
-        public static void showClientDialog()
+        public static void showDialog()
         {
             _Dialog = new ModuloDialog();
             _Dialog.ShowDialog();
@@ -196,6 +196,13 @@ namespace GestorOrdenesDeTrabajo.Ventanas.Message
         {
             ReleaseCapture();
             SendMessage(this.Handle, 0x112, 0xf012, 0);
+        }
+
+        private void txtFilter_TextChanged(object sender, EventArgs e)
+        {
+
+            if (txtFilter.Text != "Ingrese el nombre del modulo")
+                datatable.DefaultView.RowFilter = $"Descripcion LIKE '%{txtFilter.Text}%'";
         }
     }
 }

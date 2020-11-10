@@ -199,7 +199,7 @@ namespace GestorOrdenesDeTrabajo.Ventanas.Message
             if (txtFilter.TextLength == 0)
             {
                 txtFilter.ForeColor = Color.FromKnownColor(KnownColor.ControlDarkDark);
-                txtFilter.Text = "Ingrese el nombre del cliente";
+                txtFilter.Text = "Ingrese el nombre del mecanico";
             }
         }
 
@@ -218,6 +218,13 @@ namespace GestorOrdenesDeTrabajo.Ventanas.Message
         {
             ReleaseCapture();
             SendMessage(this.Handle, 0x112, 0xf012, 0);
+        }
+
+        private void txtFilter_TextChanged(object sender, EventArgs e)
+        {
+
+            if (txtFilter.Text != "Ingrese el nombre del mecanico")
+                datatable.DefaultView.RowFilter = $"Nombre LIKE '%{txtFilter.Text}%'";
         }
     }
 }
