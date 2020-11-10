@@ -13,9 +13,8 @@ namespace GestorOrdenesDeTrabajo.Ventanas.Message
     public partial class ModuloDialog : Form
     {
         private DataTable datatable;
-        private static Modulo _DialogResult;
-        private static ModuloDialog _Dialog;
         private Modulo modulo;
+        private static ModuloDialog _Dialog;
 
         [DllImport("user32.DLL", EntryPoint = "ReleaseCapture")]
         private extern static void ReleaseCapture();
@@ -31,12 +30,6 @@ namespace GestorOrdenesDeTrabajo.Ventanas.Message
             datatable.Columns[0].ReadOnly = true;
             datatable.Columns[1].ReadOnly = true;
             Actualizar();
-        }
-        public static Modulo showClientDialog()
-        {
-            _Dialog = new ModuloDialog();
-            _Dialog.ShowDialog();
-            return _DialogResult;
         }
 
         private void ShowAddEditModulo()
@@ -145,16 +138,6 @@ namespace GestorOrdenesDeTrabajo.Ventanas.Message
             DataGridViewRow row = tablaModulos.CurrentRow;
             int id = int.Parse(row.Cells[0].Value as string);
             string descripcion = row.Cells[1].Value as string;
-
-            _DialogResult = new Modulo()
-            {
-                Id = id,
-                Descripcion = descripcion
-            };
-
-            Console.WriteLine($"ID:{_DialogResult.Id}\nDescripcion:{_DialogResult.Descripcion}");
-
-            this.Dispose();
         }
 
         private void tablaModulos_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -177,6 +160,12 @@ namespace GestorOrdenesDeTrabajo.Ventanas.Message
                 $"\nID: {modulo.Id}" +
                 $"\nNombre: {modulo.Descripcion}" +
                 $"\n*****************************");
+        }
+
+        public static void showClientDialog()
+        {
+            _Dialog = new ModuloDialog();
+            _Dialog.ShowDialog();
         }
 
         private void txtFilter_Enter(object sender, EventArgs e)

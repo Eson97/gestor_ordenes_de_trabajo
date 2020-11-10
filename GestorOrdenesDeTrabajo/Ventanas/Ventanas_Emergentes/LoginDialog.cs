@@ -1,4 +1,7 @@
-﻿using System;
+﻿using BussinessLayer.UsesCases;
+using DataLayer;
+using GestorOrdenesDeTrabajo.Utilerias.Controles;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -18,6 +21,8 @@ namespace GestorOrdenesDeTrabajo.Ventanas.Ventanas_Emergentes
         [DllImport("user32.DLL", EntryPoint = "SendMessage")]
         private extern static void SendMessage(System.IntPtr hwnd, int wmsg, int wparam, int lparam);
 
+        private Usuario currentUser;
+
         public LoginDialog()
         {
             InitializeComponent();
@@ -32,6 +37,21 @@ namespace GestorOrdenesDeTrabajo.Ventanas.Ventanas_Emergentes
         private void btnOff_Click(object sender, EventArgs e)
         {
             Application.Exit();
+        }
+
+        private void btnIngresar_Click(object sender, EventArgs e)
+        {
+            bool isValid = Helper.Llenos(txtUser, txtPass);
+
+            if (!isValid)
+            { MessageBox.Show("Introduce tu nombre de usuario y contraseña", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Exclamation); return; }
+
+            var user = UsuarioController.I.GetUser(txtUser.Text, txtPass.Text);
+            if (user == null)
+            { MessageBox.Show("No se encuentra el usuario", "Informacion", MessageBoxButtons.OK, MessageBoxIcon.Information); return; }
+
+            currentUser = user;
+
         }
     }
 }

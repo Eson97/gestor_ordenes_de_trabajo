@@ -1,25 +1,17 @@
-﻿using DataLayer;
+﻿using BussinessLayer.UsesCases;
+using DataLayer;
 using GestorOrdenesDeTrabajo.CustomComponents;
+using GestorOrdenesDeTrabajo.Ventanas.Message;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Drawing;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace GestorOrdenesDeTrabajo.Ventanas.Usuarios
 {
     public partial class Usuarios : Form
     {
-        /**
-         * @todo terminar parte logica de form usuarios
-         * @body agregar todo el funcionamiento del form
-         */
-
-        Usuario user;
+        Usuario currentUser;
 
         public Usuarios()
         {
@@ -27,21 +19,18 @@ namespace GestorOrdenesDeTrabajo.Ventanas.Usuarios
             fillUsers();
         }
 
+        //TODO refresh Users after operation
         void fillUsers()
         {
-            //TODO Cambiar por consulta en la BD
-            for (int i = 0; i < 5; i++)
+            userContainerPanel.Controls.Clear();
+
+            var usuarios = UsuarioController.I.GetLista().Select(el => new UserCard(el));
+            foreach (UserCard userCard in usuarios)
             {
-                UserCard uc = new UserCard(new Usuario()
-                {
-                    Id = new Random().Next(0, 50),
-                    Usuario1 = "a",
-                    Password = new Random().Next(0,100).ToString()
-                });
-                uc.lblID.Click += (s, e) => { user = uc.User; openSubPanel(new UsuariosNuevo_Mod(user)); };
-                uc.lblUsuario.Click += (s, e) => { user = uc.User; openSubPanel(new UsuariosNuevo_Mod(user)); };
-                uc.pbImg.Click += (s, e) => { user = uc.User; openSubPanel(new UsuariosNuevo_Mod(user)); };
-                userContainerPanel.Controls.Add(uc);
+                userCard.lblID.Click += (s, e) => { currentUser = userCard.User; openSubPanel(new UsuariosNuevo_Mod(currentUser)); };
+                userCard.lblUsuario.Click += (s, e) => { currentUser = userCard.User; openSubPanel(new UsuariosNuevo_Mod(currentUser)); };
+                userCard.pbImg.Click += (s, e) => { currentUser = userCard.User; openSubPanel(new UsuariosNuevo_Mod(currentUser)); };
+                userContainerPanel.Controls.Add(userCard);
             }
         }
 
@@ -62,10 +51,40 @@ namespace GestorOrdenesDeTrabajo.Ventanas.Usuarios
         {
             if (e.KeyCode == Keys.F2)
             {
-                //DESPLEGAR CRUD PERMISOS
+                ModuloDialog diag = new ModuloDialog();
+                diag.ShowDialog(this);
             }
         }
-        
 
+        private void btnNuevoUsuario_Click(object sender, EventArgs e)
+        {
+            currentUser = null;
+            openSubPanel(new UsuariosNuevo_Mod(currentUser));
+            fillUsers();
+        }
+
+        private void btnModificar_Click(object sender, EventArgs e)
+        {
+            openSubPanel(new UsuariosNuevo_Mod(currentUser));
+            currentUser = null;
+            fillUsers();
+        }
+
+        private void btnEliminar_Click(object sender, EventArgs e)
+        {
+            if (currentUser == null)
+            { MessageBox.Show("Seleccione un usuario", "Informacion", MessageBoxButtons.OK, MessageBoxIcon.Information); return; }
+
+            var deleted = UsuarioController.I.Delete(currentUser.Id);
+            if (!deleted)
+                MessageBox.Show("Error al eliminar el usuario, vuelva a intentarlo", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+            fillUsers();
+        }
+
+        private void btnCrudPermisos_Click(object sender, EventArgs e)
+        {
+            ModuloDialog.showClientDialog();
+        }
     }
 }

@@ -21,6 +21,23 @@ namespace BussinessLayer.UsesCases
                 return Instance;
             }
         }
+
+        public Usuario GetUser(string userName, string pass)
+        {
+            try
+            {
+                using (Entities db = new Entities())
+                {
+                    var element = db.Usuario.Where(el => el.Usuario1.Equals(userName) && el.Password.Equals(pass)).FirstOrDefault();
+                    return element;
+                }
+            }
+            catch (Exception e)
+            {
+                Log.Write("Ha ocurrido un error " + e.Message);
+            }
+            return null;
+        }
         public Usuario Add(Usuario element)
         {
             try
@@ -87,7 +104,7 @@ namespace BussinessLayer.UsesCases
                 using (Entities db = new Entities())
                 {
                     //TODO revisar campo
-                    lista = db.Usuario.OrderBy(cp => cp.Usuario1).ToList();
+                    lista = db.Usuario.Include(el => el.UsuarioModulo).OrderBy(cp => cp.Usuario1).ToList();
                 }
                 return lista;
             }

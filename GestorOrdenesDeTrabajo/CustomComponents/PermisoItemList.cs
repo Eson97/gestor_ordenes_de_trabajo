@@ -8,37 +8,25 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using DataLayer;
+using BussinessLayer.UsesCases;
 
 namespace GestorOrdenesDeTrabajo.CustomComponents
 {
     public partial class PermisoItemList : UserControl
     {
-        /**
-         * @todo Funcionamiento de PermisoItemList
-         */
-
         bool isOn = false;
-        Modulo modulo;
+        private Modulo modulo;
+        private readonly int idUser;
 
-
-        public PermisoItemList(Modulo m)
+        public PermisoItemList(Modulo m, int IdUser, bool isOn)
         {
             InitializeComponent();
             StatusPanel.DoubleBuffered(true);
             this.modulo = m;
-
-            /**
-             * @todo agregar validacion de estado
-             * @body hacer que en caso de estar activo se muestre resaltado ( agregar directamente en el constructor? )
-             */
-
+            idUser = IdUser;
+            this.isOn = isOn;
             resaltarItem(isOn);
-        }
-        public PermisoItemList()
-        {
-            InitializeComponent();
-            StatusPanel.DoubleBuffered(true);
-            resaltarItem(isOn);
+            lblDesc.Text = modulo.Descripcion;
         }
 
         public bool Status { get => isOn; }
@@ -55,6 +43,16 @@ namespace GestorOrdenesDeTrabajo.CustomComponents
         {
             isOn = !isOn; //se cambia el estado
             resaltarItem(isOn);
+            var permiso = new UsuarioModulo()
+            {
+                IdUsuario = idUser,
+                IdModulo = modulo.Id,
+                IsEnabled = isOn
+            };
+            if (isOn)
+                UsuarioPermisoController.I.Add(permiso);
+            else
+                UsuarioPermisoController.I.DeleteByPermiso(permiso);
         }
     }
 }
