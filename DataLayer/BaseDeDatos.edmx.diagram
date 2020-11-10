@@ -4,24 +4,17 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="93da70037f5b494f9e91d189f215904a" Name="Diagram1">
-        <EntityTypeShape EntityType="DbContext.Cliente" Width="1.5" PointX="0.75" PointY="4" IsExpanded="true" />
-        <EntityTypeShape EntityType="DbContext.Mecanico" Width="1.5" PointX="3" PointY="11.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="DbContext.Modulo" Width="1.5" PointX="5.75" PointY="7.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="DbContext.Orden" Width="1.5" PointX="3" PointY="3.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="DbContext.OrdenMecanico" Width="1.5" PointX="5.25" PointY="3.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="DbContext.OrdenRefaccion" Width="1.5" PointX="5.25" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="DbContext.Refaccion" Width="1.5" PointX="3" PointY="7.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="DbContext.sysdiagrams" Width="1.5" PointX="7.75" PointY="2" IsExpanded="true" />
-        <EntityTypeShape EntityType="DbContext.Usuario" Width="1.5" PointX="5.75" PointY="10.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="DbContext.UsuarioModulo" Width="1.5" PointX="8" PointY="7.125" IsExpanded="true" />
-        <AssociationConnector Association="DbContext.FK_Orden_Cliente" ManuallyRouted="false" />
-        <AssociationConnector Association="DbContext.FK_OrdenMecanico_Mecanico" ManuallyRouted="false" />
-        <AssociationConnector Association="DbContext.FK_UsuarioMod_ID_Modulo" ManuallyRouted="false" />
-        <AssociationConnector Association="DbContext.FK_OrdenMecanico_Orden" ManuallyRouted="false" />
-        <AssociationConnector Association="DbContext.FK_OrdenRefaccion_Orden" ManuallyRouted="false" />
-        <AssociationConnector Association="DbContext.FK_OrdenRefaccion_Refaccion" ManuallyRouted="false" />
-        <AssociationConnector Association="DbContext.FK_UsuarioMod_ID_Usuario" ManuallyRouted="false" />
+      <Diagram DiagramId="4cabda36e0f64cc7bcdc2fd867494ab4" Name="Diagram1">
+        <EntityTypeShape EntityType="Entities.Cliente" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Entities.Mecanico" Width="1.5" PointX="2.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Entities.Orden" Width="1.5" PointX="0.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Entities.OrdenMecanico" Width="1.5" PointX="2.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Entities.OrdenRefaccion" Width="1.5" PointX="4.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Entities.Permiso" Width="1.5" PointX="4.75" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Entities.Refaccion" Width="1.5" PointX="6.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Entities.sysdiagrams" Width="1.5" PointX="6.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Entities.Usuario" Width="1.5" PointX="6.75" PointY="6.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Entities.UsuarioPermiso" Width="1.5" PointX="2.75" PointY="7.75" IsExpanded="true" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

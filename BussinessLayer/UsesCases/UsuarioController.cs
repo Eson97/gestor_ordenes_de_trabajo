@@ -105,7 +105,7 @@ namespace BussinessLayer.UsesCases
                 using (Entities db = new Entities())
                 {
                     //TODO revisar campo
-                    lista = db.Usuario.Include(el => el.UsuarioModulo).OrderBy(cp => cp.Usuario1).ToList();
+                    lista = db.Usuario.Include(el => el.UsuarioPermiso).OrderBy(cp => cp.Usuario1).ToList();
                 }
                 return lista;
             }

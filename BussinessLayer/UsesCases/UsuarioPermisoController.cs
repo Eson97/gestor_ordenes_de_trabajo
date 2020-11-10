@@ -8,7 +8,7 @@ using System.Linq;
 
 namespace BussinessLayer.UsesCases
 {
-    public class UsuarioPermisoController : IEntityManager<UsuarioModulo>
+    public class UsuarioPermisoController : IEntityManager<UsuarioPermiso>
     {
         private static UsuarioPermisoController Instance;
         public static UsuarioPermisoController I
@@ -24,17 +24,17 @@ namespace BussinessLayer.UsesCases
         }
 
 
-        public UsuarioModulo Add(UsuarioModulo element)
+        public UsuarioPermiso Add(UsuarioPermiso element)
         {
             try
             {
                 using (Entities db = new Entities())
                 {
-                    var exist = db.UsuarioModulo.Where(el => el.IdModulo.Equals(element.IdModulo) && el.IdUsuario.Equals(element.IdUsuario)).FirstOrDefault();
+                    var exist = db.UsuarioPermiso.Where(el => el.IdPermiso.Equals(element.IdPermiso) && el.IdUsuario.Equals(element.IdUsuario)).FirstOrDefault();
                     if (exist != null)
                         return exist;
 
-                    element = db.UsuarioModulo.Add(element);
+                    element = db.UsuarioPermiso.Add(element);
                     db.SaveChanges();
                 }
                 return element;
@@ -54,8 +54,8 @@ namespace BussinessLayer.UsesCases
             {
                 using (Entities db = new Entities())
                 {
-                    UsuarioModulo toDelete = db.UsuarioModulo.Find(id);
-                    db.UsuarioModulo.Remove(toDelete);
+                    UsuarioPermiso toDelete = db.UsuarioPermiso.Find(id);
+                    db.UsuarioPermiso.Remove(toDelete);
                     db.SaveChanges();
                 }
                 return true;
@@ -66,7 +66,7 @@ namespace BussinessLayer.UsesCases
             }
             return false;
         }
-        public bool DeleteByPermiso(UsuarioModulo element)
+        public bool DeleteByPermiso(UsuarioPermiso element)
         {
             if (element == null) return false;
 
@@ -74,8 +74,8 @@ namespace BussinessLayer.UsesCases
             {
                 using (Entities db = new Entities())
                 {
-                    var toDelete = db.UsuarioModulo.Where(el => el.IdModulo.Equals(element.IdModulo) && el.IdUsuario.Equals(element.IdUsuario)).FirstOrDefault();
-                    db.UsuarioModulo.Remove(toDelete);
+                    var toDelete = db.UsuarioPermiso.Where(el => el.IdPermiso.Equals(element.IdPermiso) && el.IdUsuario.Equals(element.IdUsuario)).FirstOrDefault();
+                    db.UsuarioPermiso.Remove(toDelete);
                     db.SaveChanges();
                 }
                 return true;
@@ -87,15 +87,15 @@ namespace BussinessLayer.UsesCases
             return false;
         }
 
-        public List<UsuarioModulo> GetLista()
+        public List<UsuarioPermiso> GetLista()
         {
-            List<UsuarioModulo> lista = null;
+            List<UsuarioPermiso> lista = null;
             try
             {
                 using (Entities db = new Entities())
                 {
                     db.Configuration.LazyLoadingEnabled = true;
-                    lista = db.UsuarioModulo.Include(el => el.Modulo).Include(el => el.Usuario).ToList();
+                    lista = db.UsuarioPermiso.Include(el => el.Permiso).Include(el => el.Usuario).ToList();
                 }
                 return lista;
             }
@@ -105,17 +105,17 @@ namespace BussinessLayer.UsesCases
                 Log.Write("Ha ocurrido un error " + s);
             }
             //Retorna lista vacia para evitar excepciones en llamada
-            return new List<UsuarioModulo>();
+            return new List<UsuarioPermiso>();
         }
-        public List<Modulo> GetListaPermisoByUsuario(int IdUsuario)
+        public List<Permiso> GetListaPermisoByUsuario(int IdUsuario)
         {
-            List<Modulo> lista = null;
+            List<Permiso> lista = null;
             try
             {
                 using (Entities db = new Entities())
                 {
                     db.Configuration.LazyLoadingEnabled = true;
-                    lista = db.UsuarioModulo.Where(el => el.IdUsuario.Equals(IdUsuario)).Select(el => el.Modulo).ToList();
+                    lista = db.UsuarioPermiso.Where(el => el.IdUsuario.Equals(IdUsuario)).Select(el => el.Permiso).ToList();
                 }
                 return lista;
             }
@@ -125,23 +125,23 @@ namespace BussinessLayer.UsesCases
                 Log.Write("Ha ocurrido un error " + s);
             }
             //Retorna lista vacia para evitar excepciones en llamada
-            return new List<Modulo>();
+            return new List<Permiso>();
         }
-        public List<Modulo> GetListaExcludePermisoByUsuario(int IdUsuario)
+        public List<Permiso> GetListaExcludePermisoByUsuario(int IdUsuario)
         {
-            List<Modulo> lista = null;
+            List<Permiso> lista = null;
             try
             {
                 using (Entities db = new Entities())
                 {
-                    var todas = from p in db.Modulo
-                                select p as Modulo;
+                    var todas = from p in db.Permiso
+                                select p as Permiso;
 
-                    var asignadas = from p in db.Modulo
-                                    join up in db.UsuarioModulo
-                                    on p.Id equals up.IdModulo
+                    var asignadas = from p in db.Permiso
+                                    join up in db.UsuarioPermiso
+                                    on p.Id equals up.IdPermiso
                                     where up.IdUsuario == IdUsuario
-                                    select p as Modulo;
+                                    select p as Permiso;
 
                     lista = todas.Except(asignadas).ToList();
                 }
@@ -153,10 +153,10 @@ namespace BussinessLayer.UsesCases
                 Log.Write("Ha ocurrido un error " + s);
             }
             //Retorna lista vacia para evitar excepciones en llamada
-            return new List<Modulo>();
+            return new List<Permiso>();
         }
 
-        public UsuarioModulo Edit(UsuarioModulo element)
+        public UsuarioPermiso Edit(UsuarioPermiso element)
         {
             throw new NotImplementedException();
         }

@@ -15,10 +15,10 @@ namespace GestorOrdenesDeTrabajo.CustomComponents
     public partial class PermisoItemList : UserControl
     {
         bool isOn = false;
-        private Modulo modulo;
+        private Permiso modulo;
         private readonly int idUser;
 
-        public PermisoItemList(Modulo m, int IdUser, bool isOn)
+        public PermisoItemList(Permiso m, int IdUser, bool isOn)
         {
             InitializeComponent();
             StatusPanel.DoubleBuffered(true);
@@ -43,11 +43,10 @@ namespace GestorOrdenesDeTrabajo.CustomComponents
         {
             isOn = !isOn; //se cambia el estado
             resaltarItem(isOn);
-            var permiso = new UsuarioModulo()
+            var permiso = new UsuarioPermiso()
             {
                 IdUsuario = idUser,
-                IdModulo = modulo.Id,
-                IsEnabled = isOn
+                IdPermiso = modulo.Id,
             };
             if (isOn)
                 UsuarioPermisoController.I.Add(permiso);

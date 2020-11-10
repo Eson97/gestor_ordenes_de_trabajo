@@ -13,7 +13,7 @@ namespace GestorOrdenesDeTrabajo.Ventanas.Message
     public partial class ModuloDialog : Form
     {
         private DataTable datatable;
-        private Modulo modulo;
+        private Permiso modulo;
         private static ModuloDialog _Dialog;
 
         [DllImport("user32.DLL", EntryPoint = "ReleaseCapture")]
@@ -51,9 +51,9 @@ namespace GestorOrdenesDeTrabajo.Ventanas.Message
         public void Actualizar()
         {
             while (tablaModulos.RowCount > 0) tablaModulos.Rows.RemoveAt(0);
-            var modulos = ModuloController.I.GetLista();
+            var modulos = PermisoController.I.GetLista();
 
-            foreach (Modulo item in modulos)
+            foreach (Permiso item in modulos)
                 datatable.Rows.Add(new object[] { item.Id, item.Descripcion });
 
             tablaModulos.DataSource = datatable;
@@ -97,7 +97,7 @@ namespace GestorOrdenesDeTrabajo.Ventanas.Message
 
             if (modulo == null)
             {
-                modulo = ModuloController.I.Add(new Modulo
+                modulo = PermisoController.I.Add(new Permiso
                 {
                     Descripcion = txtNombre.Text
                 });
@@ -105,7 +105,7 @@ namespace GestorOrdenesDeTrabajo.Ventanas.Message
             else
             {
                 modulo.Descripcion = txtNombre.Text;
-                modulo = ModuloController.I.Edit(modulo);
+                modulo = PermisoController.I.Edit(modulo);
             }
 
             if (modulo == null)
@@ -149,7 +149,7 @@ namespace GestorOrdenesDeTrabajo.Ventanas.Message
             int id = int.Parse(row.Cells[0].Value as string);
             string descripcion = row.Cells[1].Value as string;
 
-            modulo = new Modulo()
+            modulo = new Permiso()
             {
                 Id = id,
                 Descripcion = descripcion

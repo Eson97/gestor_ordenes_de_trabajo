@@ -8,26 +8,26 @@ using System.Linq;
 
 namespace BussinessLayer.UsesCases
 {
-    public class ModuloController : IEntityManager<Modulo>
+    public class PermisoController : IEntityManager<Permiso>
     {
-        private static ModuloController Instance;
+        private static PermisoController Instance;
 
-        public static ModuloController I
+        public static PermisoController I
         {
             get
             {
-                if (Instance == null) Instance = new ModuloController();
+                if (Instance == null) Instance = new PermisoController();
                 return Instance;
             }
         }
 
-        public Modulo Add(Modulo element)
+        public Permiso Add(Permiso element)
         {
             try
             {
                 using (Entities db = new Entities())
                 {
-                    element = db.Modulo.Add(element);
+                    element = db.Permiso.Add(element);
                     db.SaveChanges();
                 }
                 return element;
@@ -47,8 +47,8 @@ namespace BussinessLayer.UsesCases
             {
                 using (Entities db = new Entities())
                 {
-                    Modulo toDelete = db.Modulo.Find(id);
-                    db.Modulo.Remove(toDelete);
+                    Permiso toDelete = db.Permiso.Find(id);
+                    db.Permiso.Remove(toDelete);
                     db.SaveChanges();
                 }
                 return true;
@@ -60,7 +60,7 @@ namespace BussinessLayer.UsesCases
             return false;
         }
 
-        public Modulo Edit(Modulo element)
+        public Permiso Edit(Permiso element)
         {
             if (element.Id <= 0) return null;
             try
@@ -79,14 +79,14 @@ namespace BussinessLayer.UsesCases
             return null;
         }
 
-        public List<Modulo> GetLista()
+        public List<Permiso> GetLista()
         {
-            List<Modulo> lista = null;
+            List<Permiso> lista = null;
             try
             {
                 using (Entities db = new Entities())
                 {
-                    lista = db.Modulo.OrderBy(cp => cp.Descripcion).ToList();
+                    lista = db.Permiso.OrderBy(cp => cp.Descripcion).ToList();
                 }
                 return lista;
             }
@@ -96,7 +96,7 @@ namespace BussinessLayer.UsesCases
                 Log.Write("Ha ocurrido un error " + s);
             }
             //Retorna lista vacia para evitar excepciones en llamada
-            return new List<Modulo>();
+            return new List<Permiso>();
         }
     }
 }

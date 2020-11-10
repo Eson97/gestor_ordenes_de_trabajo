@@ -27,6 +27,8 @@ namespace DataLayer
         public Nullable<System.DateTime> FechaEntrega { get; set; }
         public string Equipo { get; set; }
         public string Observaciones { get; set; }
+        public string Referencia { get; set; }
+        public Nullable<int> TipoPago { get; set; }
         public int Status { get; set; }
         public int IdCliente { get; set; }
     

@@ -12,14 +12,19 @@ namespace DataLayer
     using System;
     using System.Collections.Generic;
     
-    public partial class UsuarioModulo
+    public partial class Permiso
     {
-        public int IdUsuarioModulo { get; set; }
-        public int IdUsuario { get; set; }
-        public int IdModulo { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public Permiso()
+        {
+            this.UsuarioPermiso = new HashSet<UsuarioPermiso>();
+        }
+    
+        public int Id { get; set; }
+        public string Descripcion { get; set; }
         public bool IsEnabled { get; set; }
     
-        public virtual Modulo Modulo { get; set; }
-        public virtual Usuario Usuario { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<UsuarioPermiso> UsuarioPermiso { get; set; }
     }
 }

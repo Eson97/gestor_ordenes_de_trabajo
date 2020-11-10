@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="DbContext.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+      <Schema Namespace="Entities.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Cliente">
           <Key>
             <PropertyRef Name="Id" />
@@ -21,13 +21,6 @@
           <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Nombre" Type="varchar" MaxLength="25" Nullable="false" />
         </EntityType>
-        <EntityType Name="Modulo">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="Descripcion" Type="varchar" MaxLength="20" Nullable="false" />
-        </EntityType>
         <EntityType Name="Orden">
           <Key>
             <PropertyRef Name="Id" />
@@ -38,6 +31,8 @@
           <Property Name="FechaEntrega" Type="date" />
           <Property Name="Equipo" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="Observaciones" Type="varchar" MaxLength="250" Nullable="false" />
+          <Property Name="Referencia" Type="varchar" MaxLength="11" />
+          <Property Name="TipoPago" Type="int" />
           <Property Name="Status" Type="int" Nullable="false" />
           <Property Name="IdCliente" Type="int" Nullable="false" />
         </EntityType>
@@ -59,6 +54,14 @@
           <Property Name="IdRefaccion" Type="int" Nullable="false" />
           <Property Name="PrecioUnitario" Type="decimal" Precision="4" Scale="2" Nullable="false" />
           <Property Name="Cantidad" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Permiso">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Descripcion" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="IsEnabled" Type="bit" Nullable="false" />
         </EntityType>
         <EntityType Name="Refaccion">
           <Key>
@@ -88,14 +91,13 @@
           <Property Name="Usuario" Type="varchar" MaxLength="25" Nullable="false" />
           <Property Name="Password" Type="varchar" MaxLength="20" Nullable="false" />
         </EntityType>
-        <EntityType Name="UsuarioModulo">
+        <EntityType Name="UsuarioPermiso">
           <Key>
-            <PropertyRef Name="IdUsuarioModulo" />
+            <PropertyRef Name="IdUsuarioPermiso" />
           </Key>
-          <Property Name="IdUsuarioModulo" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IdUsuarioPermiso" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="IdUsuario" Type="int" Nullable="false" />
-          <Property Name="IdModulo" Type="int" Nullable="false" />
-          <Property Name="IsEnabled" Type="bit" Nullable="false" />
+          <Property Name="IdPermiso" Type="int" Nullable="false" />
         </EntityType>
         <Association Name="FK_Orden_Cliente">
           <End Role="Cliente" Type="Self.Cliente" Multiplicity="1" />
@@ -157,41 +159,45 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_UsuarioMod_ID_Modulo">
-          <End Role="Modulo" Type="Self.Modulo" Multiplicity="1" />
-          <End Role="UsuarioModulo" Type="Self.UsuarioModulo" Multiplicity="*" />
+        <Association Name="FK_UsuarioPermiso_Permiso">
+          <End Role="Permiso" Type="Self.Permiso" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="UsuarioPermiso" Type="Self.UsuarioPermiso" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="Modulo">
+            <Principal Role="Permiso">
               <PropertyRef Name="Id" />
             </Principal>
-            <Dependent Role="UsuarioModulo">
-              <PropertyRef Name="IdModulo" />
+            <Dependent Role="UsuarioPermiso">
+              <PropertyRef Name="IdPermiso" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_UsuarioMod_ID_Usuario">
-          <End Role="Usuario" Type="Self.Usuario" Multiplicity="1" />
-          <End Role="UsuarioModulo" Type="Self.UsuarioModulo" Multiplicity="*" />
+        <Association Name="FK_UsuarioPermiso_Usuario">
+          <End Role="Usuario" Type="Self.Usuario" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="UsuarioPermiso" Type="Self.UsuarioPermiso" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Usuario">
               <PropertyRef Name="Id" />
             </Principal>
-            <Dependent Role="UsuarioModulo">
+            <Dependent Role="UsuarioPermiso">
               <PropertyRef Name="IdUsuario" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="DbContextStoreContainer">
+        <EntityContainer Name="EntitiesStoreContainer">
           <EntitySet Name="Cliente" EntityType="Self.Cliente" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Mecanico" EntityType="Self.Mecanico" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="Modulo" EntityType="Self.Modulo" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Orden" EntityType="Self.Orden" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="OrdenMecanico" EntityType="Self.OrdenMecanico" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="OrdenRefaccion" EntityType="Self.OrdenRefaccion" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Permiso" EntityType="Self.Permiso" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Refaccion" EntityType="Self.Refaccion" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Usuario" EntityType="Self.Usuario" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="UsuarioModulo" EntityType="Self.UsuarioModulo" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="UsuarioPermiso" EntityType="Self.UsuarioPermiso" Schema="dbo" store:Type="Tables" />
           <AssociationSet Name="FK_Orden_Cliente" Association="Self.FK_Orden_Cliente">
             <End Role="Cliente" EntitySet="Cliente" />
             <End Role="Orden" EntitySet="Orden" />
@@ -212,20 +218,20 @@
             <End Role="Refaccion" EntitySet="Refaccion" />
             <End Role="OrdenRefaccion" EntitySet="OrdenRefaccion" />
           </AssociationSet>
-          <AssociationSet Name="FK_UsuarioMod_ID_Modulo" Association="Self.FK_UsuarioMod_ID_Modulo">
-            <End Role="Modulo" EntitySet="Modulo" />
-            <End Role="UsuarioModulo" EntitySet="UsuarioModulo" />
+          <AssociationSet Name="FK_UsuarioPermiso_Permiso" Association="Self.FK_UsuarioPermiso_Permiso">
+            <End Role="Permiso" EntitySet="Permiso" />
+            <End Role="UsuarioPermiso" EntitySet="UsuarioPermiso" />
           </AssociationSet>
-          <AssociationSet Name="FK_UsuarioMod_ID_Usuario" Association="Self.FK_UsuarioMod_ID_Usuario">
+          <AssociationSet Name="FK_UsuarioPermiso_Usuario" Association="Self.FK_UsuarioPermiso_Usuario">
             <End Role="Usuario" EntitySet="Usuario" />
-            <End Role="UsuarioModulo" EntitySet="UsuarioModulo" />
+            <End Role="UsuarioPermiso" EntitySet="UsuarioPermiso" />
           </AssociationSet>
         </EntityContainer>
       </Schema>
     </edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
-      <Schema Namespace="DbContext" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+      <Schema Namespace="Entities" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
         <EntityType Name="Cliente">
           <Key>
             <PropertyRef Name="Id" />
@@ -244,24 +250,18 @@
           <Property Name="Nombre" Type="String" MaxLength="25" FixedLength="false" Unicode="false" Nullable="false" />
           <NavigationProperty Name="OrdenMecanico" Relationship="Self.FK_OrdenMecanico_Mecanico" FromRole="Mecanico" ToRole="OrdenMecanico" />
         </EntityType>
-        <EntityType Name="Modulo">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Descripcion" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
-          <NavigationProperty Name="UsuarioModulo" Relationship="Self.FK_UsuarioMod_ID_Modulo" FromRole="Modulo" ToRole="UsuarioModulo" />
-        </EntityType>
         <EntityType Name="Orden">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Folio" Type="Int32" Nullable="false" />
-          <Property Name="FechaRecepcion" Type="DateTime" Nullable="false" Precision="0" />
-          <Property Name="FechaEntrega" Type="DateTime" Precision="0" />
+          <Property Name="FechaRecepcion" Type="DateTime" Nullable="false" />
+          <Property Name="FechaEntrega" Type="DateTime" />
           <Property Name="Equipo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="Observaciones" Type="String" MaxLength="250" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Referencia" Type="String" MaxLength="11" FixedLength="false" Unicode="false" />
+          <Property Name="TipoPago" Type="Int32" />
           <Property Name="Status" Type="Int32" Nullable="false" />
           <Property Name="IdCliente" Type="Int32" Nullable="false" />
           <NavigationProperty Name="Cliente" Relationship="Self.FK_Orden_Cliente" FromRole="Orden" ToRole="Cliente" />
@@ -291,6 +291,15 @@
           <NavigationProperty Name="Orden" Relationship="Self.FK_OrdenRefaccion_Orden" FromRole="OrdenRefaccion" ToRole="Orden" />
           <NavigationProperty Name="Refaccion" Relationship="Self.FK_OrdenRefaccion_Refaccion" FromRole="OrdenRefaccion" ToRole="Refaccion" />
         </EntityType>
+        <EntityType Name="Permiso">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Descripcion" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="IsEnabled" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="UsuarioPermiso" Relationship="Self.FK_UsuarioPermiso_Permiso" FromRole="Permiso" ToRole="UsuarioPermiso" />
+        </EntityType>
         <EntityType Name="Refaccion">
           <Key>
             <PropertyRef Name="Id" />
@@ -319,18 +328,17 @@
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Usuario1" Type="String" MaxLength="25" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="Password" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
-          <NavigationProperty Name="UsuarioModulo" Relationship="Self.FK_UsuarioMod_ID_Usuario" FromRole="Usuario" ToRole="UsuarioModulo" />
+          <NavigationProperty Name="UsuarioPermiso" Relationship="Self.FK_UsuarioPermiso_Usuario" FromRole="Usuario" ToRole="UsuarioPermiso" />
         </EntityType>
-        <EntityType Name="UsuarioModulo">
+        <EntityType Name="UsuarioPermiso">
           <Key>
-            <PropertyRef Name="IdUsuarioModulo" />
+            <PropertyRef Name="IdUsuarioPermiso" />
           </Key>
-          <Property Name="IdUsuarioModulo" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IdUsuarioPermiso" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="IdUsuario" Type="Int32" Nullable="false" />
-          <Property Name="IdModulo" Type="Int32" Nullable="false" />
-          <Property Name="IsEnabled" Type="Boolean" Nullable="false" />
-          <NavigationProperty Name="Modulo" Relationship="Self.FK_UsuarioMod_ID_Modulo" FromRole="UsuarioModulo" ToRole="Modulo" />
-          <NavigationProperty Name="Usuario" Relationship="Self.FK_UsuarioMod_ID_Usuario" FromRole="UsuarioModulo" ToRole="Usuario" />
+          <Property Name="IdPermiso" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Permiso" Relationship="Self.FK_UsuarioPermiso_Permiso" FromRole="UsuarioPermiso" ToRole="Permiso" />
+          <NavigationProperty Name="Usuario" Relationship="Self.FK_UsuarioPermiso_Usuario" FromRole="UsuarioPermiso" ToRole="Usuario" />
         </EntityType>
         <Association Name="FK_Orden_Cliente">
           <End Role="Cliente" Type="Self.Cliente" Multiplicity="1" />
@@ -353,18 +361,6 @@
             </Principal>
             <Dependent Role="OrdenMecanico">
               <PropertyRef Name="IdMecanico" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_UsuarioMod_ID_Modulo">
-          <End Role="Modulo" Type="Self.Modulo" Multiplicity="1" />
-          <End Role="UsuarioModulo" Type="Self.UsuarioModulo" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Modulo">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="UsuarioModulo">
-              <PropertyRef Name="IdModulo" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -404,14 +400,30 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_UsuarioMod_ID_Usuario">
-          <End Role="Usuario" Type="Self.Usuario" Multiplicity="1" />
-          <End Role="UsuarioModulo" Type="Self.UsuarioModulo" Multiplicity="*" />
+        <Association Name="FK_UsuarioPermiso_Permiso">
+          <End Role="Permiso" Type="Self.Permiso" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="UsuarioPermiso" Type="Self.UsuarioPermiso" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Permiso">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="UsuarioPermiso">
+              <PropertyRef Name="IdPermiso" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UsuarioPermiso_Usuario">
+          <End Role="Usuario" Type="Self.Usuario" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="UsuarioPermiso" Type="Self.UsuarioPermiso" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Usuario">
               <PropertyRef Name="Id" />
             </Principal>
-            <Dependent Role="UsuarioModulo">
+            <Dependent Role="UsuarioPermiso">
               <PropertyRef Name="IdUsuario" />
             </Dependent>
           </ReferentialConstraint>
@@ -419,14 +431,14 @@
         <EntityContainer Name="Entities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Cliente" EntityType="Self.Cliente" />
           <EntitySet Name="Mecanico" EntityType="Self.Mecanico" />
-          <EntitySet Name="Modulo" EntityType="Self.Modulo" />
           <EntitySet Name="Orden" EntityType="Self.Orden" />
           <EntitySet Name="OrdenMecanico" EntityType="Self.OrdenMecanico" />
           <EntitySet Name="OrdenRefaccion" EntityType="Self.OrdenRefaccion" />
+          <EntitySet Name="Permiso" EntityType="Self.Permiso" />
           <EntitySet Name="Refaccion" EntityType="Self.Refaccion" />
           <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
           <EntitySet Name="Usuario" EntityType="Self.Usuario" />
-          <EntitySet Name="UsuarioModulo" EntityType="Self.UsuarioModulo" />
+          <EntitySet Name="UsuarioPermiso" EntityType="Self.UsuarioPermiso" />
           <AssociationSet Name="FK_Orden_Cliente" Association="Self.FK_Orden_Cliente">
             <End Role="Cliente" EntitySet="Cliente" />
             <End Role="Orden" EntitySet="Orden" />
@@ -434,10 +446,6 @@
           <AssociationSet Name="FK_OrdenMecanico_Mecanico" Association="Self.FK_OrdenMecanico_Mecanico">
             <End Role="Mecanico" EntitySet="Mecanico" />
             <End Role="OrdenMecanico" EntitySet="OrdenMecanico" />
-          </AssociationSet>
-          <AssociationSet Name="FK_UsuarioMod_ID_Modulo" Association="Self.FK_UsuarioMod_ID_Modulo">
-            <End Role="Modulo" EntitySet="Modulo" />
-            <End Role="UsuarioModulo" EntitySet="UsuarioModulo" />
           </AssociationSet>
           <AssociationSet Name="FK_OrdenMecanico_Orden" Association="Self.FK_OrdenMecanico_Orden">
             <End Role="Orden" EntitySet="Orden" />
@@ -451,9 +459,13 @@
             <End Role="Refaccion" EntitySet="Refaccion" />
             <End Role="OrdenRefaccion" EntitySet="OrdenRefaccion" />
           </AssociationSet>
-          <AssociationSet Name="FK_UsuarioMod_ID_Usuario" Association="Self.FK_UsuarioMod_ID_Usuario">
+          <AssociationSet Name="FK_UsuarioPermiso_Permiso" Association="Self.FK_UsuarioPermiso_Permiso">
+            <End Role="Permiso" EntitySet="Permiso" />
+            <End Role="UsuarioPermiso" EntitySet="UsuarioPermiso" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UsuarioPermiso_Usuario" Association="Self.FK_UsuarioPermiso_Usuario">
             <End Role="Usuario" EntitySet="Usuario" />
-            <End Role="UsuarioModulo" EntitySet="UsuarioModulo" />
+            <End Role="UsuarioPermiso" EntitySet="UsuarioPermiso" />
           </AssociationSet>
         </EntityContainer>
       </Schema>
@@ -461,9 +473,9 @@
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="DbContextStoreContainer" CdmEntityContainer="Entities">
+        <EntityContainerMapping StorageEntityContainer="EntitiesStoreContainer" CdmEntityContainer="Entities">
           <EntitySetMapping Name="Cliente">
-            <EntityTypeMapping TypeName="DbContext.Cliente">
+            <EntityTypeMapping TypeName="Entities.Cliente">
               <MappingFragment StoreEntitySet="Cliente">
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="Nombre" ColumnName="Nombre" />
@@ -473,23 +485,15 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Mecanico">
-            <EntityTypeMapping TypeName="DbContext.Mecanico">
+            <EntityTypeMapping TypeName="Entities.Mecanico">
               <MappingFragment StoreEntitySet="Mecanico">
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="Nombre" ColumnName="Nombre" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="Modulo">
-            <EntityTypeMapping TypeName="DbContext.Modulo">
-              <MappingFragment StoreEntitySet="Modulo">
-                <ScalarProperty Name="Id" ColumnName="Id" />
-                <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="Orden">
-            <EntityTypeMapping TypeName="DbContext.Orden">
+            <EntityTypeMapping TypeName="Entities.Orden">
               <MappingFragment StoreEntitySet="Orden">
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="Folio" ColumnName="Folio" />
@@ -497,13 +501,15 @@
                 <ScalarProperty Name="FechaEntrega" ColumnName="FechaEntrega" />
                 <ScalarProperty Name="Equipo" ColumnName="Equipo" />
                 <ScalarProperty Name="Observaciones" ColumnName="Observaciones" />
+                <ScalarProperty Name="Referencia" ColumnName="Referencia" />
+                <ScalarProperty Name="TipoPago" ColumnName="TipoPago" />
                 <ScalarProperty Name="Status" ColumnName="Status" />
                 <ScalarProperty Name="IdCliente" ColumnName="IdCliente" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="OrdenMecanico">
-            <EntityTypeMapping TypeName="DbContext.OrdenMecanico">
+            <EntityTypeMapping TypeName="Entities.OrdenMecanico">
               <MappingFragment StoreEntitySet="OrdenMecanico">
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="IdOrden" ColumnName="IdOrden" />
@@ -513,7 +519,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="OrdenRefaccion">
-            <EntityTypeMapping TypeName="DbContext.OrdenRefaccion">
+            <EntityTypeMapping TypeName="Entities.OrdenRefaccion">
               <MappingFragment StoreEntitySet="OrdenRefaccion">
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="IdOrden" ColumnName="IdOrden" />
@@ -523,8 +529,17 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="Permiso">
+            <EntityTypeMapping TypeName="Entities.Permiso">
+              <MappingFragment StoreEntitySet="Permiso">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+                <ScalarProperty Name="IsEnabled" ColumnName="IsEnabled" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="Refaccion">
-            <EntityTypeMapping TypeName="DbContext.Refaccion">
+            <EntityTypeMapping TypeName="Entities.Refaccion">
               <MappingFragment StoreEntitySet="Refaccion">
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="Codigo" ColumnName="Codigo" />
@@ -535,7 +550,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="sysdiagrams">
-            <EntityTypeMapping TypeName="DbContext.sysdiagrams">
+            <EntityTypeMapping TypeName="Entities.sysdiagrams">
               <MappingFragment StoreEntitySet="sysdiagrams">
                 <ScalarProperty Name="name" ColumnName="name" />
                 <ScalarProperty Name="principal_id" ColumnName="principal_id" />
@@ -546,7 +561,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Usuario">
-            <EntityTypeMapping TypeName="DbContext.Usuario">
+            <EntityTypeMapping TypeName="Entities.Usuario">
               <MappingFragment StoreEntitySet="Usuario">
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="Usuario1" ColumnName="Usuario" />
@@ -554,13 +569,12 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="UsuarioModulo">
-            <EntityTypeMapping TypeName="DbContext.UsuarioModulo">
-              <MappingFragment StoreEntitySet="UsuarioModulo">
-                <ScalarProperty Name="IdUsuarioModulo" ColumnName="IdUsuarioModulo" />
+          <EntitySetMapping Name="UsuarioPermiso">
+            <EntityTypeMapping TypeName="Entities.UsuarioPermiso">
+              <MappingFragment StoreEntitySet="UsuarioPermiso">
+                <ScalarProperty Name="IdUsuarioPermiso" ColumnName="IdUsuarioPermiso" />
                 <ScalarProperty Name="IdUsuario" ColumnName="IdUsuario" />
-                <ScalarProperty Name="IdModulo" ColumnName="IdModulo" />
-                <ScalarProperty Name="IsEnabled" ColumnName="IsEnabled" />
+                <ScalarProperty Name="IdPermiso" ColumnName="IdPermiso" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

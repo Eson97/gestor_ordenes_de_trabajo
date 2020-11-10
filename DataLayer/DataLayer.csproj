@@ -75,9 +75,6 @@
     <Compile Include="Mecanico.cs">
       <DependentUpon>BaseDeDatos.tt</DependentUpon>
     </Compile>
-    <Compile Include="Modulo.cs">
-      <DependentUpon>BaseDeDatos.tt</DependentUpon>
-    </Compile>
     <Compile Include="Orden.cs">
       <DependentUpon>BaseDeDatos.tt</DependentUpon>
     </Compile>
@@ -85,6 +82,9 @@
       <DependentUpon>BaseDeDatos.tt</DependentUpon>
     </Compile>
     <Compile Include="OrdenRefaccion.cs">
+      <DependentUpon>BaseDeDatos.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Permiso.cs">
       <DependentUpon>BaseDeDatos.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -97,7 +97,7 @@
     <Compile Include="Usuario.cs">
       <DependentUpon>BaseDeDatos.tt</DependentUpon>
     </Compile>
-    <Compile Include="UsuarioModulo.cs">
+    <Compile Include="UsuarioPermiso.cs">
       <DependentUpon>BaseDeDatos.tt</DependentUpon>
     </Compile>
   </ItemGroup>

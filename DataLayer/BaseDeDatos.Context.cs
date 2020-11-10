@@ -27,13 +27,13 @@ namespace DataLayer
     
         public virtual DbSet<Cliente> Cliente { get; set; }
         public virtual DbSet<Mecanico> Mecanico { get; set; }
-        public virtual DbSet<Modulo> Modulo { get; set; }
         public virtual DbSet<Orden> Orden { get; set; }
         public virtual DbSet<OrdenMecanico> OrdenMecanico { get; set; }
         public virtual DbSet<OrdenRefaccion> OrdenRefaccion { get; set; }
+        public virtual DbSet<Permiso> Permiso { get; set; }
         public virtual DbSet<Refaccion> Refaccion { get; set; }
         public virtual DbSet<sysdiagrams> sysdiagrams { get; set; }
         public virtual DbSet<Usuario> Usuario { get; set; }
-        public virtual DbSet<UsuarioModulo> UsuarioModulo { get; set; }
+        public virtual DbSet<UsuarioPermiso> UsuarioPermiso { get; set; }
     }
 }
