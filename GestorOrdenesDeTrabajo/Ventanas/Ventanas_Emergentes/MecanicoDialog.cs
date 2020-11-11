@@ -101,10 +101,9 @@ namespace GestorOrdenesDeTrabajo.Ventanas.Message
 
         private void btnAceptar_Click(object sender, EventArgs e)
         {
-
-            bool isValid = Helper.Llenos(txtNombre);
+            bool isValid = Helper.Llenos(txtNombre) && txtNombre.TextLength < 25;
             if (!isValid)
-                return;
+            { MessageBox.Show("El nombre no puede pasar de 25 caracteres", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning); return; }
 
             if (mecanico == null)
             {
