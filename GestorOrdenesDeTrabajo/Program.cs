@@ -1,4 +1,5 @@
-﻿using System;
+﻿using GestorOrdenesDeTrabajo.Ventanas.Ventanas_Emergentes;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -16,7 +17,20 @@ namespace GestorOrdenesDeTrabajo
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Main());
+
+            LoginDialog login = new LoginDialog();
+            if (false)
+            {
+                Application.Run(new Main(login.CurrentUser));
+                return;
+            }
+
+            Application.Run(login);
+            var LogedUser = login.CurrentUser;
+
+            if (LogedUser != null)
+                Application.Run(new Main(LogedUser));
+
         }
     }
 }

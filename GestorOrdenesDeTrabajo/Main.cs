@@ -6,6 +6,11 @@ using System.Reflection;
 using GestorOrdenesDeTrabajo.Ventanas.Ordenes;
 using GestorOrdenesDeTrabajo.Ventanas.Buscar;
 using GestorOrdenesDeTrabajo.Ventanas.Usuarios;
+using GestorOrdenesDeTrabajo.Ventanas.Ventanas_Emergentes;
+using DataLayer;
+using System.Collections.Generic;
+using System.Threading.Tasks;
+using BussinessLayer.UsesCases;
 
 namespace GestorOrdenesDeTrabajo
 {
@@ -19,10 +24,11 @@ namespace GestorOrdenesDeTrabajo
 
         bool isSidePanelContracted;
         bool isDynamicPanelContracted;
-        
-
-        public Main()
+        private Usuario currentUser;
+        List<Permiso> permisos;
+        public Main(Usuario usuario)
         {
+            currentUser = usuario;
             InitializeComponent();
             containerPanel.DoubleBuffered(true);
             sidePanel.DoubleBuffered(true);
@@ -30,6 +36,59 @@ namespace GestorOrdenesDeTrabajo
             btnClosePanel.DoubleBuffered(true);
             lblTitle.DoubleBuffered(true);
             btnClosePanel.DoubleBuffered(true);
+            InitPermisos();
+        }
+
+        private async void InitPermisos()
+        {
+            permisos = await Task.Run(() => UsuarioPermisoController.I.GetListaPermisoByUsuario(currentUser.Id));
+            Permission(permisos);
+        }
+
+        private void DeniedPermission(params Control[] control)
+        {
+            foreach (Control c in control)
+            {
+                c.Visible = false;
+                c.Enabled = false;
+            }
+        }
+        private void GrantPermission(params Control[] control)
+        {
+            foreach (Control c in control)
+            {
+                c.Visible = true;
+                c.Enabled = true;
+            }
+        }
+
+        private void Permission(List<Permiso> permisos)
+        {
+            Button[] buttons = { btnBuscar, btnEnEspera, btnEnGarantia, btnEnProceso, btnInventario, btnNueva, btnPorEntregar, btnStats, btnUsuarios, btnOrdenes };
+
+            DeniedPermission(buttons);
+
+            if (permisos != null)
+            {
+                //TODO definir permisos
+                foreach (Permiso item in permisos)
+                {
+                    switch (item.Id)
+                    {
+                        //Buscar
+                        case 1:
+                            GrantPermission(btnBuscar);
+                            break;
+                        //Mostrar ventana ejemplo
+                        case 2:
+                            break;
+                        case 3:
+                            break;
+                        case 4:
+                            break;
+                    }
+                }
+            }
         }
 
         void openPanel(Form Panel, string Tittle, object sender)
@@ -91,7 +150,7 @@ namespace GestorOrdenesDeTrabajo
 
         void collapseDynamicPanel(bool collapse)
         {
-            if(isSidePanelContracted)
+            if (isSidePanelContracted)
                 collapseSidePanel(false);
 
             dynamicPanel.Visible = !collapse;
@@ -104,7 +163,7 @@ namespace GestorOrdenesDeTrabajo
             collapseSidePanel(true);
             btnClosePanel.Visible = false;
             openPanel(new Inicio(), "Inicio", null);
-            lblDate.Text = DateTime.Now.Date.ToString("D");            
+            lblDate.Text = DateTime.Now.Date.ToString("D");
         }
 
         private void btnMenu_Click(object sender, EventArgs e)
@@ -138,7 +197,7 @@ namespace GestorOrdenesDeTrabajo
         private void btnNueva_Click(object sender, EventArgs e)
         {
             collapseSidePanel(true);
-            openPanel(new NuevaOrden(), "Nueva Orden de Trabajo", sender) ;
+            openPanel(new NuevaOrden(), "Nueva Orden de Trabajo", sender);
         }
 
         private void btnEnEspera_Click(object sender, EventArgs e)
@@ -188,7 +247,10 @@ namespace GestorOrdenesDeTrabajo
 
         private void btnLogOut_Click(object sender, EventArgs e)
         {
-            //TODO agregar codigo para cerrar sesion y abrir ventana login
+            //TODO add LogOut
+            //LoginDialog login = new LoginDialog();
+            //login.ShowDialog();
+            //this.Close();
         }
 
         private void DateTimeGetter_Tick(object sender, EventArgs e)
@@ -206,7 +268,7 @@ namespace GestorOrdenesDeTrabajo
 
         private void containerPanel_ControlRemoved(object sender, ControlEventArgs e)
         {
-            if(containerPanel.Controls.Equals(new NuevaOrden()))
+            if (containerPanel.Controls.Equals(new NuevaOrden()))
                 openPanel(new Inicio(), "Inicio", null);
         }
 
