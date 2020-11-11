@@ -70,7 +70,7 @@ namespace GestorOrdenesDeTrabajo
 
             if (permisos != null)
             {
-                //TODO definir permisos
+                //TODO definir permisos and close issue
                 foreach (Permiso item in permisos)
                 {
                     switch (item.Id)
