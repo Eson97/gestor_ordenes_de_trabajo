@@ -19,7 +19,7 @@ namespace GestorOrdenesDeTrabajo
             Application.SetCompatibleTextRenderingDefault(false);
 
             LoginDialog login = new LoginDialog();
-            if (false)
+            if (true)
             {
                 Application.Run(new Main(login.CurrentUser));
                 return;

@@ -41,6 +41,8 @@ namespace GestorOrdenesDeTrabajo
 
         private async void InitPermisos()
         {
+            if (currentUser == null)
+                return;
             permisos = await Task.Run(() => UsuarioPermisoController.I.GetListaPermisoByUsuario(currentUser.Id));
             Permission(permisos);
         }

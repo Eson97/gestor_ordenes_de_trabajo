@@ -1,5 +1,5 @@
 ﻿using System.Windows.Forms;
-using DataLayer;
+using DataLayer.Auxiliares;
 
 namespace GestorOrdenesDeTrabajo.CustomComponents
 {
@@ -8,19 +8,19 @@ namespace GestorOrdenesDeTrabajo.CustomComponents
         public PiezaItemList()
         {
             InitializeComponent();
-            Refaccion = new Refaccion();
         }
 
-        public PiezaItemList(Refaccion refaccion)
+        public PiezaItemList(RefaccionDTO refaccion)
         {
             InitializeComponent();
             this.Refaccion = refaccion;
-            //TODO Cambiar refaccion por RefaccionDTO con cantidad, descripcion y total calculado
             lblPieza.Text = Refaccion.Descripcion;
+            lblCantidad.Text = Refaccion.Cantidad.ToString();
+            lblTotal.Text = "$" + Refaccion.Total;
         }
 
 
-        public Refaccion Refaccion { get; internal set; }
+        public RefaccionDTO Refaccion { get; internal set; }
 
     }
 }

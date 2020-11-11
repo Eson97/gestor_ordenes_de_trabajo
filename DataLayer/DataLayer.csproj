@@ -54,6 +54,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Auxiliares\Mecanico.cs" />
+    <Compile Include="Auxiliares\RefaccionDTO.cs" />
     <Compile Include="BaseDeDatos.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
