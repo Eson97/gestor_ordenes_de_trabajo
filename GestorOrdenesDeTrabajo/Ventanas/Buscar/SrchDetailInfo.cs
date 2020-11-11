@@ -39,16 +39,14 @@ namespace GestorOrdenesDeTrabajo.Ventanas.Buscar
             lblRecepcion.Text = orden.FechaRecepcion.ToString("dd/MM/yyyy");
             lblEntrega.Text = orden.FechaEntrega.GetValueOrDefault(DateTime.MinValue).ToString("dd/MM/yyyy");
             lblMecanico.Text = mecanicos;
-
-            //TODO modify DB?
-            //lblMet_Pago.Text
-            //lblReferencia.Text
-
+            lblMet_Pago.Text = TipoPagoManager.ToString(orden.TipoPago ?? -1);
+            lblReferencia.Text = orden.Referencia ?? "INDEFINIDA";
         }
 
         private void btnPiezas_Click(object sender, EventArgs e)
         {
-            //TODO ABRIR NUEVA VENTANA DONDE SE OBSERVARAN LAS PIEZAS ADJUNTAS A LA ORDEN DE TRABAJO
+            SrchPiezasUsadas piezas = new SrchPiezasUsadas(orden.Id);
+            piezas.ShowDialog(this);
         }
     }
 }

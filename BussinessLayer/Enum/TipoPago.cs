@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace GestorOrdenesDeTrabajo.Clases
+﻿namespace BussinessLayer.Enum
 {
     public enum TipoPago
     {
@@ -15,9 +9,9 @@ namespace GestorOrdenesDeTrabajo.Clases
         CREDITO = 5
     }
 
-    public class TipoPagoManager
+    public static class TipoPagoManager
     {
-        public string ToString(int tipoPago)
+        public static string ToString(int tipoPago)
         {
             switch (tipoPago)
             {

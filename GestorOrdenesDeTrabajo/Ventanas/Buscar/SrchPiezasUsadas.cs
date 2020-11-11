@@ -27,5 +27,10 @@ namespace GestorOrdenesDeTrabajo.Ventanas.Buscar
                 this.flpListPanel.Controls.Add(item);
             }
         }
+
+        private void btnClose_Click(object sender, System.EventArgs e)
+        {
+            this.Close();
+        }
     }
 }
