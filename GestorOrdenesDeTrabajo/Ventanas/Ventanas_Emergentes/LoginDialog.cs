@@ -15,13 +15,13 @@ namespace GestorOrdenesDeTrabajo.Ventanas.Ventanas_Emergentes
         [DllImport("user32.DLL", EntryPoint = "SendMessage")]
         private extern static void SendMessage(System.IntPtr hwnd, int wmsg, int wparam, int lparam);
 
-        public Usuario CurrentUser { get; internal set; }
+        Usuario currentUser;
 
         public LoginDialog()
         {
             InitializeComponent();
         }
-
+        
         private void topPAnel_MouseDown(object sender, MouseEventArgs e)
         {
             ReleaseCapture();
@@ -44,8 +44,9 @@ namespace GestorOrdenesDeTrabajo.Ventanas.Ventanas_Emergentes
             if (user == null)
             { MessageBox.Show("No se encuentra el usuario", "Informacion", MessageBoxButtons.OK, MessageBoxIcon.Information); return; }
 
-            CurrentUser = user;
-            Close();
+            currentUser = user;
+            new Main(currentUser).Show();
+            Hide();
         }
 
         private void txtUser_KeyPress(object sender, KeyPressEventArgs e)

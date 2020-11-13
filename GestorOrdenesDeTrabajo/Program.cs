@@ -18,18 +18,36 @@ namespace GestorOrdenesDeTrabajo
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
 
-            LoginDialog login = new LoginDialog();
+
+            //CON ESTO YA FUNKA, PEEEERO NO SE QUE TANTO IMPACTE AL RENDIMIENTO EL RESTART, LO PUEDO HACER DISTINTO
+
+            //Application.Run(new LoginDialog());
+
+
+
+
+            //DataLayer.Usuario user;
+            //do
+            //{
+
+            //    user = LoginDialog.showLogin();
+            //    if (user != null) Application.Run(new Main(user));
+
+            //} while (user != null); 
+
+            //LoginDialog login = new LoginDialog();
+
             if (true)
             {
-                Application.Run(new Main(login.CurrentUser));
+                Application.Run(new Main(null));
                 return;
             }
 
-            Application.Run(login);
-            var LogedUser = login.CurrentUser;
+            //Application.Run(login);
+            //var LogedUser = login.CurrentUser;
 
-            if (LogedUser != null)
-                Application.Run(new Main(LogedUser));
+            //if (LogedUser != null)
+            //    Application.Run(new Main(LogedUser));
 
         }
     }

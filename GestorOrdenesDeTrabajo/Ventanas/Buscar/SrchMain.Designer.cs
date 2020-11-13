@@ -149,7 +149,7 @@
             this.tablaOrdenes.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tablaOrdenes.EnableHeadersVisualStyles = false;
             this.tablaOrdenes.GridColor = System.Drawing.SystemColors.ControlLight;
-            this.tablaOrdenes.Location = new System.Drawing.Point(0, 37);
+            this.tablaOrdenes.Location = new System.Drawing.Point(0, 31);
             this.tablaOrdenes.Name = "tablaOrdenes";
             this.tablaOrdenes.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
             this.tablaOrdenes.RowHeadersVisible = false;
@@ -161,7 +161,7 @@
             this.tablaOrdenes.RowTemplate.ReadOnly = true;
             this.tablaOrdenes.RowTemplate.Resizable = System.Windows.Forms.DataGridViewTriState.False;
             this.tablaOrdenes.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.tablaOrdenes.Size = new System.Drawing.Size(491, 501);
+            this.tablaOrdenes.Size = new System.Drawing.Size(491, 507);
             this.tablaOrdenes.TabIndex = 4;
             this.tablaOrdenes.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.tablaOrdenes_CellDoubleClick);
             this.tablaOrdenes.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.tablaOrdenes_CellFormatting);
@@ -175,7 +175,7 @@
             this.txtBuscarCodigo_Cliente.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
             this.txtBuscarCodigo_Cliente.Location = new System.Drawing.Point(0, 0);
             this.txtBuscarCodigo_Cliente.Name = "txtBuscarCodigo_Cliente";
-            this.txtBuscarCodigo_Cliente.Size = new System.Drawing.Size(491, 37);
+            this.txtBuscarCodigo_Cliente.Size = new System.Drawing.Size(491, 31);
             this.txtBuscarCodigo_Cliente.TabIndex = 3;
             this.txtBuscarCodigo_Cliente.Text = "Ingrese <Folio> o <Cliente> a buscar...";
             this.txtBuscarCodigo_Cliente.TextChanged += new System.EventHandler(this.txtBuscarCodigo_Cliente_TextChanged);
@@ -209,7 +209,7 @@
             this.txtSrchFolio.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
             this.txtSrchFolio.Location = new System.Drawing.Point(700, 0);
             this.txtSrchFolio.Name = "txtSrchFolio";
-            this.txtSrchFolio.Size = new System.Drawing.Size(178, 37);
+            this.txtSrchFolio.Size = new System.Drawing.Size(178, 31);
             this.txtSrchFolio.TabIndex = 14;
             this.txtSrchFolio.Text = "Numero de Orden";
             this.txtSrchFolio.Enter += new System.EventHandler(this.txtSrchFolio_Enter);
@@ -284,7 +284,7 @@
             this.customDateTimePicker2.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.customDateTimePicker2.Location = new System.Drawing.Point(272, 0);
             this.customDateTimePicker2.Name = "customDateTimePicker2";
-            this.customDateTimePicker2.Size = new System.Drawing.Size(139, 37);
+            this.customDateTimePicker2.Size = new System.Drawing.Size(139, 31);
             this.customDateTimePicker2.TabIndex = 8;
             // 
             // label2
@@ -305,7 +305,7 @@
             this.customDateTimePicker1.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.customDateTimePicker1.Location = new System.Drawing.Point(58, 0);
             this.customDateTimePicker1.Name = "customDateTimePicker1";
-            this.customDateTimePicker1.Size = new System.Drawing.Size(139, 37);
+            this.customDateTimePicker1.Size = new System.Drawing.Size(139, 31);
             this.customDateTimePicker1.TabIndex = 6;
             // 
             // label1
@@ -321,7 +321,7 @@
             // 
             // SrchMain
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(14F, 29F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(11F, 24F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(25)))), ((int)(((byte)(25)))));
             this.ClientSize = new System.Drawing.Size(1050, 605);

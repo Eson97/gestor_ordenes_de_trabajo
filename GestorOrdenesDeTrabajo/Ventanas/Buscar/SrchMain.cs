@@ -107,12 +107,20 @@ namespace GestorOrdenesDeTrabajo.Ventanas.Buscar
 
         private void tablaOrdenes_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
         {
-            foreach (DataGridViewRow row in tablaOrdenes.Rows)
+            //foreach (DataGridViewRow row in tablaOrdenes.Rows)
+            //{
+            //    bool cancelada = row.Cells["Estado"].Value.ToString() == OrdenStatusManager.ToString((int)OrdenStatus.CANCELADA);
+            //    if (cancelada)
+            //        row.DefaultCellStyle.BackColor = Color.Firebrick;
+            //    else row.DefaultCellStyle.BackColor = Color.FromKnownColor(KnownColor.ControlDark);
+            //}
+
+            if(tablaOrdenes.Columns[e.ColumnIndex].Name == "Estado")
             {
-                bool cancelada = row.Cells["Estado"].Value.ToString() == OrdenStatusManager.ToString((int)OrdenStatus.CANCELADA);
-                if (cancelada)
-                    row.DefaultCellStyle.BackColor = Color.Firebrick;
-                else row.DefaultCellStyle.BackColor = Color.FromKnownColor(KnownColor.ControlDark);
+                if (tablaOrdenes.Rows[e.RowIndex].Cells["Estado"].Value.ToString() == OrdenStatusManager.ToString((int)OrdenStatus.CANCELADA))
+                    tablaOrdenes.Rows[e.RowIndex].DefaultCellStyle.BackColor = Color.Firebrick;
+                else
+                    tablaOrdenes.Rows[e.RowIndex].DefaultCellStyle.BackColor = Color.FromKnownColor(KnownColor.ControlDark);
             }
         }
 

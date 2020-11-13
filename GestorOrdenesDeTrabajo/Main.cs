@@ -253,6 +253,7 @@ namespace GestorOrdenesDeTrabajo
             //LoginDialog login = new LoginDialog();
             //login.ShowDialog();
             //this.Close();
+            Application.Restart();
         }
 
         private void DateTimeGetter_Tick(object sender, EventArgs e)
