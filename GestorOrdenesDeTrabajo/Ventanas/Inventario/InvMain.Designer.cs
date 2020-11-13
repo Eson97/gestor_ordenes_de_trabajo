@@ -28,8 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.subPanel = new System.Windows.Forms.Panel();
             this.tlpContenido = new System.Windows.Forms.TableLayoutPanel();
             this.txtBuscarCodigo = new System.Windows.Forms.TextBox();
@@ -55,7 +55,7 @@
             this.subPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.subPanel.Location = new System.Drawing.Point(8, 48);
             this.subPanel.Name = "subPanel";
-            this.subPanel.Size = new System.Drawing.Size(532, 499);
+            this.subPanel.Size = new System.Drawing.Size(531, 499);
             this.subPanel.TabIndex = 4;
             this.subPanel.ControlAdded += new System.Windows.Forms.ControlEventHandler(this.subPanel_ControlAdded);
             this.subPanel.ControlRemoved += new System.Windows.Forms.ControlEventHandler(this.subPanel_ControlRemoved);
@@ -68,7 +68,7 @@
             this.tlpContenido.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 51.86882F));
             this.tlpContenido.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 2.138266F));
             this.tlpContenido.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 45.99292F));
-            this.tlpContenido.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 6F));
+            this.tlpContenido.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 8F));
             this.tlpContenido.Controls.Add(this.txtBuscarCodigo, 3, 1);
             this.tlpContenido.Controls.Add(this.tablaInventario, 3, 2);
             this.tlpContenido.Controls.Add(this.subPanel, 1, 2);
@@ -96,9 +96,9 @@
             this.txtBuscarCodigo.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.txtBuscarCodigo.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtBuscarCodigo.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.txtBuscarCodigo.Location = new System.Drawing.Point(568, 11);
+            this.txtBuscarCodigo.Location = new System.Drawing.Point(567, 11);
             this.txtBuscarCodigo.Name = "txtBuscarCodigo";
-            this.txtBuscarCodigo.Size = new System.Drawing.Size(471, 31);
+            this.txtBuscarCodigo.Size = new System.Drawing.Size(470, 31);
             this.txtBuscarCodigo.TabIndex = 2;
             this.txtBuscarCodigo.Text = "Ingrese <Codigo> o <Pieza> a buscar...";
             this.txtBuscarCodigo.TextChanged += new System.EventHandler(this.txtBuscarCodigo_TextChanged);
@@ -114,36 +114,37 @@
             this.tablaInventario.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.DisplayedCells;
             this.tablaInventario.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(35)))), ((int)(((byte)(35)))));
             this.tablaInventario.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.ControlDark;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.ControlLight;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.tablaInventario.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.ControlDark;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.ControlLight;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.tablaInventario.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.tablaInventario.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.tablaInventario.Cursor = System.Windows.Forms.Cursors.Default;
             this.tablaInventario.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tablaInventario.EnableHeadersVisualStyles = false;
-            this.tablaInventario.Location = new System.Drawing.Point(568, 48);
+            this.tablaInventario.Location = new System.Drawing.Point(567, 48);
             this.tablaInventario.Name = "tablaInventario";
             this.tablaInventario.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
             this.tablaInventario.RowHeadersVisible = false;
             this.tablaInventario.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
-            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.ControlDark;
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.ControlLight;
-            this.tablaInventario.RowsDefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.ControlDark;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.ControlLight;
+            this.tablaInventario.RowsDefaultCellStyle = dataGridViewCellStyle2;
             this.tablaInventario.RowTemplate.Height = 35;
             this.tablaInventario.RowTemplate.ReadOnly = true;
             this.tablaInventario.RowTemplate.Resizable = System.Windows.Forms.DataGridViewTriState.False;
             this.tablaInventario.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.tablaInventario.Size = new System.Drawing.Size(471, 499);
+            this.tablaInventario.Size = new System.Drawing.Size(470, 499);
             this.tablaInventario.TabIndex = 3;
             this.tablaInventario.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.tablaInventario_CellDoubleClick_1);
+            this.tablaInventario.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.tablaInventario_CellFormatting);
             // 
             // lblActionTittle
             // 
@@ -153,7 +154,7 @@
             this.lblActionTittle.ForeColor = System.Drawing.SystemColors.ControlDark;
             this.lblActionTittle.Location = new System.Drawing.Point(8, 20);
             this.lblActionTittle.Name = "lblActionTittle";
-            this.lblActionTittle.Size = new System.Drawing.Size(532, 25);
+            this.lblActionTittle.Size = new System.Drawing.Size(531, 25);
             this.lblActionTittle.TabIndex = 0;
             this.lblActionTittle.Text = "Tittle";
             this.lblActionTittle.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
@@ -165,14 +166,14 @@
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel1.Location = new System.Drawing.Point(8, 3);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(532, 1);
+            this.panel1.Size = new System.Drawing.Size(531, 1);
             this.panel1.TabIndex = 5;
             // 
             // panel2
             // 
             this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(55)))), ((int)(((byte)(55)))));
             this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel2.Location = new System.Drawing.Point(546, 3);
+            this.panel2.Location = new System.Drawing.Point(545, 3);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(16, 1);
             this.panel2.TabIndex = 6;
@@ -181,9 +182,9 @@
             // 
             this.panel3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(55)))), ((int)(((byte)(55)))));
             this.panel3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel3.Location = new System.Drawing.Point(568, 3);
+            this.panel3.Location = new System.Drawing.Point(567, 3);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(471, 1);
+            this.panel3.Size = new System.Drawing.Size(470, 1);
             this.panel3.TabIndex = 7;
             // 
             // btnImportar

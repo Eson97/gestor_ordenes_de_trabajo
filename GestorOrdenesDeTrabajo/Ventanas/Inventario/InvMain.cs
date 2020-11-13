@@ -28,6 +28,7 @@ namespace GestorOrdenesDeTrabajo.OrdenWindow.Inventario
             datatable.Columns[1].ReadOnly = true;
             datatable.Columns[2].ReadOnly = true;
             datatable.Columns[3].ReadOnly = true;
+            datatable.Columns[3].DataType = typeof(decimal);
             Actualizar();
         }
 
@@ -196,6 +197,12 @@ namespace GestorOrdenesDeTrabajo.OrdenWindow.Inventario
 
                 openSubPanel(new invNuevo_Mod(toEdit), "Modificar Refaccion");
             }
+        }
+
+        private void tablaInventario_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
+        {
+            if (tablaInventario.Columns[e.ColumnIndex].Name == "Precio Minimo")
+                tablaInventario.Columns[e.ColumnIndex].DefaultCellStyle.Format = "C2"; //asigna formato moneda con 2 decimales
         }
     }
 }
