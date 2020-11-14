@@ -23,8 +23,9 @@ namespace GestorOrdenesDeTrabajo.Ventanas.Usuarios
         //TODO refresh Users after operation
         async void fillUsers()
         {
-            userContainerPanel.Controls.Clear();
             var usuarios = await Task.Run(() => UsuarioController.I.GetLista().Select(el => new UserCard(el)));
+            while (userContainerPanel.Controls.Count > 0) userContainerPanel.Controls[0].Dispose();
+
             foreach (UserCard userCard in usuarios)
             {
                 userCard.lblID.Click += (s, e) => { currentUser = userCard.User; openSubPanel(new UsuariosNuevo_Mod(currentUser)); };
