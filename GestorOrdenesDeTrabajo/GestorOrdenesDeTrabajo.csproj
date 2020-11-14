@@ -80,6 +80,12 @@
     <Compile Include="CustomComponents\PiezaItemList.Designer.cs">
       <DependentUpon>PiezaItemList.cs</DependentUpon>
     </Compile>
+    <Compile Include="CustomComponents\PiezaOrderItemList.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="CustomComponents\PiezaOrderItemList.Designer.cs">
+      <DependentUpon>PiezaOrderItemList.cs</DependentUpon>
+    </Compile>
     <Compile Include="CustomComponents\UserCard.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -131,6 +137,18 @@
     </Compile>
     <Compile Include="Ventanas\Inventario\invNuevo_Mod.Designer.cs">
       <DependentUpon>invNuevo_Mod.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Ventanas\Ordenes\OrdenesEnProceso.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Ventanas\Ordenes\OrdenesEnProceso.Designer.cs">
+      <DependentUpon>OrdenesEnProceso.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Ventanas\Ordenes\OrdenesEnProceso_AddRem.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Ventanas\Ordenes\OrdenesEnProceso_AddRem.Designer.cs">
+      <DependentUpon>OrdenesEnProceso_AddRem.cs</DependentUpon>
     </Compile>
     <Compile Include="Ventanas\Ventanas_Emergentes\LoginDialog.cs">
       <SubType>Form</SubType>
@@ -198,6 +216,9 @@
     <EmbeddedResource Include="CustomComponents\PiezaItemList.resx">
       <DependentUpon>PiezaItemList.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="CustomComponents\PiezaOrderItemList.resx">
+      <DependentUpon>PiezaOrderItemList.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="CustomComponents\UserCard.resx">
       <DependentUpon>UserCard.cs</DependentUpon>
     </EmbeddedResource>
@@ -230,6 +251,12 @@
     </Compile>
     <EmbeddedResource Include="Ventanas\Inventario\invNuevo_Mod.resx">
       <DependentUpon>invNuevo_Mod.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Ventanas\Ordenes\OrdenesEnProceso.resx">
+      <DependentUpon>OrdenesEnProceso.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Ventanas\Ordenes\OrdenesEnProceso_AddRem.resx">
+      <DependentUpon>OrdenesEnProceso_AddRem.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Ventanas\Ventanas_Emergentes\LoginDialog.resx">
       <DependentUpon>LoginDialog.cs</DependentUpon>

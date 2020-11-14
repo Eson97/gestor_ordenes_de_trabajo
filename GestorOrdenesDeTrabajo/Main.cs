@@ -212,7 +212,7 @@ namespace GestorOrdenesDeTrabajo
         private void btnEnProceso_Click(object sender, EventArgs e)
         {
             collapseSidePanel(true);
-            openPanel(this, "Ordenes en Proceso", sender);
+            openPanel(new OrdenesEnProceso(), "Ordenes en Proceso", sender);
         }
 
         private void btnPorEntregar_Click(object sender, EventArgs e)

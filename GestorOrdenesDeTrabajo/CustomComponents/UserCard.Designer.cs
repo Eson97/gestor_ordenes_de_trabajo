@@ -51,7 +51,7 @@
             this.pbImg.Image = ((System.Drawing.Image)(resources.GetObject("pbImg.Image")));
             this.pbImg.Location = new System.Drawing.Point(0, 0);
             this.pbImg.Name = "pbImg";
-            this.pbImg.Size = new System.Drawing.Size(43, 59);
+            this.pbImg.Size = new System.Drawing.Size(49, 59);
             this.pbImg.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
             this.pbImg.TabIndex = 2;
             this.pbImg.TabStop = false;
@@ -65,9 +65,9 @@
             this.lblID.Dock = System.Windows.Forms.DockStyle.Top;
             this.lblID.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblID.ForeColor = System.Drawing.SystemColors.ControlDark;
-            this.lblID.Location = new System.Drawing.Point(43, 0);
+            this.lblID.Location = new System.Drawing.Point(49, 0);
             this.lblID.Name = "lblID";
-            this.lblID.Size = new System.Drawing.Size(102, 19);
+            this.lblID.Size = new System.Drawing.Size(96, 19);
             this.lblID.TabIndex = 6;
             this.lblID.Text = "ID: 00000";
             this.lblID.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -81,9 +81,9 @@
             this.lblUsuario.Dock = System.Windows.Forms.DockStyle.Fill;
             this.lblUsuario.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblUsuario.ForeColor = System.Drawing.SystemColors.ControlDark;
-            this.lblUsuario.Location = new System.Drawing.Point(43, 19);
+            this.lblUsuario.Location = new System.Drawing.Point(49, 19);
             this.lblUsuario.Name = "lblUsuario";
-            this.lblUsuario.Size = new System.Drawing.Size(102, 40);
+            this.lblUsuario.Size = new System.Drawing.Size(96, 40);
             this.lblUsuario.TabIndex = 7;
             this.lblUsuario.Text = "Usuario";
             this.lblUsuario.MouseDown += new System.Windows.Forms.MouseEventHandler(this.UserCard_MouseDown);

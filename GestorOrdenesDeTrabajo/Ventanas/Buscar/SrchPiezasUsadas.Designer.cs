@@ -34,9 +34,9 @@
             this.label1 = new System.Windows.Forms.Label();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.ipTotal = new GestorOrdenesDeTrabajo.CustomComponents.infoPanel();
             this.gbRefacciones = new System.Windows.Forms.GroupBox();
             this.flpListPanel = new System.Windows.Forms.FlowLayoutPanel();
-            this.infoPanel1 = new GestorOrdenesDeTrabajo.CustomComponents.infoPanel();
             this.piezaItemList1 = new GestorOrdenesDeTrabajo.CustomComponents.PiezaItemList();
             this.piezaItemList2 = new GestorOrdenesDeTrabajo.CustomComponents.PiezaItemList();
             this.piezaItemList3 = new GestorOrdenesDeTrabajo.CustomComponents.PiezaItemList();
@@ -118,13 +118,24 @@
             // 
             // panel2
             // 
-            this.panel2.Controls.Add(this.infoPanel1);
+            this.panel2.Controls.Add(this.ipTotal);
             this.panel2.Controls.Add(this.gbRefacciones);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel2.Location = new System.Drawing.Point(23, 23);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(739, 533);
             this.panel2.TabIndex = 0;
+            // 
+            // ipTotal
+            // 
+            this.ipTotal.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.ipTotal.Location = new System.Drawing.Point(30, 425);
+            this.ipTotal.Margin = new System.Windows.Forms.Padding(4);
+            this.ipTotal.MaximumSize = new System.Drawing.Size(169, 64);
+            this.ipTotal.MinimumSize = new System.Drawing.Size(169, 64);
+            this.ipTotal.Name = "ipTotal";
+            this.ipTotal.Size = new System.Drawing.Size(169, 64);
+            this.ipTotal.TabIndex = 1;
             // 
             // gbRefacciones
             // 
@@ -152,15 +163,6 @@
             this.flpListPanel.Name = "flpListPanel";
             this.flpListPanel.Size = new System.Drawing.Size(733, 360);
             this.flpListPanel.TabIndex = 0;
-            // 
-            // infoPanel1
-            // 
-            this.infoPanel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.infoPanel1.Location = new System.Drawing.Point(30, 425);
-            this.infoPanel1.Margin = new System.Windows.Forms.Padding(4);
-            this.infoPanel1.Name = "infoPanel1";
-            this.infoPanel1.Size = new System.Drawing.Size(203, 60);
-            this.infoPanel1.TabIndex = 1;
             // 
             // piezaItemList1
             // 
@@ -242,6 +244,6 @@
         private CustomComponents.PiezaItemList piezaItemList3;
         private CustomComponents.PiezaItemList piezaItemList4;
         private CustomComponents.PiezaItemList piezaItemList5;
-        private CustomComponents.infoPanel infoPanel1;
+        private CustomComponents.infoPanel ipTotal;
     }
 }

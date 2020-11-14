@@ -50,7 +50,7 @@
             this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
             this.pictureBox1.Location = new System.Drawing.Point(0, 0);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(46, 53);
+            this.pictureBox1.Size = new System.Drawing.Size(52, 53);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
             this.pictureBox1.TabIndex = 2;
             this.pictureBox1.TabStop = false;
@@ -61,10 +61,10 @@
             this.lblDesc.Dock = System.Windows.Forms.DockStyle.Fill;
             this.lblDesc.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblDesc.ForeColor = System.Drawing.SystemColors.ControlDark;
-            this.lblDesc.Location = new System.Drawing.Point(46, 0);
+            this.lblDesc.Location = new System.Drawing.Point(52, 0);
             this.lblDesc.MaximumSize = new System.Drawing.Size(138, 53);
             this.lblDesc.Name = "lblDesc";
-            this.lblDesc.Size = new System.Drawing.Size(122, 53);
+            this.lblDesc.Size = new System.Drawing.Size(116, 53);
             this.lblDesc.TabIndex = 4;
             this.lblDesc.Text = "Descripcion";
             this.lblDesc.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
