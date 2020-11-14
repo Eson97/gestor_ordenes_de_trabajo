@@ -30,6 +30,7 @@ namespace GestorOrdenesDeTrabajo
         {
             currentUser = usuario;
             InitializeComponent();
+            lblUser.Text = (usuario == null) ? "Sin usuario" : usuario.Usuario1;
             containerPanel.DoubleBuffered(true);
             sidePanel.DoubleBuffered(true);
             titlePanel.DoubleBuffered(true);

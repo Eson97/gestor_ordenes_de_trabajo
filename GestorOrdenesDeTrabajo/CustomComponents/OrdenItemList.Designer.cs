@@ -69,7 +69,7 @@
             // 
             this.panel3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(35)))), ((int)(((byte)(35)))));
             this.panel3.Dock = System.Windows.Forms.DockStyle.Right;
-            this.panel3.Location = new System.Drawing.Point(474, 0);
+            this.panel3.Location = new System.Drawing.Point(496, 0);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(3, 77);
             this.panel3.TabIndex = 9;
@@ -105,18 +105,17 @@
             this.panel5.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel5.Location = new System.Drawing.Point(62, 0);
             this.panel5.Name = "panel5";
-            this.panel5.Size = new System.Drawing.Size(412, 77);
+            this.panel5.Size = new System.Drawing.Size(434, 77);
             this.panel5.TabIndex = 11;
             this.panel5.Paint += new System.Windows.Forms.PaintEventHandler(this.panel5_Paint);
             // 
             // lblCliente
             // 
-            this.lblCliente.AutoSize = true;
             this.lblCliente.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblCliente.ForeColor = System.Drawing.SystemColors.ControlDark;
             this.lblCliente.Location = new System.Drawing.Point(74, 52);
             this.lblCliente.Name = "lblCliente";
-            this.lblCliente.Size = new System.Drawing.Size(218, 20);
+            this.lblCliente.Size = new System.Drawing.Size(354, 20);
             this.lblCliente.TabIndex = 11;
             this.lblCliente.Text = "XXXXXXXXXXXXXXXXXXX";
             // 
@@ -133,12 +132,11 @@
             // 
             // lblEquipo
             // 
-            this.lblEquipo.AutoSize = true;
             this.lblEquipo.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblEquipo.ForeColor = System.Drawing.SystemColors.ControlDark;
             this.lblEquipo.Location = new System.Drawing.Point(75, 28);
             this.lblEquipo.Name = "lblEquipo";
-            this.lblEquipo.Size = new System.Drawing.Size(185, 20);
+            this.lblEquipo.Size = new System.Drawing.Size(353, 20);
             this.lblEquipo.TabIndex = 9;
             this.lblEquipo.Text = "XXXXXXXXXXXXXXXX";
             // 
@@ -185,9 +183,9 @@
             this.btnAction.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnAction.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnAction.ForeColor = System.Drawing.SystemColors.ControlDark;
-            this.btnAction.Location = new System.Drawing.Point(477, 0);
+            this.btnAction.Location = new System.Drawing.Point(499, 0);
             this.btnAction.Name = "btnAction";
-            this.btnAction.Size = new System.Drawing.Size(100, 77);
+            this.btnAction.Size = new System.Drawing.Size(78, 77);
             this.btnAction.TabIndex = 8;
             this.btnAction.Text = "➤";
             this.btnAction.UseVisualStyleBackColor = false;

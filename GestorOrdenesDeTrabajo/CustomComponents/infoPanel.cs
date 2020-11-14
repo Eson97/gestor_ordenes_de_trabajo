@@ -12,27 +12,29 @@ namespace GestorOrdenesDeTrabajo.CustomComponents
 {
     public partial class infoPanel : UserControl
     {
-        string tittle, info;
+        string tittle;
+        decimal info;
 
         public infoPanel()
         {
             InitializeComponent();
         }
 
-        public infoPanel(string tittle, string info)
+        public infoPanel(string tittle, decimal info)
         {
             InitializeComponent();
-            this.Tittle = tittle;
-            this.Info = info;
-            updateData();
+            updateData(tittle,info);
         }
 
-        public string Tittle { get => tittle; set => tittle = value; }
-        public string Info { get => info; set => info = value; }
+        public string Titulo { get => tittle; private set => tittle = value; }
+        public decimal Info { get => info; private set => info = value; }
 
-        void updateData()
+        internal void updateData(string titulo,decimal info)
         {
-            lblInfo.Text = info;
+            Titulo = titulo;
+            Info = info;
+
+            lblInfo.Text = info.ToString("C2");
             lblTittle.Text = tittle;
         }
 

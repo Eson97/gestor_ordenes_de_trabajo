@@ -29,6 +29,7 @@ namespace GestorOrdenesDeTrabajo.Ventanas.Buscar
                 this.flpListPanel.Controls.Add(item);
             }
             //TODO agregar total a infopanel1
+            this.infoPanel1.updateData("Total", Total);
         }
 
         private void btnClose_Click(object sender, System.EventArgs e)

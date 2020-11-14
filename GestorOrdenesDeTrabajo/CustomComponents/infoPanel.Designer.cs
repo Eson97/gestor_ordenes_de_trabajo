@@ -29,78 +29,58 @@
         private void InitializeComponent()
         {
             this.panel1 = new System.Windows.Forms.Panel();
-            this.panel2 = new System.Windows.Forms.Panel();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
-            this.pbImagen = new System.Windows.Forms.PictureBox();
-            this.panel3 = new System.Windows.Forms.Panel();
+            this.panel2 = new System.Windows.Forms.Panel();
             this.lblInfo = new System.Windows.Forms.Label();
             this.lblTittle = new System.Windows.Forms.Label();
             this.tableLayoutPanel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pbImagen)).BeginInit();
-            this.panel3.SuspendLayout();
+            this.panel2.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(55)))), ((int)(((byte)(55)))));
             this.panel1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel1.Location = new System.Drawing.Point(0, 102);
+            this.panel1.Location = new System.Drawing.Point(0, 61);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(190, 3);
+            this.panel1.Size = new System.Drawing.Size(169, 3);
             this.panel1.TabIndex = 0;
-            // 
-            // panel2
-            // 
-            this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(55)))), ((int)(((byte)(55)))));
-            this.panel2.Dock = System.Windows.Forms.DockStyle.Right;
-            this.panel2.Location = new System.Drawing.Point(187, 0);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(3, 102);
-            this.panel2.TabIndex = 1;
             // 
             // tableLayoutPanel1
             // 
-            this.tableLayoutPanel1.ColumnCount = 2;
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 60F));
+            this.tableLayoutPanel1.ColumnCount = 3;
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 3F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel1.Controls.Add(this.pbImagen, 0, 0);
-            this.tableLayoutPanel1.Controls.Add(this.panel3, 1, 0);
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 3F));
+            this.tableLayoutPanel1.Controls.Add(this.panel2, 1, 1);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
-            this.tableLayoutPanel1.RowCount = 1;
+            this.tableLayoutPanel1.RowCount = 2;
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 3F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(187, 102);
-            this.tableLayoutPanel1.TabIndex = 2;
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(169, 61);
+            this.tableLayoutPanel1.TabIndex = 1;
             // 
-            // pbImagen
+            // panel2
             // 
-            this.pbImagen.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pbImagen.Location = new System.Drawing.Point(3, 3);
-            this.pbImagen.Name = "pbImagen";
-            this.pbImagen.Size = new System.Drawing.Size(54, 96);
-            this.pbImagen.TabIndex = 0;
-            this.pbImagen.TabStop = false;
-            // 
-            // panel3
-            // 
-            this.panel3.Controls.Add(this.lblInfo);
-            this.panel3.Controls.Add(this.lblTittle);
-            this.panel3.Location = new System.Drawing.Point(63, 3);
-            this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(121, 96);
-            this.panel3.TabIndex = 1;
+            this.panel2.Controls.Add(this.lblInfo);
+            this.panel2.Controls.Add(this.lblTittle);
+            this.panel2.Location = new System.Drawing.Point(6, 6);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(157, 52);
+            this.panel2.TabIndex = 0;
             // 
             // lblInfo
             // 
             this.lblInfo.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.lblInfo.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblInfo.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblInfo.ForeColor = System.Drawing.SystemColors.ControlDark;
             this.lblInfo.Location = new System.Drawing.Point(0, 20);
             this.lblInfo.Name = "lblInfo";
-            this.lblInfo.Size = new System.Drawing.Size(121, 76);
-            this.lblInfo.TabIndex = 1;
+            this.lblInfo.Size = new System.Drawing.Size(157, 32);
+            this.lblInfo.TabIndex = 6;
             this.lblInfo.Text = "$00000.00";
             this.lblInfo.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
@@ -109,11 +89,11 @@
             this.lblTittle.AutoSize = true;
             this.lblTittle.Dock = System.Windows.Forms.DockStyle.Top;
             this.lblTittle.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTittle.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.lblTittle.ForeColor = System.Drawing.SystemColors.ControlDark;
             this.lblTittle.Location = new System.Drawing.Point(0, 0);
             this.lblTittle.Name = "lblTittle";
             this.lblTittle.Size = new System.Drawing.Size(53, 20);
-            this.lblTittle.TabIndex = 0;
+            this.lblTittle.TabIndex = 5;
             this.lblTittle.Text = "Titulo";
             // 
             // infoPanel
@@ -122,14 +102,14 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
             this.Controls.Add(this.tableLayoutPanel1);
-            this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
+            this.MaximumSize = new System.Drawing.Size(169, 64);
+            this.MinimumSize = new System.Drawing.Size(169, 64);
             this.Name = "infoPanel";
-            this.Size = new System.Drawing.Size(190, 105);
+            this.Size = new System.Drawing.Size(169, 64);
             this.tableLayoutPanel1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.pbImagen)).EndInit();
-            this.panel3.ResumeLayout(false);
-            this.panel3.PerformLayout();
+            this.panel2.ResumeLayout(false);
+            this.panel2.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -137,11 +117,9 @@
         #endregion
 
         private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
-        private System.Windows.Forms.Panel panel3;
+        private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Label lblInfo;
         private System.Windows.Forms.Label lblTittle;
-        public System.Windows.Forms.PictureBox pbImagen;
     }
 }
