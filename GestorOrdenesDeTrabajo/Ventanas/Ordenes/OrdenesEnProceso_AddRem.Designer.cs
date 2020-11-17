@@ -28,18 +28,21 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(OrdenesEnProceso_AddRem));
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.btnClosePanel = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
+            this.tablaRefacciones = new System.Windows.Forms.DataGridView();
             this.buttonPanel = new System.Windows.Forms.Panel();
+            this.btnSave = new System.Windows.Forms.Button();
+            this.btnEdit = new System.Windows.Forms.Button();
             this.btnComp = new System.Windows.Forms.Button();
             this.btnCancel = new System.Windows.Forms.Button();
-            this.btnSave = new System.Windows.Forms.Button();
             this.btnRem = new System.Windows.Forms.Button();
             this.btnAdd = new System.Windows.Forms.Button();
-            this.flpItemList = new System.Windows.Forms.FlowLayoutPanel();
             this.panel3 = new System.Windows.Forms.Panel();
             this.lblEquipo = new System.Windows.Forms.Label();
             this.lblCliente = new System.Windows.Forms.Label();
@@ -51,6 +54,7 @@
             this.tableLayoutPanel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.tablaRefacciones)).BeginInit();
             this.buttonPanel.SuspendLayout();
             this.panel3.SuspendLayout();
             this.SuspendLayout();
@@ -112,22 +116,63 @@
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableLayoutPanel2.Controls.Add(this.tablaRefacciones, 0, 1);
             this.tableLayoutPanel2.Controls.Add(this.buttonPanel, 1, 1);
-            this.tableLayoutPanel2.Controls.Add(this.flpItemList, 0, 1);
             this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel2.Location = new System.Drawing.Point(0, 137);
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
             this.tableLayoutPanel2.RowCount = 2;
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 5F));
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanel2.Size = new System.Drawing.Size(352, 356);
             this.tableLayoutPanel2.TabIndex = 1;
             // 
+            // tablaRefacciones
+            // 
+            this.tablaRefacciones.AllowUserToAddRows = false;
+            this.tablaRefacciones.AllowUserToDeleteRows = false;
+            this.tablaRefacciones.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.tablaRefacciones.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.DisplayedCells;
+            this.tablaRefacciones.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(35)))), ((int)(((byte)(35)))));
+            this.tablaRefacciones.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.ControlDark;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.ControlLight;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.tablaRefacciones.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            this.tablaRefacciones.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.tablaRefacciones.Cursor = System.Windows.Forms.Cursors.Default;
+            this.tablaRefacciones.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tablaRefacciones.EnableHeadersVisualStyles = false;
+            this.tablaRefacciones.Location = new System.Drawing.Point(3, 8);
+            this.tablaRefacciones.Name = "tablaRefacciones";
+            this.tablaRefacciones.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
+            this.tablaRefacciones.RowHeadersVisible = false;
+            this.tablaRefacciones.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.ControlDark;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.ControlLight;
+            this.tablaRefacciones.RowsDefaultCellStyle = dataGridViewCellStyle2;
+            this.tablaRefacciones.RowTemplate.Height = 35;
+            this.tablaRefacciones.RowTemplate.ReadOnly = true;
+            this.tablaRefacciones.RowTemplate.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.tablaRefacciones.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.tablaRefacciones.Size = new System.Drawing.Size(296, 345);
+            this.tablaRefacciones.TabIndex = 4;
+            this.tablaRefacciones.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.tablaRefacciones_CellValueChanged);
+            // 
             // buttonPanel
             // 
+            this.buttonPanel.Controls.Add(this.btnSave);
+            this.buttonPanel.Controls.Add(this.btnEdit);
             this.buttonPanel.Controls.Add(this.btnComp);
             this.buttonPanel.Controls.Add(this.btnCancel);
-            this.buttonPanel.Controls.Add(this.btnSave);
             this.buttonPanel.Controls.Add(this.btnRem);
             this.buttonPanel.Controls.Add(this.btnAdd);
             this.buttonPanel.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -135,6 +180,40 @@
             this.buttonPanel.Name = "buttonPanel";
             this.buttonPanel.Size = new System.Drawing.Size(44, 345);
             this.buttonPanel.TabIndex = 0;
+            // 
+            // btnSave
+            // 
+            this.btnSave.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.btnSave.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnSave.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(25)))), ((int)(((byte)(25)))));
+            this.btnSave.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(35)))), ((int)(((byte)(35)))));
+            this.btnSave.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(55)))), ((int)(((byte)(55)))));
+            this.btnSave.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnSave.ForeColor = System.Drawing.SystemColors.ControlDark;
+            this.btnSave.Image = ((System.Drawing.Image)(resources.GetObject("btnSave.Image")));
+            this.btnSave.Location = new System.Drawing.Point(0, 132);
+            this.btnSave.Name = "btnSave";
+            this.btnSave.Size = new System.Drawing.Size(44, 44);
+            this.btnSave.TabIndex = 6;
+            this.btnSave.UseVisualStyleBackColor = false;
+            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
+            // 
+            // btnEdit
+            // 
+            this.btnEdit.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.btnEdit.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnEdit.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(25)))), ((int)(((byte)(25)))));
+            this.btnEdit.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(35)))), ((int)(((byte)(35)))));
+            this.btnEdit.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(55)))), ((int)(((byte)(55)))));
+            this.btnEdit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnEdit.ForeColor = System.Drawing.SystemColors.ControlDark;
+            this.btnEdit.Image = ((System.Drawing.Image)(resources.GetObject("btnEdit.Image")));
+            this.btnEdit.Location = new System.Drawing.Point(0, 88);
+            this.btnEdit.Name = "btnEdit";
+            this.btnEdit.Size = new System.Drawing.Size(44, 44);
+            this.btnEdit.TabIndex = 5;
+            this.btnEdit.UseVisualStyleBackColor = false;
+            this.btnEdit.Click += new System.EventHandler(this.btnEdit_Click);
             // 
             // btnComp
             // 
@@ -169,23 +248,6 @@
             this.btnCancel.TabIndex = 3;
             this.btnCancel.UseVisualStyleBackColor = false;
             this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
-            // 
-            // btnSave
-            // 
-            this.btnSave.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.btnSave.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btnSave.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(25)))), ((int)(((byte)(25)))));
-            this.btnSave.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(35)))), ((int)(((byte)(35)))));
-            this.btnSave.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(55)))), ((int)(((byte)(55)))));
-            this.btnSave.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnSave.ForeColor = System.Drawing.SystemColors.ControlDark;
-            this.btnSave.Image = ((System.Drawing.Image)(resources.GetObject("btnSave.Image")));
-            this.btnSave.Location = new System.Drawing.Point(0, 88);
-            this.btnSave.Name = "btnSave";
-            this.btnSave.Size = new System.Drawing.Size(44, 44);
-            this.btnSave.TabIndex = 2;
-            this.btnSave.UseVisualStyleBackColor = false;
-            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
             // btnRem
             // 
@@ -222,16 +284,6 @@
             this.btnAdd.Text = "+";
             this.btnAdd.UseVisualStyleBackColor = false;
             this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
-            // 
-            // flpItemList
-            // 
-            this.flpItemList.AutoScroll = true;
-            this.flpItemList.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.flpItemList.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.flpItemList.Location = new System.Drawing.Point(3, 8);
-            this.flpItemList.Name = "flpItemList";
-            this.flpItemList.Size = new System.Drawing.Size(296, 345);
-            this.flpItemList.TabIndex = 1;
             // 
             // panel3
             // 
@@ -337,6 +389,7 @@
             this.tableLayoutPanel1.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
             this.tableLayoutPanel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.tablaRefacciones)).EndInit();
             this.buttonPanel.ResumeLayout(false);
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();
@@ -353,10 +406,8 @@
         private System.Windows.Forms.Panel buttonPanel;
         private System.Windows.Forms.Button btnComp;
         private System.Windows.Forms.Button btnCancel;
-        private System.Windows.Forms.Button btnSave;
         private System.Windows.Forms.Button btnRem;
         private System.Windows.Forms.Button btnAdd;
-        private System.Windows.Forms.FlowLayoutPanel flpItemList;
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.Label lblEquipo;
         private System.Windows.Forms.Label lblCliente;
@@ -365,5 +416,8 @@
         private System.Windows.Forms.Label lblFolio;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.DataGridView tablaRefacciones;
+        private System.Windows.Forms.Button btnSave;
+        private System.Windows.Forms.Button btnEdit;
     }
 }

@@ -50,9 +50,9 @@ namespace GestorOrdenesDeTrabajo.Ventanas.Usuarios
 
         private void btnAcept_Click(object sender, EventArgs e)
         {
-            bool isValid = Helper.Llenos(txtUsuario, txtPassword) && txtPassword.TextLength > 8;
+            bool isValid = Helper.Llenos(txtUsuario, txtPassword) && txtPassword.TextLength >= 8;
             if (!isValid)
-            { MessageBox.Show("Introduzca un usuario y una contraseña", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning); return; }
+            { MessageBox.Show("Introduzca un usuario y una contraseña validos", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning); return; }
 
             if (currentUser == null)
             {

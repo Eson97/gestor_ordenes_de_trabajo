@@ -16,7 +16,9 @@ namespace GestorOrdenesDeTrabajo.Ventanas.Ordenes
     public partial class OrdenesEnProceso_AddRem : Form
     {
         Orden orden;
-        bool CambiosGuardados;
+        DataTable datatable;
+        bool CambiosGuardados = true;
+
         public OrdenesEnProceso_AddRem(Orden o)
         {
             InitializeComponent();
@@ -25,28 +27,50 @@ namespace GestorOrdenesDeTrabajo.Ventanas.Ordenes
             //this.lblEquipo.Text = orden.Equipo;
             //this.lblFolio.Text = orden.Folio.ToString();
 
+
+            datatable = new DataTable();
+            datatable.Columns.Add("Codigo");
+            datatable.Columns.Add("Cant");
+            datatable.Columns[0].ReadOnly = true;
+            datatable.Columns[1].ReadOnly = false;
+
             getPiecesInWorkOrder();
         }
 
         void getPiecesInWorkOrder()
         {
-            //TODO obtener piezas ya cargadas en la orden de trabajo y cargarlas en el flowlayoutpanel
+            while (tablaRefacciones.RowCount != 0)
+                tablaRefacciones.Rows.RemoveAt(0);
+
+            //Obtener piezas ya cargadas
+
+            tablaRefacciones.DataSource = datatable;
+            tablaRefacciones.Columns[0].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            tablaRefacciones.Columns[1].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+            tablaRefacciones.Columns[0].Resizable = DataGridViewTriState.True;
+            tablaRefacciones.Columns[1].Resizable = DataGridViewTriState.True;
+            tablaRefacciones.Columns[1].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
 
         }
 
         void UpdatePiecesInWorkOrder()
         {
             //TODO Actualizar piezas en la orden de trabajp
+            foreach (DataGridViewRow row in tablaRefacciones.Rows)
+            {
+                //update in db
+            }
+
+            CambiosGuardados = true;
         }
 
         private void btnClosePanel_Click(object sender, EventArgs e)
         {
             if(!CambiosGuardados)// si no se han guardado cambios: se pide confirmacion antes de cerrar
             {
-                if (CambiosGuardados && MessageDialog.ShowMessageDialog("Confirmacion", "¿Desea guardar cambios antes de cerrar?", false) == (int)MessageDialogResult.No) 
-                    this.Dispose();
+                if (MessageDialog.ShowMessageDialog("Confirmacion", "¿Desea guardar cambios antes de cerrar?", false) == (int)MessageDialogResult.Yes)
+                    UpdatePiecesInWorkOrder();
 
-                UpdatePiecesInWorkOrder();
                 this.Dispose();
             }
 
@@ -65,21 +89,15 @@ namespace GestorOrdenesDeTrabajo.Ventanas.Ordenes
         private void btnAdd_Click(object sender, EventArgs e)
         {
             //TODO agregar codigo para agregar una nueva pieza
+
+            if (CambiosGuardados)
+                CambiosGuardados = false;
         }
 
         private void btnRem_Click(object sender, EventArgs e)
         {
             //TODO agregar codigo para quitar una pieza (o que se quiten directamente desde el control?)
-        }
 
-        private void flpItemList_ControlAdded(object sender, ControlEventArgs e)
-        {
-            if(CambiosGuardados)
-                CambiosGuardados = false;
-        }
-
-        private void flpItemList_ControlRemoved(object sender, ControlEventArgs e)
-        {
             if (CambiosGuardados)
                 CambiosGuardados = false;
         }
@@ -92,6 +110,22 @@ namespace GestorOrdenesDeTrabajo.Ventanas.Ordenes
         private void btnCancel_Click(object sender, EventArgs e)
         {
             //TODO pasar la orden al estado de Cancelado
+        }
+
+        private void btnEdit_Click(object sender, EventArgs e)
+        {
+            //Agregar codigo para cambiar cantidades
+
+            //REMOVER BOTON?
+
+            if (CambiosGuardados)
+                CambiosGuardados = false;
+        }
+
+        private void tablaRefacciones_CellValueChanged(object sender, DataGridViewCellEventArgs e)
+        {
+            if (CambiosGuardados)
+                CambiosGuardados = false;
         }
     }
 }
