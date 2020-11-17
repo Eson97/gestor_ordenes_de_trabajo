@@ -80,12 +80,6 @@
     <Compile Include="CustomComponents\PiezaItemList.Designer.cs">
       <DependentUpon>PiezaItemList.cs</DependentUpon>
     </Compile>
-    <Compile Include="CustomComponents\PiezaOrderItemList.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="CustomComponents\PiezaOrderItemList.Designer.cs">
-      <DependentUpon>PiezaOrderItemList.cs</DependentUpon>
-    </Compile>
     <Compile Include="CustomComponents\UserCard.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -215,9 +209,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="CustomComponents\PiezaItemList.resx">
       <DependentUpon>PiezaItemList.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="CustomComponents\PiezaOrderItemList.resx">
-      <DependentUpon>PiezaOrderItemList.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="CustomComponents\UserCard.resx">
       <DependentUpon>UserCard.cs</DependentUpon>
