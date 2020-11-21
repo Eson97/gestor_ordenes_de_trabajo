@@ -331,6 +331,9 @@
   <ItemGroup>
     <Folder Include="Ventanas\Estadisticas\" />
   </ItemGroup>
+  <ItemGroup>
+    <Content Include="UpdateDB.txt" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>

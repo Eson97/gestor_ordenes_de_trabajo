@@ -1,0 +1,11 @@
+﻿Para actualizar campos eliminar carpeta migrations
+En consola del administrador de paquetes ejecutar:
+
+Add-Migration
+
+Para actualizar base de datos ejecutar:
+
+Update-Database
+
+Para mas informacion:
+https://www.entityframeworktutorial.net/code-first/code-based-migration-in-code-first.aspx
