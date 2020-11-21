@@ -25,7 +25,7 @@ namespace GestorOrdenesDeTrabajo
         bool isSidePanelContracted;
         bool isDynamicPanelContracted;
         private Usuario currentUser;
-        List<Permiso> permisos;
+        IList<Permiso> permisos;
         public Main(Usuario usuario)
         {
             currentUser = usuario;
@@ -65,7 +65,7 @@ namespace GestorOrdenesDeTrabajo
             }
         }
 
-        private void Permission(List<Permiso> permisos)
+        private void Permission(IList<Permiso> permisos)
         {
             Button[] buttons = { btnBuscar, btnEnEspera, btnEnGarantia, btnEnProceso, btnInventario, btnNueva, btnPorEntregar, btnStats, btnUsuarios, btnOrdenes };
 

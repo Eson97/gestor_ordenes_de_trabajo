@@ -97,15 +97,15 @@ namespace BussinessLayer.UsesCases
             return null;
         }
 
-        public List<Usuario> GetLista()
+        public IList<Usuario> GetLista()
         {
-            List<Usuario> lista = null;
+            IList<Usuario> lista = null;
             try
             {
                 using (Entities db = new Entities())
                 {
-                    //TODO revisar campo
-                    lista = db.Usuario.Include(el => el.UsuarioPermiso).OrderBy(cp => cp.Usuario1).ToList();
+                    db.Configuration.LazyLoadingEnabled = false;
+                    lista = db.Usuario.ToList();
                 }
                 return lista;
             }

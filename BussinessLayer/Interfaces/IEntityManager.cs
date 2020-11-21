@@ -7,6 +7,6 @@ namespace BussinessLayer.Interfaces
         T Add(T element);
         T Edit(T element);
         bool Delete(int id);
-        List<T> GetLista();
+        IList<T> GetLista();
     }
 }

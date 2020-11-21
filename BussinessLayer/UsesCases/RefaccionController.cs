@@ -111,7 +111,7 @@ namespace BussinessLayer.UsesCases
         /// Consulta lista
         /// </summary>
         /// <returns>Retorna lista sin eliminados o lista vacia</returns>
-        public List<Refaccion> GetLista()
+        public IList<Refaccion> GetLista()
         {
             List<Refaccion> lista = null;
             try
@@ -131,9 +131,9 @@ namespace BussinessLayer.UsesCases
             return new List<Refaccion>();
         }
 
-        public List<Refaccion> GetListaByOrden(int IdOrden)
+        public IList<Refaccion> GetListaByOrden(int IdOrden)
         {
-            List<Refaccion> lista = null;
+            IList<Refaccion> lista = null;
             try
             {
                 using (Entities db = new Entities())

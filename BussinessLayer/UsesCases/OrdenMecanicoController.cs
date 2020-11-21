@@ -81,10 +81,10 @@ namespace BussinessLayer.UsesCases
             return null;
         }
 
-        public List<OrdenMecanico> GetLista()
+        public IList<OrdenMecanico> GetLista()
         {
 
-            List<OrdenMecanico> lista = null;
+            IList<OrdenMecanico> lista = null;
             try
             {
                 using (Entities db = new Entities())

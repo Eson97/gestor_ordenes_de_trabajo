@@ -79,9 +79,9 @@ namespace BussinessLayer.UsesCases
             return null;
         }
 
-        public List<Cliente> GetLista()
+        public IList<Cliente> GetLista()
         {
-            List<Cliente> lista = null;
+            IList<Cliente> lista = null;
             try
             {
                 using (Entities db = new Entities())

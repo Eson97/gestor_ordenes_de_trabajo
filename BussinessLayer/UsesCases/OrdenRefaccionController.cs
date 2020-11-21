@@ -51,14 +51,14 @@ namespace BussinessLayer.UsesCases
             throw new NotImplementedException();
         }
 
-        public List<OrdenRefaccion> GetLista()
+        public IList<OrdenRefaccion> GetLista()
         {
             throw new NotImplementedException();
         }
 
-        public List<RefaccionDTO> GetListaByOrden(int IdOrden)
+        public IList<RefaccionDTO> GetListaByOrden(int IdOrden)
         {
-            List<RefaccionDTO> lista = null;
+            IList<RefaccionDTO> lista = null;
             try
             {
                 using (Entities db = new Entities())

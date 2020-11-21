@@ -87,9 +87,9 @@ namespace BussinessLayer.UsesCases
             return false;
         }
 
-        public List<UsuarioPermiso> GetLista()
+        public IList<UsuarioPermiso> GetLista()
         {
-            List<UsuarioPermiso> lista = null;
+            IList<UsuarioPermiso> lista = null;
             try
             {
                 using (Entities db = new Entities())
@@ -107,9 +107,9 @@ namespace BussinessLayer.UsesCases
             //Retorna lista vacia para evitar excepciones en llamada
             return new List<UsuarioPermiso>();
         }
-        public List<Permiso> GetListaPermisoByUsuario(int IdUsuario)
+        public IList<Permiso> GetListaPermisoByUsuario(int IdUsuario)
         {
-            List<Permiso> lista = null;
+            IList<Permiso> lista = null;
             try
             {
                 using (Entities db = new Entities())
@@ -127,9 +127,9 @@ namespace BussinessLayer.UsesCases
             //Retorna lista vacia para evitar excepciones en llamada
             return new List<Permiso>();
         }
-        public List<Permiso> GetListaExcludePermisoByUsuario(int IdUsuario)
+        public IList<Permiso> GetListaExcludePermisoByUsuario(int IdUsuario)
         {
-            List<Permiso> lista = null;
+            IList<Permiso> lista = null;
             try
             {
                 using (Entities db = new Entities())

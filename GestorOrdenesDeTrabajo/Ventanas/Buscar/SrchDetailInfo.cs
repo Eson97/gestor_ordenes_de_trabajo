@@ -12,7 +12,7 @@ namespace GestorOrdenesDeTrabajo.Ventanas.Buscar
         private readonly string mecanicos;
         private readonly Cliente c;
 
-        public SrchDetailInfo(Orden orden, List<Mecanico> mecanicosByOrden)
+        public SrchDetailInfo(Orden orden, IList<Mecanico> mecanicosByOrden)
         {
             InitializeComponent();
             this.orden = orden;

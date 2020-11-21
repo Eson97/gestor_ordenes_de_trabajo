@@ -79,9 +79,9 @@ namespace BussinessLayer.UsesCases
             return null;
         }
 
-        public List<Mecanico> GetLista()
+        public IList<Mecanico> GetLista()
         {
-            List<Mecanico> lista = null;
+            IList<Mecanico> lista = null;
             try
             {
                 using (Entities db = new Entities())
@@ -98,11 +98,11 @@ namespace BussinessLayer.UsesCases
             //Retorna lista vacia para evitar excepciones en llamada
             return new List<Mecanico>();
         }
-        public List<Mecanico> searchMecanicosByOrden(int idOrden)
+        public IList<Mecanico> searchMecanicosByOrden(int idOrden)
         {
             if (idOrden <= 0) return new List<Mecanico>();
 
-            List<Mecanico> lista;
+            IList<Mecanico> lista;
             try
             {
                 using (Entities db = new Entities())

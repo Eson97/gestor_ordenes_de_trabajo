@@ -80,7 +80,7 @@ namespace BussinessLayer.UsesCases
             return null;
         }
 
-        public List<Orden> GetLista(int status)
+        public IList<Orden> GetLista(int status)
         {
             List<Orden> lista = null;
             try
@@ -101,9 +101,9 @@ namespace BussinessLayer.UsesCases
             return new List<Orden>();
         }
 
-        public List<Orden> GetLista()
+        public IList<Orden> GetLista()
         {
-            List<Orden> lista = null;
+            IList<Orden> lista = null;
             try
             {
                 using (Entities db = new Entities())
