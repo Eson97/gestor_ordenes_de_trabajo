@@ -1,4 +1,4 @@
-﻿using DataLayer;
+﻿using GestorOrdenesDeTrabajo.DB;
 using System.Windows.Forms;
 
 namespace GestorOrdenesDeTrabajo.CustomComponents

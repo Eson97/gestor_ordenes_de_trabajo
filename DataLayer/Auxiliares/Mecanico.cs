@@ -1,4 +1,4 @@
-﻿namespace DataLayer
+﻿namespace DataLayer.DB
 {
     public partial class Mecanico
     {

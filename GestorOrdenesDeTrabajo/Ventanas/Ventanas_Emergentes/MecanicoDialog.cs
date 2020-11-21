@@ -1,6 +1,5 @@
-﻿using BussinessLayer.Enum;
-using BussinessLayer.UsesCases;
-using DataLayer;
+﻿using GestorOrdenesDeTrabajo.Enum;
+using GestorOrdenesDeTrabajo.UsesCases;
 using GestorOrdenesDeTrabajo.Utilerias.Controles;
 using GestorOrdenesDeTrabajo.Utilerias.Eventos;
 using System;
@@ -8,6 +7,7 @@ using System.Data;
 using System.Drawing;
 using System.Runtime.InteropServices;
 using System.Windows.Forms;
+using GestorOrdenesDeTrabajo.DB;
 
 namespace GestorOrdenesDeTrabajo.Ventanas.Message
 {

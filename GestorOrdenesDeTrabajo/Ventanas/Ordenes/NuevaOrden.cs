@@ -1,9 +1,8 @@
 ﻿using System;
-using System.Linq;
 using System.Windows.Forms;
-using BussinessLayer.Enum;
-using BussinessLayer.UsesCases;
-using DataLayer;
+using GestorOrdenesDeTrabajo.DB;
+using GestorOrdenesDeTrabajo.Enum;
+using GestorOrdenesDeTrabajo.UsesCases;
 using GestorOrdenesDeTrabajo.Utilerias.Controles;
 using GestorOrdenesDeTrabajo.Utilerias.Eventos;
 using GestorOrdenesDeTrabajo.Ventanas.Message;

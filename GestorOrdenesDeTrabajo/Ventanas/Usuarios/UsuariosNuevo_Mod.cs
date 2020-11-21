@@ -1,11 +1,11 @@
-﻿using BussinessLayer.UsesCases;
-using DataLayer;
+﻿using GestorOrdenesDeTrabajo.UsesCases;
 using GestorOrdenesDeTrabajo.CustomComponents;
 using GestorOrdenesDeTrabajo.Utilerias.Controles;
 using GestorOrdenesDeTrabajo.Utilerias.Eventos;
 using System;
 using System.Linq;
 using System.Windows.Forms;
+using GestorOrdenesDeTrabajo.DB;
 
 namespace GestorOrdenesDeTrabajo.Ventanas.Usuarios
 {

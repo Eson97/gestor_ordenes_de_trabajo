@@ -1,8 +1,7 @@
-﻿using BussinessLayer.Enum;
-using BussinessLayer.UsesCases;
-using DataLayer;
+﻿using GestorOrdenesDeTrabajo.DB;
+using GestorOrdenesDeTrabajo.Enum;
+using GestorOrdenesDeTrabajo.UsesCases;
 using System;
-using System.Collections.Generic;
 using System.Data;
 using System.Drawing;
 using System.Windows.Forms;

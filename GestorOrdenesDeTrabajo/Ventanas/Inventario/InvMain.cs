@@ -1,6 +1,6 @@
-﻿using BussinessLayer.Enum;
-using BussinessLayer.UsesCases;
-using DataLayer;
+﻿using GestorOrdenesDeTrabajo.DB;
+using GestorOrdenesDeTrabajo.Enum;
+using GestorOrdenesDeTrabajo.UsesCases;
 using GestorOrdenesDeTrabajo.Ventanas.Inventario;
 using GestorOrdenesDeTrabajo.Ventanas.Message;
 using System;

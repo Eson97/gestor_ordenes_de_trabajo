@@ -1,5 +1,5 @@
-﻿using System.Windows.Forms;
-using DataLayer.Auxiliares;
+﻿using GestorOrdenesDeTrabajo.Auxiliares;
+using System.Windows.Forms;
 
 namespace GestorOrdenesDeTrabajo.CustomComponents
 {

@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
-  <Import Project="..\GestorOrdenesDeTrabajo\packages\EntityFramework.6.4.4\build\EntityFramework.props" Condition="Exists('..\GestorOrdenesDeTrabajo\packages\EntityFramework.6.4.4\build\EntityFramework.props')" />
+  <Import Project="..\GestorOrdenesDeTrabajo\packages\EntityFramework.6.4.0\build\EntityFramework.props" Condition="Exists('..\GestorOrdenesDeTrabajo\packages\EntityFramework.6.4.0\build\EntityFramework.props')" />
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -35,10 +35,10 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
-      <HintPath>..\GestorOrdenesDeTrabajo\packages\EntityFramework.6.4.4\lib\net45\EntityFramework.dll</HintPath>
+      <HintPath>..\GestorOrdenesDeTrabajo\packages\EntityFramework.6.4.0\lib\net45\EntityFramework.dll</HintPath>
     </Reference>
     <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
-      <HintPath>..\GestorOrdenesDeTrabajo\packages\EntityFramework.6.4.4\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+      <HintPath>..\GestorOrdenesDeTrabajo\packages\EntityFramework.6.4.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
@@ -55,86 +55,33 @@
   <ItemGroup>
     <Compile Include="Auxiliares\Mecanico.cs" />
     <Compile Include="Auxiliares\RefaccionDTO.cs" />
-    <Compile Include="BaseDeDatos.Context.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>BaseDeDatos.Context.tt</DependentUpon>
-    </Compile>
-    <Compile Include="BaseDeDatos.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>BaseDeDatos.tt</DependentUpon>
-    </Compile>
-    <Compile Include="BaseDeDatos.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>BaseDeDatos.edmx</DependentUpon>
-    </Compile>
-    <Compile Include="Cliente.cs">
-      <DependentUpon>BaseDeDatos.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Mecanico.cs">
-      <DependentUpon>BaseDeDatos.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Orden.cs">
-      <DependentUpon>BaseDeDatos.tt</DependentUpon>
-    </Compile>
-    <Compile Include="OrdenMecanico.cs">
-      <DependentUpon>BaseDeDatos.tt</DependentUpon>
-    </Compile>
-    <Compile Include="OrdenRefaccion.cs">
-      <DependentUpon>BaseDeDatos.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Permiso.cs">
-      <DependentUpon>BaseDeDatos.tt</DependentUpon>
-    </Compile>
+    <Compile Include="DB\Cliente.cs" />
+    <Compile Include="DB\Entities.cs" />
+    <Compile Include="DB\Mecanico.cs" />
+    <Compile Include="DB\Orden.cs" />
+    <Compile Include="DB\OrdenMecanico.cs" />
+    <Compile Include="DB\OrdenRefaccion.cs" />
+    <Compile Include="DB\Permiso.cs" />
+    <Compile Include="DB\Refaccion.cs" />
+    <Compile Include="DB\sysdiagrams.cs" />
+    <Compile Include="DB\Usuario.cs" />
+    <Compile Include="DB\UsuarioPermiso.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Refaccion.cs">
-      <DependentUpon>BaseDeDatos.tt</DependentUpon>
-    </Compile>
-    <Compile Include="sysdiagrams.cs">
-      <DependentUpon>BaseDeDatos.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Usuario.cs">
-      <DependentUpon>BaseDeDatos.tt</DependentUpon>
-    </Compile>
-    <Compile Include="UsuarioPermiso.cs">
-      <DependentUpon>BaseDeDatos.tt</DependentUpon>
-    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.Config" />
-    <EntityDeploy Include="BaseDeDatos.edmx">
-      <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>BaseDeDatos.Designer.cs</LastGenOutput>
-    </EntityDeploy>
-    <None Include="BaseDeDatos.edmx.diagram">
-      <DependentUpon>BaseDeDatos.edmx</DependentUpon>
-    </None>
     <None Include="packages.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="BaseDeDatos.Context.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>BaseDeDatos.edmx</DependentUpon>
-      <LastGenOutput>BaseDeDatos.Context.cs</LastGenOutput>
-    </Content>
-    <Content Include="BaseDeDatos.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>BaseDeDatos.edmx</DependentUpon>
-      <LastGenOutput>BaseDeDatos.cs</LastGenOutput>
-    </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>
       <ErrorText>Este proyecto hace referencia a los paquetes NuGet que faltan en este equipo. Use la restauración de paquetes NuGet para descargarlos. Para obtener más información, consulte http://go.microsoft.com/fwlink/?LinkID=322105. El archivo que falta es {0}.</ErrorText>
     </PropertyGroup>
-    <Error Condition="!Exists('..\GestorOrdenesDeTrabajo\packages\EntityFramework.6.4.4\build\EntityFramework.props')" Text="$([System.String]::Format('$(ErrorText)', '..\GestorOrdenesDeTrabajo\packages\EntityFramework.6.4.4\build\EntityFramework.props'))" />
-    <Error Condition="!Exists('..\GestorOrdenesDeTrabajo\packages\EntityFramework.6.4.4\build\EntityFramework.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\GestorOrdenesDeTrabajo\packages\EntityFramework.6.4.4\build\EntityFramework.targets'))" />
+    <Error Condition="!Exists('..\GestorOrdenesDeTrabajo\packages\EntityFramework.6.4.0\build\EntityFramework.props')" Text="$([System.String]::Format('$(ErrorText)', '..\GestorOrdenesDeTrabajo\packages\EntityFramework.6.4.0\build\EntityFramework.props'))" />
+    <Error Condition="!Exists('..\GestorOrdenesDeTrabajo\packages\EntityFramework.6.4.0\build\EntityFramework.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\GestorOrdenesDeTrabajo\packages\EntityFramework.6.4.0\build\EntityFramework.targets'))" />
   </Target>
-  <Import Project="..\GestorOrdenesDeTrabajo\packages\EntityFramework.6.4.4\build\EntityFramework.targets" Condition="Exists('..\GestorOrdenesDeTrabajo\packages\EntityFramework.6.4.4\build\EntityFramework.targets')" />
+  <Import Project="..\GestorOrdenesDeTrabajo\packages\EntityFramework.6.4.0\build\EntityFramework.targets" Condition="Exists('..\GestorOrdenesDeTrabajo\packages\EntityFramework.6.4.0\build\EntityFramework.targets')" />
 </Project>

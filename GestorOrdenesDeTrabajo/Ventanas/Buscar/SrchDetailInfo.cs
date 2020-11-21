@@ -1,5 +1,5 @@
-﻿using BussinessLayer.Enum;
-using DataLayer;
+﻿using GestorOrdenesDeTrabajo.DB;
+using GestorOrdenesDeTrabajo.Enum;
 using System;
 using System.Collections.Generic;
 using System.Windows.Forms;

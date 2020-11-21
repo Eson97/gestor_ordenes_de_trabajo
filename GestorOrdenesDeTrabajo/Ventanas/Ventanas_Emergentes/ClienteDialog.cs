@@ -1,5 +1,5 @@
-﻿using BussinessLayer.UsesCases;
-using DataLayer;
+﻿using GestorOrdenesDeTrabajo.DB;
+using GestorOrdenesDeTrabajo.UsesCases;
 using GestorOrdenesDeTrabajo.Utilerias.Controles;
 using System;
 using System.Data;

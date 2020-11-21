@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace BussinessLayer.Logger
+namespace GestorOrdenesDeTrabajo.Logger
 {
     public class Log
     {

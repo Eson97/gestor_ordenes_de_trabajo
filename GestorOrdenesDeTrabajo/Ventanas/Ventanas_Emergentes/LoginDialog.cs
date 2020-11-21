@@ -1,10 +1,10 @@
-﻿using BussinessLayer.UsesCases;
-using DataLayer;
+﻿using GestorOrdenesDeTrabajo.UsesCases;
 using GestorOrdenesDeTrabajo.Utilerias.Controles;
 using GestorOrdenesDeTrabajo.Utilerias.Eventos;
 using System;
 using System.Runtime.InteropServices;
 using System.Windows.Forms;
+using GestorOrdenesDeTrabajo.DB;
 
 namespace GestorOrdenesDeTrabajo.Ventanas.Ventanas_Emergentes
 {

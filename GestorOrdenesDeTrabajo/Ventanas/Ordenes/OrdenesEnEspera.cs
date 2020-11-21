@@ -3,11 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using BussinessLayer.Enum;
-using BussinessLayer.UsesCases;
-using DataLayer;
+using GestorOrdenesDeTrabajo.Enum;
+using GestorOrdenesDeTrabajo.UsesCases;
 using GestorOrdenesDeTrabajo.CustomComponents;
 using GestorOrdenesDeTrabajo.Ventanas.Message;
+using GestorOrdenesDeTrabajo.DB;
 
 namespace GestorOrdenesDeTrabajo.Ventanas.Ordenes
 {

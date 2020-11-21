@@ -1,6 +1,6 @@
-﻿using BussinessLayer.Interfaces;
-using BussinessLayer.Logger;
-using DataLayer;
+﻿using GestorOrdenesDeTrabajo.Interfaces;
+using GestorOrdenesDeTrabajo.Logger;
+using DataLayer.DB;
 using DataLayer.Auxiliares;
 using System;
 using System.Collections.Generic;
@@ -8,7 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace BussinessLayer.UsesCases
+namespace GestorOrdenesDeTrabajo.UsesCases
 {
     public class OrdenRefaccionController : IEntityManager<OrdenRefaccion>
     {

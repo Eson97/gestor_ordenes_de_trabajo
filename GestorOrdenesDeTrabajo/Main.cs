@@ -7,10 +7,10 @@ using GestorOrdenesDeTrabajo.Ventanas.Ordenes;
 using GestorOrdenesDeTrabajo.Ventanas.Buscar;
 using GestorOrdenesDeTrabajo.Ventanas.Usuarios;
 using GestorOrdenesDeTrabajo.Ventanas.Ventanas_Emergentes;
-using DataLayer;
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using BussinessLayer.UsesCases;
+using GestorOrdenesDeTrabajo.UsesCases;
+using GestorOrdenesDeTrabajo.DB;
 
 namespace GestorOrdenesDeTrabajo
 {
