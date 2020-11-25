@@ -28,6 +28,7 @@ namespace GestorOrdenesDeTrabajo.Ventanas.Ventanas_Emergentes
         public SelectRefaccionDialog(Orden o)
         {
             InitializeComponent();
+            _DialogResult = new List<OrdenRefaccion>();
             this.orden = o;
             datatable = new DataTable();
             datatable.Columns.Add("Codigo");
@@ -50,7 +51,7 @@ namespace GestorOrdenesDeTrabajo.Ventanas.Ventanas_Emergentes
             TablaRefacciones.Columns[0].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
         }
 
-        public static List<OrdenRefaccion> showClientDialog(Orden o)
+        public static List<OrdenRefaccion> showSRDialog(Orden o)
         {
             _Dialog = new SelectRefaccionDialog(o);
             _Dialog.ShowDialog();

@@ -1,8 +1,11 @@
 ﻿using GestorOrdenesDeTrabajo.DB;
 using GestorOrdenesDeTrabajo.Enum;
 using GestorOrdenesDeTrabajo.Ventanas.Message;
+using GestorOrdenesDeTrabajo.Ventanas.Ventanas_Emergentes;
 using System;
+using System.Collections.Generic;
 using System.Data;
+using System.Linq;
 using System.Windows.Forms;
 
 namespace GestorOrdenesDeTrabajo.Ventanas.Ordenes
@@ -11,6 +14,7 @@ namespace GestorOrdenesDeTrabajo.Ventanas.Ordenes
     {
         Orden orden;
         DataTable datatable;
+        List<OrdenRefaccion> Refacciones;
         bool CambiosGuardados = true;
 
         public OrdenesEnProceso_AddRem(Orden o)
@@ -25,8 +29,11 @@ namespace GestorOrdenesDeTrabajo.Ventanas.Ordenes
             datatable = new DataTable();
             datatable.Columns.Add("Codigo");
             datatable.Columns.Add("Cant");
+            datatable.Columns.Add("P/U");
             datatable.Columns[0].ReadOnly = true;
             datatable.Columns[1].ReadOnly = false;
+            datatable.Columns[2].ReadOnly = false;
+            datatable.Columns[2].DataType = typeof(decimal);
 
             getPiecesInWorkOrder();
         }
@@ -41,9 +48,12 @@ namespace GestorOrdenesDeTrabajo.Ventanas.Ordenes
             tablaRefacciones.DataSource = datatable;
             tablaRefacciones.Columns[0].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
             tablaRefacciones.Columns[1].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+            tablaRefacciones.Columns[2].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
             tablaRefacciones.Columns[0].Resizable = DataGridViewTriState.True;
             tablaRefacciones.Columns[1].Resizable = DataGridViewTriState.True;
+            tablaRefacciones.Columns[2].Resizable = DataGridViewTriState.True;
             tablaRefacciones.Columns[1].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            tablaRefacciones.Columns[2].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
 
         }
 
@@ -83,6 +93,19 @@ namespace GestorOrdenesDeTrabajo.Ventanas.Ordenes
         private void btnAdd_Click(object sender, EventArgs e)
         {
             //TODO agregar codigo para agregar una nueva pieza
+            Refacciones.AddRange(SelectRefaccionDialog.showSRDialog(orden));
+
+            //agrupa piezas repetidas y suma la cantidad de piezas usadas >>En caso de haber diferencia en P/u tomar el valor mas alto?<<
+            var result = (from item in Refacciones
+                          group item by item into g
+                          select new OrdenRefaccion()
+                          {
+                              //TODO CHECAR COMO FUNKA ORDEN REFACCION PARA HACER FUNCIONAR ESTO 
+                          }
+                          ).ToList();
+
+            Refacciones = result;
+            
 
             if (CambiosGuardados)
                 CambiosGuardados = false;
@@ -118,8 +141,17 @@ namespace GestorOrdenesDeTrabajo.Ventanas.Ordenes
 
         private void tablaRefacciones_CellValueChanged(object sender, DataGridViewCellEventArgs e)
         {
+
+            //Actualizar lista con los nuevos valores?
+
             if (CambiosGuardados)
                 CambiosGuardados = false;
+        }
+
+        private void tablaRefacciones_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
+        {
+            if (tablaRefacciones.Columns[e.ColumnIndex].Name == "P/U")
+                tablaRefacciones.Columns[e.ColumnIndex].DefaultCellStyle.Format = "C2"; //asigna formato moneda con 2 decimales
         }
     }
 }
