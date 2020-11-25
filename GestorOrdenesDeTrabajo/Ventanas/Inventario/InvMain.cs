@@ -185,7 +185,7 @@ namespace GestorOrdenesDeTrabajo.OrdenWindow.Inventario
                 int id = int.Parse(row.Cells[0].Value as string);
                 string code = row.Cells[1].Value as string;
                 string pieza = row.Cells[2].Value as string;
-                double minimo = double.Parse(row.Cells[3].Value as string);
+                double minimo = double.Parse(row.Cells[3].Value.ToString());
 
                 Refaccion toEdit = new Refaccion()
                 {

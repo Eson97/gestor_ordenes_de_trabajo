@@ -233,6 +233,12 @@
     <Compile Include="Ventanas\Usuarios\UsuariosNuevo_Mod.Designer.cs">
       <DependentUpon>UsuariosNuevo_Mod.cs</DependentUpon>
     </Compile>
+    <Compile Include="Ventanas\Ventanas_Emergentes\SelectRefaccionDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Ventanas\Ventanas_Emergentes\SelectRefaccionDialog.Designer.cs">
+      <DependentUpon>SelectRefaccionDialog.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="CustomComponents\infoPanel.resx">
       <DependentUpon>infoPanel.cs</DependentUpon>
     </EmbeddedResource>
@@ -313,6 +319,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Ventanas\Usuarios\UsuariosNuevo_Mod.resx">
       <DependentUpon>UsuariosNuevo_Mod.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Ventanas\Ventanas_Emergentes\SelectRefaccionDialog.resx">
+      <DependentUpon>SelectRefaccionDialog.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
