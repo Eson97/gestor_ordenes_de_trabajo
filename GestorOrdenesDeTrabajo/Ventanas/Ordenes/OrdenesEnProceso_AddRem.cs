@@ -135,6 +135,8 @@ namespace GestorOrdenesDeTrabajo.Ventanas.Ordenes
 
             //REMOVER BOTON?
 
+            //CAMBIAR FUNCIONAMIENTO PARA DAR UN VALOR APROXIMADO?
+
             if (CambiosGuardados)
                 CambiosGuardados = false;
         }
