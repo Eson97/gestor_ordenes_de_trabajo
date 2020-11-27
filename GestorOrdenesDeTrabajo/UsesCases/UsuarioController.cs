@@ -97,9 +97,9 @@ namespace GestorOrdenesDeTrabajo.UsesCases
             return null;
         }
 
-        public IList<Usuario> GetLista()
+        public List<Usuario> GetLista()
         {
-            IList<Usuario> lista = null;
+            List<Usuario> lista = null;
             try
             {
                 using (Entities db = new Entities())

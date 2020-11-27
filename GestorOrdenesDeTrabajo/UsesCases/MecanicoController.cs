@@ -79,9 +79,9 @@ namespace GestorOrdenesDeTrabajo.UsesCases
             return null;
         }
 
-        public IList<Mecanico> GetLista()
+        public List<Mecanico> GetLista()
         {
-            IList<Mecanico> lista = null;
+            List<Mecanico> lista = null;
             try
             {
                 using (Entities db = new Entities())
@@ -98,11 +98,11 @@ namespace GestorOrdenesDeTrabajo.UsesCases
             //Retorna lista vacia para evitar excepciones en llamada
             return new List<Mecanico>();
         }
-        public IList<Mecanico> searchMecanicosByOrden(int idOrden)
+        public List<Mecanico> searchMecanicosByOrden(int idOrden)
         {
             if (idOrden <= 0) return new List<Mecanico>();
 
-            IList<Mecanico> lista;
+            List<Mecanico> lista;
             try
             {
                 using (Entities db = new Entities())

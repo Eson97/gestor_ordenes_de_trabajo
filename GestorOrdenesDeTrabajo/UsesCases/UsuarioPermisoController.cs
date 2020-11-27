@@ -89,9 +89,9 @@ namespace GestorOrdenesDeTrabajo.UsesCases
             return false;
         }
 
-        public IList<UsuarioPermiso> GetLista()
+        public List<UsuarioPermiso> GetLista()
         {
-            IList<UsuarioPermiso> lista = null;
+            List<UsuarioPermiso> lista = null;
             try
             {
                 using (Entities db = new Entities())
@@ -109,9 +109,9 @@ namespace GestorOrdenesDeTrabajo.UsesCases
             //Retorna lista vacia para evitar excepciones en llamada
             return new List<UsuarioPermiso>();
         }
-        public IList<Permiso> GetListaPermisoByUsuario(int IdUsuario)
+        public List<Permiso> GetListaPermisoByUsuario(int IdUsuario)
         {
-            IList<Permiso> lista = null;
+            List<Permiso> lista = null;
             try
             {
                 using (Entities db = new Entities())
@@ -129,9 +129,9 @@ namespace GestorOrdenesDeTrabajo.UsesCases
             //Retorna lista vacia para evitar excepciones en llamada
             return new List<Permiso>();
         }
-        public IList<Permiso> GetListaExcludePermisoByUsuario(int IdUsuario)
+        public List<Permiso> GetListaExcludePermisoByUsuario(int IdUsuario)
         {
-            IList<Permiso> lista = null;
+            List<Permiso> lista = null;
             try
             {
                 using (Entities db = new Entities())

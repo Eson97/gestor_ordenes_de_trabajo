@@ -1,5 +1,7 @@
-﻿using GestorOrdenesDeTrabajo.DB;
+﻿using GestorOrdenesDeTrabajo.Auxiliares;
+using GestorOrdenesDeTrabajo.DB;
 using GestorOrdenesDeTrabajo.Enum;
+using GestorOrdenesDeTrabajo.UsesCases;
 using GestorOrdenesDeTrabajo.Ventanas.Message;
 using GestorOrdenesDeTrabajo.Ventanas.Ventanas_Emergentes;
 using System;
@@ -14,26 +16,31 @@ namespace GestorOrdenesDeTrabajo.Ventanas.Ordenes
     {
         Orden orden;
         DataTable datatable;
-        List<OrdenRefaccion> Refacciones;
+        List<RefaccionDTO> Refacciones;
         bool CambiosGuardados = true;
 
         public OrdenesEnProceso_AddRem(Orden o)
         {
             InitializeComponent();
             this.orden = o;
+            Refacciones = new List<RefaccionDTO>();
             //this.lblCliente.Text = orden.Cliente.Nombre;
             //this.lblEquipo.Text = orden.Equipo;
             //this.lblFolio.Text = orden.Folio.ToString();
 
 
             datatable = new DataTable();
+            datatable.Columns.Add("ID");
             datatable.Columns.Add("Codigo");
+            datatable.Columns.Add("Descripcion");
             datatable.Columns.Add("Cant");
             datatable.Columns.Add("P/U");
             datatable.Columns[0].ReadOnly = true;
             datatable.Columns[1].ReadOnly = false;
             datatable.Columns[2].ReadOnly = false;
-            datatable.Columns[2].DataType = typeof(decimal);
+            datatable.Columns[3].ReadOnly = false;
+            datatable.Columns[4].ReadOnly = false;
+            datatable.Columns[4].DataType = typeof(decimal);
 
             getPiecesInWorkOrder();
         }
@@ -43,7 +50,9 @@ namespace GestorOrdenesDeTrabajo.Ventanas.Ordenes
             while (tablaRefacciones.RowCount != 0)
                 tablaRefacciones.Rows.RemoveAt(0);
 
-            //Obtener piezas ya cargadas
+            Refacciones = OrdenRefaccionController.I.GetListaByOrden(1);
+            foreach (RefaccionDTO item in Refacciones)
+                datatable.Rows.Add(new object[] { item.Id, item.Codigo, item.Descripcion, item.Cantidad, item.PrecioUnitrio });
 
             tablaRefacciones.DataSource = datatable;
             tablaRefacciones.Columns[0].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
@@ -59,9 +68,18 @@ namespace GestorOrdenesDeTrabajo.Ventanas.Ordenes
 
         void UpdatePiecesInWorkOrder()
         {
-            //TODO Actualizar piezas en la orden de trabajp
+            //TODO Actualizar piezas en la orden de trabajo
             foreach (DataGridViewRow row in tablaRefacciones.Rows)
             {
+                int id = int.Parse(row.Cells[0].Value as string);
+                string code = row.Cells[1].Value as string;
+                string pieza = row.Cells[2].Value as string;
+                double precio = double.Parse(row.Cells[3].Value as string);
+
+                OrdenRefaccionController.I.Add(new OrdenRefaccion
+                {
+
+                });
                 //update in db
             }
 
@@ -70,7 +88,7 @@ namespace GestorOrdenesDeTrabajo.Ventanas.Ordenes
 
         private void btnClosePanel_Click(object sender, EventArgs e)
         {
-            if(!CambiosGuardados)// si no se han guardado cambios: se pide confirmacion antes de cerrar
+            if (!CambiosGuardados)// si no se han guardado cambios: se pide confirmacion antes de cerrar
             {
                 if (MessageDialog.ShowMessageDialog("Confirmacion", "¿Desea guardar cambios antes de cerrar?", false) == (int)MessageDialogResult.Yes)
                     UpdatePiecesInWorkOrder();
@@ -92,20 +110,17 @@ namespace GestorOrdenesDeTrabajo.Ventanas.Ordenes
 
         private void btnAdd_Click(object sender, EventArgs e)
         {
-            //TODO agregar codigo para agregar una nueva pieza
             Refacciones.AddRange(SelectRefaccionDialog.showSRDialog(orden));
 
             //agrupa piezas repetidas y suma la cantidad de piezas usadas >>En caso de haber diferencia en P/u tomar el valor mas alto?<<
-            var result = (from item in Refacciones
-                          group item by item into g
-                          select new OrdenRefaccion()
-                          {
-                              //TODO CHECAR COMO FUNKA ORDEN REFACCION PARA HACER FUNCIONAR ESTO 
-                          }
-                          ).ToList();
 
-            Refacciones = result;
-            
+            //var result = Refacciones.GroupBy(el => el.Id)
+            //    .Select(ele => new
+            //    {
+            //        Id = ele.Key,
+            //        Cantidad = ele.Sum(i => i.Cantidad),
+            //        PrecioUnitrio = ele.Max(i => i.PrecioUnitrio)
+            //    }).ToList();
 
             if (CambiosGuardados)
                 CambiosGuardados = false;

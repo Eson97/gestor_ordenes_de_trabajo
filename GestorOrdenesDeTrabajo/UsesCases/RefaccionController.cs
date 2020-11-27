@@ -111,7 +111,7 @@ namespace GestorOrdenesDeTrabajo.UsesCases
         /// Consulta lista
         /// </summary>
         /// <returns>Retorna lista sin eliminados o lista vacia</returns>
-        public IList<Refaccion> GetLista()
+        public List<Refaccion> GetLista()
         {
             List<Refaccion> lista = null;
             try
@@ -131,9 +131,9 @@ namespace GestorOrdenesDeTrabajo.UsesCases
             return new List<Refaccion>();
         }
 
-        public IList<Refaccion> GetListaByOrden(int IdOrden)
+        public List<Refaccion> GetListaByOrden(int IdOrden)
         {
-            IList<Refaccion> lista = null;
+            List<Refaccion> lista = null;
             try
             {
                 using (Entities db = new Entities())

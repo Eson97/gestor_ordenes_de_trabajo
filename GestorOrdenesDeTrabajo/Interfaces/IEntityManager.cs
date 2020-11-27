@@ -7,6 +7,6 @@ namespace GestorOrdenesDeTrabajo.Interfaces
         T Add(T element);
         T Edit(T element);
         bool Delete(int id);
-        IList<T> GetLista();
+        List<T> GetLista();
     }
 }

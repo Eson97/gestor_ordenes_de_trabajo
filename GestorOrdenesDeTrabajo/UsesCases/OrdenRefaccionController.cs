@@ -38,6 +38,23 @@ namespace GestorOrdenesDeTrabajo.UsesCases
             }
             return null;
         }
+        public List<OrdenRefaccion> Add(IEnumerable<OrdenRefaccion> element)
+        {
+            try
+            {
+                using (Entities db = new Entities())
+                {
+                    element = db.OrdenRefaccion.AddRange(element);
+                    db.SaveChanges();
+                }
+                return element.ToList();
+            }
+            catch (Exception e)
+            {
+                Log.Write("Ha ocurrido un error " + e.Message);
+            }
+            return null;
+        }
 
         public bool Delete(int id)
         {
@@ -49,14 +66,14 @@ namespace GestorOrdenesDeTrabajo.UsesCases
             throw new NotImplementedException();
         }
 
-        public IList<OrdenRefaccion> GetLista()
+        public List<OrdenRefaccion> GetLista()
         {
             throw new NotImplementedException();
         }
 
-        public IList<RefaccionDTO> GetListaByOrden(int IdOrden)
+        public List<RefaccionDTO> GetListaByOrden(int IdOrden)
         {
-            IList<RefaccionDTO> lista = null;
+            List<RefaccionDTO> lista = null;
             try
             {
                 using (Entities db = new Entities())
@@ -66,7 +83,7 @@ namespace GestorOrdenesDeTrabajo.UsesCases
                         Id = el.Refaccion.Id,
                         Descripcion = el.Refaccion.Descripcion,
                         Cantidad = el.Cantidad,
-                        Precio = el.PrecioUnitario,
+                        PrecioUnitrio = el.PrecioUnitario,
                         Total = el.PrecioUnitario * el.Cantidad
                     }).ToList();
                 }

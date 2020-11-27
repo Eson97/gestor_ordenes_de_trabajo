@@ -83,10 +83,10 @@ namespace GestorOrdenesDeTrabajo.UsesCases
             return null;
         }
 
-        public IList<OrdenMecanico> GetLista()
+        public List<OrdenMecanico> GetLista()
         {
 
-            IList<OrdenMecanico> lista = null;
+            List<OrdenMecanico> lista = null;
             try
             {
                 using (Entities db = new Entities())
