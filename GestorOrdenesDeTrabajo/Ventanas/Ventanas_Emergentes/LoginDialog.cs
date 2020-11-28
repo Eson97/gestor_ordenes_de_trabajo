@@ -16,12 +16,14 @@ namespace GestorOrdenesDeTrabajo.Ventanas.Ventanas_Emergentes
         private extern static void SendMessage(System.IntPtr hwnd, int wmsg, int wparam, int lparam);
 
         Usuario currentUser;
+        private bool showPass = true;
 
         public LoginDialog()
         {
             InitializeComponent();
+            txtPass.UseSystemPasswordChar = showPass;
         }
-        
+
         private void topPAnel_MouseDown(object sender, MouseEventArgs e)
         {
             ReleaseCapture();
@@ -58,6 +60,17 @@ namespace GestorOrdenesDeTrabajo.Ventanas.Ventanas_Emergentes
         {
             char c = e.KeyChar;
             if (c == (char)Keys.Enter) btnIngresar_Click(sender, e);
+        }
+
+        private void btnShowHidePass_Click(object sender, EventArgs e)
+        {
+            showPass = !showPass;
+
+            txtPass.UseSystemPasswordChar = showPass;
+            if (showPass)
+                btnShowHidePass.Text = "Ver";
+            else
+                btnShowHidePass.Text = "Ocultar";
         }
     }
 }

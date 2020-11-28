@@ -46,6 +46,7 @@
             this.txtPass = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.btnIngresar = new System.Windows.Forms.Button();
+            this.btnShowHidePass = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.SuspendLayout();
@@ -255,12 +256,23 @@
             this.btnIngresar.UseVisualStyleBackColor = false;
             this.btnIngresar.Click += new System.EventHandler(this.btnIngresar_Click);
             // 
+            // btnShowHidePass
+            // 
+            this.btnShowHidePass.Location = new System.Drawing.Point(601, 222);
+            this.btnShowHidePass.Name = "btnShowHidePass";
+            this.btnShowHidePass.Size = new System.Drawing.Size(93, 30);
+            this.btnShowHidePass.TabIndex = 9;
+            this.btnShowHidePass.Text = "Ver";
+            this.btnShowHidePass.UseVisualStyleBackColor = true;
+            this.btnShowHidePass.Click += new System.EventHandler(this.btnShowHidePass_Click);
+            // 
             // LoginDialog
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(35)))), ((int)(((byte)(35)))));
             this.ClientSize = new System.Drawing.Size(707, 369);
+            this.Controls.Add(this.btnShowHidePass);
             this.Controls.Add(this.btnIngresar);
             this.Controls.Add(this.txtPass);
             this.Controls.Add(this.label3);
@@ -301,5 +313,6 @@
         private System.Windows.Forms.TextBox txtPass;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Button btnIngresar;
+        private System.Windows.Forms.Button btnShowHidePass;
     }
 }
