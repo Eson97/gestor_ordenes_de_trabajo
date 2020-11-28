@@ -12,10 +12,13 @@ namespace GestorOrdenesDeTrabajo.Ventanas.Usuarios
     public partial class UsuariosNuevo_Mod : Form
     {
         Usuario currentUser;
+        private bool showPass = true;
+
         public UsuariosNuevo_Mod(Usuario user)
         {
             InitializeComponent();
             this.currentUser = user;
+            txtPassword.UseSystemPasswordChar = showPass;
             fillData();
         }
         public UsuariosNuevo_Mod()
@@ -91,6 +94,17 @@ namespace GestorOrdenesDeTrabajo.Ventanas.Usuarios
             //Filtro.Alfanumerico(e);
             Char c = e.KeyChar;
             if (c == (char)Keys.Enter) btnAcept_Click(sender, e);
+        }
+
+        private void btnShowHidePass_Click(object sender, EventArgs e)
+        {
+            showPass = !showPass;
+
+            txtPassword.UseSystemPasswordChar = showPass;
+            if (showPass)
+                btnShowHidePass.Text = "Ver";
+            else
+                btnShowHidePass.Text = "Ocultar";
         }
     }
 }
