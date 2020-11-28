@@ -21,6 +21,24 @@ namespace GestorOrdenesDeTrabajo.UsesCases
             }
         }
 
+        public bool AddRange(List<OrdenRefaccion> elements, Orden orden)
+        {
+            try
+            {
+                using (Entities db = new Entities())
+                {
+                    db.OrdenRefaccion.AddRange(elements);
+                    db.SaveChanges();
+                }
+                return true;
+            }
+            catch (Exception e)
+            {
+                Log.Write("Ha ocurrido un error " + e.Message);
+            }
+            return false;
+        }
+
         public OrdenRefaccion Add(OrdenRefaccion element)
         {
             try
@@ -60,6 +78,25 @@ namespace GestorOrdenesDeTrabajo.UsesCases
         {
             throw new NotImplementedException();
         }
+        public bool DeleteRange(int idOrden)
+        {
+            if (idOrden <= 0) return false;
+
+            try
+            {
+                using (Entities db = new Entities())
+                {
+                    db.OrdenRefaccion.RemoveRange(db.OrdenRefaccion.Where(el => el.IdOrden.Equals(idOrden)));
+                    db.SaveChanges();
+                }
+                return true;
+            }
+            catch (Exception e)
+            {
+                Log.Write("Ha ocurrido un error " + e.Message);
+            }
+            return false;
+        }
 
         public OrdenRefaccion Edit(OrdenRefaccion element)
         {
@@ -78,14 +115,16 @@ namespace GestorOrdenesDeTrabajo.UsesCases
             {
                 using (Entities db = new Entities())
                 {
-                    lista = db.OrdenRefaccion.Where(el => el.IdOrden.Equals(IdOrden)).Select(el => new RefaccionDTO()
-                    {
-                        Id = el.Refaccion.Id,
-                        Descripcion = el.Refaccion.Descripcion,
-                        Cantidad = el.Cantidad,
-                        PrecioUnitrio = el.PrecioUnitario,
-                        Total = el.PrecioUnitario * el.Cantidad
-                    }).ToList();
+                    lista = db.OrdenRefaccion
+                        .Where(el => el.IdOrden.Equals(IdOrden)).Select(el => new RefaccionDTO()
+                        {
+                            Id = el.Refaccion.Id,
+                            Descripcion = el.Refaccion.Descripcion,
+                            Codigo = el.Refaccion.Codigo,
+                            Cantidad = el.Cantidad,
+                            PrecioUnitrio = el.PrecioUnitario,
+                            Total = el.PrecioUnitario * el.Cantidad
+                        }).ToList();
                 }
                 return lista;
             }

@@ -1,4 +1,8 @@
-﻿using System;
+﻿using GestorOrdenesDeTrabajo.CustomComponents;
+using GestorOrdenesDeTrabajo.DB;
+using GestorOrdenesDeTrabajo.Enum;
+using GestorOrdenesDeTrabajo.UsesCases;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -12,11 +16,15 @@ namespace GestorOrdenesDeTrabajo.Ventanas.Ordenes
 {
     public partial class OrdenesEnProceso : Form
     {
+        Orden current;
+        public List<OrdenItemList> ListaOrdenes { get; private set; }
+
         public OrdenesEnProceso()
         {
             InitializeComponent();
-            openSubPanel(new OrdenesEnProceso_AddRem(null));
+            showOrdenes();
         }
+
         void openSubPanel(Form f)
         {
             //Abre nueva ventana en el panel contenedor
@@ -29,5 +37,27 @@ namespace GestorOrdenesDeTrabajo.Ventanas.Ordenes
             this.ContainerPanel.Tag = newPanel;
             newPanel.Show();
         }
+
+        async void showOrdenes()
+        {
+            ListaOrdenes = await Task.Run(() => OrdenController.I.GetLista((int)OrdenStatus.PROCESO).Select(el => new OrdenItemList(el)).ToList());
+
+            this.flpOrdenList.Controls.Clear();
+            foreach (OrdenItemList item in ListaOrdenes)
+            {
+                this.flpOrdenList.Controls.Add(item);
+                item.btnAction.Click += (s, e) =>
+                {
+                    current = item.Orden;
+                    openSubPanel(new OrdenesEnProceso_AddRem(current));
+                };
+            }
+        }
+
+        private void flpOrdenList_ControlRemoved(object sender, ControlEventArgs e)
+        {
+            showOrdenes();
+        }
     }
+
 }
