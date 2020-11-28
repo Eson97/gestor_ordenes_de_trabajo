@@ -42,6 +42,10 @@ namespace GestorOrdenesDeTrabajo.Ventanas.Ordenes
         {
             ListaOrdenes = await Task.Run(() => OrdenController.I.GetLista((int)OrdenStatus.PROCESO).Select(el => new OrdenItemList(el)).ToList());
 
+            if (this.flpOrdenList.Controls.Count == ListaOrdenes.Count) return;
+
+            Console.WriteLine("Holi");
+
             this.flpOrdenList.Controls.Clear();
             foreach (OrdenItemList item in ListaOrdenes)
             {
@@ -54,7 +58,7 @@ namespace GestorOrdenesDeTrabajo.Ventanas.Ordenes
             }
         }
 
-        private void flpOrdenList_ControlRemoved(object sender, ControlEventArgs e)
+        private void ContainerPanel_ControlRemoved(object sender, ControlEventArgs e)
         {
             showOrdenes();
         }

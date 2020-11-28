@@ -30,8 +30,8 @@ namespace GestorOrdenesDeTrabajo.Ventanas.Ordenes
             DataTable.Columns.Add("Cant");
             DataTable.Columns.Add("P/U");
             DataTable.Columns[0].ReadOnly = true;
-            DataTable.Columns[1].ReadOnly = false;
-            DataTable.Columns[2].ReadOnly = false;
+            DataTable.Columns[1].ReadOnly = true;
+            DataTable.Columns[2].ReadOnly = true;
             DataTable.Columns[3].ReadOnly = false;
             DataTable.Columns[4].ReadOnly = false;
             DataTable.Columns[4].DataType = typeof(decimal);
