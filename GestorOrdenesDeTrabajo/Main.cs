@@ -6,11 +6,11 @@ using System.Reflection;
 using GestorOrdenesDeTrabajo.Ventanas.Ordenes;
 using GestorOrdenesDeTrabajo.Ventanas.Buscar;
 using GestorOrdenesDeTrabajo.Ventanas.Usuarios;
-using GestorOrdenesDeTrabajo.Ventanas.Ventanas_Emergentes;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using GestorOrdenesDeTrabajo.UsesCases;
 using GestorOrdenesDeTrabajo.DB;
+using GestorOrdenesDeTrabajo.Enum;
 
 namespace GestorOrdenesDeTrabajo
 {
@@ -206,7 +206,7 @@ namespace GestorOrdenesDeTrabajo
         private void btnEnEspera_Click(object sender, EventArgs e)
         {
             collapseSidePanel(true);
-            openPanel(new OrdenesEnEspera(), "Ordenes en Espera", sender);
+            openPanel(new OrdenesEnEspera((int)OrdenStatus.ESPERA), "Ordenes en Espera", sender);
         }
 
         private void btnEnProceso_Click(object sender, EventArgs e)
@@ -250,10 +250,6 @@ namespace GestorOrdenesDeTrabajo
 
         private void btnLogOut_Click(object sender, EventArgs e)
         {
-            //TODO add LogOut
-            //LoginDialog login = new LoginDialog();
-            //login.ShowDialog();
-            //this.Close();
             Application.Restart();
         }
 
