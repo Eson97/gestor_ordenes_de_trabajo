@@ -19,7 +19,7 @@ namespace GestorOrdenesDeTrabajo.Ventanas.Buscar
             this.c = orden.Cliente;
 
             foreach (var item in mecanicosByOrden)
-                this.mecanicos += item.ToString() + ", ";
+                this.mecanicos += item.ToString();
         }
 
         private void btnCerrar_Click(object sender, EventArgs e)
@@ -46,7 +46,7 @@ namespace GestorOrdenesDeTrabajo.Ventanas.Buscar
         private void btnPiezas_Click(object sender, EventArgs e)
         {
             SrchPiezasUsadas piezas = new SrchPiezasUsadas(orden.Id);
-            piezas.ShowDialog(this);
+            piezas.ShowDialog();
         }
     }
 }

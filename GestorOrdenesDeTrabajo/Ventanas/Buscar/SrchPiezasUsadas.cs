@@ -4,9 +4,14 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System;
 
 namespace GestorOrdenesDeTrabajo.Ventanas.Buscar
 {
+
+    //@todo Fix SrchPiezasUsadas
+    //@body Al consultar mas de una vez deja de mostrar las refacciones
+
     public partial class SrchPiezasUsadas : Form
     {
         private readonly int IdOrden;
