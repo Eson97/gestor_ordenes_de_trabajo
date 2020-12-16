@@ -3,11 +3,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using GestorOrdenesDeTrabajo.Enum;
+using GestorOrdenesDeTrabajo.Enums;
 using GestorOrdenesDeTrabajo.UsesCases;
 using GestorOrdenesDeTrabajo.CustomComponents;
 using GestorOrdenesDeTrabajo.Ventanas.Message;
 using GestorOrdenesDeTrabajo.DB;
+using GestorOrdenesDeTrabajo.Ventanas.Ventanas_Emergentes;
 
 namespace GestorOrdenesDeTrabajo.Ventanas.Ordenes
 {
@@ -64,11 +65,18 @@ namespace GestorOrdenesDeTrabajo.Ventanas.Ordenes
                         item.btnAction.Click += (s, e) =>
                         {
                             orden = item.Orden;
+                            
+                            var aux = EntregarDialog.ShowEntregarOrden(orden);
+                            if (!aux.Result) return;
 
-                            //TODO add forma de pago 
-                            orden.FechaEntrega = DateTime.Now;
+                            orden.TipoPago = (int)aux.MetodoPago;
+                            orden.FechaEntrega = aux.FechaEntrega;
+                            orden.Referencia = aux.Referencia;
                             orden.Status = AssignNextStatusOrder();
                             orden = OrdenController.I.Edit(orden);
+                            
+                            if (orden == null)
+                                MessageBox.Show("No se puede cambiar el status, intente de nuevo", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
                             //Repaint controls with new data
                             showOrdenes();
@@ -83,24 +91,26 @@ namespace GestorOrdenesDeTrabajo.Ventanas.Ordenes
         //Cambia el status de la orden a la siguiente etapa
         private int AssignNextStatusOrder()
         {
-            switch (status)
+            //switch (status)
+            //{
+            //    case (int)OrdenStatus.ESPERA:
+            //        return (int)OrdenStatus.PROCESO;
+
+            //    case (int)OrdenStatus.POR_ENTREGAR:
+            //        return (int)OrdenStatus.ENTREGADA;
+
+            //    default:
+            //        throw new ArgumentException("No se soporta el status", nameof(OrdenStatus));
+            //};
+
+            var a = status switch
             {
-                case (int)OrdenStatus.ESPERA:
-                    return (int)OrdenStatus.PROCESO;
-
-                case (int)OrdenStatus.POR_ENTREGAR:
-                    return (int)OrdenStatus.ENTREGADA;
-
-                default:
-                    throw new ArgumentException("No se soporta el status", nameof(OrdenStatus));
+                (int)OrdenStatus.ESPERA => (int)OrdenStatus.PROCESO,
+                (int)OrdenStatus.POR_ENTREGAR => (int)OrdenStatus.ENTREGADA,
+                _ => -1
             };
 
-            //var a = status switch
-            //{
-            //    (int)OrdenStatus.ESPERA => (int)OrdenStatus.PROCESO,
-            //    (int)OrdenStatus.POR_ENTREGAR => (int)OrdenStatus.ENTREGADA,
-            //    _ => -1
-            //};
+            return a;
         }
 
         private void pictureBox2_Click(object sender, EventArgs e)

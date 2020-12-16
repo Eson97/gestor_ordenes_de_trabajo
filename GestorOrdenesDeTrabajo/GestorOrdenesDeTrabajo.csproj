@@ -25,6 +25,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <LangVersion>8.0</LangVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -34,6 +35,7 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <LangVersion>8.0</LangVersion>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
@@ -102,9 +104,9 @@
     <Compile Include="DB\sysdiagrams.cs" />
     <Compile Include="DB\Usuario.cs" />
     <Compile Include="DB\UsuarioPermiso.cs" />
-    <Compile Include="Enum\MessageDialogResult.cs" />
-    <Compile Include="Enum\OrdenStatus.cs" />
-    <Compile Include="Enum\TipoPago.cs" />
+    <Compile Include="Enums\MessageDialogResult.cs" />
+    <Compile Include="Enums\OrdenStatus.cs" />
+    <Compile Include="Enums\TipoPago.cs" />
     <Compile Include="Inicio.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -178,6 +180,12 @@
     </Compile>
     <Compile Include="Ventanas\Ordenes\OrdenesEnProceso_AddRem.Designer.cs">
       <DependentUpon>OrdenesEnProceso_AddRem.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Ventanas\Ventanas_Emergentes\EntregarDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Ventanas\Ventanas_Emergentes\EntregarDialog.Designer.cs">
+      <DependentUpon>EntregarDialog.cs</DependentUpon>
     </Compile>
     <Compile Include="Ventanas\Ventanas_Emergentes\LoginDialog.cs">
       <SubType>Form</SubType>
@@ -292,6 +300,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Ventanas\Ordenes\OrdenesEnProceso_AddRem.resx">
       <DependentUpon>OrdenesEnProceso_AddRem.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Ventanas\Ventanas_Emergentes\EntregarDialog.resx">
+      <DependentUpon>EntregarDialog.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Ventanas\Ventanas_Emergentes\LoginDialog.resx">
       <DependentUpon>LoginDialog.cs</DependentUpon>

@@ -1,7 +1,7 @@
 ﻿namespace GestorOrdenesDeTrabajo.Migrations
 {
     using GestorOrdenesDeTrabajo.DB;
-    using GestorOrdenesDeTrabajo.Enum;
+    using GestorOrdenesDeTrabajo.Enums;
     using System;
     using System.Data.Entity;
     using System.Data.Entity.Migrations;

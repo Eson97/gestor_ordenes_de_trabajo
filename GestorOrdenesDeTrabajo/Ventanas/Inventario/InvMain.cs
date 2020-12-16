@@ -1,5 +1,5 @@
 ﻿using GestorOrdenesDeTrabajo.DB;
-using GestorOrdenesDeTrabajo.Enum;
+using GestorOrdenesDeTrabajo.Enums;
 using GestorOrdenesDeTrabajo.UsesCases;
 using GestorOrdenesDeTrabajo.Ventanas.Inventario;
 using GestorOrdenesDeTrabajo.Ventanas.Message;

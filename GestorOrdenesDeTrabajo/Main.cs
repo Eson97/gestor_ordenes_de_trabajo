@@ -10,7 +10,7 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using GestorOrdenesDeTrabajo.UsesCases;
 using GestorOrdenesDeTrabajo.DB;
-using GestorOrdenesDeTrabajo.Enum;
+using GestorOrdenesDeTrabajo.Enums;
 
 namespace GestorOrdenesDeTrabajo
 {
@@ -218,7 +218,7 @@ namespace GestorOrdenesDeTrabajo
         private void btnPorEntregar_Click(object sender, EventArgs e)
         {
             collapseSidePanel(true);
-            openPanel(this, "Ordenes por Entregar", sender);
+            openPanel(new OrdenesEnEspera((int)OrdenStatus.POR_ENTREGAR), "Ordenes por Entregar", sender);
         }
 
         private void btnEnGarantia_Click(object sender, EventArgs e)

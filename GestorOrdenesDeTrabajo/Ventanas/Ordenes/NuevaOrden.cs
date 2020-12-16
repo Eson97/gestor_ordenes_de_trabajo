@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Windows.Forms;
 using GestorOrdenesDeTrabajo.DB;
-using GestorOrdenesDeTrabajo.Enum;
+using GestorOrdenesDeTrabajo.Enums;
 using GestorOrdenesDeTrabajo.UsesCases;
 using GestorOrdenesDeTrabajo.Utilerias.Controles;
 using GestorOrdenesDeTrabajo.Utilerias.Eventos;

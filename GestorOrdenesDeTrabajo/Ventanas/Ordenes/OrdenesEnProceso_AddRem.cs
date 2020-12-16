@@ -1,6 +1,6 @@
 ﻿using GestorOrdenesDeTrabajo.Auxiliares;
 using GestorOrdenesDeTrabajo.DB;
-using GestorOrdenesDeTrabajo.Enum;
+using GestorOrdenesDeTrabajo.Enums;
 using GestorOrdenesDeTrabajo.UsesCases;
 using GestorOrdenesDeTrabajo.Ventanas.Message;
 using GestorOrdenesDeTrabajo.Ventanas.Ventanas_Emergentes;
@@ -166,6 +166,8 @@ namespace GestorOrdenesDeTrabajo.Ventanas.Ordenes
 
         private void btnComp_Click(object sender, EventArgs e)
         {
+            if ((int)MessageDialogResult.No == MessageDialog.ShowMessageDialog("Confirmacion", "¿Esta seguro que desea completar esta orden?\nYa no podra ser modificada", false)) return;
+
             Orden.Status = (int)OrdenStatus.POR_ENTREGAR;
             Orden = OrdenController.I.Edit(Orden);
             if (Orden == null)
@@ -175,6 +177,10 @@ namespace GestorOrdenesDeTrabajo.Ventanas.Ordenes
 
         private void btnCancel_Click(object sender, EventArgs e)
         {
+            if ((int)MessageDialogResult.No == MessageDialog.ShowMessageDialog("Confirmacion", "¿Esta seguro que desea cancelar esta orden?\nYa no podra ser recuperada", false)) return;
+
+            //TODO Agregar ventana para ingresar el costo de mano de obra
+
             Orden.Status = (int)OrdenStatus.CANCELADA;
             Orden = OrdenController.I.Edit(Orden);
             if (Orden == null)

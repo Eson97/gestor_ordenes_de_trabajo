@@ -1,5 +1,5 @@
 ﻿using GestorOrdenesDeTrabajo.DB;
-using GestorOrdenesDeTrabajo.Enum;
+using GestorOrdenesDeTrabajo.Enums;
 using System;
 using System.Collections.Generic;
 using System.Windows.Forms;

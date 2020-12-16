@@ -1,4 +1,4 @@
-﻿using GestorOrdenesDeTrabajo.Enum;
+﻿using GestorOrdenesDeTrabajo.Enums;
 using System;
 using System.Drawing;
 using System.Runtime.InteropServices;
