@@ -168,6 +168,15 @@ namespace GestorOrdenesDeTrabajo.Ventanas.Ordenes
         {
             if ((int)MessageDialogResult.No == MessageDialog.ShowMessageDialog("Confirmacion", "¿Esta seguro que desea completar esta orden?\nYa no podra ser modificada", false)) return;
 
+            var aux = LaborCostDialog.ShowLaborCostDialog();
+
+            if (!aux.Result) return; //si no se asigno un valor valido no procede
+
+            //TODO Asignar costo de mano de obra a la orden
+            
+            return; //Quitar este return, lo puse solo para testear la nueva ventana
+
+
             Orden.Status = (int)OrdenStatus.POR_ENTREGAR;
             Orden = OrdenController.I.Edit(Orden);
             if (Orden == null)
