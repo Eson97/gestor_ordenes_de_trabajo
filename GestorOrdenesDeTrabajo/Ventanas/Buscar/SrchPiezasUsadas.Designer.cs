@@ -169,6 +169,8 @@
             this.piezaItemList1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
             this.piezaItemList1.Location = new System.Drawing.Point(4, 4);
             this.piezaItemList1.Margin = new System.Windows.Forms.Padding(4);
+            this.piezaItemList1.MaximumSize = new System.Drawing.Size(703, 73);
+            this.piezaItemList1.MinimumSize = new System.Drawing.Size(703, 73);
             this.piezaItemList1.Name = "piezaItemList1";
             this.piezaItemList1.Size = new System.Drawing.Size(703, 73);
             this.piezaItemList1.TabIndex = 0;
@@ -178,6 +180,8 @@
             this.piezaItemList2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
             this.piezaItemList2.Location = new System.Drawing.Point(4, 85);
             this.piezaItemList2.Margin = new System.Windows.Forms.Padding(4);
+            this.piezaItemList2.MaximumSize = new System.Drawing.Size(703, 73);
+            this.piezaItemList2.MinimumSize = new System.Drawing.Size(703, 73);
             this.piezaItemList2.Name = "piezaItemList2";
             this.piezaItemList2.Size = new System.Drawing.Size(703, 73);
             this.piezaItemList2.TabIndex = 1;
@@ -187,6 +191,8 @@
             this.piezaItemList3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
             this.piezaItemList3.Location = new System.Drawing.Point(4, 166);
             this.piezaItemList3.Margin = new System.Windows.Forms.Padding(4);
+            this.piezaItemList3.MaximumSize = new System.Drawing.Size(703, 73);
+            this.piezaItemList3.MinimumSize = new System.Drawing.Size(703, 73);
             this.piezaItemList3.Name = "piezaItemList3";
             this.piezaItemList3.Size = new System.Drawing.Size(703, 73);
             this.piezaItemList3.TabIndex = 2;
@@ -196,6 +202,8 @@
             this.piezaItemList4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
             this.piezaItemList4.Location = new System.Drawing.Point(4, 247);
             this.piezaItemList4.Margin = new System.Windows.Forms.Padding(4);
+            this.piezaItemList4.MaximumSize = new System.Drawing.Size(703, 73);
+            this.piezaItemList4.MinimumSize = new System.Drawing.Size(703, 73);
             this.piezaItemList4.Name = "piezaItemList4";
             this.piezaItemList4.Size = new System.Drawing.Size(703, 73);
             this.piezaItemList4.TabIndex = 3;
@@ -205,6 +213,8 @@
             this.piezaItemList5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
             this.piezaItemList5.Location = new System.Drawing.Point(4, 328);
             this.piezaItemList5.Margin = new System.Windows.Forms.Padding(4);
+            this.piezaItemList5.MaximumSize = new System.Drawing.Size(703, 73);
+            this.piezaItemList5.MinimumSize = new System.Drawing.Size(703, 73);
             this.piezaItemList5.Name = "piezaItemList5";
             this.piezaItemList5.Size = new System.Drawing.Size(703, 73);
             this.piezaItemList5.TabIndex = 4;
@@ -223,6 +233,7 @@
             this.Name = "SrchPiezasUsadas";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "SrchPiezasUsadas";
+            this.Load += new System.EventHandler(this.SrchPiezasUsadas_Load);
             this.panel1.ResumeLayout(false);
             this.tableLayoutPanel1.ResumeLayout(false);
             this.panel2.ResumeLayout(false);

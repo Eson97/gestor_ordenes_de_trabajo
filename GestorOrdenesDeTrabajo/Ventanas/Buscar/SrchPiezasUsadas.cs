@@ -20,7 +20,6 @@ namespace GestorOrdenesDeTrabajo.Ventanas.Buscar
         public SrchPiezasUsadas(int idOrden)
         {
             InitializeComponent();
-            showRefacciones();
             IdOrden = idOrden;
             lblTittle.Text = idOrden.ToString();
         }
@@ -28,17 +27,24 @@ namespace GestorOrdenesDeTrabajo.Ventanas.Buscar
         {
             this.flpListPanel.Controls.Clear();
             refacciones = await Task.Run(() => OrdenRefaccionController.I.GetListaByOrden(IdOrden).Select(el => new PiezaItemList(el)).ToList());
-            foreach (PiezaItemList item in refacciones)
+
+            refacciones.ForEach(item =>
             {
-                Total += item.Refaccion.Total;
-                this.flpListPanel.Controls.Add(item);
-            }
+               Total += item.Refaccion.Total;
+               this.flpListPanel.Controls.Add(item);
+            });
+
             this.ipTotal.updateData("Total", Total);
         }
 
         private void btnClose_Click(object sender, System.EventArgs e)
         {
-            this.Close();
+            this.Dispose();
+        }
+
+        private void SrchPiezasUsadas_Load(object sender, EventArgs e)
+        {
+            showRefacciones();
         }
     }
 }
