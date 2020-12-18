@@ -172,14 +172,14 @@ namespace GestorOrdenesDeTrabajo.Ventanas.Ordenes
 
             if (!aux.Result) return; //si no se asigno un valor valido no procede
 
-            //TODO Asignar costo de mano de obra a la orden
-            
-            return; //Quitar este return, lo puse solo para testear la nueva ventana
-
+            OrdenMecanico ordenMecanico = OrdenMecanicoController.I.GetByIdOrden(Orden.Id);                
+            ordenMecanico.CostoManoObra = aux.Costo;
+            ordenMecanico = OrdenMecanicoController.I.Edit(ordenMecanico);
 
             Orden.Status = (int)OrdenStatus.POR_ENTREGAR;
             Orden = OrdenController.I.Edit(Orden);
-            if (Orden == null)
+
+            if (Orden == null || ordenMecanico == null)
                 MessageBox.Show("No se puede cambiar el status, intente de nuevo", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             this.Dispose();
         }
@@ -187,8 +187,6 @@ namespace GestorOrdenesDeTrabajo.Ventanas.Ordenes
         private void btnCancel_Click(object sender, EventArgs e)
         {
             if ((int)MessageDialogResult.No == MessageDialog.ShowMessageDialog("Confirmacion", "¿Esta seguro que desea cancelar esta orden?\nYa no podra ser recuperada", false)) return;
-
-            //TODO Agregar ventana para ingresar el costo de mano de obra
 
             Orden.Status = (int)OrdenStatus.CANCELADA;
             Orden = OrdenController.I.Edit(Orden);

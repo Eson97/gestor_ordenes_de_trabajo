@@ -108,5 +108,24 @@ namespace GestorOrdenesDeTrabajo.UsesCases
             //Retorna lista vacia para evitar excepciones en llamada
             return new List<OrdenMecanico>();
         }
+
+        public OrdenMecanico GetByIdOrden(int idOrden)
+        {
+            if (idOrden <= 0) return null;
+            OrdenMecanico element;
+            try
+            {
+                using (Entities db = new Entities())
+                {
+                    element = db.OrdenMecanico.Where(el => el.IdOrden.Equals(idOrden)).FirstOrDefault();
+                }
+                return element;
+            }
+            catch (Exception e)
+            {
+                Log.Write("Ha ocurrido un error " + e.Message);
+            }
+            return null;
+        }
     }
 }

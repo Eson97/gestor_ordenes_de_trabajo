@@ -124,9 +124,9 @@
     <Compile Include="Main.Designer.cs">
       <DependentUpon>Main.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\202011211753132_Initial.cs" />
-    <Compile Include="Migrations\202011211753132_Initial.designer.cs">
-      <DependentUpon>202011211753132_Initial.cs</DependentUpon>
+    <Compile Include="Migrations\202012182202138_Initial.cs" />
+    <Compile Include="Migrations\202012182202138_Initial.designer.cs">
+      <DependentUpon>202012182202138_Initial.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="UsesCases\ClienteController.cs" />
@@ -283,8 +283,8 @@
     <EmbeddedResource Include="Main.resx">
       <DependentUpon>Main.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202011211753132_Initial.resx">
-      <DependentUpon>202011211753132_Initial.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202012182202138_Initial.resx">
+      <DependentUpon>202012182202138_Initial.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Ventanas\Buscar\SrchDetailInfo.resx">
       <DependentUpon>SrchDetailInfo.cs</DependentUpon>

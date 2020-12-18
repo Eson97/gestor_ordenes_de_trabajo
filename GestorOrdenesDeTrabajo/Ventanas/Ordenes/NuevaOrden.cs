@@ -71,7 +71,7 @@ namespace GestorOrdenesDeTrabajo.Ventanas.Ordenes
                 FechaRecepcion = recepcion,
                 Observaciones = observaciones,
                 Status = (int)OrdenStatus.ESPERA,
-                Cliente = cliente,
+                IdCliente = cliente.Id
             });
 
             if (orden != null)

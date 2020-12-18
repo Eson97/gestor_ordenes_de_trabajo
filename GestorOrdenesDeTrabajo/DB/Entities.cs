@@ -79,11 +79,11 @@ namespace GestorOrdenesDeTrabajo.DB
 
             modelBuilder.Entity<OrdenMecanico>()
                 .Property(e => e.CostoManoObra)
-                .HasPrecision(4, 2);
+                .HasPrecision(12, 2);
 
             modelBuilder.Entity<OrdenRefaccion>()
                 .Property(e => e.PrecioUnitario)
-                .HasPrecision(4, 2);
+                .HasPrecision(12, 2);
 
             modelBuilder.Entity<Permiso>()
                 .Property(e => e.Descripcion)
