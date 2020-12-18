@@ -86,7 +86,10 @@ namespace GestorOrdenesDeTrabajo.UsesCases
             {
                 using (Entities db = new Entities())
                 {
-                    lista = db.Mecanico.OrderBy(cp => cp.Nombre).ToList();
+                    lista = db.Mecanico
+                        .AsNoTracking()
+                        .OrderBy(cp => cp.Nombre)
+                        .ToList();
                 }
                 return lista;
             }
@@ -107,7 +110,11 @@ namespace GestorOrdenesDeTrabajo.UsesCases
             {
                 using (Entities db = new Entities())
                 {
-                    lista = db.OrdenMecanico.Where(el => el.IdOrden.Equals(idOrden)).Select(el => el.Mecanico).ToList();
+                    lista = db.OrdenMecanico
+                        .Where(el => el.IdOrden.Equals(idOrden))
+                        .AsNoTracking()
+                        .Select(el => el.Mecanico)
+                        .ToList();
                 }
                 return lista;
             }

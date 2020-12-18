@@ -87,10 +87,12 @@ namespace GestorOrdenesDeTrabajo.UsesCases
                 using (Entities db = new Entities())
                 {
                     db.Configuration.LazyLoadingEnabled = true;
-                    lista = db.Orden.Where(el => el.Status == status)
-                                    .OrderBy(cp => cp.Folio)
-                                    .Include(el => el.Cliente)
-                                    .ToList();
+                    lista = db.Orden
+                        .Where(el => el.Status == status)
+                        .AsNoTracking()
+                        .OrderBy(cp => cp.Folio)
+                        .Include(el => el.Cliente)
+                        .ToList();
                 }
                 return lista;
             }
@@ -111,7 +113,11 @@ namespace GestorOrdenesDeTrabajo.UsesCases
                 using (Entities db = new Entities())
                 {
                     db.Configuration.LazyLoadingEnabled = false;
-                    lista = db.Orden.Include(el=>el.Cliente).OrderBy(cp => cp.Folio).ToList();
+                    lista = db.Orden
+                        .Include(el => el.Cliente)
+                        .OrderBy(cp => cp.Folio)
+                        .AsNoTracking()
+                        .ToList();
                 }
                 return lista;
             }
@@ -132,8 +138,9 @@ namespace GestorOrdenesDeTrabajo.UsesCases
                 using (Entities db = new Entities())
                 {
                     orden = db.Orden
-                        .Include(el=>el.Cliente)
-                        .Where(el => el.Folio.Equals(folio)).FirstOrDefault();
+                        .Include(el => el.Cliente)
+                        .Where(el => el.Folio.Equals(folio))
+                        .FirstOrDefault();
                 }
                 return orden;
             }

@@ -92,7 +92,11 @@ namespace GestorOrdenesDeTrabajo.UsesCases
                 using (Entities db = new Entities())
                 {
                     db.Configuration.LazyLoadingEnabled = false;
-                    lista = db.OrdenMecanico.Include(el => el.Mecanico).Include(el => el.Orden).ToList();
+                    lista = db.OrdenMecanico
+                        .Include(el => el.Mecanico)
+                        .Include(el => el.Orden)
+                        .AsNoTracking()
+                        .ToList();
                 }
                 return lista;
             }

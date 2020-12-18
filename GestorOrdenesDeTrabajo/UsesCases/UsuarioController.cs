@@ -105,7 +105,9 @@ namespace GestorOrdenesDeTrabajo.UsesCases
                 using (Entities db = new Entities())
                 {
                     db.Configuration.LazyLoadingEnabled = false;
-                    lista = db.Usuario.ToList();
+                    lista = db.Usuario
+                        .AsNoTracking()
+                        .ToList();
                 }
                 return lista;
             }

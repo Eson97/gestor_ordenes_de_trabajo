@@ -87,7 +87,10 @@ namespace GestorOrdenesDeTrabajo.UsesCases
                 using (Entities db = new Entities())
                 {
                     db.Configuration.LazyLoadingEnabled = false;
-                    lista = db.Cliente.OrderBy(cp => cp.Nombre).ToList();
+                    lista = db.Cliente
+                        .OrderBy(cp => cp.Nombre)
+                        .AsNoTracking()
+                        .ToList();
                 }
                 return lista;
             }

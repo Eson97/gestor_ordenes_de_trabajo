@@ -118,7 +118,11 @@ namespace GestorOrdenesDeTrabajo.UsesCases
             {
                 using (Entities db = new Entities())
                 {
-                    lista = db.Refaccion.Where(el => !el.IsDeleted).OrderBy(cp => cp.Descripcion).ToList();
+                    lista = db.Refaccion
+                        .Where(el => !el.IsDeleted)
+                        .OrderBy(cp => cp.Descripcion)
+                        .AsNoTracking()
+                        .ToList();
                 }
                 return lista;
             }
@@ -138,7 +142,12 @@ namespace GestorOrdenesDeTrabajo.UsesCases
             {
                 using (Entities db = new Entities())
                 {
-                    lista = db.OrdenRefaccion.Where(el => el.IdOrden.Equals(IdOrden)).Select(el => el.Refaccion).ToList();
+                    lista = db.OrdenRefaccion
+                        .Where(el => el.IdOrden
+                        .Equals(IdOrden))
+                        .Select(el => el.Refaccion)
+                        .AsNoTracking()
+                        .ToList();
                 }
                 return lista;
             }

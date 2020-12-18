@@ -86,7 +86,9 @@ namespace GestorOrdenesDeTrabajo.UsesCases
             {
                 using (Entities db = new Entities())
                 {
-                    lista = db.Permiso.OrderBy(cp => cp.Descripcion).ToList();
+                    lista = db.Permiso
+                        .AsNoTracking()
+                        .OrderBy(cp => cp.Descripcion).ToList();
                 }
                 return lista;
             }

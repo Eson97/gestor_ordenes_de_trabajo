@@ -86,7 +86,8 @@ namespace GestorOrdenesDeTrabajo.UsesCases
             {
                 using (Entities db = new Entities())
                 {
-                    db.OrdenRefaccion.RemoveRange(db.OrdenRefaccion.Where(el => el.IdOrden.Equals(idOrden)));
+                    db.OrdenRefaccion
+                        .RemoveRange(db.OrdenRefaccion.Where(el => el.IdOrden.Equals(idOrden)));
                     db.SaveChanges();
                 }
                 return true;
@@ -116,7 +117,9 @@ namespace GestorOrdenesDeTrabajo.UsesCases
                 using (Entities db = new Entities())
                 {
                     lista = db.OrdenRefaccion
-                        .Where(el => el.IdOrden.Equals(IdOrden)).Select(el => new RefaccionDTO()
+                        .AsNoTracking()
+                        .Where(el => el.IdOrden.Equals(IdOrden))                        
+                        .Select(el => new RefaccionDTO()
                         {
                             Id = el.Refaccion.Id,
                             Descripcion = el.Refaccion.Descripcion,
@@ -124,7 +127,8 @@ namespace GestorOrdenesDeTrabajo.UsesCases
                             Cantidad = el.Cantidad,
                             PrecioUnitrio = el.PrecioUnitario,
                             Total = el.PrecioUnitario * el.Cantidad
-                        }).ToList();
+                        })
+                        .ToList();
                 }
                 return lista;
             }
