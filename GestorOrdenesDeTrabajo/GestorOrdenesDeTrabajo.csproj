@@ -63,6 +63,9 @@
     <Compile Include="CustomComponents\CustomDateTimePicker.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="CustomComponents\FloatButton.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="CustomComponents\infoPanel.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -312,6 +315,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Ventanas\Ordenes\OrdenesEnProceso_AddRem.resx">
       <DependentUpon>OrdenesEnProceso_AddRem.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Ventanas\Ordenes\OrdenesGarantia.resx">
+      <DependentUpon>OrdenesGarantia.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Ventanas\Ventanas_Emergentes\EntregarDialog.resx">
       <DependentUpon>EntregarDialog.cs</DependentUpon>
