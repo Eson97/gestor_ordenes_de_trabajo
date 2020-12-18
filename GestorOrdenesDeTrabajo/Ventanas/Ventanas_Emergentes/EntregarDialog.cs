@@ -3,14 +3,7 @@ using GestorOrdenesDeTrabajo.DB;
 using GestorOrdenesDeTrabajo.Enums;
 using GestorOrdenesDeTrabajo.Ventanas.Message;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
 using System.Runtime.InteropServices;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace GestorOrdenesDeTrabajo.Ventanas.Ventanas_Emergentes
@@ -66,7 +59,7 @@ namespace GestorOrdenesDeTrabajo.Ventanas.Ventanas_Emergentes
 
         private void btnAceptar_Click(object sender, EventArgs e)
         {
-            if (MessageBox.Show("¿Toda la informacion ingresada es correcta?","",MessageBoxButtons.YesNo,MessageBoxIcon.Question) == DialogResult.No) return;
+            if (MessageDialog.ShowMessageDialog("", "¿Toda la infotmacion ingresada es correcta?", false) == (int)MessageDialogResult.No) return;
 
             _MetodoPago = (TipoPago)Enum.Parse(typeof(TipoPago), cbFormaDePago.SelectedValue.ToString());
             _FechaEntrega = cdtpFechaEntrega.Value;

@@ -7,6 +7,8 @@ namespace GestorOrdenesDeTrabajo.CustomComponents
     {
         private Orden orden;
 
+        public string Folio { get => orden.Folio.ToString(); }
+
         public OrdenItemList()
         {
             InitializeComponent();

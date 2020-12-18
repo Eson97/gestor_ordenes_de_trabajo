@@ -107,7 +107,7 @@ namespace GestorOrdenesDeTrabajo.Ventanas.Ordenes
             {
                 (int)OrdenStatus.ESPERA => (int)OrdenStatus.PROCESO,
                 (int)OrdenStatus.POR_ENTREGAR => (int)OrdenStatus.ENTREGADA,
-                _ => -1
+                _ => throw new ArgumentException("No se soporta el status", nameof(OrdenStatus))
             };
 
             return a;
@@ -115,6 +115,24 @@ namespace GestorOrdenesDeTrabajo.Ventanas.Ordenes
 
         private void pictureBox2_Click(object sender, EventArgs e)
         {
+        }
+
+        private void txtFiltro_TextChanged(object sender, EventArgs e)
+        {
+            if (txtFiltro.TextLength == 0)
+            {
+                foreach (OrdenItemList item in flpList.Controls)
+                    item.Visible = true;
+                return;
+            }
+
+            string folio = txtFiltro.Text;
+
+            foreach (OrdenItemList item in flpList.Controls)
+            {
+                if (!item.Folio.Contains(folio)) item.Visible = false;
+                else item.Visible = true;
+            }
         }
     }
 }

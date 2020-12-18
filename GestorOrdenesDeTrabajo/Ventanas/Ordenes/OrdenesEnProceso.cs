@@ -62,6 +62,25 @@ namespace GestorOrdenesDeTrabajo.Ventanas.Ordenes
         {
             showOrdenes();
         }
+
+        private void txtFiltro_TextChanged(object sender, EventArgs e)
+        {
+            if (txtFiltro.TextLength == 0)
+            {
+                foreach (OrdenItemList item in flpOrdenList.Controls)
+                    item.Visible = true;
+                return;
+            }
+
+            string folio = txtFiltro.Text;
+
+            foreach (OrdenItemList item in flpOrdenList.Controls)
+            {
+
+                if (!item.Folio.Contains(folio)) item.Visible = false;
+                else item.Visible = true;
+            }
+        }
     }
 
 }
