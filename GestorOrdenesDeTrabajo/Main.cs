@@ -224,7 +224,7 @@ namespace GestorOrdenesDeTrabajo
         private void btnEnGarantia_Click(object sender, EventArgs e)
         {
             collapseSidePanel(true);
-            openPanel(this, "Orden en Garantia", sender);
+            openPanel(new OrdenesGarantia(), "Orden en Garantia", sender);
         }
 
         private void btnClosePanel_Click(object sender, EventArgs e)
