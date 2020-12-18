@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Drawing;
 using System.Windows.Forms;
 
 namespace GestorOrdenesDeTrabajo.CustomComponents
@@ -16,8 +11,12 @@ namespace GestorOrdenesDeTrabajo.CustomComponents
         private Color _onHoverButtonColor = Color.Yellow;
         private Color _textColor = Color.White;
         private Color _onHoverTextColor = Color.Gray;
+        private Color _onMouseDownBorderColor = Color.Black;
+        private Color _onMouseDownButtonColor = Color.Black;
+        private Color _shadowTextColor = Color.Transparent;
 
         private bool _isHovering;
+        private bool _isMouseDown;
         private int _borderThickness = 6;
         private int _borderThicknessByTwo = 3;
 
@@ -35,6 +34,16 @@ namespace GestorOrdenesDeTrabajo.CustomComponents
                 _isHovering = false;
                 Invalidate();
             };
+            MouseDown += (s, e) =>
+            {
+                _isMouseDown = true;
+                Invalidate();
+            };
+            MouseUp += (s, e) =>
+            {
+                _isMouseDown = false;
+                Invalidate();
+            };
         }
 
 
@@ -42,8 +51,9 @@ namespace GestorOrdenesDeTrabajo.CustomComponents
         {
             base.OnPaint(e);
             Graphics g = e.Graphics;
-            g.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
-            Brush brush = new SolidBrush(_isHovering ? _onHoverBorderColor : _borderColor);
+            g.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
+            //brush border
+            Brush brush = new SolidBrush(_isMouseDown ? _onMouseDownBorderColor : _isHovering ? _onHoverBorderColor : _borderColor);
 
             //Border
             g.FillEllipse(brush, 0, 0, Height, Height);
@@ -51,7 +61,8 @@ namespace GestorOrdenesDeTrabajo.CustomComponents
             g.FillRectangle(brush, Height / 2, 0, Width - Height, Height);
 
             brush.Dispose();
-            brush = new SolidBrush(_isHovering ? _onHoverButtonColor : _buttonColor);
+            //bruh button
+            brush = new SolidBrush(_isMouseDown ? _onMouseDownButtonColor : _isHovering ? _onHoverButtonColor : _buttonColor);
 
             //Inner part. Button itself
             g.FillEllipse(brush, _borderThicknessByTwo, _borderThicknessByTwo, Height - _borderThickness,
@@ -62,14 +73,45 @@ namespace GestorOrdenesDeTrabajo.CustomComponents
                 Width - Height - _borderThickness, Height - _borderThickness);
 
             brush.Dispose();
+            //brush text
             brush = new SolidBrush(_isHovering ? _onHoverTextColor : _textColor);
+            Brush shadowBrush = new SolidBrush(_shadowTextColor);
 
             //Button Text
             SizeF stringSize = g.MeasureString(Text, Font);
-            g.DrawString(Text, Font, brush, (Width - stringSize.Width) / 2, (Height - stringSize.Height) / 2);
+            Point p = new Point((Width - (int)stringSize.Width) / 2, ((Height - (int)stringSize.Height) / 2) + 2);
+            g.DrawString(Text, Font, shadowBrush, p.X + 2, p.Y + 2);
+            g.DrawString(Text, Font, brush, p);
         }
 
+        public Color textShadow
+        {
+            get => _shadowTextColor;
+            set
+            {
+                _shadowTextColor = value;
+                Invalidate();
+            }
+        }
 
+        public Color OnMouseDownBorderColor
+        {
+            get => _onMouseDownBorderColor;
+            set 
+            {
+                _onMouseDownBorderColor = value;
+                Invalidate();
+            }
+        }
+        public Color OnMouseDownButtonColor
+        {
+            get => _onMouseDownButtonColor;
+            set
+            {
+                _onMouseDownButtonColor = value;
+                Invalidate();
+            }
+        }
         public Color BorderColor
         {
             get => _borderColor;
