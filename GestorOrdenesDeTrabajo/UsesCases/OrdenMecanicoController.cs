@@ -127,5 +127,29 @@ namespace GestorOrdenesDeTrabajo.UsesCases
             }
             return null;
         }
+
+        public bool DeleteByOrden(int idOrden)
+        {
+            if (idOrden <= 0) return false;
+
+            try
+            {
+                using (Entities db = new Entities())
+                {
+                    OrdenMecanico toDelete = db.OrdenMecanico
+                        .Where(el=>el.IdOrden.Equals(idOrden))
+                        .FirstOrDefault();
+
+                    db.OrdenMecanico.Remove(toDelete);
+                    db.SaveChanges();
+                }
+                return true;
+            }
+            catch (Exception e)
+            {
+                Log.Write("Ha ocurrido un error " + e.Message);
+            }
+            return false;
+        }
     }
 }

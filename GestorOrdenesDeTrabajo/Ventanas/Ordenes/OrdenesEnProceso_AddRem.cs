@@ -172,7 +172,7 @@ namespace GestorOrdenesDeTrabajo.Ventanas.Ordenes
 
             if (!aux.Result) return; //si no se asigno un valor valido no procede
 
-            OrdenMecanico ordenMecanico = OrdenMecanicoController.I.GetByIdOrden(Orden.Id);                
+            OrdenMecanico ordenMecanico = OrdenMecanicoController.I.GetByIdOrden(Orden.Id);
             ordenMecanico.CostoManoObra = aux.Costo;
             ordenMecanico = OrdenMecanicoController.I.Edit(ordenMecanico);
 
@@ -187,6 +187,12 @@ namespace GestorOrdenesDeTrabajo.Ventanas.Ordenes
         private void btnCancel_Click(object sender, EventArgs e)
         {
             if ((int)MessageDialogResult.No == MessageDialog.ShowMessageDialog("Confirmacion", "¿Esta seguro que desea cancelar esta orden?\nYa no podra ser recuperada", false)) return;
+
+            bool deleted = OrdenRefaccionController.I.DeleteRange(Orden.Id);
+            deleted &= OrdenMecanicoController.I.DeleteByOrden(Orden.Id);
+
+            if (!deleted)
+                MessageBox.Show("No se puede eliminar la orden, error al eliminar las piezas", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
             Orden.Status = (int)OrdenStatus.CANCELADA;
             Orden = OrdenController.I.Edit(Orden);
