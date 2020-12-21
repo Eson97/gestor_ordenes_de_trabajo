@@ -47,6 +47,7 @@
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Windows.Forms.DataVisualization" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -157,6 +158,12 @@
     </Compile>
     <Compile Include="Ventanas\Buscar\SrchPiezasUsadas.Designer.cs">
       <DependentUpon>SrchPiezasUsadas.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Ventanas\Estadisticas\Estadisticas.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Ventanas\Estadisticas\Estadisticas.Designer.cs">
+      <DependentUpon>Estadisticas.cs</DependentUpon>
     </Compile>
     <Compile Include="Ventanas\Inventario\InvMain.cs">
       <SubType>Form</SubType>
@@ -289,6 +296,9 @@
     <EmbeddedResource Include="Ventanas\Buscar\SrchPiezasUsadas.resx">
       <DependentUpon>SrchPiezasUsadas.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Ventanas\Estadisticas\Estadisticas.resx">
+      <DependentUpon>Estadisticas.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Ventanas\Inventario\InvMain.resx">
       <DependentUpon>InvMain.cs</DependentUpon>
     </EmbeddedResource>
@@ -360,9 +370,7 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Ventanas\Estadisticas\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <Content Include="UpdateDB.txt" />
   </ItemGroup>
