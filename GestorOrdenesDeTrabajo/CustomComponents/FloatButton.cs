@@ -3,7 +3,7 @@ using System.Windows.Forms;
 
 namespace GestorOrdenesDeTrabajo.CustomComponents
 {
-    class FloatButton:Button
+    class FloatButton : Button
     {
         private Color _borderColor = Color.Silver;
         private Color _onHoverBorderColor = Color.Gray;

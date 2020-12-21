@@ -212,7 +212,7 @@ namespace GestorOrdenesDeTrabajo
         private void btnEnProceso_Click(object sender, EventArgs e)
         {
             collapseSidePanel(true);
-            openPanel(new OrdenesEnProceso(), "Ordenes en Proceso", sender);
+            openPanel(new OrdenesEnProceso(OrdenStatus.PROCESO), "Ordenes en Proceso", sender);
         }
 
         private void btnPorEntregar_Click(object sender, EventArgs e)
@@ -224,7 +224,7 @@ namespace GestorOrdenesDeTrabajo
         private void btnEnGarantia_Click(object sender, EventArgs e)
         {
             collapseSidePanel(true);
-            openPanel(new OrdenesGarantia(), "Orden en Garantia", sender);
+            openPanel(new OrdenesEnProceso(OrdenStatus.GARANTIA), "Ordenes en Garantia", sender);
         }
 
         private void btnClosePanel_Click(object sender, EventArgs e)

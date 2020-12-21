@@ -184,12 +184,6 @@
     <Compile Include="Ventanas\Ordenes\OrdenesEnProceso_AddRem.Designer.cs">
       <DependentUpon>OrdenesEnProceso_AddRem.cs</DependentUpon>
     </Compile>
-    <Compile Include="Ventanas\Ordenes\OrdenesGarantia.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Ventanas\Ordenes\OrdenesGarantia.Designer.cs">
-      <DependentUpon>OrdenesGarantia.cs</DependentUpon>
-    </Compile>
     <Compile Include="Ventanas\Ventanas_Emergentes\EntregarDialog.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -315,9 +309,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Ventanas\Ordenes\OrdenesEnProceso_AddRem.resx">
       <DependentUpon>OrdenesEnProceso_AddRem.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Ventanas\Ordenes\OrdenesGarantia.resx">
-      <DependentUpon>OrdenesGarantia.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Ventanas\Ventanas_Emergentes\EntregarDialog.resx">
       <DependentUpon>EntregarDialog.cs</DependentUpon>

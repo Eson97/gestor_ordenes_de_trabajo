@@ -18,11 +18,13 @@ namespace GestorOrdenesDeTrabajo.Ventanas.Ordenes
         Orden Orden;
         DataTable DataTable;
         List<RefaccionDTO> Refacciones;
+        OrdenStatus Estado;
         bool CambiosGuardados = true;
 
-        public OrdenesEnProceso_AddRem(Orden orden)
+        public OrdenesEnProceso_AddRem(Orden orden, OrdenStatus Estado)
         {
             InitializeComponent();
+            this.Estado = Estado; 
             DataTable = new DataTable();
             DataTable.Columns.Add("ID");
             DataTable.Columns.Add("Codigo");

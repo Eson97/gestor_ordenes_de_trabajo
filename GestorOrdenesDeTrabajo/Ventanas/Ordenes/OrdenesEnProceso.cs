@@ -14,12 +14,15 @@ namespace GestorOrdenesDeTrabajo.Ventanas.Ordenes
     public partial class OrdenesEnProceso : Form
     {
         Orden current;
+        OrdenStatus Estado;
         public List<OrdenItemList> ListaOrdenes { get; private set; }
 
-        public OrdenesEnProceso()
+        public OrdenesEnProceso(OrdenStatus Estado)
         {
             InitializeComponent();
-            showOrdenes();
+            loadOrdenes();
+            this.Estado = Estado;
+
         }
 
         void openSubPanel(Form f)
@@ -35,9 +38,10 @@ namespace GestorOrdenesDeTrabajo.Ventanas.Ordenes
             newPanel.Show();
         }
 
-        async void showOrdenes()
+        async void loadOrdenes()
         {
-            ListaOrdenes = await Task.Run(() => OrdenController.I.GetLista((int)OrdenStatus.PROCESO).Select(el => new OrdenItemList(el)).ToList());
+            //ListaOrdenes = await Task.Run(() => OrdenController.I.GetLista((int)OrdenStatus.PROCESO).Select(el => new OrdenItemList(el)).ToList());
+            ListaOrdenes = await Task.Run(() => OrdenController.I.GetLista((int)Estado).Select(el => new OrdenItemList(el)).ToList());
 
             if (this.flpOrdenList.Controls.Count == ListaOrdenes.Count) return;
 
@@ -48,14 +52,14 @@ namespace GestorOrdenesDeTrabajo.Ventanas.Ordenes
                 item.btnAction.Click += (s, e) =>
                 {
                     current = item.Orden;
-                    openSubPanel(new OrdenesEnProceso_AddRem(current));
+                    openSubPanel(new OrdenesEnProceso_AddRem(current,Estado));
                 };
             }
         }
 
         private void ContainerPanel_ControlRemoved(object sender, ControlEventArgs e)
         {
-            showOrdenes();
+            loadOrdenes();
         }
 
         private void txtFiltro_TextChanged(object sender, EventArgs e)
@@ -75,6 +79,27 @@ namespace GestorOrdenesDeTrabajo.Ventanas.Ordenes
                 if (!item.Folio.Contains(folio)) item.Visible = false;
                 else item.Visible = true;
             }
+        }
+
+        private void OrdenesEnProceso_Resize(object sender, EventArgs e)
+        {
+            if(Estado == OrdenStatus.GARANTIA)
+                fbtnAdd.Location = new System.Drawing.Point(fbtnAdd.Parent.Width - (fbtnAdd.Width + 10), fbtnAdd.Parent.Height - (fbtnAdd.Height + 10));
+        }
+
+        private void OrdenesEnProceso_Load(object sender, EventArgs e)
+        {
+            if (Estado == OrdenStatus.GARANTIA)
+            {
+                fbtnAdd.Location = new System.Drawing.Point(fbtnAdd.Parent.Width - 10, fbtnAdd.Parent.Height - 10);
+                fbtnAdd.Show(); ;
+            }
+
+        }
+
+        private void fbtnAdd_Click(object sender, EventArgs e)
+        {
+            //TODO Agregar orden a garantia (Solo entregadas)
         }
     }
 
