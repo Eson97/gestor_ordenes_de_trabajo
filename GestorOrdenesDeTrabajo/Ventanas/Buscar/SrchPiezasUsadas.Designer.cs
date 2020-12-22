@@ -129,13 +129,20 @@
             // ipTotal
             // 
             this.ipTotal.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.ipTotal.Info = new decimal(new int[] {
+            0,
+            0,
+            0,
+            0});
             this.ipTotal.Location = new System.Drawing.Point(30, 425);
             this.ipTotal.Margin = new System.Windows.Forms.Padding(4);
             this.ipTotal.MaximumSize = new System.Drawing.Size(169, 64);
             this.ipTotal.MinimumSize = new System.Drawing.Size(169, 64);
+            this.ipTotal.MoneyFormat = true;
             this.ipTotal.Name = "ipTotal";
             this.ipTotal.Size = new System.Drawing.Size(169, 64);
             this.ipTotal.TabIndex = 1;
+            this.ipTotal.Titulo = "Total";
             // 
             // gbRefacciones
             // 

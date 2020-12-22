@@ -34,7 +34,7 @@ namespace GestorOrdenesDeTrabajo.Ventanas.Buscar
                this.flpListPanel.Controls.Add(item);
             });
 
-            this.ipTotal.updateData("Total", Total);
+            this.ipTotal.Info = Total;
         }
 
         private void btnClose_Click(object sender, System.EventArgs e)

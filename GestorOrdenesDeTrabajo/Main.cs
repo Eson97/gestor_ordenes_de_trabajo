@@ -11,6 +11,7 @@ using System.Threading.Tasks;
 using GestorOrdenesDeTrabajo.UsesCases;
 using GestorOrdenesDeTrabajo.DB;
 using GestorOrdenesDeTrabajo.Enums;
+using GestorOrdenesDeTrabajo.Ventanas.Estadisticas;
 
 namespace GestorOrdenesDeTrabajo
 {
@@ -194,7 +195,7 @@ namespace GestorOrdenesDeTrabajo
         private void btnStats_Click(object sender, EventArgs e)
         {
             collapseSidePanel(true);
-            openPanel(this, "Estadisticas", sender);
+            openPanel(new Estadisticas(), "Estadisticas", sender);
         }
 
         private void btnNueva_Click(object sender, EventArgs e)

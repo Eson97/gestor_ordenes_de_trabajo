@@ -37,14 +37,14 @@ namespace GestorOrdenesDeTrabajo.Ventanas.Estadisticas
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.Grafica = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.button3 = new System.Windows.Forms.Button();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.button2 = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
             this.btnMostrar = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
             this.ipTotal = new GestorOrdenesDeTrabajo.CustomComponents.infoPanel();
             this.ipNeto = new GestorOrdenesDeTrabajo.CustomComponents.infoPanel();
             this.ipCredito = new GestorOrdenesDeTrabajo.CustomComponents.infoPanel();
@@ -173,6 +173,22 @@ namespace GestorOrdenesDeTrabajo.Ventanas.Estadisticas
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Refacciones";
             // 
+            // button3
+            // 
+            this.button3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.button3.FlatAppearance.BorderSize = 0;
+            this.button3.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(35)))), ((int)(((byte)(35)))));
+            this.button3.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(55)))), ((int)(((byte)(55)))));
+            this.button3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button3.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button3.ForeColor = System.Drawing.SystemColors.ControlDark;
+            this.button3.Location = new System.Drawing.Point(343, 202);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(145, 39);
+            this.button3.TabIndex = 7;
+            this.button3.Text = "Detalles ➤";
+            this.button3.UseVisualStyleBackColor = false;
+            // 
             // groupBox3
             // 
             this.groupBox3.Controls.Add(this.button2);
@@ -187,6 +203,22 @@ namespace GestorOrdenesDeTrabajo.Ventanas.Estadisticas
             this.groupBox3.TabIndex = 3;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Costo Servicio";
+            // 
+            // button2
+            // 
+            this.button2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.button2.FlatAppearance.BorderSize = 0;
+            this.button2.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(35)))), ((int)(((byte)(35)))));
+            this.button2.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(55)))), ((int)(((byte)(55)))));
+            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button2.ForeColor = System.Drawing.SystemColors.ControlDark;
+            this.button2.Location = new System.Drawing.Point(342, 202);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(145, 39);
+            this.button2.TabIndex = 8;
+            this.button2.Text = "Detalles ➤";
+            this.button2.UseVisualStyleBackColor = false;
             // 
             // panel1
             // 
@@ -247,38 +279,6 @@ namespace GestorOrdenesDeTrabajo.Ventanas.Estadisticas
             this.button1.Text = "Mostrar";
             this.button1.UseVisualStyleBackColor = true;
             // 
-            // button3
-            // 
-            this.button3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.button3.FlatAppearance.BorderSize = 0;
-            this.button3.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(35)))), ((int)(((byte)(35)))));
-            this.button3.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(55)))), ((int)(((byte)(55)))));
-            this.button3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button3.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button3.ForeColor = System.Drawing.SystemColors.ControlDark;
-            this.button3.Location = new System.Drawing.Point(343, 202);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(145, 39);
-            this.button3.TabIndex = 7;
-            this.button3.Text = "Detalles ➤";
-            this.button3.UseVisualStyleBackColor = false;
-            // 
-            // button2
-            // 
-            this.button2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.button2.FlatAppearance.BorderSize = 0;
-            this.button2.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(35)))), ((int)(((byte)(35)))));
-            this.button2.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(55)))), ((int)(((byte)(55)))));
-            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button2.ForeColor = System.Drawing.SystemColors.ControlDark;
-            this.button2.Location = new System.Drawing.Point(342, 202);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(145, 39);
-            this.button2.TabIndex = 8;
-            this.button2.Text = "Detalles ➤";
-            this.button2.UseVisualStyleBackColor = false;
-            // 
             // ipTotal
             // 
             this.ipTotal.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
@@ -289,6 +289,7 @@ namespace GestorOrdenesDeTrabajo.Ventanas.Estadisticas
             0});
             this.ipTotal.Location = new System.Drawing.Point(337, 144);
             this.ipTotal.MaximumSize = new System.Drawing.Size(169, 64);
+            this.ipTotal.MoneyFormat = true;
             this.ipTotal.Name = "ipTotal";
             this.ipTotal.Size = new System.Drawing.Size(113, 64);
             this.ipTotal.TabIndex = 6;
@@ -304,6 +305,7 @@ namespace GestorOrdenesDeTrabajo.Ventanas.Estadisticas
             0});
             this.ipNeto.Location = new System.Drawing.Point(218, 144);
             this.ipNeto.MaximumSize = new System.Drawing.Size(169, 64);
+            this.ipNeto.MoneyFormat = true;
             this.ipNeto.Name = "ipNeto";
             this.ipNeto.Size = new System.Drawing.Size(113, 64);
             this.ipNeto.TabIndex = 5;
@@ -319,6 +321,7 @@ namespace GestorOrdenesDeTrabajo.Ventanas.Estadisticas
             0});
             this.ipCredito.Location = new System.Drawing.Point(45, 144);
             this.ipCredito.MaximumSize = new System.Drawing.Size(169, 64);
+            this.ipCredito.MoneyFormat = true;
             this.ipCredito.Name = "ipCredito";
             this.ipCredito.Size = new System.Drawing.Size(113, 64);
             this.ipCredito.TabIndex = 4;
@@ -334,6 +337,7 @@ namespace GestorOrdenesDeTrabajo.Ventanas.Estadisticas
             0});
             this.ipTransfe.Location = new System.Drawing.Point(370, 38);
             this.ipTransfe.MaximumSize = new System.Drawing.Size(169, 64);
+            this.ipTransfe.MoneyFormat = true;
             this.ipTransfe.Name = "ipTransfe";
             this.ipTransfe.Size = new System.Drawing.Size(113, 64);
             this.ipTransfe.TabIndex = 3;
@@ -349,6 +353,7 @@ namespace GestorOrdenesDeTrabajo.Ventanas.Estadisticas
             0});
             this.ipCheque.Location = new System.Drawing.Point(251, 38);
             this.ipCheque.MaximumSize = new System.Drawing.Size(169, 64);
+            this.ipCheque.MoneyFormat = true;
             this.ipCheque.Name = "ipCheque";
             this.ipCheque.Size = new System.Drawing.Size(113, 64);
             this.ipCheque.TabIndex = 2;
@@ -364,6 +369,7 @@ namespace GestorOrdenesDeTrabajo.Ventanas.Estadisticas
             0});
             this.ipTerminal.Location = new System.Drawing.Point(132, 38);
             this.ipTerminal.MaximumSize = new System.Drawing.Size(169, 64);
+            this.ipTerminal.MoneyFormat = true;
             this.ipTerminal.Name = "ipTerminal";
             this.ipTerminal.Size = new System.Drawing.Size(113, 64);
             this.ipTerminal.TabIndex = 1;
@@ -379,6 +385,7 @@ namespace GestorOrdenesDeTrabajo.Ventanas.Estadisticas
             0});
             this.ipEfectivo.Location = new System.Drawing.Point(13, 38);
             this.ipEfectivo.MaximumSize = new System.Drawing.Size(169, 64);
+            this.ipEfectivo.MoneyFormat = true;
             this.ipEfectivo.Name = "ipEfectivo";
             this.ipEfectivo.Size = new System.Drawing.Size(113, 64);
             this.ipEfectivo.TabIndex = 0;
@@ -394,6 +401,7 @@ namespace GestorOrdenesDeTrabajo.Ventanas.Estadisticas
             0});
             this.ipRefTotal.Location = new System.Drawing.Point(307, 41);
             this.ipRefTotal.MaximumSize = new System.Drawing.Size(169, 64);
+            this.ipRefTotal.MoneyFormat = false;
             this.ipRefTotal.Name = "ipRefTotal";
             this.ipRefTotal.Size = new System.Drawing.Size(113, 64);
             this.ipRefTotal.TabIndex = 4;
@@ -409,6 +417,7 @@ namespace GestorOrdenesDeTrabajo.Ventanas.Estadisticas
             0});
             this.ipCostoRef.Location = new System.Drawing.Point(156, 122);
             this.ipCostoRef.MaximumSize = new System.Drawing.Size(169, 64);
+            this.ipCostoRef.MoneyFormat = true;
             this.ipCostoRef.Name = "ipCostoRef";
             this.ipCostoRef.Size = new System.Drawing.Size(169, 64);
             this.ipCostoRef.TabIndex = 3;
@@ -424,6 +433,7 @@ namespace GestorOrdenesDeTrabajo.Ventanas.Estadisticas
             0});
             this.ipRefGarantia.Location = new System.Drawing.Point(188, 41);
             this.ipRefGarantia.MaximumSize = new System.Drawing.Size(169, 64);
+            this.ipRefGarantia.MoneyFormat = false;
             this.ipRefGarantia.Name = "ipRefGarantia";
             this.ipRefGarantia.Size = new System.Drawing.Size(113, 64);
             this.ipRefGarantia.TabIndex = 2;
@@ -439,6 +449,7 @@ namespace GestorOrdenesDeTrabajo.Ventanas.Estadisticas
             0});
             this.ipRefUsadas.Location = new System.Drawing.Point(69, 41);
             this.ipRefUsadas.MaximumSize = new System.Drawing.Size(169, 64);
+            this.ipRefUsadas.MoneyFormat = false;
             this.ipRefUsadas.Name = "ipRefUsadas";
             this.ipRefUsadas.Size = new System.Drawing.Size(113, 64);
             this.ipRefUsadas.TabIndex = 1;
@@ -454,6 +465,7 @@ namespace GestorOrdenesDeTrabajo.Ventanas.Estadisticas
             0});
             this.infoPanel2.Location = new System.Drawing.Point(251, 57);
             this.infoPanel2.MaximumSize = new System.Drawing.Size(169, 64);
+            this.infoPanel2.MoneyFormat = false;
             this.infoPanel2.Name = "infoPanel2";
             this.infoPanel2.Size = new System.Drawing.Size(169, 64);
             this.infoPanel2.TabIndex = 6;
@@ -469,6 +481,7 @@ namespace GestorOrdenesDeTrabajo.Ventanas.Estadisticas
             0});
             this.ipTotalServicio.Location = new System.Drawing.Point(76, 57);
             this.ipTotalServicio.MaximumSize = new System.Drawing.Size(169, 64);
+            this.ipTotalServicio.MoneyFormat = false;
             this.ipTotalServicio.Name = "ipTotalServicio";
             this.ipTotalServicio.Size = new System.Drawing.Size(169, 64);
             this.ipTotalServicio.TabIndex = 5;
