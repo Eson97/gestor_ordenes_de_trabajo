@@ -29,22 +29,12 @@ namespace GestorOrdenesDeTrabajo.Ventanas.Estadisticas
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend2 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.Title title2 = new System.Windows.Forms.DataVisualization.Charting.Title();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea3 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend3 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series3 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Title title3 = new System.Windows.Forms.DataVisualization.Charting.Title();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.Grafica = new System.Windows.Forms.DataVisualization.Charting.Chart();
-            this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.btnDetalleRefaccion = new System.Windows.Forms.Button();
-            this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.btnDetalleServicio = new System.Windows.Forms.Button();
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.btnMostrar = new System.Windows.Forms.Button();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
             this.ipTotal = new GestorOrdenesDeTrabajo.CustomComponents.infoPanel();
             this.ipNeto = new GestorOrdenesDeTrabajo.CustomComponents.infoPanel();
             this.ipCredito = new GestorOrdenesDeTrabajo.CustomComponents.infoPanel();
@@ -52,14 +42,25 @@ namespace GestorOrdenesDeTrabajo.Ventanas.Estadisticas
             this.ipCheque = new GestorOrdenesDeTrabajo.CustomComponents.infoPanel();
             this.ipTerminal = new GestorOrdenesDeTrabajo.CustomComponents.infoPanel();
             this.ipEfectivo = new GestorOrdenesDeTrabajo.CustomComponents.infoPanel();
+            this.Grafica = new System.Windows.Forms.DataVisualization.Charting.Chart();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.btnDetalleRefaccion = new System.Windows.Forms.Button();
             this.ipRefTotal = new GestorOrdenesDeTrabajo.CustomComponents.infoPanel();
             this.ipCostoRef = new GestorOrdenesDeTrabajo.CustomComponents.infoPanel();
             this.ipRefGarantia = new GestorOrdenesDeTrabajo.CustomComponents.infoPanel();
             this.ipRefUsadas = new GestorOrdenesDeTrabajo.CustomComponents.infoPanel();
+            this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.btnDetalleServicio = new System.Windows.Forms.Button();
             this.infoPanel2 = new GestorOrdenesDeTrabajo.CustomComponents.infoPanel();
             this.ipTotalServicio = new GestorOrdenesDeTrabajo.CustomComponents.infoPanel();
-            this.customDateTimePicker2 = new GestorOrdenesDeTrabajo.Clases.CustomDateTimePicker();
-            this.customDateTimePicker1 = new GestorOrdenesDeTrabajo.Clases.CustomDateTimePicker();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.btnMostrar = new System.Windows.Forms.Button();
+            this.cdtpFin = new GestorOrdenesDeTrabajo.Clases.CustomDateTimePicker();
+            this.label2 = new System.Windows.Forms.Label();
+            this.cdtpInit = new GestorOrdenesDeTrabajo.Clases.CustomDateTimePicker();
+            this.label1 = new System.Windows.Forms.Label();
+            this.button1 = new System.Windows.Forms.Button();
+            this.btnReporte = new System.Windows.Forms.Button();
             this.tableLayoutPanel1.SuspendLayout();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Grafica)).BeginInit();
@@ -77,6 +78,7 @@ namespace GestorOrdenesDeTrabajo.Ventanas.Estadisticas
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 21F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableLayoutPanel1.Controls.Add(this.btnReporte, 1, 1);
             this.tableLayoutPanel1.Controls.Add(this.groupBox1, 3, 2);
             this.tableLayoutPanel1.Controls.Add(this.Grafica, 1, 2);
             this.tableLayoutPanel1.Controls.Add(this.groupBox2, 1, 4);
@@ -113,174 +115,6 @@ namespace GestorOrdenesDeTrabajo.Ventanas.Estadisticas
             this.groupBox1.TabIndex = 5;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Ingresos";
-            // 
-            // Grafica
-            // 
-            this.Grafica.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(35)))), ((int)(((byte)(35)))));
-            this.Grafica.BackGradientStyle = System.Windows.Forms.DataVisualization.Charting.GradientStyle.DiagonalLeft;
-            this.Grafica.BackSecondaryColor = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(55)))), ((int)(((byte)(55)))));
-            this.Grafica.BorderlineColor = System.Drawing.SystemColors.ControlLight;
-            this.Grafica.BorderlineDashStyle = System.Windows.Forms.DataVisualization.Charting.ChartDashStyle.Solid;
-            this.Grafica.BorderlineWidth = 0;
-            chartArea2.BackColor = System.Drawing.Color.Transparent;
-            chartArea2.BackSecondaryColor = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(55)))), ((int)(((byte)(55)))));
-            chartArea2.BorderDashStyle = System.Windows.Forms.DataVisualization.Charting.ChartDashStyle.Solid;
-            chartArea2.BorderWidth = 0;
-            chartArea2.Name = "ChartArea1";
-            this.Grafica.ChartAreas.Add(chartArea2);
-            this.Grafica.Dock = System.Windows.Forms.DockStyle.Fill;
-            legend2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(35)))), ((int)(((byte)(35)))));
-            legend2.BackGradientStyle = System.Windows.Forms.DataVisualization.Charting.GradientStyle.Center;
-            legend2.BackSecondaryColor = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(55)))), ((int)(((byte)(55)))));
-            legend2.BorderColor = System.Drawing.SystemColors.ControlDarkDark;
-            legend2.ForeColor = System.Drawing.SystemColors.ControlLight;
-            legend2.Name = "Legend1";
-            this.Grafica.Legends.Add(legend2);
-            this.Grafica.Location = new System.Drawing.Point(23, 73);
-            this.Grafica.Name = "Grafica";
-            this.Grafica.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.Chocolate;
-            series2.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(35)))), ((int)(((byte)(35)))));
-            series2.ChartArea = "ChartArea1";
-            series2.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Doughnut;
-            series2.IsValueShownAsLabel = true;
-            series2.Legend = "Legend1";
-            series2.Name = "Series1";
-            series2.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.Chocolate;
-            this.Grafica.Series.Add(series2);
-            this.Grafica.Size = new System.Drawing.Size(496, 249);
-            this.Grafica.TabIndex = 0;
-            this.Grafica.Text = "Ordenes";
-            title2.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            title2.ForeColor = System.Drawing.SystemColors.ControlDark;
-            title2.Name = "Title1";
-            title2.Text = "Ordenes de trabajo";
-            this.Grafica.Titles.Add(title2);
-            // 
-            // groupBox2
-            // 
-            this.groupBox2.Controls.Add(this.btnDetalleRefaccion);
-            this.groupBox2.Controls.Add(this.ipRefTotal);
-            this.groupBox2.Controls.Add(this.ipCostoRef);
-            this.groupBox2.Controls.Add(this.ipRefGarantia);
-            this.groupBox2.Controls.Add(this.ipRefUsadas);
-            this.groupBox2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.groupBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox2.ForeColor = System.Drawing.SystemColors.ControlDark;
-            this.groupBox2.Location = new System.Drawing.Point(23, 333);
-            this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(496, 249);
-            this.groupBox2.TabIndex = 2;
-            this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "Refacciones";
-            // 
-            // btnDetalleRefaccion
-            // 
-            this.btnDetalleRefaccion.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.btnDetalleRefaccion.FlatAppearance.BorderSize = 0;
-            this.btnDetalleRefaccion.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(35)))), ((int)(((byte)(35)))));
-            this.btnDetalleRefaccion.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(55)))), ((int)(((byte)(55)))));
-            this.btnDetalleRefaccion.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnDetalleRefaccion.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnDetalleRefaccion.ForeColor = System.Drawing.SystemColors.ControlDark;
-            this.btnDetalleRefaccion.Location = new System.Drawing.Point(343, 202);
-            this.btnDetalleRefaccion.Name = "btnDetalleRefaccion";
-            this.btnDetalleRefaccion.Size = new System.Drawing.Size(145, 39);
-            this.btnDetalleRefaccion.TabIndex = 7;
-            this.btnDetalleRefaccion.Text = "Detalles ➤";
-            this.btnDetalleRefaccion.UseVisualStyleBackColor = false;
-            this.btnDetalleRefaccion.Click += new System.EventHandler(this.btnDetalleRefaccion_Click);
-            // 
-            // groupBox3
-            // 
-            this.groupBox3.Controls.Add(this.btnDetalleServicio);
-            this.groupBox3.Controls.Add(this.infoPanel2);
-            this.groupBox3.Controls.Add(this.ipTotalServicio);
-            this.groupBox3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.groupBox3.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox3.ForeColor = System.Drawing.SystemColors.ControlDark;
-            this.groupBox3.Location = new System.Drawing.Point(530, 333);
-            this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(496, 249);
-            this.groupBox3.TabIndex = 3;
-            this.groupBox3.TabStop = false;
-            this.groupBox3.Text = "Costo Servicio";
-            // 
-            // btnDetalleServicio
-            // 
-            this.btnDetalleServicio.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.btnDetalleServicio.FlatAppearance.BorderSize = 0;
-            this.btnDetalleServicio.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(35)))), ((int)(((byte)(35)))));
-            this.btnDetalleServicio.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(55)))), ((int)(((byte)(55)))));
-            this.btnDetalleServicio.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnDetalleServicio.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnDetalleServicio.ForeColor = System.Drawing.SystemColors.ControlDark;
-            this.btnDetalleServicio.Location = new System.Drawing.Point(342, 202);
-            this.btnDetalleServicio.Name = "btnDetalleServicio";
-            this.btnDetalleServicio.Size = new System.Drawing.Size(145, 39);
-            this.btnDetalleServicio.TabIndex = 8;
-            this.btnDetalleServicio.Text = "Detalles ➤";
-            this.btnDetalleServicio.UseVisualStyleBackColor = false;
-            this.btnDetalleServicio.Click += new System.EventHandler(this.btnDetalleServicio_Click);
-            // 
-            // panel1
-            // 
-            this.panel1.Controls.Add(this.btnMostrar);
-            this.panel1.Controls.Add(this.customDateTimePicker2);
-            this.panel1.Controls.Add(this.label2);
-            this.panel1.Controls.Add(this.customDateTimePicker1);
-            this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel1.Location = new System.Drawing.Point(530, 23);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(496, 44);
-            this.panel1.TabIndex = 4;
-            // 
-            // btnMostrar
-            // 
-            this.btnMostrar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.btnMostrar.FlatAppearance.BorderSize = 0;
-            this.btnMostrar.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(35)))), ((int)(((byte)(35)))));
-            this.btnMostrar.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(55)))), ((int)(((byte)(55)))));
-            this.btnMostrar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnMostrar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnMostrar.ForeColor = System.Drawing.SystemColors.ControlDark;
-            this.btnMostrar.Location = new System.Drawing.Point(299, 3);
-            this.btnMostrar.Name = "btnMostrar";
-            this.btnMostrar.Size = new System.Drawing.Size(101, 29);
-            this.btnMostrar.TabIndex = 3;
-            this.btnMostrar.Text = "Mostrar";
-            this.btnMostrar.UseVisualStyleBackColor = false;
-            this.btnMostrar.Click += new System.EventHandler(this.btnMostrar_Click);
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.ForeColor = System.Drawing.SystemColors.ControlDark;
-            this.label2.Location = new System.Drawing.Point(141, 7);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(17, 24);
-            this.label2.TabIndex = 1;
-            this.label2.Text = "-";
-            // 
-            // label1
-            // 
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.ForeColor = System.Drawing.SystemColors.ControlDark;
-            this.label1.Location = new System.Drawing.Point(141, 7);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(35, 13);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "a";
-            // 
-            // button1
-            // 
-            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.Location = new System.Drawing.Point(305, 3);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(100, 29);
-            this.button1.TabIndex = 3;
-            this.button1.Text = "Mostrar";
-            this.button1.UseVisualStyleBackColor = true;
             // 
             // ipTotal
             // 
@@ -394,6 +228,82 @@ namespace GestorOrdenesDeTrabajo.Ventanas.Estadisticas
             this.ipEfectivo.TabIndex = 0;
             this.ipEfectivo.Titulo = "Efectivo";
             // 
+            // Grafica
+            // 
+            this.Grafica.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(35)))), ((int)(((byte)(35)))));
+            this.Grafica.BackGradientStyle = System.Windows.Forms.DataVisualization.Charting.GradientStyle.DiagonalLeft;
+            this.Grafica.BackSecondaryColor = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(55)))), ((int)(((byte)(55)))));
+            this.Grafica.BorderlineColor = System.Drawing.SystemColors.ControlLight;
+            this.Grafica.BorderlineDashStyle = System.Windows.Forms.DataVisualization.Charting.ChartDashStyle.Solid;
+            this.Grafica.BorderlineWidth = 0;
+            chartArea3.BackColor = System.Drawing.Color.Transparent;
+            chartArea3.BackSecondaryColor = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(55)))), ((int)(((byte)(55)))));
+            chartArea3.BorderDashStyle = System.Windows.Forms.DataVisualization.Charting.ChartDashStyle.Solid;
+            chartArea3.BorderWidth = 0;
+            chartArea3.Name = "ChartArea1";
+            this.Grafica.ChartAreas.Add(chartArea3);
+            this.Grafica.Dock = System.Windows.Forms.DockStyle.Fill;
+            legend3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(35)))), ((int)(((byte)(35)))));
+            legend3.BackGradientStyle = System.Windows.Forms.DataVisualization.Charting.GradientStyle.Center;
+            legend3.BackSecondaryColor = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(55)))), ((int)(((byte)(55)))));
+            legend3.BorderColor = System.Drawing.SystemColors.ControlDarkDark;
+            legend3.ForeColor = System.Drawing.SystemColors.ControlLight;
+            legend3.Name = "Legend1";
+            this.Grafica.Legends.Add(legend3);
+            this.Grafica.Location = new System.Drawing.Point(23, 73);
+            this.Grafica.Name = "Grafica";
+            this.Grafica.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.Chocolate;
+            series3.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(35)))), ((int)(((byte)(35)))));
+            series3.ChartArea = "ChartArea1";
+            series3.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Doughnut;
+            series3.IsValueShownAsLabel = true;
+            series3.Legend = "Legend1";
+            series3.Name = "Series1";
+            series3.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.Chocolate;
+            this.Grafica.Series.Add(series3);
+            this.Grafica.Size = new System.Drawing.Size(496, 249);
+            this.Grafica.TabIndex = 0;
+            this.Grafica.Text = "Ordenes";
+            title3.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            title3.ForeColor = System.Drawing.SystemColors.ControlDark;
+            title3.Name = "Title1";
+            title3.Text = "Ordenes de trabajo";
+            this.Grafica.Titles.Add(title3);
+            // 
+            // groupBox2
+            // 
+            this.groupBox2.Controls.Add(this.btnDetalleRefaccion);
+            this.groupBox2.Controls.Add(this.ipRefTotal);
+            this.groupBox2.Controls.Add(this.ipCostoRef);
+            this.groupBox2.Controls.Add(this.ipRefGarantia);
+            this.groupBox2.Controls.Add(this.ipRefUsadas);
+            this.groupBox2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.groupBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupBox2.ForeColor = System.Drawing.SystemColors.ControlDark;
+            this.groupBox2.Location = new System.Drawing.Point(23, 333);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(496, 249);
+            this.groupBox2.TabIndex = 2;
+            this.groupBox2.TabStop = false;
+            this.groupBox2.Text = "Refacciones";
+            // 
+            // btnDetalleRefaccion
+            // 
+            this.btnDetalleRefaccion.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.btnDetalleRefaccion.FlatAppearance.BorderSize = 0;
+            this.btnDetalleRefaccion.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(35)))), ((int)(((byte)(35)))));
+            this.btnDetalleRefaccion.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(55)))), ((int)(((byte)(55)))));
+            this.btnDetalleRefaccion.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnDetalleRefaccion.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnDetalleRefaccion.ForeColor = System.Drawing.SystemColors.ControlDark;
+            this.btnDetalleRefaccion.Location = new System.Drawing.Point(343, 202);
+            this.btnDetalleRefaccion.Name = "btnDetalleRefaccion";
+            this.btnDetalleRefaccion.Size = new System.Drawing.Size(145, 39);
+            this.btnDetalleRefaccion.TabIndex = 7;
+            this.btnDetalleRefaccion.Text = "Detalles ➤";
+            this.btnDetalleRefaccion.UseVisualStyleBackColor = false;
+            this.btnDetalleRefaccion.Click += new System.EventHandler(this.btnDetalleRefaccion_Click);
+            // 
             // ipRefTotal
             // 
             this.ipRefTotal.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
@@ -458,6 +368,38 @@ namespace GestorOrdenesDeTrabajo.Ventanas.Estadisticas
             this.ipRefUsadas.TabIndex = 1;
             this.ipRefUsadas.Titulo = "Cobradas";
             // 
+            // groupBox3
+            // 
+            this.groupBox3.Controls.Add(this.btnDetalleServicio);
+            this.groupBox3.Controls.Add(this.infoPanel2);
+            this.groupBox3.Controls.Add(this.ipTotalServicio);
+            this.groupBox3.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.groupBox3.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupBox3.ForeColor = System.Drawing.SystemColors.ControlDark;
+            this.groupBox3.Location = new System.Drawing.Point(530, 333);
+            this.groupBox3.Name = "groupBox3";
+            this.groupBox3.Size = new System.Drawing.Size(496, 249);
+            this.groupBox3.TabIndex = 3;
+            this.groupBox3.TabStop = false;
+            this.groupBox3.Text = "Costo Servicio";
+            // 
+            // btnDetalleServicio
+            // 
+            this.btnDetalleServicio.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.btnDetalleServicio.FlatAppearance.BorderSize = 0;
+            this.btnDetalleServicio.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(35)))), ((int)(((byte)(35)))));
+            this.btnDetalleServicio.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(55)))), ((int)(((byte)(55)))));
+            this.btnDetalleServicio.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnDetalleServicio.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnDetalleServicio.ForeColor = System.Drawing.SystemColors.ControlDark;
+            this.btnDetalleServicio.Location = new System.Drawing.Point(342, 202);
+            this.btnDetalleServicio.Name = "btnDetalleServicio";
+            this.btnDetalleServicio.Size = new System.Drawing.Size(145, 39);
+            this.btnDetalleServicio.TabIndex = 8;
+            this.btnDetalleServicio.Text = "Detalles ➤";
+            this.btnDetalleServicio.UseVisualStyleBackColor = false;
+            this.btnDetalleServicio.Click += new System.EventHandler(this.btnDetalleServicio_Click);
+            // 
             // infoPanel2
             // 
             this.infoPanel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
@@ -472,7 +414,7 @@ namespace GestorOrdenesDeTrabajo.Ventanas.Estadisticas
             this.infoPanel2.Name = "infoPanel2";
             this.infoPanel2.Size = new System.Drawing.Size(169, 64);
             this.infoPanel2.TabIndex = 6;
-            this.infoPanel2.Titulo = null;
+            this.infoPanel2.Titulo = "Ingreso Servicio";
             // 
             // ipTotalServicio
             // 
@@ -488,25 +430,105 @@ namespace GestorOrdenesDeTrabajo.Ventanas.Estadisticas
             this.ipTotalServicio.Name = "ipTotalServicio";
             this.ipTotalServicio.Size = new System.Drawing.Size(169, 64);
             this.ipTotalServicio.TabIndex = 5;
-            this.ipTotalServicio.Titulo = "Servicio";
+            this.ipTotalServicio.Titulo = "Mecanicos";
             // 
-            // customDateTimePicker2
+            // panel1
             // 
-            this.customDateTimePicker2.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.customDateTimePicker2.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.customDateTimePicker2.Location = new System.Drawing.Point(164, 3);
-            this.customDateTimePicker2.Name = "customDateTimePicker2";
-            this.customDateTimePicker2.Size = new System.Drawing.Size(129, 29);
-            this.customDateTimePicker2.TabIndex = 2;
+            this.panel1.Controls.Add(this.btnMostrar);
+            this.panel1.Controls.Add(this.cdtpFin);
+            this.panel1.Controls.Add(this.label2);
+            this.panel1.Controls.Add(this.cdtpInit);
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel1.Location = new System.Drawing.Point(530, 23);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(496, 44);
+            this.panel1.TabIndex = 4;
             // 
-            // customDateTimePicker1
+            // btnMostrar
             // 
-            this.customDateTimePicker1.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.customDateTimePicker1.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.customDateTimePicker1.Location = new System.Drawing.Point(3, 3);
-            this.customDateTimePicker1.Name = "customDateTimePicker1";
-            this.customDateTimePicker1.Size = new System.Drawing.Size(132, 29);
-            this.customDateTimePicker1.TabIndex = 0;
+            this.btnMostrar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.btnMostrar.FlatAppearance.BorderSize = 0;
+            this.btnMostrar.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(35)))), ((int)(((byte)(35)))));
+            this.btnMostrar.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(55)))), ((int)(((byte)(55)))));
+            this.btnMostrar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnMostrar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnMostrar.ForeColor = System.Drawing.SystemColors.ControlDark;
+            this.btnMostrar.Location = new System.Drawing.Point(299, 3);
+            this.btnMostrar.Name = "btnMostrar";
+            this.btnMostrar.Size = new System.Drawing.Size(101, 29);
+            this.btnMostrar.TabIndex = 3;
+            this.btnMostrar.Text = "Mostrar";
+            this.btnMostrar.UseVisualStyleBackColor = false;
+            this.btnMostrar.Click += new System.EventHandler(this.btnMostrar_Click);
+            // 
+            // cdtpFin
+            // 
+            this.cdtpFin.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cdtpFin.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.cdtpFin.Location = new System.Drawing.Point(164, 3);
+            this.cdtpFin.Name = "cdtpFin";
+            this.cdtpFin.Size = new System.Drawing.Size(129, 29);
+            this.cdtpFin.TabIndex = 2;
+            this.cdtpFin.ValueChanged += new System.EventHandler(this.cdtpFin_ValueChanged);
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.ForeColor = System.Drawing.SystemColors.ControlDark;
+            this.label2.Location = new System.Drawing.Point(141, 7);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(17, 24);
+            this.label2.TabIndex = 1;
+            this.label2.Text = "-";
+            // 
+            // cdtpInit
+            // 
+            this.cdtpInit.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cdtpInit.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.cdtpInit.Location = new System.Drawing.Point(3, 3);
+            this.cdtpInit.Name = "cdtpInit";
+            this.cdtpInit.Size = new System.Drawing.Size(132, 29);
+            this.cdtpInit.TabIndex = 0;
+            this.cdtpInit.ValueChanged += new System.EventHandler(this.cdtpInit_ValueChanged);
+            // 
+            // label1
+            // 
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.SystemColors.ControlDark;
+            this.label1.Location = new System.Drawing.Point(141, 7);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(35, 13);
+            this.label1.TabIndex = 0;
+            this.label1.Text = "a";
+            // 
+            // button1
+            // 
+            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button1.Location = new System.Drawing.Point(305, 3);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(100, 29);
+            this.button1.TabIndex = 3;
+            this.button1.Text = "Mostrar";
+            this.button1.UseVisualStyleBackColor = true;
+            // 
+            // btnReporte
+            // 
+            this.btnReporte.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.btnReporte.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnReporte.FlatAppearance.BorderSize = 0;
+            this.btnReporte.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(35)))), ((int)(((byte)(35)))));
+            this.btnReporte.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(55)))), ((int)(((byte)(55)))));
+            this.btnReporte.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnReporte.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnReporte.ForeColor = System.Drawing.SystemColors.ControlDark;
+            this.btnReporte.Location = new System.Drawing.Point(23, 23);
+            this.btnReporte.Name = "btnReporte";
+            this.btnReporte.Size = new System.Drawing.Size(496, 39);
+            this.btnReporte.TabIndex = 9;
+            this.btnReporte.Text = "Reporte ➤";
+            this.btnReporte.UseVisualStyleBackColor = false;
+            this.btnReporte.Click += new System.EventHandler(this.btnReporte_Click);
             // 
             // Estadisticas
             // 
@@ -542,9 +564,9 @@ namespace GestorOrdenesDeTrabajo.Ventanas.Estadisticas
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.Button btnMostrar;
-        private Clases.CustomDateTimePicker customDateTimePicker2;
+        private Clases.CustomDateTimePicker cdtpFin;
         private System.Windows.Forms.Label label2;
-        private Clases.CustomDateTimePicker customDateTimePicker1;
+        private Clases.CustomDateTimePicker cdtpInit;
         private CustomComponents.infoPanel ipTransfe;
         private CustomComponents.infoPanel ipCheque;
         private CustomComponents.infoPanel ipTerminal;
@@ -560,5 +582,6 @@ namespace GestorOrdenesDeTrabajo.Ventanas.Estadisticas
         private System.Windows.Forms.Button btnDetalleServicio;
         private CustomComponents.infoPanel infoPanel2;
         private CustomComponents.infoPanel ipTotalServicio;
+        private System.Windows.Forms.Button btnReporte;
     }
 }
