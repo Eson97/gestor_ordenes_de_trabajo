@@ -1,14 +1,13 @@
 ﻿using GestorOrdenesDeTrabajo.DB;
+using GestorOrdenesDeTrabajo.Enums;
+using GestorOrdenesDeTrabajo.UsesCases;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
 using System.Drawing;
-using System.Linq;
 using System.Runtime.InteropServices;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Linq;
 
 namespace GestorOrdenesDeTrabajo.Ventanas.Ventanas_Emergentes
 {
@@ -22,17 +21,22 @@ namespace GestorOrdenesDeTrabajo.Ventanas.Ventanas_Emergentes
         DataTable datatable;
         private static Orden _currentOrder;
         private static WarrantyDialog _WR;
-
+        private List<Orden> ordenes;
         public WarrantyDialog()
         {
             InitializeComponent();
             datatable = new DataTable();
+            ordenes = new List<Orden>();
             datatable.Columns.Add("ID");
             datatable.Columns.Add("Folio");
             datatable.Columns.Add("Cliente");
+            datatable.Columns.Add("Maquina");
+            datatable.Columns.Add("Entregado");
             datatable.Columns[0].ReadOnly = true;
             datatable.Columns[1].ReadOnly = true;
             datatable.Columns[2].ReadOnly = true;
+            datatable.Columns[3].ReadOnly = true;
+            datatable.Columns[4].ReadOnly = true;
             FillTable();
 
             _currentOrder = null;
@@ -49,21 +53,25 @@ namespace GestorOrdenesDeTrabajo.Ventanas.Ventanas_Emergentes
 
         private void FillTable()
         {
-            while (TablaRefacciones.RowCount != 0)
-                TablaRefacciones.Rows.RemoveAt(0);
+            while (tablaOrdenes.RowCount != 0)
+                tablaOrdenes.Rows.RemoveAt(0);
 
-            //refacciones = RefaccionController.I.GetLista().ToList();
-            //foreach (Refaccion item in refacciones)
-            //    datatable.Rows.Add(new object[] { item.Id, item.Codigo, item.Descripcion, item.PrecioMinimo });
+            ordenes = OrdenController.I.GetLista((int)OrdenStatus.ENTREGADA);
+            foreach (Orden item in ordenes)
+            {
+                datatable.Rows.Add(new object[] { item.Id, item.Folio, item.Cliente.Nombre, item.Equipo, item.FechaEntrega });
+            }
 
-            TablaRefacciones.DataSource = datatable;
-            TablaRefacciones.Columns[0].AutoSizeMode = DataGridViewAutoSizeColumnMode.ColumnHeader;
-            TablaRefacciones.Columns[1].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
-            TablaRefacciones.Columns[2].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            TablaRefacciones.Columns[0].Resizable = DataGridViewTriState.True;
-            TablaRefacciones.Columns[1].Resizable = DataGridViewTriState.True;
-            TablaRefacciones.Columns[2].Resizable = DataGridViewTriState.True;
-            TablaRefacciones.Columns[0].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            tablaOrdenes.DataSource = datatable;
+            tablaOrdenes.Columns[0].AutoSizeMode = DataGridViewAutoSizeColumnMode.ColumnHeader;
+            tablaOrdenes.Columns[1].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+            tablaOrdenes.Columns[2].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            tablaOrdenes.Columns[3].AutoSizeMode = DataGridViewAutoSizeColumnMode.ColumnHeader;
+            tablaOrdenes.Columns[4].AutoSizeMode = DataGridViewAutoSizeColumnMode.ColumnHeader;
+            tablaOrdenes.Columns[0].Resizable = DataGridViewTriState.True;
+            tablaOrdenes.Columns[1].Resizable = DataGridViewTriState.True;
+            tablaOrdenes.Columns[2].Resizable = DataGridViewTriState.True;
+            tablaOrdenes.Columns[0].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
         }
 
         private void txtFilter_Enter(object sender, EventArgs e)
@@ -92,8 +100,6 @@ namespace GestorOrdenesDeTrabajo.Ventanas.Ventanas_Emergentes
 
         private void btnGarantia_Click(object sender, EventArgs e)
         {
-            //Obtener la orden seleccionada
-
             this.Dispose();
         }
 
@@ -101,6 +107,45 @@ namespace GestorOrdenesDeTrabajo.Ventanas.Ventanas_Emergentes
         {
             _currentOrder = null;
             this.Dispose();
+        }
+
+        private void tablaOrdenes_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex <= -1)
+                return;
+
+            DataGridViewRow row = tablaOrdenes.CurrentRow;
+            int id = int.Parse(row.Cells[0].Value as string);
+            int folio = int.Parse(row.Cells[1].Value.ToString());
+            string cliente = row.Cells[2].Value as string;
+            string maquina = row.Cells[3].Value as string;
+            string fecha = row.Cells[4].Value as string;
+
+
+            txtFolio.Text = folio.ToString();
+            lblCliente.Text = cliente;
+            lblFechaEntrega.Text = fecha;
+            lblMaquina.Text = maquina;
+
+            _currentOrder = new Orden()
+            {
+                Id = id,
+                Folio = folio,
+            };
+        }
+
+        private void txtFilter_TextChanged(object sender, EventArgs e)
+        {
+            var filtro = txtFilter.Text;
+            var tempOrdenes = ordenes.Where(el => el.Folio.ToString().Contains(filtro)).ToList();
+
+            while (tablaOrdenes.RowCount != 0)
+                tablaOrdenes.Rows.RemoveAt(0);
+
+            foreach (Orden item in tempOrdenes)
+            {
+                datatable.Rows.Add(new object[] { item.Id, item.Folio, item.Cliente.Nombre, item.Equipo, item.FechaEntrega });
+            }
         }
     }
 }

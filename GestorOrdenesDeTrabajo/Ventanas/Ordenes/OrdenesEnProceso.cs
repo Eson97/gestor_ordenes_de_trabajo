@@ -2,6 +2,7 @@
 using GestorOrdenesDeTrabajo.DB;
 using GestorOrdenesDeTrabajo.Enums;
 using GestorOrdenesDeTrabajo.UsesCases;
+using GestorOrdenesDeTrabajo.Ventanas.Ventanas_Emergentes;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -40,7 +41,6 @@ namespace GestorOrdenesDeTrabajo.Ventanas.Ordenes
 
         async void loadOrdenes()
         {
-            //ListaOrdenes = await Task.Run(() => OrdenController.I.GetLista((int)OrdenStatus.PROCESO).Select(el => new OrdenItemList(el)).ToList());
             ListaOrdenes = await Task.Run(() => OrdenController.I.GetLista((int)Estado).Select(el => new OrdenItemList(el)).ToList());
 
             if (this.flpOrdenList.Controls.Count == ListaOrdenes.Count) return;
@@ -52,7 +52,7 @@ namespace GestorOrdenesDeTrabajo.Ventanas.Ordenes
                 item.btnAction.Click += (s, e) =>
                 {
                     current = item.Orden;
-                    openSubPanel(new OrdenesEnProceso_AddRem(current,Estado));
+                    openSubPanel(new OrdenesEnProceso_AddRem(current, Estado));
                 };
             }
         }
@@ -83,7 +83,7 @@ namespace GestorOrdenesDeTrabajo.Ventanas.Ordenes
 
         private void OrdenesEnProceso_Resize(object sender, EventArgs e)
         {
-            if(Estado == OrdenStatus.GARANTIA)
+            if (Estado == OrdenStatus.GARANTIA)
                 fbtnAdd.Location = new System.Drawing.Point(fbtnAdd.Parent.Width - (fbtnAdd.Width + 10), fbtnAdd.Parent.Height - (fbtnAdd.Height + 10));
         }
 
@@ -99,7 +99,19 @@ namespace GestorOrdenesDeTrabajo.Ventanas.Ordenes
 
         private void fbtnAdd_Click(object sender, EventArgs e)
         {
-            //TODO Agregar orden a garantia (Solo entregadas)
+            var result = WarrantyDialog.showWarrantyDialog();
+            if (result == null)
+                return;
+
+            result = OrdenController.I.GetOrdenById(result.Id);
+
+            bool isValidWarranty = result.FechaEntrega >= DateTime.Now.AddMonths(-3);
+            if (!isValidWarranty) { MessageBox.Show("La garantia ha vencido", "Informacion", MessageBoxButtons.OK, MessageBoxIcon.Information); return; }
+
+            result.Status = (int)OrdenStatus.GARANTIA;
+            OrdenController.I.Edit(result);
+
+            loadOrdenes();
         }
     }
 

@@ -38,6 +38,23 @@ namespace GestorOrdenesDeTrabajo.UsesCases
             }
             return null;
         }
+        public Orden GetOrdenById(int Id)
+        {
+            Orden element;
+            try
+            {
+                using (Entities db = new Entities())
+                {
+                    element = db.Orden.Find(Id);
+                }
+                return element;
+            }
+            catch (Exception e)
+            {
+                Log.Write("Ha ocurrido un error " + e.Message);
+            }
+            return null;
+        }
 
         public bool Delete(int id)
         {
@@ -79,7 +96,7 @@ namespace GestorOrdenesDeTrabajo.UsesCases
             return null;
         }
 
-        public IList<Orden> GetLista(int status)
+        public List<Orden> GetLista(int status)
         {
             List<Orden> lista = null;
             try

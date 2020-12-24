@@ -73,7 +73,7 @@
             this.tableLayoutPanel1.Controls.Add(this.tableLayoutPanel2, 1, 1);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
-            this.tableLayoutPanel1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tableLayoutPanel1.Margin = new System.Windows.Forms.Padding(4);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 3;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 62F));
@@ -96,7 +96,7 @@
             this.tableLayoutPanel2.Controls.Add(this.panel1, 2, 0);
             this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel2.Location = new System.Drawing.Point(71, 66);
-            this.tableLayoutPanel2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tableLayoutPanel2.Margin = new System.Windows.Forms.Padding(4);
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
             this.tableLayoutPanel2.RowCount = 3;
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 62F));
@@ -116,7 +116,7 @@
             this.btnAceptar.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnAceptar.ForeColor = System.Drawing.SystemColors.ControlDark;
             this.btnAceptar.Location = new System.Drawing.Point(4, 555);
-            this.btnAceptar.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnAceptar.Margin = new System.Windows.Forms.Padding(4);
             this.btnAceptar.Name = "btnAceptar";
             this.btnAceptar.Size = new System.Drawing.Size(617, 54);
             this.btnAceptar.TabIndex = 0;
@@ -135,7 +135,7 @@
             this.btnCancelar.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnCancelar.ForeColor = System.Drawing.SystemColors.ControlDark;
             this.btnCancelar.Location = new System.Drawing.Point(636, 555);
-            this.btnCancelar.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnCancelar.Margin = new System.Windows.Forms.Padding(4);
             this.btnCancelar.Name = "btnCancelar";
             this.btnCancelar.Size = new System.Drawing.Size(618, 54);
             this.btnCancelar.TabIndex = 1;
@@ -150,9 +150,9 @@
             this.gbCliente.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.gbCliente.ForeColor = System.Drawing.SystemColors.ControlDark;
             this.gbCliente.Location = new System.Drawing.Point(4, 66);
-            this.gbCliente.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.gbCliente.Margin = new System.Windows.Forms.Padding(4);
             this.gbCliente.Name = "gbCliente";
-            this.gbCliente.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.gbCliente.Padding = new System.Windows.Forms.Padding(4);
             this.gbCliente.Size = new System.Drawing.Size(617, 481);
             this.gbCliente.TabIndex = 25;
             this.gbCliente.TabStop = false;
@@ -172,7 +172,7 @@
             this.clientDataContainer.Controls.Add(this.panel3, 1, 2);
             this.clientDataContainer.Dock = System.Windows.Forms.DockStyle.Fill;
             this.clientDataContainer.Location = new System.Drawing.Point(4, 23);
-            this.clientDataContainer.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.clientDataContainer.Margin = new System.Windows.Forms.Padding(4);
             this.clientDataContainer.Name = "clientDataContainer";
             this.clientDataContainer.RowCount = 8;
             this.clientDataContainer.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 25F));
@@ -229,7 +229,7 @@
             this.txtDireccion.Dock = System.Windows.Forms.DockStyle.Fill;
             this.txtDireccion.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtDireccion.Location = new System.Drawing.Point(31, 176);
-            this.txtDireccion.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtDireccion.Margin = new System.Windows.Forms.Padding(4);
             this.txtDireccion.Name = "txtDireccion";
             this.txtDireccion.ReadOnly = true;
             this.txtDireccion.Size = new System.Drawing.Size(547, 34);
@@ -243,7 +243,7 @@
             this.txtTelefono.Dock = System.Windows.Forms.DockStyle.Fill;
             this.txtTelefono.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtTelefono.Location = new System.Drawing.Point(31, 274);
-            this.txtTelefono.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtTelefono.Margin = new System.Windows.Forms.Padding(4);
             this.txtTelefono.Name = "txtTelefono";
             this.txtTelefono.ReadOnly = true;
             this.txtTelefono.Size = new System.Drawing.Size(547, 34);
@@ -256,7 +256,7 @@
             this.panel3.Controls.Add(this.txtCliente);
             this.panel3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel3.Location = new System.Drawing.Point(31, 78);
-            this.panel3.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.panel3.Margin = new System.Windows.Forms.Padding(4);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(547, 41);
             this.panel3.TabIndex = 21;
@@ -273,7 +273,7 @@
             this.btnSrchCliente.ForeColor = System.Drawing.SystemColors.ControlDark;
             this.btnSrchCliente.Image = ((System.Drawing.Image)(resources.GetObject("btnSrchCliente.Image")));
             this.btnSrchCliente.Location = new System.Drawing.Point(461, 0);
-            this.btnSrchCliente.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnSrchCliente.Margin = new System.Windows.Forms.Padding(4);
             this.btnSrchCliente.MaximumSize = new System.Drawing.Size(87, 36);
             this.btnSrchCliente.Name = "btnSrchCliente";
             this.btnSrchCliente.Size = new System.Drawing.Size(86, 36);
@@ -288,7 +288,7 @@
             this.txtCliente.Dock = System.Windows.Forms.DockStyle.Left;
             this.txtCliente.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtCliente.Location = new System.Drawing.Point(0, 0);
-            this.txtCliente.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtCliente.Margin = new System.Windows.Forms.Padding(4);
             this.txtCliente.Name = "txtCliente";
             this.txtCliente.ReadOnly = true;
             this.txtCliente.Size = new System.Drawing.Size(461, 34);
@@ -302,9 +302,9 @@
             this.gbMaquina.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.gbMaquina.ForeColor = System.Drawing.SystemColors.ControlDark;
             this.gbMaquina.Location = new System.Drawing.Point(636, 66);
-            this.gbMaquina.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.gbMaquina.Margin = new System.Windows.Forms.Padding(4);
             this.gbMaquina.Name = "gbMaquina";
-            this.gbMaquina.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.gbMaquina.Padding = new System.Windows.Forms.Padding(4);
             this.gbMaquina.Size = new System.Drawing.Size(618, 481);
             this.gbMaquina.TabIndex = 26;
             this.gbMaquina.TabStop = false;
@@ -322,7 +322,7 @@
             this.tableLayoutPanel4.Controls.Add(this.txtObservaciones, 1, 4);
             this.tableLayoutPanel4.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel4.Location = new System.Drawing.Point(4, 23);
-            this.tableLayoutPanel4.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tableLayoutPanel4.Margin = new System.Windows.Forms.Padding(4);
             this.tableLayoutPanel4.Name = "tableLayoutPanel4";
             this.tableLayoutPanel4.RowCount = 6;
             this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 25F));
@@ -365,7 +365,7 @@
             this.txtEquipo.Dock = System.Windows.Forms.DockStyle.Fill;
             this.txtEquipo.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtEquipo.Location = new System.Drawing.Point(31, 78);
-            this.txtEquipo.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtEquipo.Margin = new System.Windows.Forms.Padding(4);
             this.txtEquipo.Name = "txtEquipo";
             this.txtEquipo.Size = new System.Drawing.Size(548, 34);
             this.txtEquipo.TabIndex = 4;
@@ -379,7 +379,7 @@
             this.txtObservaciones.Dock = System.Windows.Forms.DockStyle.Fill;
             this.txtObservaciones.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtObservaciones.Location = new System.Drawing.Point(31, 176);
-            this.txtObservaciones.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtObservaciones.Margin = new System.Windows.Forms.Padding(4);
             this.txtObservaciones.Name = "txtObservaciones";
             this.txtObservaciones.Size = new System.Drawing.Size(548, 249);
             this.txtObservaciones.TabIndex = 5;
@@ -394,7 +394,7 @@
             this.panel1.Controls.Add(this.txtFolio);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel1.Location = new System.Drawing.Point(636, 4);
-            this.panel1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.panel1.Margin = new System.Windows.Forms.Padding(4);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(618, 54);
             this.panel1.TabIndex = 13;
@@ -405,7 +405,7 @@
             this.cdtpFechaRecepcion.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cdtpFechaRecepcion.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.cdtpFechaRecepcion.Location = new System.Drawing.Point(92, 0);
-            this.cdtpFechaRecepcion.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.cdtpFechaRecepcion.Margin = new System.Windows.Forms.Padding(4);
             this.cdtpFechaRecepcion.Name = "cdtpFechaRecepcion";
             this.cdtpFechaRecepcion.Size = new System.Drawing.Size(199, 37);
             this.cdtpFechaRecepcion.TabIndex = 12;
@@ -415,7 +415,7 @@
             // 
             this.panel2.Dock = System.Windows.Forms.DockStyle.Right;
             this.panel2.Location = new System.Drawing.Point(291, 0);
-            this.panel2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.panel2.Margin = new System.Windows.Forms.Padding(4);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(33, 54);
             this.panel2.TabIndex = 11;
@@ -440,7 +440,7 @@
             this.txtFolio.Dock = System.Windows.Forms.DockStyle.Right;
             this.txtFolio.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtFolio.Location = new System.Drawing.Point(419, 0);
-            this.txtFolio.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtFolio.Margin = new System.Windows.Forms.Padding(4);
             this.txtFolio.Name = "txtFolio";
             this.txtFolio.Size = new System.Drawing.Size(199, 37);
             this.txtFolio.TabIndex = 0;
@@ -455,7 +455,7 @@
             this.ClientSize = new System.Drawing.Size(1400, 745);
             this.Controls.Add(this.tableLayoutPanel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.MinimumSize = new System.Drawing.Size(1400, 745);
             this.Name = "NuevaOrden";
             this.Text = "NuevaOrden";
