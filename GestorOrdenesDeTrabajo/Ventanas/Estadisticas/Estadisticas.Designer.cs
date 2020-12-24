@@ -29,17 +29,17 @@ namespace GestorOrdenesDeTrabajo.Ventanas.Estadisticas
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.Title title1 = new System.Windows.Forms.DataVisualization.Charting.Title();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend2 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Title title2 = new System.Windows.Forms.DataVisualization.Charting.Title();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.Grafica = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.button3 = new System.Windows.Forms.Button();
+            this.btnDetalleRefaccion = new System.Windows.Forms.Button();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.button2 = new System.Windows.Forms.Button();
+            this.btnDetalleServicio = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
             this.btnMostrar = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
@@ -122,43 +122,43 @@ namespace GestorOrdenesDeTrabajo.Ventanas.Estadisticas
             this.Grafica.BorderlineColor = System.Drawing.SystemColors.ControlLight;
             this.Grafica.BorderlineDashStyle = System.Windows.Forms.DataVisualization.Charting.ChartDashStyle.Solid;
             this.Grafica.BorderlineWidth = 0;
-            chartArea1.BackColor = System.Drawing.Color.Transparent;
-            chartArea1.BackSecondaryColor = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(55)))), ((int)(((byte)(55)))));
-            chartArea1.BorderDashStyle = System.Windows.Forms.DataVisualization.Charting.ChartDashStyle.Solid;
-            chartArea1.BorderWidth = 0;
-            chartArea1.Name = "ChartArea1";
-            this.Grafica.ChartAreas.Add(chartArea1);
+            chartArea2.BackColor = System.Drawing.Color.Transparent;
+            chartArea2.BackSecondaryColor = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(55)))), ((int)(((byte)(55)))));
+            chartArea2.BorderDashStyle = System.Windows.Forms.DataVisualization.Charting.ChartDashStyle.Solid;
+            chartArea2.BorderWidth = 0;
+            chartArea2.Name = "ChartArea1";
+            this.Grafica.ChartAreas.Add(chartArea2);
             this.Grafica.Dock = System.Windows.Forms.DockStyle.Fill;
-            legend1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(35)))), ((int)(((byte)(35)))));
-            legend1.BackGradientStyle = System.Windows.Forms.DataVisualization.Charting.GradientStyle.Center;
-            legend1.BackSecondaryColor = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(55)))), ((int)(((byte)(55)))));
-            legend1.BorderColor = System.Drawing.SystemColors.ControlDarkDark;
-            legend1.ForeColor = System.Drawing.SystemColors.ControlLight;
-            legend1.Name = "Legend1";
-            this.Grafica.Legends.Add(legend1);
+            legend2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(35)))), ((int)(((byte)(35)))));
+            legend2.BackGradientStyle = System.Windows.Forms.DataVisualization.Charting.GradientStyle.Center;
+            legend2.BackSecondaryColor = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(55)))), ((int)(((byte)(55)))));
+            legend2.BorderColor = System.Drawing.SystemColors.ControlDarkDark;
+            legend2.ForeColor = System.Drawing.SystemColors.ControlLight;
+            legend2.Name = "Legend1";
+            this.Grafica.Legends.Add(legend2);
             this.Grafica.Location = new System.Drawing.Point(23, 73);
             this.Grafica.Name = "Grafica";
             this.Grafica.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.Chocolate;
-            series1.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(35)))), ((int)(((byte)(35)))));
-            series1.ChartArea = "ChartArea1";
-            series1.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Doughnut;
-            series1.IsValueShownAsLabel = true;
-            series1.Legend = "Legend1";
-            series1.Name = "Series1";
-            series1.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.Chocolate;
-            this.Grafica.Series.Add(series1);
+            series2.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(35)))), ((int)(((byte)(35)))));
+            series2.ChartArea = "ChartArea1";
+            series2.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Doughnut;
+            series2.IsValueShownAsLabel = true;
+            series2.Legend = "Legend1";
+            series2.Name = "Series1";
+            series2.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.Chocolate;
+            this.Grafica.Series.Add(series2);
             this.Grafica.Size = new System.Drawing.Size(496, 249);
             this.Grafica.TabIndex = 0;
             this.Grafica.Text = "Ordenes";
-            title1.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            title1.ForeColor = System.Drawing.SystemColors.ControlDark;
-            title1.Name = "Title1";
-            title1.Text = "Ordenes de trabajo";
-            this.Grafica.Titles.Add(title1);
+            title2.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            title2.ForeColor = System.Drawing.SystemColors.ControlDark;
+            title2.Name = "Title1";
+            title2.Text = "Ordenes de trabajo";
+            this.Grafica.Titles.Add(title2);
             // 
             // groupBox2
             // 
-            this.groupBox2.Controls.Add(this.button3);
+            this.groupBox2.Controls.Add(this.btnDetalleRefaccion);
             this.groupBox2.Controls.Add(this.ipRefTotal);
             this.groupBox2.Controls.Add(this.ipCostoRef);
             this.groupBox2.Controls.Add(this.ipRefGarantia);
@@ -173,25 +173,26 @@ namespace GestorOrdenesDeTrabajo.Ventanas.Estadisticas
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Refacciones";
             // 
-            // button3
+            // btnDetalleRefaccion
             // 
-            this.button3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.button3.FlatAppearance.BorderSize = 0;
-            this.button3.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(35)))), ((int)(((byte)(35)))));
-            this.button3.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(55)))), ((int)(((byte)(55)))));
-            this.button3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button3.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button3.ForeColor = System.Drawing.SystemColors.ControlDark;
-            this.button3.Location = new System.Drawing.Point(343, 202);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(145, 39);
-            this.button3.TabIndex = 7;
-            this.button3.Text = "Detalles ➤";
-            this.button3.UseVisualStyleBackColor = false;
+            this.btnDetalleRefaccion.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.btnDetalleRefaccion.FlatAppearance.BorderSize = 0;
+            this.btnDetalleRefaccion.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(35)))), ((int)(((byte)(35)))));
+            this.btnDetalleRefaccion.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(55)))), ((int)(((byte)(55)))));
+            this.btnDetalleRefaccion.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnDetalleRefaccion.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnDetalleRefaccion.ForeColor = System.Drawing.SystemColors.ControlDark;
+            this.btnDetalleRefaccion.Location = new System.Drawing.Point(343, 202);
+            this.btnDetalleRefaccion.Name = "btnDetalleRefaccion";
+            this.btnDetalleRefaccion.Size = new System.Drawing.Size(145, 39);
+            this.btnDetalleRefaccion.TabIndex = 7;
+            this.btnDetalleRefaccion.Text = "Detalles ➤";
+            this.btnDetalleRefaccion.UseVisualStyleBackColor = false;
+            this.btnDetalleRefaccion.Click += new System.EventHandler(this.btnDetalleRefaccion_Click);
             // 
             // groupBox3
             // 
-            this.groupBox3.Controls.Add(this.button2);
+            this.groupBox3.Controls.Add(this.btnDetalleServicio);
             this.groupBox3.Controls.Add(this.infoPanel2);
             this.groupBox3.Controls.Add(this.ipTotalServicio);
             this.groupBox3.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -204,21 +205,22 @@ namespace GestorOrdenesDeTrabajo.Ventanas.Estadisticas
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Costo Servicio";
             // 
-            // button2
+            // btnDetalleServicio
             // 
-            this.button2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.button2.FlatAppearance.BorderSize = 0;
-            this.button2.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(35)))), ((int)(((byte)(35)))));
-            this.button2.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(55)))), ((int)(((byte)(55)))));
-            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button2.ForeColor = System.Drawing.SystemColors.ControlDark;
-            this.button2.Location = new System.Drawing.Point(342, 202);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(145, 39);
-            this.button2.TabIndex = 8;
-            this.button2.Text = "Detalles ➤";
-            this.button2.UseVisualStyleBackColor = false;
+            this.btnDetalleServicio.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.btnDetalleServicio.FlatAppearance.BorderSize = 0;
+            this.btnDetalleServicio.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(35)))), ((int)(((byte)(35)))));
+            this.btnDetalleServicio.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(55)))), ((int)(((byte)(55)))));
+            this.btnDetalleServicio.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnDetalleServicio.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnDetalleServicio.ForeColor = System.Drawing.SystemColors.ControlDark;
+            this.btnDetalleServicio.Location = new System.Drawing.Point(342, 202);
+            this.btnDetalleServicio.Name = "btnDetalleServicio";
+            this.btnDetalleServicio.Size = new System.Drawing.Size(145, 39);
+            this.btnDetalleServicio.TabIndex = 8;
+            this.btnDetalleServicio.Text = "Detalles ➤";
+            this.btnDetalleServicio.UseVisualStyleBackColor = false;
+            this.btnDetalleServicio.Click += new System.EventHandler(this.btnDetalleServicio_Click);
             // 
             // panel1
             // 
@@ -247,6 +249,7 @@ namespace GestorOrdenesDeTrabajo.Ventanas.Estadisticas
             this.btnMostrar.TabIndex = 3;
             this.btnMostrar.Text = "Mostrar";
             this.btnMostrar.UseVisualStyleBackColor = false;
+            this.btnMostrar.Click += new System.EventHandler(this.btnMostrar_Click);
             // 
             // label2
             // 
@@ -553,8 +556,8 @@ namespace GestorOrdenesDeTrabajo.Ventanas.Estadisticas
         private CustomComponents.infoPanel ipRefGarantia;
         private CustomComponents.infoPanel ipRefUsadas;
         private CustomComponents.infoPanel ipRefTotal;
-        private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button btnDetalleRefaccion;
+        private System.Windows.Forms.Button btnDetalleServicio;
         private CustomComponents.infoPanel infoPanel2;
         private CustomComponents.infoPanel ipTotalServicio;
     }

@@ -16,5 +16,20 @@ namespace GestorOrdenesDeTrabajo.Ventanas.Estadisticas
         {
             InitializeComponent();
         }
+
+        private void btnMostrar_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnDetalleRefaccion_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnDetalleServicio_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
