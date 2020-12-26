@@ -137,7 +137,7 @@ namespace GestorOrdenesDeTrabajo.UsesCases
                 using (Entities db = new Entities())
                 {
                     OrdenMecanico toDelete = db.OrdenMecanico
-                        .Where(el=>el.IdOrden.Equals(idOrden))
+                        .Where(el => el.IdOrden.Equals(idOrden))
                         .FirstOrDefault();
 
                     db.OrdenMecanico.Remove(toDelete);

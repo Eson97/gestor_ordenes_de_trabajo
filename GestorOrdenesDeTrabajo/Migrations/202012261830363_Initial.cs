@@ -98,14 +98,12 @@
                         IdRefaccion = c.Int(nullable: false),
                         PrecioUnitario = c.Decimal(nullable: false, precision: 12, scale: 2),
                         Cantidad = c.Int(nullable: false),
-                        Orden_Id = c.Int(),
-                        Refaccion_Id = c.Int(),
                     })
                 .PrimaryKey(t => t.Id)
-                .ForeignKey("dbo.Orden", t => t.Orden_Id)
-                .ForeignKey("dbo.Refaccion", t => t.Refaccion_Id)
-                .Index(t => t.Orden_Id)
-                .Index(t => t.Refaccion_Id);
+                .ForeignKey("dbo.Refaccion", t => t.IdRefaccion)
+                .ForeignKey("dbo.Orden", t => t.IdOrden)
+                .Index(t => t.IdOrden)
+                .Index(t => t.IdRefaccion);
             
             CreateTable(
                 "dbo.Permiso",
@@ -160,16 +158,16 @@
             DropForeignKey("dbo.UsuarioPermiso", "IdPermiso", "dbo.Permiso");
             DropForeignKey("dbo.UsuarioPermiso", "IdUsuario", "dbo.Usuario");
             DropForeignKey("dbo.Orden", "IdCliente", "dbo.Cliente");
+            DropForeignKey("dbo.OrdenRefaccionGarantia", "IdOrden", "dbo.Orden");
             DropForeignKey("dbo.OrdenRefaccion", "IdOrden", "dbo.Orden");
-            DropForeignKey("dbo.OrdenRefaccionGarantia", "Refaccion_Id", "dbo.Refaccion");
-            DropForeignKey("dbo.OrdenRefaccionGarantia", "Orden_Id", "dbo.Orden");
+            DropForeignKey("dbo.OrdenRefaccionGarantia", "IdRefaccion", "dbo.Refaccion");
             DropForeignKey("dbo.OrdenRefaccion", "IdRefaccion", "dbo.Refaccion");
             DropForeignKey("dbo.OrdenMecanico", "IdOrden", "dbo.Orden");
             DropForeignKey("dbo.OrdenMecanico", "IdMecanico", "dbo.Mecanico");
             DropIndex("dbo.UsuarioPermiso", new[] { "IdPermiso" });
             DropIndex("dbo.UsuarioPermiso", new[] { "IdUsuario" });
-            DropIndex("dbo.OrdenRefaccionGarantia", new[] { "Refaccion_Id" });
-            DropIndex("dbo.OrdenRefaccionGarantia", new[] { "Orden_Id" });
+            DropIndex("dbo.OrdenRefaccionGarantia", new[] { "IdRefaccion" });
+            DropIndex("dbo.OrdenRefaccionGarantia", new[] { "IdOrden" });
             DropIndex("dbo.OrdenRefaccion", new[] { "IdRefaccion" });
             DropIndex("dbo.OrdenRefaccion", new[] { "IdOrden" });
             DropIndex("dbo.OrdenMecanico", new[] { "IdMecanico" });

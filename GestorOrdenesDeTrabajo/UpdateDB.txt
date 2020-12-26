@@ -5,7 +5,7 @@ Add-Migration Initial
 
 Para actualizar base de datos ejecutar:
 
-Update-Database
+Update-Database -Verbose
 
 Para mas informacion:
 https://www.entityframeworktutorial.net/code-first/code-based-migration-in-code-first.aspx

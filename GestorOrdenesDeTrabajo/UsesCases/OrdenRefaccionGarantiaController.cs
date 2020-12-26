@@ -8,26 +8,26 @@ using System.Linq;
 
 namespace GestorOrdenesDeTrabajo.UsesCases
 {
-    public class OrdenRefaccionController : IEntityManager<OrdenRefaccion>
+    public class OrdenRefaccionGarantiaController : IEntityManager<OrdenRefaccionGarantia>
     {
-        private static OrdenRefaccionController Instance;
+        private static OrdenRefaccionGarantiaController Instance;
 
-        public static OrdenRefaccionController I
+        public static OrdenRefaccionGarantiaController I
         {
             get
             {
-                if (Instance == null) Instance = new OrdenRefaccionController();
+                if (Instance == null) Instance = new OrdenRefaccionGarantiaController();
                 return Instance;
             }
         }
 
-        public bool AddRange(List<OrdenRefaccion> elements, Orden orden)
+        public bool AddRange(List<OrdenRefaccionGarantia> elements, Orden orden)
         {
             try
             {
                 using (Entities db = new Entities())
                 {
-                    db.OrdenRefaccion.AddRange(elements);
+                    db.OrdenRefaccionGarantia.AddRange(elements);
                     db.SaveChanges();
                 }
                 return true;
@@ -39,13 +39,13 @@ namespace GestorOrdenesDeTrabajo.UsesCases
             return false;
         }
 
-        public OrdenRefaccion Add(OrdenRefaccion element)
+        public OrdenRefaccionGarantia Add(OrdenRefaccionGarantia element)
         {
             try
             {
                 using (Entities db = new Entities())
                 {
-                    element = db.OrdenRefaccion.Add(element);
+                    element = db.OrdenRefaccionGarantia.Add(element);
                     db.SaveChanges();
                 }
                 return element;
@@ -56,13 +56,13 @@ namespace GestorOrdenesDeTrabajo.UsesCases
             }
             return null;
         }
-        public List<OrdenRefaccion> Add(IEnumerable<OrdenRefaccion> element)
+        public List<OrdenRefaccionGarantia> Add(IEnumerable<OrdenRefaccionGarantia> element)
         {
             try
             {
                 using (Entities db = new Entities())
                 {
-                    element = db.OrdenRefaccion.AddRange(element);
+                    element = db.OrdenRefaccionGarantia.AddRange(element);
                     db.SaveChanges();
                 }
                 return element.ToList();
@@ -86,8 +86,8 @@ namespace GestorOrdenesDeTrabajo.UsesCases
             {
                 using (Entities db = new Entities())
                 {
-                    db.OrdenRefaccion
-                        .RemoveRange(db.OrdenRefaccion.Where(el => el.IdOrden.Equals(idOrden)));
+                    db.OrdenRefaccionGarantia
+                        .RemoveRange(db.OrdenRefaccionGarantia.Where(el => el.IdOrden.Equals(idOrden)));
                     db.SaveChanges();
                 }
                 return true;
@@ -99,12 +99,12 @@ namespace GestorOrdenesDeTrabajo.UsesCases
             return false;
         }
 
-        public OrdenRefaccion Edit(OrdenRefaccion element)
+        public OrdenRefaccionGarantia Edit(OrdenRefaccionGarantia element)
         {
             throw new NotImplementedException();
         }
 
-        public List<OrdenRefaccion> GetLista()
+        public List<OrdenRefaccionGarantia> GetLista()
         {
             throw new NotImplementedException();
         }
@@ -116,7 +116,7 @@ namespace GestorOrdenesDeTrabajo.UsesCases
             {
                 using (Entities db = new Entities())
                 {
-                    lista = db.OrdenRefaccion
+                    lista = db.OrdenRefaccionGarantia
                         .AsNoTracking()
                         .Where(el => el.IdOrden.Equals(IdOrden))
                         .Select(el => new RefaccionDTO()

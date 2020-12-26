@@ -21,9 +21,8 @@ namespace GestorOrdenesDeTrabajo.Ventanas.Ordenes
         public OrdenesEnProceso(OrdenStatus Estado)
         {
             InitializeComponent();
-            loadOrdenes();
             this.Estado = Estado;
-
+            loadOrdenes();
         }
 
         void openSubPanel(Form f)

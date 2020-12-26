@@ -8,7 +8,6 @@ using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace GestorOrdenesDeTrabajo.Ventanas.Ordenes
@@ -24,7 +23,7 @@ namespace GestorOrdenesDeTrabajo.Ventanas.Ordenes
         public OrdenesEnProceso_AddRem(Orden orden, OrdenStatus Estado)
         {
             InitializeComponent();
-            this.Estado = Estado; 
+            this.Estado = Estado;
             DataTable = new DataTable();
             DataTable.Columns.Add("ID");
             DataTable.Columns.Add("Codigo");
@@ -56,7 +55,14 @@ namespace GestorOrdenesDeTrabajo.Ventanas.Ordenes
             while (tablaRefacciones.RowCount != 0)
                 tablaRefacciones.Rows.RemoveAt(0);
 
-            Refacciones = OrdenRefaccionController.I.GetListaByOrden(Orden.Id);
+            Refacciones = Estado switch
+            {
+                OrdenStatus.PROCESO => OrdenRefaccionController.I.GetListaByOrden(Orden.Id),
+                OrdenStatus.GARANTIA => OrdenRefaccionGarantiaController.I.GetListaByOrden(Orden.Id),
+                _ => new List<RefaccionDTO>()
+            };
+
+
             foreach (RefaccionDTO item in Refacciones)
                 DataTable.Rows.Add(new object[] { item.Id, item.Codigo, item.Descripcion, item.Cantidad, item.PrecioUnitrio });
 
@@ -76,9 +82,18 @@ namespace GestorOrdenesDeTrabajo.Ventanas.Ordenes
         void UpdatePiecesInWorkOrder()
         {
             //Elimina todos los registros de la orden
-            bool deleted = OrdenRefaccionController.I.DeleteRange(Orden.Id);
+            bool deleted = Estado switch
+            {
+                OrdenStatus.PROCESO => OrdenRefaccionController.I.DeleteRange(Orden.Id),
+                OrdenStatus.GARANTIA => OrdenRefaccionGarantiaController.I.DeleteRange(Orden.Id),
+                _ => false
+            };
+
             if (!deleted)
                 MessageBox.Show("Ocurrio un error al actualizar", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+            List<OrdenRefaccion> listR = new List<OrdenRefaccion>();
+            List<OrdenRefaccionGarantia> listW = new List<OrdenRefaccionGarantia>();
 
             //Agrega los registros nuevos
             foreach (DataGridViewRow row in tablaRefacciones.Rows)
@@ -88,15 +103,43 @@ namespace GestorOrdenesDeTrabajo.Ventanas.Ordenes
                 var algo = row.Cells[4].Value.ToString();
                 decimal precio = decimal.Parse(algo);
 
-                OrdenRefaccionController.I.Add(new OrdenRefaccion
+                switch (Estado)
                 {
-                    IdOrden = Orden.Id,
-                    IdRefaccion = id,
-                    Cantidad = cantidad,
-                    PrecioUnitario = precio,
-                });
+                    case OrdenStatus.PROCESO:
+                        listR.Add(new OrdenRefaccion
+                        {
+                            IdOrden = Orden.Id,
+                            IdRefaccion = id,
+                            Cantidad = cantidad,
+                            PrecioUnitario = precio,
+                        });
+                        break;
+
+                    case OrdenStatus.GARANTIA:
+                        listW.Add(new OrdenRefaccionGarantia
+                        {
+                            IdOrden = Orden.Id,
+                            IdRefaccion = id,
+                            Cantidad = cantidad,
+                            PrecioUnitario = precio,
+                        });
+                        break;
+                    default:
+                        throw new ArgumentException("Error en el estado de la orden");
+                }
             }
-            CambiosGuardados = true;
+
+            var added = Estado switch
+            {
+                OrdenStatus.PROCESO => OrdenRefaccionController.I.AddRange(listR, Orden),
+                OrdenStatus.GARANTIA => OrdenRefaccionGarantiaController.I.AddRange(listW, Orden),
+                _ => false
+            };
+
+            if (!added)
+                MessageBox.Show("Ocurrio un error al actualizar", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+            CambiosGuardados = added;
         }
 
         private void btnClosePanel_Click(object sender, EventArgs e)
@@ -155,10 +198,7 @@ namespace GestorOrdenesDeTrabajo.Ventanas.Ordenes
             {
                 bool delete = (int)MessageDialogResult.Yes == MessageDialog.ShowMessageDialog("Eliminar", $"¿Esta seguro de que desea eliminar la pieza?", false);
                 if (delete)
-                {
                     tablaRefacciones.Rows.Remove(row);
-                }
-                else Console.WriteLine("No se va a borrar");
             }
             else
                 MessageBox.Show("Seleccione una refaccion en la tabla y vuelva a intentar", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -170,18 +210,25 @@ namespace GestorOrdenesDeTrabajo.Ventanas.Ordenes
         {
             if ((int)MessageDialogResult.No == MessageDialog.ShowMessageDialog("Confirmacion", "¿Esta seguro que desea completar esta orden?\nYa no podra ser modificada", false)) return;
 
-            var aux = LaborCostDialog.ShowLaborCostDialog();
+            //Si la orden esta en proceso se agrega costo de mano de obra, en garantia no tiene costo
+            if (Estado == OrdenStatus.PROCESO)
+            {
+                var aux = LaborCostDialog.ShowLaborCostDialog();
 
-            if (!aux.Result) return; //si no se asigno un valor valido no procede
+                if (!aux.Result) return; //si no se asigno un valor valido no procede
 
-            OrdenMecanico ordenMecanico = OrdenMecanicoController.I.GetByIdOrden(Orden.Id);
-            ordenMecanico.CostoManoObra = aux.Costo;
-            ordenMecanico = OrdenMecanicoController.I.Edit(ordenMecanico);
+                OrdenMecanico ordenMecanico = OrdenMecanicoController.I.GetByIdOrden(Orden.Id);
+                ordenMecanico.CostoManoObra = aux.Costo;
+                ordenMecanico = OrdenMecanicoController.I.Edit(ordenMecanico);
+
+                if (ordenMecanico == null)
+                    MessageBox.Show("No se puede cambiar el status, intente de nuevo", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
 
             Orden.Status = (int)OrdenStatus.POR_ENTREGAR;
             Orden = OrdenController.I.Edit(Orden);
 
-            if (Orden == null || ordenMecanico == null)
+            if (Orden == null)
                 MessageBox.Show("No se puede cambiar el status, intente de nuevo", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             this.Dispose();
         }
@@ -190,7 +237,9 @@ namespace GestorOrdenesDeTrabajo.Ventanas.Ordenes
         {
             if ((int)MessageDialogResult.No == MessageDialog.ShowMessageDialog("Confirmacion", "¿Esta seguro que desea cancelar esta orden?\nYa no podra ser recuperada", false)) return;
 
-            bool deleted = OrdenRefaccionController.I.DeleteRange(Orden.Id);
+            bool deleted = OrdenRefaccionController.I.DeleteRange(Orden.Id)
+                || OrdenRefaccionGarantiaController.I.DeleteRange(Orden.Id);
+
             deleted &= OrdenMecanicoController.I.DeleteByOrden(Orden.Id);
 
             if (!deleted)

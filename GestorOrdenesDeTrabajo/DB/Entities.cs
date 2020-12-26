@@ -78,6 +78,12 @@ namespace GestorOrdenesDeTrabajo.DB
                 .HasForeignKey(e => e.IdOrden)
                 .WillCascadeOnDelete(false);
 
+            modelBuilder.Entity<Orden>()
+                .HasMany(e => e.OrdenRefaccionGarantia)
+                .WithRequired(e => e.Orden)
+                .HasForeignKey(e => e.IdOrden)
+                .WillCascadeOnDelete(false);
+
             modelBuilder.Entity<OrdenMecanico>()
                 .Property(e => e.CostoManoObra)
                 .HasPrecision(12, 2);
@@ -113,6 +119,12 @@ namespace GestorOrdenesDeTrabajo.DB
 
             modelBuilder.Entity<Refaccion>()
                 .HasMany(e => e.OrdenRefaccion)
+                .WithRequired(e => e.Refaccion)
+                .HasForeignKey(e => e.IdRefaccion)
+                .WillCascadeOnDelete(false);
+
+            modelBuilder.Entity<Refaccion>()
+                .HasMany(e => e.OrdenRefaccionGarantia)
                 .WithRequired(e => e.Refaccion)
                 .HasForeignKey(e => e.IdRefaccion)
                 .WillCascadeOnDelete(false);
