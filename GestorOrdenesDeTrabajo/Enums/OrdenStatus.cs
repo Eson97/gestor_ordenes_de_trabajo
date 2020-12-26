@@ -7,8 +7,9 @@
         POR_ENTREGAR = 3,
         ENTREGADA = 4,
         GARANTIA = 5,
-        CANCELADA = 6
-
+        GARANTIA_POR_ENTREGAR = 6,
+        GARANTIA_ENTREGADA = 7,
+        CANCELADA = 8,
     }
 
     public static class OrdenStatusManager
@@ -27,6 +28,10 @@
                     return "ENTREGADA";
                 case (int)OrdenStatus.GARANTIA:
                     return "GARANTIA";
+                case (int)OrdenStatus.GARANTIA_POR_ENTREGAR:
+                    return "GARANTIA SIN ENTREGAR";
+                case (int)OrdenStatus.GARANTIA_ENTREGADA:
+                    return "GARANTIA ENTREGADA";
                 case (int)OrdenStatus.CANCELADA:
                     return "CANCELADA";
                 default:

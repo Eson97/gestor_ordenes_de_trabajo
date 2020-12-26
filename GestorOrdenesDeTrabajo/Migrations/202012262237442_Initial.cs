@@ -38,6 +38,19 @@
                 .Index(t => t.IdCliente);
             
             CreateTable(
+                "dbo.OrdenHistorial",
+                c => new
+                    {
+                        Id = c.Int(nullable: false),
+                        IdOrden = c.Int(nullable: false),
+                        FechaStatus = c.DateTime(nullable: false, storeType: "date"),
+                        Status = c.Int(nullable: false),
+                    })
+                .PrimaryKey(t => t.Id)
+                .ForeignKey("dbo.Orden", t => t.Id)
+                .Index(t => t.Id);
+            
+            CreateTable(
                 "dbo.OrdenMecanico",
                 c => new
                     {
@@ -164,6 +177,7 @@
             DropForeignKey("dbo.OrdenRefaccion", "IdRefaccion", "dbo.Refaccion");
             DropForeignKey("dbo.OrdenMecanico", "IdOrden", "dbo.Orden");
             DropForeignKey("dbo.OrdenMecanico", "IdMecanico", "dbo.Mecanico");
+            DropForeignKey("dbo.OrdenHistorial", "Id", "dbo.Orden");
             DropIndex("dbo.UsuarioPermiso", new[] { "IdPermiso" });
             DropIndex("dbo.UsuarioPermiso", new[] { "IdUsuario" });
             DropIndex("dbo.OrdenRefaccionGarantia", new[] { "IdRefaccion" });
@@ -172,6 +186,7 @@
             DropIndex("dbo.OrdenRefaccion", new[] { "IdOrden" });
             DropIndex("dbo.OrdenMecanico", new[] { "IdMecanico" });
             DropIndex("dbo.OrdenMecanico", new[] { "IdOrden" });
+            DropIndex("dbo.OrdenHistorial", new[] { "Id" });
             DropIndex("dbo.Orden", new[] { "IdCliente" });
             DropTable("dbo.sysdiagrams");
             DropTable("dbo.Usuario");
@@ -182,6 +197,7 @@
             DropTable("dbo.OrdenRefaccion");
             DropTable("dbo.Mecanico");
             DropTable("dbo.OrdenMecanico");
+            DropTable("dbo.OrdenHistorial");
             DropTable("dbo.Orden");
             DropTable("dbo.Cliente");
         }

@@ -106,6 +106,7 @@
     <Compile Include="DB\OrdenMecanico.cs" />
     <Compile Include="DB\OrdenRefaccion.cs" />
     <Compile Include="DB\OrdenRefaccionGarantia.cs" />
+    <Compile Include="DB\OrdenHistorial.cs" />
     <Compile Include="DB\Permiso.cs" />
     <Compile Include="DB\Refaccion.cs" />
     <Compile Include="DB\sysdiagrams.cs" />
@@ -128,13 +129,14 @@
     <Compile Include="Main.Designer.cs">
       <DependentUpon>Main.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\202012261830363_Initial.cs" />
-    <Compile Include="Migrations\202012261830363_Initial.designer.cs">
-      <DependentUpon>202012261830363_Initial.cs</DependentUpon>
+    <Compile Include="Migrations\202012262237442_Initial.cs" />
+    <Compile Include="Migrations\202012262237442_Initial.designer.cs">
+      <DependentUpon>202012262237442_Initial.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="UsesCases\ClienteController.cs" />
     <Compile Include="UsesCases\MecanicoController.cs" />
+    <Compile Include="UsesCases\OrdenHistorialController.cs" />
     <Compile Include="UsesCases\OrdenController.cs" />
     <Compile Include="UsesCases\OrdenMecanicoController.cs" />
     <Compile Include="UsesCases\OrdenRefaccionGarantiaController.cs" />
@@ -294,8 +296,8 @@
     <EmbeddedResource Include="Main.resx">
       <DependentUpon>Main.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202012261830363_Initial.resx">
-      <DependentUpon>202012261830363_Initial.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202012262237442_Initial.resx">
+      <DependentUpon>202012262237442_Initial.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Ventanas\Buscar\SrchDetailInfo.resx">
       <DependentUpon>SrchDetailInfo.cs</DependentUpon>

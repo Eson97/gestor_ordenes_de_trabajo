@@ -13,7 +13,7 @@ namespace GestorOrdenesDeTrabajo.Migrations
         
         string IMigrationMetadata.Id
         {
-            get { return "202012261830363_Initial"; }
+            get { return "202012262237442_Initial"; }
         }
         
         string IMigrationMetadata.Source

@@ -15,6 +15,7 @@ namespace GestorOrdenesDeTrabajo.DB
         public virtual DbSet<Cliente> Cliente { get; set; }
         public virtual DbSet<Mecanico> Mecanico { get; set; }
         public virtual DbSet<Orden> Orden { get; set; }
+        public virtual DbSet<OrdenHistorial> OrdenHistorial { get; set; }
         public virtual DbSet<OrdenMecanico> OrdenMecanico { get; set; }
         public virtual DbSet<OrdenRefaccion> OrdenRefaccion { get; set; }
         public virtual DbSet<OrdenRefaccionGarantia> OrdenRefaccionGarantia { get; set; }
@@ -83,6 +84,10 @@ namespace GestorOrdenesDeTrabajo.DB
                 .WithRequired(e => e.Orden)
                 .HasForeignKey(e => e.IdOrden)
                 .WillCascadeOnDelete(false);
+
+            modelBuilder.Entity<Orden>()
+                .HasOptional(s => s.OrdenHistorial)
+                .WithRequired(ad => ad.Orden);
 
             modelBuilder.Entity<OrdenMecanico>()
                 .Property(e => e.CostoManoObra)
