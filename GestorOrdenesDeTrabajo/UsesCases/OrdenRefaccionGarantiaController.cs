@@ -5,6 +5,8 @@ using GestorOrdenesDeTrabajo.DB;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using GestorOrdenesDeTrabajo.Enums;
+using System.Data.Entity;
 
 namespace GestorOrdenesDeTrabajo.UsesCases
 {
@@ -37,6 +39,40 @@ namespace GestorOrdenesDeTrabajo.UsesCases
                 Log.Write("Ha ocurrido un error " + e.Message);
             }
             return false;
+        }
+
+        //TODO get Only necessary data and Add Status to Orden
+        public List<RefaccionDTO> GetListaBetween(DateTime initDate, DateTime finDate)
+        {
+            List<RefaccionDTO> lista = null;
+            try
+            {
+                using (Entities db = new Entities())
+                {
+                    lista = db.OrdenRefaccionGarantia
+                        .AsNoTracking()
+                        .Where(el => DbFunctions.TruncateTime(el.Orden.FechaEntrega) >= initDate.Date && DbFunctions.TruncateTime(el.Orden.FechaEntrega) <= finDate.Date
+                        && el.Orden.Status.Equals(OrdenStatus.ENTREGADA))
+                        .Select(el => new RefaccionDTO()
+                        {
+                            Id = el.Refaccion.Id,
+                            //Descripcion = el.Refaccion.Descripcion,
+                            //Codigo = el.Refaccion.Codigo,
+                            //Cantidad = el.Cantidad,
+                            //PrecioUnitrio = el.PrecioUnitario,
+                            Total = el.PrecioUnitario * el.Cantidad
+                        })
+                        .ToList();
+                }
+                return lista;
+            }
+            catch (Exception e)
+            {
+                string s = e.Message;
+                Log.Write("Ha ocurrido un error " + s);
+            }
+            //Retorna lista vacia para evitar excepciones en llamada
+            return new List<RefaccionDTO>();
         }
 
         public OrdenRefaccionGarantia Add(OrdenRefaccionGarantia element)

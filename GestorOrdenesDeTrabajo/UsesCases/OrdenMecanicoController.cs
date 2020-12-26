@@ -5,6 +5,8 @@ using System;
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
+using GestorOrdenesDeTrabajo.Enums;
+using GestorOrdenesDeTrabajo.Auxiliares;
 
 namespace GestorOrdenesDeTrabajo.UsesCases
 {
@@ -62,6 +64,66 @@ namespace GestorOrdenesDeTrabajo.UsesCases
                 Log.Write("Ha ocurrido un error " + e.Message);
             }
             return false;
+        }
+
+        public List<MecanicoDTO> GetCountMecanicos(DateTime initDate, DateTime finDate)
+        {
+            List<MecanicoDTO> lista = null;
+            try
+            {
+                using (Entities db = new Entities())
+                {
+                    var list = db.OrdenMecanico
+                        .AsNoTracking()
+                        .Where(el => DbFunctions.TruncateTime(el.Orden.FechaEntrega) >= initDate.Date && DbFunctions.TruncateTime(el.Orden.FechaEntrega) <= finDate.Date
+                        && el.Orden.Status == (int)OrdenStatus.ENTREGADA)
+                        .Select(el => el.Mecanico);
+
+                    lista = list.Intersect(db.Mecanico)
+                        .Select(el =>
+                        new MecanicoDTO
+                        {
+                            Id = el.Id,
+                        }).ToList();
+                }
+                return lista;
+            }
+            catch (Exception e)
+            {
+                string s = e.Message;
+                Log.Write("Ha ocurrido un error " + s);
+            }
+            //Retorna lista vacia para evitar excepciones en llamada
+            return new List<MecanicoDTO>();
+        }
+
+        public List<OrdenMecanicoDTO> GetListaBetween(DateTime initDate, DateTime finDate)
+        {
+            List<OrdenMecanicoDTO> lista = null;
+            try
+            {
+                using (Entities db = new Entities())
+                {
+                    lista = db.OrdenMecanico
+                        .AsNoTracking()
+                        .Where(el => DbFunctions.TruncateTime(el.Orden.FechaEntrega) >= initDate.Date && DbFunctions.TruncateTime(el.Orden.FechaEntrega) <= finDate.Date
+                        && el.Orden.Status == (int)OrdenStatus.ENTREGADA)
+                        .Select(el => new OrdenMecanicoDTO()
+                        {
+                            Id = el.Id,
+                            CostoManoObra = el.CostoManoObra
+                        })
+                        .ToList();
+                }
+                return lista;
+            }
+            catch (Exception e)
+            {
+                string s = e.Message;
+                Log.Write("Ha ocurrido un error " + s);
+            }
+            //Retorna lista vacia para evitar excepciones en llamada
+            return new List<OrdenMecanicoDTO>();
         }
 
         public OrdenMecanico Edit(OrdenMecanico element)

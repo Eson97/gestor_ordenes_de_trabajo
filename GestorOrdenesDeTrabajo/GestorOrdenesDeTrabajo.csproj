@@ -60,6 +60,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Auxiliares\Mecanico.cs" />
+    <Compile Include="Auxiliares\MecanicoDTO.cs" />
+    <Compile Include="Auxiliares\OrdenMecanicoDTO.cs" />
     <Compile Include="Auxiliares\RefaccionDTO.cs" />
     <Compile Include="CustomComponents\CustomDateTimePicker.cs">
       <SubType>Component</SubType>
