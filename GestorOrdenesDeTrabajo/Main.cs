@@ -207,7 +207,7 @@ namespace GestorOrdenesDeTrabajo
         private void btnEnEspera_Click(object sender, EventArgs e)
         {
             collapseSidePanel(true);
-            openPanel(new OrdenesEnEspera((int)OrdenStatus.ESPERA), "Ordenes en Espera", sender);
+            openPanel(new OrdenesEnEspera(OrdenStatus.ESPERA), "Ordenes en Espera", sender);
         }
 
         private void btnEnProceso_Click(object sender, EventArgs e)
@@ -219,7 +219,7 @@ namespace GestorOrdenesDeTrabajo
         private void btnPorEntregar_Click(object sender, EventArgs e)
         {
             collapseSidePanel(true);
-            openPanel(new OrdenesEnEspera((int)OrdenStatus.POR_ENTREGAR), "Ordenes por Entregar", sender);
+            openPanel(new OrdenesEnEspera(OrdenStatus.POR_ENTREGAR), "Ordenes por Entregar", sender);
         }
 
         private void btnEnGarantia_Click(object sender, EventArgs e)
