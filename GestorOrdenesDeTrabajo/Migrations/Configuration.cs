@@ -35,6 +35,7 @@
             InitOrden(context);
             InitOrdenMecanico(context);
             InitOrdenRefaccion(context);
+            InitOrdenRefaccionGarantia(context);
         }
 
         private void InitUsuario(Entities db)
@@ -231,6 +232,22 @@
             foreach (var item in ordenRefacciones)
             {
                 db.OrdenRefaccion.Add(item);
+                db.SaveChanges();
+            }
+        }
+        private void InitOrdenRefaccionGarantia(Entities db)
+        {
+            var ordenRefacciones = new OrdenRefaccionGarantia[]
+            {
+                new OrdenRefaccionGarantia
+                {
+                    IdOrden=1,
+                    IdRefaccion=4
+                }
+            };
+            foreach (var item in ordenRefacciones)
+            {
+                db.OrdenRefaccionGarantia.Add(item);
                 db.SaveChanges();
             }
         }

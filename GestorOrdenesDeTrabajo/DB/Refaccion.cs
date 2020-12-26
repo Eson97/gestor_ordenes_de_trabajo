@@ -13,6 +13,7 @@ namespace GestorOrdenesDeTrabajo.DB
         public Refaccion()
         {
             OrdenRefaccion = new HashSet<OrdenRefaccion>();
+            OrdenRefaccionGarantia = new HashSet<OrdenRefaccionGarantia>();
         }
 
         public int Id { get; set; }
@@ -31,5 +32,8 @@ namespace GestorOrdenesDeTrabajo.DB
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<OrdenRefaccion> OrdenRefaccion { get; set; }
+
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<OrdenRefaccionGarantia> OrdenRefaccionGarantia { get; set; }
     }
 }

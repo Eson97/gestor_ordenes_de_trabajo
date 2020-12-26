@@ -1,7 +1,7 @@
 ﻿Para actualizar campos eliminar carpeta migrations
 En consola del administrador de paquetes ejecutar:
 
-Add-Migration
+Add-Migration Initial
 
 Para actualizar base de datos ejecutar:
 

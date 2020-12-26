@@ -17,6 +17,7 @@ namespace GestorOrdenesDeTrabajo.DB
         public virtual DbSet<Orden> Orden { get; set; }
         public virtual DbSet<OrdenMecanico> OrdenMecanico { get; set; }
         public virtual DbSet<OrdenRefaccion> OrdenRefaccion { get; set; }
+        public virtual DbSet<OrdenRefaccionGarantia> OrdenRefaccionGarantia { get; set; }
         public virtual DbSet<Permiso> Permiso { get; set; }
         public virtual DbSet<Refaccion> Refaccion { get; set; }
         public virtual DbSet<sysdiagrams> sysdiagrams { get; set; }
@@ -82,6 +83,10 @@ namespace GestorOrdenesDeTrabajo.DB
                 .HasPrecision(12, 2);
 
             modelBuilder.Entity<OrdenRefaccion>()
+                .Property(e => e.PrecioUnitario)
+                .HasPrecision(12, 2);
+
+            modelBuilder.Entity<OrdenRefaccionGarantia>()
                 .Property(e => e.PrecioUnitario)
                 .HasPrecision(12, 2);
 
