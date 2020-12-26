@@ -137,6 +137,10 @@ namespace GestorOrdenesDeTrabajo.Ventanas.Ventanas_Emergentes
         private void txtFilter_TextChanged(object sender, EventArgs e)
         {
             var filtro = txtFilter.Text;
+
+            if (filtro.Length == 0 || filtro.Equals("Ingrese Folio de la orden"))
+                return;
+
             var tempOrdenes = ordenes.Where(el => el.Folio.ToString().Contains(filtro)).ToList();
 
             while (tablaOrdenes.RowCount != 0)
