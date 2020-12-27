@@ -45,6 +45,8 @@ namespace GestorOrdenesDeTrabajo.Ventanas.Ordenes
 
                             orden.Status = AssignNextStatusOrder();
                             orden = OrdenController.I.Edit(orden);
+                            if (orden == null)
+                            { MessageBox.Show("No se puede cambiar el status, intente de nuevo", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error); return; }
 
                             var ordenMecanico = OrdenMecanicoController.I.Add(new OrdenMecanico()
                             {
@@ -53,7 +55,18 @@ namespace GestorOrdenesDeTrabajo.Ventanas.Ordenes
                             });
 
                             if (ordenMecanico == null)
-                                MessageBox.Show("No se puede asignar el mecanico a la orden", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            { MessageBox.Show("No se puede asignar el mecanico a la orden", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error); return; }
+
+                            //Agrega el estado de la orden al historial
+                            var saved = OrdenHistorialController.I.Add(new OrdenHistorial()
+                            {
+                                IdOrden = orden.Id,
+                                FechaStatus = DateTime.Now,
+                                Status = AssignNextStatusOrder()
+                            });
+
+                            if (saved == null)
+                                MessageBox.Show("No se puede agregar al historial de ordenes", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
                             //Repaint controls with new data
                             showOrdenes();
@@ -76,7 +89,47 @@ namespace GestorOrdenesDeTrabajo.Ventanas.Ordenes
                             orden = OrdenController.I.Edit(orden);
 
                             if (orden == null)
-                                MessageBox.Show("No se puede cambiar el status, intente de nuevo", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            { MessageBox.Show("No se puede cambiar el status, intente de nuevo", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error); return; }
+
+                            //Agrega el estado de la orden al historial
+                            var saved = OrdenHistorialController.I.Add(new OrdenHistorial()
+                            {
+                                IdOrden = orden.Id,
+                                FechaStatus = aux.FechaEntrega,
+                                Status = AssignNextStatusOrder()
+                            });
+                            if (saved == null)
+                                MessageBox.Show("No se puede agregar al historial de ordenes", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+                            //Repaint controls with new data
+                            showOrdenes();
+                        };
+                        break;
+                    case OrdenStatus.GARANTIA_POR_ENTREGAR:
+                        this.flpList.Controls.Add(item);
+                        item.btnAction.Click += (s, e) =>
+                        {
+                            orden = item.Orden;
+
+                            var aux = EntregarDialog.ShowEntregarOrden(orden);
+                            if (!aux.Result) return;
+
+                            orden.FechaEntrega = aux.FechaEntrega;
+                            orden.Status = AssignNextStatusOrder();
+                            orden = OrdenController.I.Edit(orden);
+
+                            if (orden == null)
+                            { MessageBox.Show("No se puede cambiar el status, intente de nuevo", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error); return; }
+
+                            //Agrega el estado de la orden al historial
+                            var saved = OrdenHistorialController.I.Add(new OrdenHistorial()
+                            {
+                                IdOrden = orden.Id,
+                                FechaStatus = aux.FechaEntrega,
+                                Status = AssignNextStatusOrder()
+                            });
+                            if (saved == null)
+                                MessageBox.Show("No se puede agregar al historial de ordenes", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
                             //Repaint controls with new data
                             showOrdenes();
@@ -95,6 +148,7 @@ namespace GestorOrdenesDeTrabajo.Ventanas.Ordenes
             {
                 OrdenStatus.ESPERA => (int)OrdenStatus.PROCESO,
                 OrdenStatus.POR_ENTREGAR => (int)OrdenStatus.ENTREGADA,
+                OrdenStatus.GARANTIA_POR_ENTREGAR => (int)OrdenStatus.GARANTIA_ENTREGADA,
                 _ => throw new ArgumentException("No se soporta el status", nameof(OrdenStatus))
             };
 

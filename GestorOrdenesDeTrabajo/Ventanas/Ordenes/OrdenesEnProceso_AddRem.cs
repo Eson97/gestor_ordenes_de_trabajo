@@ -222,14 +222,31 @@ namespace GestorOrdenesDeTrabajo.Ventanas.Ordenes
                 ordenMecanico = OrdenMecanicoController.I.Edit(ordenMecanico);
 
                 if (ordenMecanico == null)
-                    MessageBox.Show("No se puede cambiar el status, intente de nuevo", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                { MessageBox.Show("No se puede cambiar el status, intente de nuevo", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error); return; }
             }
 
-            Orden.Status = (int)OrdenStatus.POR_ENTREGAR;
+            Orden.Status = Estado switch
+            {
+                OrdenStatus.PROCESO => (int)OrdenStatus.POR_ENTREGAR,
+                OrdenStatus.GARANTIA => (int)OrdenStatus.GARANTIA_POR_ENTREGAR,
+                _ => 0
+            };
+
             Orden = OrdenController.I.Edit(Orden);
 
             if (Orden == null)
-                MessageBox.Show("No se puede cambiar el status, intente de nuevo", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            { MessageBox.Show("No se puede cambiar el status, intente de nuevo", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error); return; }
+
+            //Agrega el estado de la orden al historial
+            var saved = OrdenHistorialController.I.Add(new OrdenHistorial()
+            {
+                IdOrden = Orden.Id,
+                FechaStatus = DateTime.Now,
+                Status = Orden.Status,
+            });
+
+            if (saved == null)
+                MessageBox.Show("No se puede agregar al historial de ordenes", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             this.Dispose();
         }
 
@@ -243,12 +260,24 @@ namespace GestorOrdenesDeTrabajo.Ventanas.Ordenes
             deleted &= OrdenMecanicoController.I.DeleteByOrden(Orden.Id);
 
             if (!deleted)
-                MessageBox.Show("No se puede eliminar la orden, error al eliminar las piezas", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            { MessageBox.Show("No se puede eliminar la orden, error al eliminar las piezas", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error); return; }
 
             Orden.Status = (int)OrdenStatus.CANCELADA;
             Orden = OrdenController.I.Edit(Orden);
             if (Orden == null)
-                MessageBox.Show("No se puede cambiar el status, intente de nuevo", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            { MessageBox.Show("No se puede cambiar el status, intente de nuevo", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error); return; }
+
+            //Agrega el estado de la orden al historial
+            var saved = OrdenHistorialController.I.Add(new OrdenHistorial()
+            {
+                IdOrden = Orden.Id,
+                FechaStatus = DateTime.Now,
+                Status = Orden.Status,
+            });
+
+            if (saved == null)
+                MessageBox.Show("No se puede agregar al historial de ordenes", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
             this.Dispose();
         }
 

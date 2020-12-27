@@ -63,8 +63,7 @@ namespace GestorOrdenesDeTrabajo.Ventanas.Ordenes
 
 
             //Se crea la entidad cliente automaticamente TODO revisar si el cliente existe y solo agregar ID
-
-            var orden = OrdenController.I.Add(new Orden()
+            var orden = new Orden()
             {
                 Folio = folio,
                 Equipo = equipo,
@@ -72,7 +71,24 @@ namespace GestorOrdenesDeTrabajo.Ventanas.Ordenes
                 Observaciones = observaciones,
                 Status = (int)OrdenStatus.ESPERA,
                 IdCliente = cliente.Id
+            };
+
+            orden = OrdenController.I.Add(orden);
+            if (orden == null)
+            { MessageBox.Show("Error al cambiar el status de la orden", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error); return; }
+
+
+            //Agrega el estado de la orden al historial
+            var saved = OrdenHistorialController.I.Add(new OrdenHistorial()
+            {
+                IdOrden = orden.Id,
+                FechaStatus = DateTime.Now,
+                Status = (int)OrdenStatus.ESPERA
             });
+
+            if (saved == null)
+                MessageBox.Show("No se puede agregar al historial de ordenes", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
 
             if (orden != null)
             {

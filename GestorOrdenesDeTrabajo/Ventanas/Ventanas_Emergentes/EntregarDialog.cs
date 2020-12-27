@@ -29,9 +29,21 @@ namespace GestorOrdenesDeTrabajo.Ventanas.Ventanas_Emergentes
             InitializeComponent();
             this.orden = orden;
             this.lblTittle.Text = $"Orden: {orden.Folio}";
+
+            OrdenStatus status = (OrdenStatus)Enum.Parse(typeof(OrdenStatus), orden.Status.ToString());
+            
+            switch (status)
+            {
+                case OrdenStatus.GARANTIA_POR_ENTREGAR:
+                    cbFormaDePago.Enabled = false;
+                    txtRef.Enabled = false;
+                    break;
+                default:
+                    break;
+            }
         }
 
-        public static (bool Result,string Referencia, DateTime FechaEntrega,TipoPago MetodoPago) ShowEntregarOrden(Orden o)
+        public static (bool Result, string Referencia, DateTime FechaEntrega, TipoPago MetodoPago) ShowEntregarOrden(Orden o)
         {
             _Result = false;
 

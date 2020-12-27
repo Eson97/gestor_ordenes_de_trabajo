@@ -98,17 +98,31 @@ namespace GestorOrdenesDeTrabajo.Ventanas.Ordenes
 
         private void fbtnAdd_Click(object sender, EventArgs e)
         {
-            var result = WarrantyDialog.showWarrantyDialog();
-            if (result == null)
+            var orden = WarrantyDialog.showWarrantyDialog();
+            if (orden == null)
                 return;
 
-            result = OrdenController.I.GetOrdenById(result.Id);
+            orden = OrdenController.I.GetOrdenById(orden.Id);
 
-            bool isValidWarranty = result.FechaEntrega >= DateTime.Now.AddMonths(-3);
+            bool isValidWarranty = orden.FechaEntrega >= DateTime.Now.AddMonths(-3);
             if (!isValidWarranty) { MessageBox.Show("La garantia ha vencido", "Informacion", MessageBoxButtons.OK, MessageBoxIcon.Information); return; }
 
-            result.Status = (int)OrdenStatus.GARANTIA;
-            OrdenController.I.Edit(result);
+            orden.Status = (int)OrdenStatus.GARANTIA;
+            orden = OrdenController.I.Edit(orden);
+
+            if (orden == null)
+                MessageBox.Show("Error al cambiar el status de la orden", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+            //Agrega el estado de la orden al historial
+            var saved = OrdenHistorialController.I.Add(new OrdenHistorial()
+            {
+                IdOrden = orden.Id,
+                FechaStatus = DateTime.Now,
+                Status = (int)OrdenStatus.GARANTIA,
+            });
+
+            if (saved == null)
+                MessageBox.Show("No se puede agregar al historial de ordenes", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
             loadOrdenes();
         }

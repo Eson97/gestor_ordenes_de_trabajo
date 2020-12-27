@@ -278,6 +278,12 @@ namespace GestorOrdenesDeTrabajo
             collapseSidePanel(true);
             openPanel(new Usuarios(), "Usuarios", sender);
         }
+
+        private void btnGarantiaEntregar_Click(object sender, EventArgs e)
+        {
+            collapseSidePanel(true);
+            openPanel(new OrdenesEnEspera(OrdenStatus.GARANTIA_POR_ENTREGAR), "Ordenes En Garantia Por Entregar", sender);
+        }
     }
 
     public static class Extensions

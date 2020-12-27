@@ -1,13 +1,7 @@
 ﻿using GestorOrdenesDeTrabajo.Enums;
 using GestorOrdenesDeTrabajo.UsesCases;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace GestorOrdenesDeTrabajo.Ventanas.Estadisticas
@@ -26,7 +20,15 @@ namespace GestorOrdenesDeTrabajo.Ventanas.Estadisticas
 
         void loadGrafica()
         {
+            var a = OrdenHistorialController.I.GetLista(OrdenStatus.ESPERA);
+            var b = OrdenHistorialController.I.GetLista(OrdenStatus.PROCESO);
+            var c = OrdenHistorialController.I.GetLista(OrdenStatus.POR_ENTREGAR);
+            var d = OrdenHistorialController.I.GetLista(OrdenStatus.ENTREGADA);
+            var e = OrdenHistorialController.I.GetLista(OrdenStatus.GARANTIA);
+            var f = OrdenHistorialController.I.GetLista(OrdenStatus.GARANTIA_POR_ENTREGAR);
+            var g = OrdenHistorialController.I.GetLista(OrdenStatus.GARANTIA_ENTREGADA);
 
+            //TODO add series to chart and get Only necessary data
         }
 
         void loadIngresos()

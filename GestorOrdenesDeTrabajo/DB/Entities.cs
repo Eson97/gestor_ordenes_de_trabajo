@@ -86,8 +86,10 @@ namespace GestorOrdenesDeTrabajo.DB
                 .WillCascadeOnDelete(false);
 
             modelBuilder.Entity<Orden>()
-                .HasOptional(s => s.OrdenHistorial)
-                .WithRequired(ad => ad.Orden);
+                .HasMany(e => e.OrdenHistorial)
+                .WithRequired(e => e.Orden)
+                .HasForeignKey(e => e.IdOrden)
+                .WillCascadeOnDelete(false);
 
             modelBuilder.Entity<OrdenMecanico>()
                 .Property(e => e.CostoManoObra)
