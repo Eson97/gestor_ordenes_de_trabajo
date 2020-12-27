@@ -1,4 +1,6 @@
-﻿namespace GestorOrdenesDeTrabajo.Enums
+﻿using System;
+
+namespace GestorOrdenesDeTrabajo.Enums
 {
     public enum OrdenStatus
     {

@@ -1,8 +1,11 @@
 ﻿using GestorOrdenesDeTrabajo.Enums;
 using GestorOrdenesDeTrabajo.UsesCases;
 using System;
+using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
 using System.Windows.Forms;
+using System.Windows.Forms.DataVisualization.Charting;
 
 namespace GestorOrdenesDeTrabajo.Ventanas.Estadisticas
 {
@@ -97,6 +100,9 @@ namespace GestorOrdenesDeTrabajo.Ventanas.Estadisticas
             loadIngresos();
             loadRefacciones();
             loadServicio();
+
+            //Dibuja grafico 
+            DrawChart();
         }
 
         private void btnDetalleRefaccion_Click(object sender, EventArgs e)
@@ -122,6 +128,43 @@ namespace GestorOrdenesDeTrabajo.Ventanas.Estadisticas
         private void cdtpFin_ValueChanged(object sender, EventArgs e)
         {
             _finDate = (sender as DateTimePicker).Value;
+        }
+
+        private void DrawChart()
+        {
+            chart1.Series.Clear();
+
+            string Serie = "Series1";
+            var values = Enum.GetValues(typeof(OrdenStatus));
+
+            int[] y = new int[values.Length];
+            string[] x = new string[values.Length];
+
+            int i = 0;
+            foreach (int ordenStatus in values)
+            {
+                x[i] = OrdenStatusManager.ToString(ordenStatus);
+                y[i] = OrdenHistorialController.I.GetCountByStatusBetween(ordenStatus, _initDate, _finDate);
+                i++;
+            }
+
+            chart1.Series.Add(Serie);
+            chart1.Series[Serie].Points.DataBindXY(x, y);
+            chart1.Series[Serie].BorderWidth = 5;
+            chart1.Series[Serie].ChartType = SeriesChartType.Pie;
+            chart1.Series[Serie].IsValueShownAsLabel = true;
+            chart1.Series[Serie]["RadarDrawingStyle"] = "Line";
+            chart1.Series[Serie]["CircularLabelsStyle"] = "Horizontal";
+            //chart1.Series[Serie]["AreaDrawingStyle"] = AreaDrawingStyle[(AreaSelected) ? 0 : 1];
+            //chart1.ChartAreas["ChartArea1"].AxisX.Maximum = esc;
+            //chart1.ChartAreas["ChartArea1"].AxisY.Maximum = esc;
+            chart1.ChartAreas["ChartArea1"].AxisX.MajorGrid.LineWidth = 1;
+            chart1.ChartAreas["ChartArea1"].AxisY.MajorGrid.LineWidth = 1;
+            chart1.ChartAreas["ChartArea1"].AxisX.MajorGrid.LineColor = Color.LightGray;
+            chart1.ChartAreas["ChartArea1"].AxisY.MajorGrid.LineColor = Color.LightGray;
+            chart1.ChartAreas["ChartArea1"].AxisX.LineColor = chart1.BackColor;
+            chart1.ChartAreas["ChartArea1"].AxisY.LineColor = Color.Black;
+            chart1.ChartAreas["ChartArea1"].Area3DStyle.Enable3D = false;
         }
     }
 }

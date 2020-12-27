@@ -144,5 +144,32 @@ namespace GestorOrdenesDeTrabajo.UsesCases
             //Retorna lista vacia para evitar excepciones en llamada
             return new List<OrdenHistorial>();
         }
+
+        public int GetCountByStatusBetween(int status, DateTime initDate, DateTime finDate)
+        {
+            int count = 0;
+            try
+            {
+                using (Entities db = new Entities())
+                {
+                    count = db.OrdenHistorial
+                        .AsNoTracking()
+                        .Where(el => DbFunctions.TruncateTime(el.Orden.FechaEntrega) >= initDate.Date && DbFunctions.TruncateTime(el.Orden.FechaEntrega) <= finDate.Date
+                        && el.Status == status)
+                        .Select(el => new
+                        {
+                            Id = el.IdOrden
+                        }).Count();
+                }
+                return count;
+            }
+            catch (Exception e)
+            {
+                string s = e.Message;
+                Log.Write("Ha ocurrido un error " + s);
+            }
+            //Retorna lista vacia para evitar excepciones en llamada
+            return count;
+        }
     }
 }
