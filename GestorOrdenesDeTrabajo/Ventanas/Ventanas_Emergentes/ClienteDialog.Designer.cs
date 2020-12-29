@@ -188,7 +188,7 @@
             this.tlpCont.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 7F));
             this.tlpCont.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 38F));
             this.tlpCont.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 62F));
-            this.tlpCont.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 15F));
+            this.tlpCont.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 16F));
             this.tlpCont.Controls.Add(this.txtFilter, 2, 1);
             this.tlpCont.Controls.Add(this.tablaClientes, 2, 2);
             this.tlpCont.Controls.Add(this.dataPanel, 1, 2);
@@ -215,7 +215,7 @@
             this.txtFilter.Location = new System.Drawing.Point(531, 10);
             this.txtFilter.Margin = new System.Windows.Forms.Padding(4);
             this.txtFilter.Name = "txtFilter";
-            this.txtFilter.Size = new System.Drawing.Size(841, 37);
+            this.txtFilter.Size = new System.Drawing.Size(840, 37);
             this.txtFilter.TabIndex = 0;
             this.txtFilter.Text = "Ingrese el nombre del cliente";
             this.txtFilter.TextChanged += new System.EventHandler(this.txtFilter_TextChanged);
@@ -252,7 +252,7 @@
             dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.ControlLight;
             this.tablaClientes.RowsDefaultCellStyle = dataGridViewCellStyle2;
             this.tablaClientes.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.tablaClientes.Size = new System.Drawing.Size(841, 461);
+            this.tablaClientes.Size = new System.Drawing.Size(840, 461);
             this.tablaClientes.TabIndex = 1;
             this.tablaClientes.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.tablaClientes_CellClick);
             this.tablaClientes.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.tablaClientes_CellDoubleClick);

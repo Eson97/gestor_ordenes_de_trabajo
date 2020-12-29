@@ -174,7 +174,7 @@ namespace GestorOrdenesDeTrabajo.Ventanas.Message
             }
 
             if (CurrentCliente == null)
-                MessageBox.Show("No se pudo agregar o editar el cliente, intente de nuevo", "Eror", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("No se pudo agregar o editar el cliente, intente de nuevo", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
             Actualizar();
 
