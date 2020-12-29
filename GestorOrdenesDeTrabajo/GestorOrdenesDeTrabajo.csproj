@@ -150,6 +150,9 @@
     <Compile Include="UsesCases\UsuarioPermisoController.cs" />
     <Compile Include="Utilerias\Controles\Helper.cs" />
     <Compile Include="Utilerias\Eventos\Filtro.cs" />
+    <Compile Include="Validation\ClienteValidator.cs" />
+    <Compile Include="Validation\OrdenHistorialValidator.cs" />
+    <Compile Include="Validation\OrdenValidator.cs" />
     <Compile Include="Validation\RefaccionValidator.cs" />
     <Compile Include="Validation\ShowErrorValidation.cs" />
     <Compile Include="Ventanas\Buscar\SrchDetailInfo.cs">

@@ -5,6 +5,7 @@ using GestorOrdenesDeTrabajo.Enums;
 using GestorOrdenesDeTrabajo.UsesCases;
 using GestorOrdenesDeTrabajo.Utilerias.Controles;
 using GestorOrdenesDeTrabajo.Utilerias.Eventos;
+using GestorOrdenesDeTrabajo.Validation;
 using GestorOrdenesDeTrabajo.Ventanas.Message;
 
 namespace GestorOrdenesDeTrabajo.Ventanas.Ordenes
@@ -12,10 +13,15 @@ namespace GestorOrdenesDeTrabajo.Ventanas.Ordenes
     public partial class NuevaOrden : Form
     {
         Cliente cliente;
+        private OrdenValidator OrdenValidator;
+        private OrdenHistorialValidator OrdenHistorialValidator;
 
         public NuevaOrden()
         {
             InitializeComponent();
+            OrdenValidator = new OrdenValidator();
+            OrdenHistorialValidator = new OrdenHistorialValidator();
+
         }
 
         void Limpiar()
@@ -59,10 +65,6 @@ namespace GestorOrdenesDeTrabajo.Ventanas.Ordenes
             string observaciones = txtObservaciones.Text;
             DateTime recepcion = cdtpFechaRecepcion.Value;
 
-            //TODO agregar validaciones
-
-
-            //Se crea la entidad cliente automaticamente TODO revisar si el cliente existe y solo agregar ID
             var orden = new Orden()
             {
                 Folio = folio,
@@ -73,22 +75,30 @@ namespace GestorOrdenesDeTrabajo.Ventanas.Ordenes
                 IdCliente = cliente.Id
             };
 
-            orden = OrdenController.I.Add(orden);
-            if (orden == null)
-            { MessageBox.Show("Error al cambiar el status de la orden", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error); return; }
+            var res = OrdenValidator.Validate(orden);
 
+            if (ShowErrorValidation.Valid(res))
+                orden = OrdenController.I.Add(orden);
+
+
+            if (orden == null)
+            { MessageBox.Show("Error al agregar a la base de datos", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error); return; }
 
             //Agrega el estado de la orden al historial
-            var saved = OrdenHistorialController.I.Add(new OrdenHistorial()
+            var ordenHistorial = new OrdenHistorial()
             {
                 IdOrden = orden.Id,
                 FechaStatus = DateTime.Now,
                 Status = (int)OrdenStatus.ESPERA
-            });
+            };
 
-            if (saved == null)
-                MessageBox.Show("No se puede agregar al historial de ordenes", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-
+            res = OrdenHistorialValidator.Validate(ordenHistorial);
+            if (ShowErrorValidation.Valid(res))
+            {
+                var saved = OrdenHistorialController.I.Add(ordenHistorial);
+                if (saved == null)
+                    MessageBox.Show("No se puede agregar al historial de ordenes", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
 
             if (orden != null)
             {
@@ -96,6 +106,7 @@ namespace GestorOrdenesDeTrabajo.Ventanas.Ordenes
                 Console.WriteLine(orden.ToString());
                 orden = null;
                 cliente = null;
+                ordenHistorial = null;
             }
         }
 

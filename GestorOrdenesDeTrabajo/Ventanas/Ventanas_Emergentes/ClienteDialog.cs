@@ -1,6 +1,7 @@
 ﻿using GestorOrdenesDeTrabajo.DB;
 using GestorOrdenesDeTrabajo.UsesCases;
 using GestorOrdenesDeTrabajo.Utilerias.Controles;
+using GestorOrdenesDeTrabajo.Validation;
 using System;
 using System.Data;
 using System.Drawing;
@@ -17,23 +18,24 @@ namespace GestorOrdenesDeTrabajo.Ventanas.Message
         [DllImport("user32.DLL", EntryPoint = "SendMessage")]
         private extern static void SendMessage(System.IntPtr hwnd, int wmsg, int wparam, int lparam);
 
-        DataTable datatable;
+        DataTable DataTable;
         static ClienteDialog _Dialog;
         static Cliente _DialogResult = null;
-        private Cliente cliente;
-
+        private Cliente CurrentCliente;
+        private ClienteValidator v;
         public ClienteDialog()
         {
             InitializeComponent();
-            datatable = new DataTable();
-            datatable.Columns.Add("ID");
-            datatable.Columns.Add("Nombre");
-            datatable.Columns.Add("Direccion");
-            datatable.Columns.Add("Telefono");
-            datatable.Columns[0].ReadOnly = true;
-            datatable.Columns[1].ReadOnly = true;
-            datatable.Columns[2].ReadOnly = true;
-            datatable.Columns[3].ReadOnly = true;
+            DataTable = new DataTable();
+            v = new ClienteValidator();
+            DataTable.Columns.Add("ID");
+            DataTable.Columns.Add("Nombre");
+            DataTable.Columns.Add("Direccion");
+            DataTable.Columns.Add("Telefono");
+            DataTable.Columns[0].ReadOnly = true;
+            DataTable.Columns[1].ReadOnly = true;
+            DataTable.Columns[2].ReadOnly = true;
+            DataTable.Columns[3].ReadOnly = true;
             Actualizar();
         }
 
@@ -50,9 +52,9 @@ namespace GestorOrdenesDeTrabajo.Ventanas.Message
             var clientes = ClienteController.I.GetLista();
 
             foreach (Cliente item in clientes)
-                datatable.Rows.Add(new object[] { item.Id, item.Nombre, item.Direccion, item.Telefono });
+                DataTable.Rows.Add(new object[] { item.Id, item.Nombre, item.Direccion, item.Telefono });
 
-            tablaClientes.DataSource = datatable;
+            tablaClientes.DataSource = DataTable;
             tablaClientes.Columns[0].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
             tablaClientes.Columns[1].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
             tablaClientes.Columns[2].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
@@ -66,8 +68,6 @@ namespace GestorOrdenesDeTrabajo.Ventanas.Message
 
         private void tablaClientes_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
-            Console.WriteLine("Se dio doble click :D");
-            //TODO añadir validacion para permiso de usuario
             if (e.RowIndex <= -1)
                 return;
 
@@ -77,6 +77,11 @@ namespace GestorOrdenesDeTrabajo.Ventanas.Message
             string dir = row.Cells[2].Value as string;
             string tel = row.Cells[3].Value as string;
 
+            var res = v.Validate(_DialogResult);
+
+            if (ShowErrorValidation.Valid(res))
+                Console.WriteLine($"ID:{_DialogResult.Id}\nNombre:{_DialogResult.Nombre}");
+
             _DialogResult = new Cliente()
             {
                 Id = id,
@@ -84,8 +89,6 @@ namespace GestorOrdenesDeTrabajo.Ventanas.Message
                 Direccion = dir,
                 Telefono = tel
             };
-
-            Console.WriteLine($"ID:{_DialogResult.Id}\nNombre:{_DialogResult.Nombre}");
 
             this.Dispose();
         }
@@ -101,29 +104,28 @@ namespace GestorOrdenesDeTrabajo.Ventanas.Message
             string dir = row.Cells[2].Value as string;
             string tel = row.Cells[3].Value as string;
 
-            cliente = new Cliente()
+            CurrentCliente = new Cliente()
             {
                 Id = id,
                 Nombre = nombre,
                 Direccion = dir,
                 Telefono = tel
             };
-
-            Console.WriteLine($"ID:{cliente.Id}\nNombre:{cliente.Nombre}");
+            Console.WriteLine($"ID:{CurrentCliente.Id}\nNombre:{CurrentCliente.Nombre}");
         }
 
         private void ShowAddEditCliente()
         {
-            Helper.VaciarTexto(txtNombre, txtDir, txtTel);         
+            Helper.VaciarTexto(txtNombre, txtDir, txtTel);
 
-            if (cliente == null)
+            if (CurrentCliente == null)
             { lblTittle.Text = "Nuevo"; }
             else
             {
                 lblTittle.Text = "Editar";
-                txtNombre.Text = cliente.Nombre;
-                txtDir.Text = cliente.Direccion;
-                txtTel.Text = cliente.Telefono;
+                txtNombre.Text = CurrentCliente.Nombre;
+                txtDir.Text = CurrentCliente.Direccion;
+                txtTel.Text = CurrentCliente.Telefono;
             }
 
             dataPanel.Show();
@@ -141,7 +143,7 @@ namespace GestorOrdenesDeTrabajo.Ventanas.Message
 
         private void btnCancelar_Click(object sender, EventArgs e)
         {
-            cliente = null;
+            CurrentCliente = null;
 
             lblTittle.Hide();
             dataPanel.Hide();
@@ -153,30 +155,37 @@ namespace GestorOrdenesDeTrabajo.Ventanas.Message
             if (!isValid)
                 return;
 
-            if (cliente == null)
+            if (CurrentCliente == null)
             {
-                cliente = ClienteController.I.Add(new Cliente
+                var newCliente = ClienteController.I.Add(new Cliente
                 {
                     Direccion = txtDir.Text,
                     Nombre = txtNombre.Text,
                     Telefono = txtTel.Text
                 });
+                var res = v.Validate(newCliente);
+
+                if (ShowErrorValidation.Valid(res))
+                    CurrentCliente = newCliente;
             }
             else
             {
-                cliente.Direccion = txtDir.Text;
-                cliente.Nombre = txtNombre.Text;
-                cliente.Telefono = txtTel.Text;
-                cliente = ClienteController.I.Edit(cliente);
+                CurrentCliente.Direccion = txtDir.Text;
+                CurrentCliente.Nombre = txtNombre.Text;
+                CurrentCliente.Telefono = txtTel.Text;
+               
+                var res = v.Validate(CurrentCliente);
+                if (ShowErrorValidation.Valid(res))
+                    CurrentCliente = ClienteController.I.Edit(CurrentCliente);
             }
 
-            if (cliente == null)
+            if (CurrentCliente == null)
                 MessageBox.Show("No se pudo agregar o editar el cliente, intente de nuevo", "Eror", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
             Actualizar();
 
             Helper.VaciarTexto(txtNombre, txtDir, txtTel);
-            cliente = null;
+            CurrentCliente = null;
 
             lblTittle.Hide();
             dataPanel.Hide();
@@ -184,12 +193,12 @@ namespace GestorOrdenesDeTrabajo.Ventanas.Message
 
         private void btnNew_Click(object sender, EventArgs e)
         {
-            cliente = null;
+            CurrentCliente = null;
             ShowAddEditCliente();
         }
         private void btnEdit_Click(object sender, EventArgs e)
         {
-            if (cliente == null)
+            if (CurrentCliente == null)
                 MessageBox.Show("Seleccione un Cliente de la lista", "Informacion", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
             ShowAddEditCliente();
@@ -217,7 +226,7 @@ namespace GestorOrdenesDeTrabajo.Ventanas.Message
         private void txtFilter_TextChanged(object sender, EventArgs e)
         {
             if (txtFilter.Text != "Ingrese el nombre del cliente")
-                datatable.DefaultView.RowFilter = $"Nombre LIKE '%{txtFilter.Text}%'";
+                DataTable.DefaultView.RowFilter = $"Nombre LIKE '%{txtFilter.Text}%'";
         }
 
         private void panel1_MouseDown(object sender, MouseEventArgs e)
