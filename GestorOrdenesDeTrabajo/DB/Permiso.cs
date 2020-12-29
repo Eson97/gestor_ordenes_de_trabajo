@@ -18,7 +18,7 @@ namespace GestorOrdenesDeTrabajo.DB
         public int Id { get; set; }
 
         [Required]
-        [StringLength(20)]
+        [StringLength(25)]
         public string Descripcion { get; set; }
 
         public bool IsEnabled { get; set; }

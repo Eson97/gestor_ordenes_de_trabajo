@@ -25,13 +25,12 @@ namespace GestorOrdenesDeTrabajo
 
         bool isSidePanelContracted;
         bool isDynamicPanelContracted;
-        private Usuario currentUser;
-        IList<Permiso> permisos;
-        public Main(Usuario usuario)
+        //private Usuario currentUser;
+        //IList<Permiso> permisos;
+        public Main()
         {
-            currentUser = usuario;
             InitializeComponent();
-            lblUser.Text = (usuario == null) ? "Sin usuario" : usuario.Usuario1;
+            lblUser.Text = (CurrentUser.User == null) ? "Sin usuario" : CurrentUser.User.Usuario1;
             containerPanel.DoubleBuffered(true);
             sidePanel.DoubleBuffered(true);
             titlePanel.DoubleBuffered(true);
@@ -41,12 +40,12 @@ namespace GestorOrdenesDeTrabajo
             InitPermisos();
         }
 
-        private async void InitPermisos()
+        private void InitPermisos()
         {
-            if (currentUser == null)
+            if (CurrentUser.User == null)
                 return;
-            permisos = await Task.Run(() => UsuarioPermisoController.I.GetListaPermisoByUsuario(currentUser.Id));
-            Permission(permisos);
+            //permisos = await Task.Run(() => UsuarioPermisoController.I.GetListaPermisoByUsuario(currentUser.Id));
+            Permission(CurrentUser.Permisos);
         }
 
         private void DeniedPermission(params Control[] control)
@@ -54,43 +53,29 @@ namespace GestorOrdenesDeTrabajo
             foreach (Control c in control)
             {
                 c.Visible = false;
-                c.Enabled = false;
-            }
-        }
-        private void GrantPermission(params Control[] control)
-        {
-            foreach (Control c in control)
-            {
-                c.Visible = true;
-                c.Enabled = true;
             }
         }
 
         private void Permission(IList<Permiso> permisos)
         {
-            Button[] buttons = { btnBuscar, btnEnEspera, btnEnGarantia, btnEnProceso, btnInventario, btnNueva, btnPorEntregar, btnStats, btnUsuarios, btnOrdenes };
+            Button[] buttons = { btnBuscar, btnInventario, btnStats, btnUsuarios, btnOrdenes };
 
             DeniedPermission(buttons);
 
             if (permisos != null)
             {
-                //TODO definir permisos and close issue
                 foreach (Permiso item in permisos)
                 {
-                    switch (item.Id)
+                    _ = (item.Id switch
                     {
-                        //Buscar
-                        case 1:
-                            GrantPermission(btnBuscar);
-                            break;
-                        //Mostrar ventana ejemplo
-                        case 2:
-                            break;
-                        case 3:
-                            break;
-                        case 4:
-                            break;
-                    }
+                        (int)Permisos.INVENTARIO => btnBuscar.Visible = true,
+                        (int)Permisos.ORDENES => btnOrdenes.Visible = true,
+                        (int)Permisos.BUSCAR => btnBuscar.Visible = true,
+                        (int)Permisos.ESTADISTICAS => btnStats.Visible = true,
+                        (int)Permisos.USUARIOS => btnUsuarios.Visible = true,
+                        _ => throw new NotImplementedException()
+                    });
+
                 }
             }
         }

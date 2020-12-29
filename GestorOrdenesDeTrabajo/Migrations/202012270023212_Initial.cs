@@ -123,7 +123,7 @@
                 c => new
                     {
                         Id = c.Int(nullable: false, identity: true),
-                        Descripcion = c.String(nullable: false, maxLength: 20, unicode: false),
+                        Descripcion = c.String(nullable: false, maxLength: 25, unicode: false),
                         IsEnabled = c.Boolean(nullable: false),
                     })
                 .PrimaryKey(t => t.Id);

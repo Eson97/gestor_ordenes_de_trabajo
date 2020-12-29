@@ -59,7 +59,7 @@
                 },
                 new Usuario
                 {
-                    Usuario1="Usuario",
+                    Usuario1="Prueba1",
                     Password="123",
                 },
             };
@@ -76,7 +76,52 @@
             {
                 new Permiso
                 {
-                    Descripcion="Ejemplo",
+                    Descripcion="Acceso Inventario",
+                    IsEnabled=true,
+                },
+                new Permiso
+                {
+                    Descripcion="Modificar Inventario",
+                    IsEnabled=true,
+                },
+                new Permiso
+                {
+                    Descripcion="Importar Inventario",
+                    IsEnabled=true,
+                },
+                new Permiso
+                {
+                    Descripcion="Exportar Inventario",
+                    IsEnabled=true,
+                },
+                new Permiso
+                {
+                    Descripcion="Manejo de Ordenes",
+                    IsEnabled=true,
+                },
+                new Permiso
+                {
+                    Descripcion="Acceso Buscar Ordenes",
+                    IsEnabled=true,
+                },
+                new Permiso
+                {
+                    Descripcion="Acceso Estadisticas",
+                    IsEnabled=true,
+                },
+                new Permiso
+                {
+                    Descripcion="Acceso Usuarios",
+                    IsEnabled=true,
+                },
+                new Permiso
+                {
+                    Descripcion="Modificar Clientes",
+                    IsEnabled=true,
+                },
+                new Permiso
+                {
+                    Descripcion="Modificar Mecanicos",
                     IsEnabled=true,
                 },
             };

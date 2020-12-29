@@ -12,14 +12,14 @@ namespace GestorOrdenesDeTrabajo.Ventanas.Usuarios
 {
     public partial class UsuariosNuevo_Mod : Form
     {
-        Usuario CurrentUser;
+        Usuario cUser;
         private bool ShowPass = true;
         private UsuarioValidator UsuarioValidator;
         public UsuariosNuevo_Mod(Usuario user)
         {
             UsuarioValidator = new UsuarioValidator();
             InitializeComponent();
-            this.CurrentUser = user;
+            this.cUser = user;
             txtPassword.UseSystemPasswordChar = ShowPass;
             fillData();
         }
@@ -31,22 +31,23 @@ namespace GestorOrdenesDeTrabajo.Ventanas.Usuarios
 
         void fillData()
         {
-            if (CurrentUser == null)
+            if (cUser == null)
                 return;
-            txtUsuario.Text = CurrentUser.Usuario1;
-            txtPassword.Text = CurrentUser.Password;
+            txtUsuario.Text = cUser.Usuario1;
+            txtPassword.Text = cUser.Password;
         }
         void FillPermisos()
         {
-            if (CurrentUser == null)
+            Console.WriteLine("holi");
+            if (cUser == null)
                 return;
             permisosContainerPanel.Controls.Clear();
-            var asigned = UsuarioPermisoController.I.GetListaPermisoByUsuario(CurrentUser.Id).Select(el => new PermisoItemList(el, CurrentUser.Id, true));
-            var notAsigned = UsuarioPermisoController.I.GetListaExcludePermisoByUsuario(CurrentUser.Id).Select(el => new PermisoItemList(el, CurrentUser.Id, false));
+            var asigned = UsuarioPermisoController.I.GetListaPermisoByUsuario(cUser.Id).Select(el => new PermisoItemList(el, cUser.Id, true));
+            var notAsigned = UsuarioPermisoController.I.GetListaExcludePermisoByUsuario(cUser.Id).Select(el => new PermisoItemList(el, cUser.Id, false));
             var permisos = asigned.Concat(notAsigned);
 
             foreach (var item in permisos)
-                permisosContainerPanel.Controls.Add(item);
+                permisosContainerPanel.Controls.Add(item as PermisoItemList);
         }
 
         private void UsuariosNuevo_Mod_Load(object sender, EventArgs e)
@@ -60,7 +61,7 @@ namespace GestorOrdenesDeTrabajo.Ventanas.Usuarios
             if (!isValid)
             { MessageBox.Show("Introduzca un usuario y una contraseña validos", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning); return; }
 
-            if (CurrentUser == null)
+            if (cUser == null)
             {
                 var newUser = new Usuario()
                 {
@@ -69,21 +70,21 @@ namespace GestorOrdenesDeTrabajo.Ventanas.Usuarios
                 };
                 var res = UsuarioValidator.Validate(newUser);
                 if (ShowErrorValidation.Valid(res))
-                    CurrentUser = UsuarioController.I.Add(newUser);
+                    cUser = UsuarioController.I.Add(newUser);
             }
             else
             {
-                CurrentUser.Usuario1 = txtUsuario.Text;
-                CurrentUser.Password = txtPassword.Text;
-                var res = UsuarioValidator.Validate(CurrentUser);
+                cUser.Usuario1 = txtUsuario.Text;
+                cUser.Password = txtPassword.Text;
+                var res = UsuarioValidator.Validate(cUser);
                 if (ShowErrorValidation.Valid(res))
-                    CurrentUser = UsuarioController.I.Edit(CurrentUser);
+                    cUser = UsuarioController.I.Edit(cUser);
             }
 
-            if (CurrentUser == null)
+            if (cUser == null)
                 MessageBox.Show("No se pudo agregar o editar el usuario", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
-            CurrentUser = null;
+            cUser = null;
             Helper.VaciarTexto(txtUsuario, txtPassword);
         }
 

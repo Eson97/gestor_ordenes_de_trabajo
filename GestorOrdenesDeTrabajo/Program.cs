@@ -39,7 +39,7 @@ namespace GestorOrdenesDeTrabajo
 
             if (true)
             {
-                Application.Run(new Main(null));
+                Application.Run(new Main());
                 return;
             }
 
