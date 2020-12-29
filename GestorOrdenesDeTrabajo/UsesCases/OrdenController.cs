@@ -79,7 +79,7 @@ namespace GestorOrdenesDeTrabajo.UsesCases
 
         public Orden Edit(Orden element)
         {
-            if (element.Id <= 0) return null;
+            if (element == null) return null;
             try
             {
                 using (Entities db = new Entities())
@@ -193,6 +193,25 @@ namespace GestorOrdenesDeTrabajo.UsesCases
                 Log.Write("Ha ocurrido un error " + s);
                 return null;
             }
+        }
+
+        public Orden Get(int id)
+        {
+            Orden orden;
+            try
+            {
+                using (Entities db = new Entities())
+                {
+                    orden = db.Orden.Find(id);
+                }
+                return orden;
+            }
+            catch (Exception e)
+            {
+                string s = e.Message;
+                Log.Write("Ha ocurrido un error " + s);
+            }
+            return null;
         }
     }
 }
