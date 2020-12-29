@@ -155,6 +155,7 @@
     <Compile Include="Validation\OrdenEntregaValidator.cs" />
     <Compile Include="Validation\OrdenHistorialValidator.cs" />
     <Compile Include="Validation\OrdenValidator.cs" />
+    <Compile Include="Validation\RefaccionDTOValidator.cs" />
     <Compile Include="Validation\RefaccionValidator.cs" />
     <Compile Include="Validation\ShowErrorValidation.cs" />
     <Compile Include="Validation\UsuarioValidator.cs" />
