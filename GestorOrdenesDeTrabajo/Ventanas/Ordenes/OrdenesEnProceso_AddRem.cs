@@ -283,14 +283,6 @@ namespace GestorOrdenesDeTrabajo.Ventanas.Ordenes
 
         private void btnEdit_Click(object sender, EventArgs e)
         {
-            //Agregar codigo para cambiar cantidades
-
-            //REMOVER BOTON?
-
-            //CAMBIAR FUNCIONAMIENTO PARA DAR UN VALOR APROXIMADO?
-
-            if (CambiosGuardados)
-                CambiosGuardados = false;
         }
 
         private void tablaRefacciones_CellValueChanged(object sender, DataGridViewCellEventArgs e)

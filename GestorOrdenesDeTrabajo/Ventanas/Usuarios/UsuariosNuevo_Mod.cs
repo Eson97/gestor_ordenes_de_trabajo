@@ -6,40 +6,43 @@ using System;
 using System.Linq;
 using System.Windows.Forms;
 using GestorOrdenesDeTrabajo.DB;
+using GestorOrdenesDeTrabajo.Validation;
 
 namespace GestorOrdenesDeTrabajo.Ventanas.Usuarios
 {
     public partial class UsuariosNuevo_Mod : Form
     {
-        Usuario currentUser;
-        private bool showPass = true;
-
+        Usuario CurrentUser;
+        private bool ShowPass = true;
+        private UsuarioValidator UsuarioValidator;
         public UsuariosNuevo_Mod(Usuario user)
         {
+            UsuarioValidator = new UsuarioValidator();
             InitializeComponent();
-            this.currentUser = user;
-            txtPassword.UseSystemPasswordChar = showPass;
+            this.CurrentUser = user;
+            txtPassword.UseSystemPasswordChar = ShowPass;
             fillData();
         }
         public UsuariosNuevo_Mod()
         {
+            UsuarioValidator = new UsuarioValidator();
             InitializeComponent();
         }
 
         void fillData()
         {
-            if (currentUser == null)
+            if (CurrentUser == null)
                 return;
-            txtUsuario.Text = currentUser.Usuario1;
-            txtPassword.Text = currentUser.Password;
+            txtUsuario.Text = CurrentUser.Usuario1;
+            txtPassword.Text = CurrentUser.Password;
         }
         void FillPermisos()
         {
-            if (currentUser == null)
+            if (CurrentUser == null)
                 return;
             permisosContainerPanel.Controls.Clear();
-            var asigned = UsuarioPermisoController.I.GetListaPermisoByUsuario(currentUser.Id).Select(el => new PermisoItemList(el, currentUser.Id, true));
-            var notAsigned = UsuarioPermisoController.I.GetListaExcludePermisoByUsuario(currentUser.Id).Select(el => new PermisoItemList(el, currentUser.Id, false));
+            var asigned = UsuarioPermisoController.I.GetListaPermisoByUsuario(CurrentUser.Id).Select(el => new PermisoItemList(el, CurrentUser.Id, true));
+            var notAsigned = UsuarioPermisoController.I.GetListaExcludePermisoByUsuario(CurrentUser.Id).Select(el => new PermisoItemList(el, CurrentUser.Id, false));
             var permisos = asigned.Concat(notAsigned);
 
             foreach (var item in permisos)
@@ -57,25 +60,30 @@ namespace GestorOrdenesDeTrabajo.Ventanas.Usuarios
             if (!isValid)
             { MessageBox.Show("Introduzca un usuario y una contraseña validos", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning); return; }
 
-            if (currentUser == null)
+            if (CurrentUser == null)
             {
-                currentUser = UsuarioController.I.Add(new Usuario()
+                var newUser = new Usuario()
                 {
                     Usuario1 = txtUsuario.Text,
                     Password = txtPassword.Text
-                });
+                };
+                var res = UsuarioValidator.Validate(newUser);
+                if (ShowErrorValidation.Valid(res))
+                    CurrentUser = UsuarioController.I.Add(newUser);
             }
             else
             {
-                currentUser.Usuario1 = txtUsuario.Text;
-                currentUser.Password = txtPassword.Text;
-                currentUser = UsuarioController.I.Edit(currentUser);
+                CurrentUser.Usuario1 = txtUsuario.Text;
+                CurrentUser.Password = txtPassword.Text;
+                var res = UsuarioValidator.Validate(CurrentUser);
+                if (ShowErrorValidation.Valid(res))
+                    CurrentUser = UsuarioController.I.Edit(CurrentUser);
             }
 
-            if (currentUser == null)
+            if (CurrentUser == null)
                 MessageBox.Show("No se pudo agregar o editar el usuario", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
-            currentUser = null;
+            CurrentUser = null;
             Helper.VaciarTexto(txtUsuario, txtPassword);
         }
 
@@ -98,10 +106,10 @@ namespace GestorOrdenesDeTrabajo.Ventanas.Usuarios
 
         private void btnShowHidePass_Click(object sender, EventArgs e)
         {
-            showPass = !showPass;
+            ShowPass = !ShowPass;
 
-            txtPassword.UseSystemPasswordChar = showPass;
-            if (showPass)
+            txtPassword.UseSystemPasswordChar = ShowPass;
+            if (ShowPass)
                 btnShowHidePass.Text = "Ver";
             else
                 btnShowHidePass.Text = "Ocultar";

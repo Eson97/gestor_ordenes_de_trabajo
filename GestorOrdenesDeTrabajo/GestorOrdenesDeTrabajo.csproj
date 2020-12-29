@@ -156,6 +156,7 @@
     <Compile Include="Validation\OrdenValidator.cs" />
     <Compile Include="Validation\RefaccionValidator.cs" />
     <Compile Include="Validation\ShowErrorValidation.cs" />
+    <Compile Include="Validation\UsuarioValidator.cs" />
     <Compile Include="Ventanas\Buscar\SrchDetailInfo.cs">
       <SubType>Form</SubType>
     </Compile>

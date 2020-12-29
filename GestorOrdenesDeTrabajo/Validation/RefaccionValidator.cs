@@ -1,5 +1,4 @@
 ﻿using FluentValidation;
-using FluentValidation.Results;
 using GestorOrdenesDeTrabajo.DB;
 
 namespace GestorOrdenesDeTrabajo.Validation
