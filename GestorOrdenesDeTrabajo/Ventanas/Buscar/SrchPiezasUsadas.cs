@@ -8,30 +8,26 @@ using System;
 
 namespace GestorOrdenesDeTrabajo.Ventanas.Buscar
 {
-
-    //@todo Fix SrchPiezasUsadas
-    //@body Al consultar mas de una vez deja de mostrar las refacciones
-
     public partial class SrchPiezasUsadas : Form
     {
         private readonly int IdOrden;
         private decimal Total = 0.0M;
-        private List<PiezaItemList> refacciones;
+        private List<PiezaItemList> Refacciones;
         public SrchPiezasUsadas(int idOrden)
         {
             InitializeComponent();
             IdOrden = idOrden;
             lblTittle.Text = idOrden.ToString();
         }
-        async void showRefacciones()
+        async void ShowRefacciones()
         {
             this.flpListPanel.Controls.Clear();
-            refacciones = await Task.Run(() => OrdenRefaccionController.I.GetListaByOrden(IdOrden).Select(el => new PiezaItemList(el)).ToList());
+            Refacciones = await Task.Run(() => OrdenRefaccionController.I.GetListaByOrden(IdOrden).Select(el => new PiezaItemList(el)).ToList());
 
-            refacciones.ForEach(item =>
+            Refacciones.ForEach(item =>
             {
-               Total += item.Refaccion.Total;
-               this.flpListPanel.Controls.Add(item);
+                Total += item.Refaccion.Total;
+                this.flpListPanel.Controls.Add(item);
             });
 
             this.ipTotal.Info = Total;
@@ -44,7 +40,7 @@ namespace GestorOrdenesDeTrabajo.Ventanas.Buscar
 
         private void SrchPiezasUsadas_Load(object sender, EventArgs e)
         {
-            showRefacciones();
+            ShowRefacciones();
         }
     }
 }
