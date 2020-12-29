@@ -77,11 +77,6 @@ namespace GestorOrdenesDeTrabajo.Ventanas.Message
             string dir = row.Cells[2].Value as string;
             string tel = row.Cells[3].Value as string;
 
-            var res = ClienteValidator.Validate(_DialogResult);
-
-            if (ShowErrorValidation.Valid(res))
-                Console.WriteLine($"ID:{_DialogResult.Id}\nNombre:{_DialogResult.Nombre}");
-
             _DialogResult = new Cliente()
             {
                 Id = id,
@@ -89,7 +84,6 @@ namespace GestorOrdenesDeTrabajo.Ventanas.Message
                 Direccion = dir,
                 Telefono = tel
             };
-
             this.Dispose();
         }
 
@@ -173,7 +167,7 @@ namespace GestorOrdenesDeTrabajo.Ventanas.Message
                 CurrentCliente.Direccion = txtDir.Text;
                 CurrentCliente.Nombre = txtNombre.Text;
                 CurrentCliente.Telefono = txtTel.Text;
-               
+
                 var res = ClienteValidator.Validate(CurrentCliente);
                 if (ShowErrorValidation.Valid(res))
                     CurrentCliente = ClienteController.I.Edit(CurrentCliente);

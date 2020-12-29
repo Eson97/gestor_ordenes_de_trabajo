@@ -1,6 +1,7 @@
 ﻿
 using GestorOrdenesDeTrabajo.DB;
 using GestorOrdenesDeTrabajo.Enums;
+using GestorOrdenesDeTrabajo.Validation;
 using GestorOrdenesDeTrabajo.Ventanas.Message;
 using System;
 using System.Runtime.InteropServices;
@@ -21,17 +22,19 @@ namespace GestorOrdenesDeTrabajo.Ventanas.Ventanas_Emergentes
         private static DateTime _FechaEntrega;
         private static string _Referencia;
         private static bool _Result = false;
+        private static OrdenEntregaValidator OrdenValidator;
 
-        Orden orden;
+        Orden CurrentOrden;
 
         public EntregarDialog(Orden orden)
         {
+            OrdenValidator = new OrdenEntregaValidator();
             InitializeComponent();
-            this.orden = orden;
+            this.CurrentOrden = orden;
             this.lblTittle.Text = $"Orden: {orden.Folio}";
 
             OrdenStatus status = (OrdenStatus)Enum.Parse(typeof(OrdenStatus), orden.Status.ToString());
-            
+
             switch (status)
             {
                 case OrdenStatus.GARANTIA_POR_ENTREGAR:
@@ -76,7 +79,16 @@ namespace GestorOrdenesDeTrabajo.Ventanas.Ventanas_Emergentes
             _MetodoPago = (TipoPago)Enum.Parse(typeof(TipoPago), cbFormaDePago.SelectedValue.ToString());
             _FechaEntrega = cdtpFechaEntrega.Value;
             _Referencia = txtRef.Text;
-            _Result = true;
+
+            CurrentOrden.Referencia = _Referencia;
+            CurrentOrden.FechaEntrega = _FechaEntrega;
+            CurrentOrden.TipoPago = (int)_MetodoPago;
+
+            var res = OrdenValidator.Validate(CurrentOrden);
+            if (ShowErrorValidation.Valid(res))
+                _Result = true;
+            else
+                _Result = false;
 
             this.Dispose();
         }
