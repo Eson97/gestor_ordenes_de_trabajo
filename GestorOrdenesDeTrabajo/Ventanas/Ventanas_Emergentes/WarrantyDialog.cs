@@ -18,37 +18,37 @@ namespace GestorOrdenesDeTrabajo.Ventanas.Ventanas_Emergentes
         [DllImport("user32.DLL", EntryPoint = "SendMessage")]
         private extern static void SendMessage(System.IntPtr hwnd, int wmsg, int wparam, int lparam);
 
-        DataTable datatable;
-        private static Orden _currentOrder;
-        private static WarrantyDialog _WR;
-        private List<Orden> ordenes;
+        DataTable DataTable;
+        private static Orden CurrentOrden;
+        private static WarrantyDialog Dialog;
+        private List<Orden> Ordenes;
         public WarrantyDialog()
         {
             InitializeComponent();
-            datatable = new DataTable();
-            ordenes = new List<Orden>();
-            datatable.Columns.Add("ID");
-            datatable.Columns.Add("Folio");
-            datatable.Columns.Add("Cliente");
-            datatable.Columns.Add("Maquina");
-            datatable.Columns.Add("Entregado");
-            datatable.Columns[0].ReadOnly = true;
-            datatable.Columns[1].ReadOnly = true;
-            datatable.Columns[2].ReadOnly = true;
-            datatable.Columns[3].ReadOnly = true;
-            datatable.Columns[4].ReadOnly = true;
+            DataTable = new DataTable();
+            Ordenes = new List<Orden>();
+            DataTable.Columns.Add("ID");
+            DataTable.Columns.Add("Folio");
+            DataTable.Columns.Add("Cliente");
+            DataTable.Columns.Add("Maquina");
+            DataTable.Columns.Add("Entregado");
+            DataTable.Columns[0].ReadOnly = true;
+            DataTable.Columns[1].ReadOnly = true;
+            DataTable.Columns[2].ReadOnly = true;
+            DataTable.Columns[3].ReadOnly = true;
+            DataTable.Columns[4].ReadOnly = true;
             FillTable();
 
-            _currentOrder = null;
+            CurrentOrden = null;
 
         }
 
         public static Orden showWarrantyDialog()
         {
-            _WR = new WarrantyDialog();
-            _WR.ShowDialog();
+            Dialog = new WarrantyDialog();
+            Dialog.ShowDialog();
 
-            return _currentOrder;
+            return CurrentOrden;
         }
 
         private void FillTable()
@@ -56,13 +56,13 @@ namespace GestorOrdenesDeTrabajo.Ventanas.Ventanas_Emergentes
             while (tablaOrdenes.RowCount != 0)
                 tablaOrdenes.Rows.RemoveAt(0);
 
-            ordenes = OrdenController.I.GetLista((int)OrdenStatus.ENTREGADA);
-            foreach (Orden item in ordenes)
+            Ordenes = OrdenController.I.GetLista((int)OrdenStatus.ENTREGADA);
+            foreach (Orden item in Ordenes)
             {
-                datatable.Rows.Add(new object[] { item.Id, item.Folio, item.Cliente.Nombre, item.Equipo, item.FechaEntrega });
+                DataTable.Rows.Add(new object[] { item.Id, item.Folio, item.Cliente.Nombre, item.Equipo, item.FechaEntrega });
             }
 
-            tablaOrdenes.DataSource = datatable;
+            tablaOrdenes.DataSource = DataTable;
             tablaOrdenes.Columns[0].AutoSizeMode = DataGridViewAutoSizeColumnMode.ColumnHeader;
             tablaOrdenes.Columns[1].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
             tablaOrdenes.Columns[2].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
@@ -105,7 +105,7 @@ namespace GestorOrdenesDeTrabajo.Ventanas.Ventanas_Emergentes
 
         private void btnCancelar_Click(object sender, EventArgs e)
         {
-            _currentOrder = null;
+            CurrentOrden = null;
             this.Dispose();
         }
 
@@ -127,7 +127,7 @@ namespace GestorOrdenesDeTrabajo.Ventanas.Ventanas_Emergentes
             lblFechaEntrega.Text = fecha;
             lblMaquina.Text = maquina;
 
-            _currentOrder = new Orden()
+            CurrentOrden = new Orden()
             {
                 Id = id,
                 Folio = folio,
@@ -141,14 +141,14 @@ namespace GestorOrdenesDeTrabajo.Ventanas.Ventanas_Emergentes
             if (filtro.Length == 0 || filtro.Equals("Ingrese Folio de la orden"))
                 return;
 
-            var tempOrdenes = ordenes.Where(el => el.Folio.ToString().Contains(filtro)).ToList();
+            var tempOrdenes = Ordenes.Where(el => el.Folio.ToString().Contains(filtro)).ToList();
 
             while (tablaOrdenes.RowCount != 0)
                 tablaOrdenes.Rows.RemoveAt(0);
 
             foreach (Orden item in tempOrdenes)
             {
-                datatable.Rows.Add(new object[] { item.Id, item.Folio, item.Cliente.Nombre, item.Equipo, item.FechaEntrega });
+                DataTable.Rows.Add(new object[] { item.Id, item.Folio, item.Cliente.Nombre, item.Equipo, item.FechaEntrega });
             }
         }
     }
