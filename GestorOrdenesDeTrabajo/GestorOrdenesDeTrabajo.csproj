@@ -151,6 +151,7 @@
     <Compile Include="Utilerias\Controles\Helper.cs" />
     <Compile Include="Utilerias\Eventos\Filtro.cs" />
     <Compile Include="Validation\ClienteValidator.cs" />
+    <Compile Include="Validation\MecanicoValidator.cs" />
     <Compile Include="Validation\OrdenHistorialValidator.cs" />
     <Compile Include="Validation\OrdenValidator.cs" />
     <Compile Include="Validation\RefaccionValidator.cs" />

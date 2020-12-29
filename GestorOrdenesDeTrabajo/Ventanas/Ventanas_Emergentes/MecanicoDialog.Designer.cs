@@ -28,8 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             this.topPanel = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
@@ -178,7 +178,7 @@
             this.tlpCont.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 5F));
             this.tlpCont.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 38F));
             this.tlpCont.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 62F));
-            this.tlpCont.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 16F));
+            this.tlpCont.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 17F));
             this.tlpCont.Controls.Add(this.txtFilter, 2, 1);
             this.tlpCont.Controls.Add(this.tablaMecanicos, 2, 2);
             this.tlpCont.Controls.Add(this.dataPanel, 1, 2);
@@ -203,7 +203,7 @@
             this.txtFilter.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
             this.txtFilter.Location = new System.Drawing.Point(327, 8);
             this.txtFilter.Name = "txtFilter";
-            this.txtFilter.Size = new System.Drawing.Size(516, 31);
+            this.txtFilter.Size = new System.Drawing.Size(515, 31);
             this.txtFilter.TabIndex = 0;
             this.txtFilter.Text = "Ingrese el nombre del mecanico";
             this.txtFilter.TextChanged += new System.EventHandler(this.txtFilter_TextChanged);
@@ -216,14 +216,14 @@
             this.tablaMecanicos.AllowUserToDeleteRows = false;
             this.tablaMecanicos.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(35)))), ((int)(((byte)(35)))));
             this.tablaMecanicos.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.ControlLight;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.ControlLight;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.tablaMecanicos.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            dataGridViewCellStyle5.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.ControlLight;
+            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
+            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.ControlLight;
+            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.tablaMecanicos.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
             this.tablaMecanicos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.tablaMecanicos.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tablaMecanicos.EnableHeadersVisualStyles = false;
@@ -232,14 +232,14 @@
             this.tablaMecanicos.ReadOnly = true;
             this.tablaMecanicos.RowHeadersVisible = false;
             this.tablaMecanicos.RowHeadersWidth = 51;
-            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.ControlDark;
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle4.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.ControlLight;
-            this.tablaMecanicos.RowsDefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.ControlDark;
+            dataGridViewCellStyle6.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle6.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.ControlLight;
+            this.tablaMecanicos.RowsDefaultCellStyle = dataGridViewCellStyle6;
             this.tablaMecanicos.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.tablaMecanicos.Size = new System.Drawing.Size(516, 208);
+            this.tablaMecanicos.Size = new System.Drawing.Size(515, 208);
             this.tablaMecanicos.TabIndex = 1;
             this.tablaMecanicos.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.tablaMecanicos_CellClick);
             this.tablaMecanicos.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.tablaMecanicos_CellDoubleClick);

@@ -8,6 +8,7 @@ using System.Drawing;
 using System.Runtime.InteropServices;
 using System.Windows.Forms;
 using GestorOrdenesDeTrabajo.DB;
+using GestorOrdenesDeTrabajo.Validation;
 
 namespace GestorOrdenesDeTrabajo.Ventanas.Message
 {
@@ -23,11 +24,13 @@ namespace GestorOrdenesDeTrabajo.Ventanas.Message
         static Mecanico _DialogResult = null;
         private Mecanico mecanico;
         private readonly Orden orden;
+        private MecanicoValidator v;
 
         public MecanicoDialog(Orden o)
         {
             InitializeComponent();
             orden = o;
+            v = new MecanicoValidator();
             datatable = new DataTable();
             datatable.Columns.Add("ID");
             datatable.Columns.Add("Nombre");
@@ -107,16 +110,47 @@ namespace GestorOrdenesDeTrabajo.Ventanas.Message
 
             if (mecanico == null)
             {
-                mecanico = MecanicoController.I.Add(new Mecanico
+                var newMec = new Mecanico
                 {
                     Nombre = txtNombre.Text
-                });
+                };
+
+                var res = v.Validate(newMec);
+
+                if (ShowErrorValidation.Valid(res))
+                {
+                    mecanico = MecanicoController.I.Add(newMec);
+                }
             }
             else
             {
                 mecanico.Nombre = txtNombre.Text;
-                mecanico = MecanicoController.I.Edit(mecanico);
+
+                var res = v.Validate(mecanico);
+
+                if (ShowErrorValidation.Valid(res))
+                {
+                    mecanico = MecanicoController.I.Edit(mecanico);
+                }
+
             }
+
+            //var nMec = (mecanico == null) ?
+            //    new Mecanico
+            //    {
+            //        Nombre = txtNombre.Text
+            //    }
+            //    :
+            //    new Mecanico
+            //    {
+            //        Id = mecanico.Id,
+            //        Nombre = txtNombre.Text
+            //    };
+
+            //var r = v.Validate(nMec);
+            //if (ShowErrorValidation.Valid(r))
+            //    mecanico = (mecanico == null) ? MecanicoController.I.Add(nMec) : MecanicoController.I.Edit(nMec);
+            
 
             if (mecanico == null)
                 MessageBox.Show("No se pudo agregar o editar el cliente, intente de nuevo", "Eror", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -140,8 +174,6 @@ namespace GestorOrdenesDeTrabajo.Ventanas.Message
 
         private void tablaMecanicos_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
-            Console.WriteLine("Se dio doble click :D");
-            //TODO añadir validacion para permiso de usuario
             if (e.RowIndex <= -1)
                 return;
 
