@@ -14,8 +14,11 @@ namespace GestorOrdenesDeTrabajo.Validation
         {
             if (!res.IsValid)
             {
+                string error = "";
                 foreach (var item in res.Errors)
-                    MessageBox.Show(item.ErrorMessage, "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    error += item + "\n";
+
+                MessageBox.Show(error, "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
             return res.IsValid;
         }
