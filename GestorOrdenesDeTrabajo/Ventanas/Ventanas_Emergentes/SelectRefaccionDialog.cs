@@ -9,6 +9,7 @@ using GestorOrdenesDeTrabajo.Auxiliares;
 using GestorOrdenesDeTrabajo.DB;
 using GestorOrdenesDeTrabajo.UsesCases;
 using GestorOrdenesDeTrabajo.Utilerias.Controles;
+using GestorOrdenesDeTrabajo.Validation;
 using GestorOrdenesDeTrabajo.Ventanas.Message;
 
 namespace GestorOrdenesDeTrabajo.Ventanas.Ventanas_Emergentes
@@ -20,27 +21,28 @@ namespace GestorOrdenesDeTrabajo.Ventanas.Ventanas_Emergentes
         [DllImport("user32.DLL", EntryPoint = "SendMessage")]
         private extern static void SendMessage(System.IntPtr hwnd, int wmsg, int wparam, int lparam);
 
-        DataTable datatable;
+        DataTable DataTable;
         static SelectRefaccionDialog _Dialog;
-        static List<RefaccionDTO> res;
-        private readonly Orden orden;
-        private Refaccion current;
-        private List<Refaccion> refacciones;
-
+        static List<RefaccionDTO> Refacciones;
+        private readonly Orden CurrentOrden;
+        private Refaccion CurrentRefaccion;
+        private List<Refaccion> RefaccionesToSelect;
+        private RefaccionDTOValidator RefaccionValidator;
         public SelectRefaccionDialog(Orden o)
         {
             InitializeComponent();
-            res = new List<RefaccionDTO>();
-            this.orden = o;
-            datatable = new DataTable();
-            datatable.Columns.Add("ID");
-            datatable.Columns.Add("Codigo");
-            datatable.Columns.Add("Descripcion");
-            datatable.Columns.Add("Precio Minimo");
-            datatable.Columns[0].ReadOnly = true;
-            datatable.Columns[1].ReadOnly = true;
-            datatable.Columns[2].ReadOnly = true;
-            datatable.Columns[3].ReadOnly = true;
+            Refacciones = new List<RefaccionDTO>();
+            RefaccionValidator = new RefaccionDTOValidator();
+            this.CurrentOrden = o;
+            DataTable = new DataTable();
+            DataTable.Columns.Add("ID");
+            DataTable.Columns.Add("Codigo");
+            DataTable.Columns.Add("Descripcion");
+            DataTable.Columns.Add("Precio Minimo");
+            DataTable.Columns[0].ReadOnly = true;
+            DataTable.Columns[1].ReadOnly = true;
+            DataTable.Columns[2].ReadOnly = true;
+            DataTable.Columns[3].ReadOnly = true;
             FillTable();
         }
 
@@ -49,11 +51,11 @@ namespace GestorOrdenesDeTrabajo.Ventanas.Ventanas_Emergentes
             while (TablaRefacciones.RowCount != 0)
                 TablaRefacciones.Rows.RemoveAt(0);
 
-            refacciones = RefaccionController.I.GetLista().ToList();
-            foreach (Refaccion item in refacciones)
-                datatable.Rows.Add(new object[] { item.Id, item.Codigo, item.Descripcion, item.PrecioMinimo });
+            RefaccionesToSelect = RefaccionController.I.GetLista().ToList();
+            foreach (Refaccion item in RefaccionesToSelect)
+                DataTable.Rows.Add(new object[] { item.Id, item.Codigo, item.Descripcion, item.PrecioMinimo });
 
-            TablaRefacciones.DataSource = datatable;
+            TablaRefacciones.DataSource = DataTable;
             TablaRefacciones.Columns[0].AutoSizeMode = DataGridViewAutoSizeColumnMode.ColumnHeader;
             TablaRefacciones.Columns[1].AutoSizeMode = DataGridViewAutoSizeColumnMode.ColumnHeader;
             TablaRefacciones.Columns[2].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
@@ -69,33 +71,38 @@ namespace GestorOrdenesDeTrabajo.Ventanas.Ventanas_Emergentes
         {
             _Dialog = new SelectRefaccionDialog(o);
             _Dialog.ShowDialog();
-            return res;
+            return Refacciones;
         }
 
         private void btnAgregar_Click(object sender, EventArgs e)
         {
-            bool isValid = Helper.Llenos(txtCant, txtCodigo, txtPrecio) && current != null;
+            bool isValid = Helper.Llenos(txtCant, txtCodigo, txtPrecio) && CurrentRefaccion != null;
             if (!isValid)
                 return;
 
             int cantidad = int.Parse(txtCant.Text);
             decimal precio = decimal.Parse(txtPrecio.Text);
 
-            if (precio < current.PrecioMinimo)
+            if (precio < CurrentRefaccion.PrecioMinimo)
             { MessageBox.Show("El precio es menor que el costo minimo", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning); return; }
 
-            res.Add(new RefaccionDTO()
+            var newRef = new RefaccionDTO()
             {
-                Id = current.Id,
-                Codigo = current.Codigo,
-                Descripcion = current.Descripcion,
+                Id = CurrentRefaccion.Id,
+                Codigo = CurrentRefaccion.Codigo,
+                Descripcion = CurrentRefaccion.Descripcion,
                 Cantidad = cantidad,
                 PrecioUnitrio = precio,
-            });
+            };
 
-            MessageDialog.ShowMessageDialog("", $"Se ha agregado la refaccion {current.Codigo} a la orden ", true);
+            var resp = RefaccionValidator.Validate(newRef);
+
+            if (ShowErrorValidation.Valid(resp))
+                Refacciones.Add(newRef);
+
+            MessageDialog.ShowMessageDialog("", $"Se ha agregado la refaccion {CurrentRefaccion.Codigo} a la orden ", true);
             Helper.VaciarTexto(txtCant, txtCodigo, txtPrecio);
-            current = null;
+            CurrentRefaccion = null;
         }
 
         private void btnCerrar_Click(object sender, EventArgs e)
@@ -130,7 +137,7 @@ namespace GestorOrdenesDeTrabajo.Ventanas.Ventanas_Emergentes
         private void txtFilter_TextChanged(object sender, EventArgs e)
         {
             if (txtFilter.Text != "Ingrese el codigo o el nombre de la pieza")
-                datatable.DefaultView.RowFilter = $"Descripcion LIKE '%{txtFilter.Text}%'";
+                DataTable.DefaultView.RowFilter = $"Descripcion LIKE '%{txtFilter.Text}%'";
         }
 
         private void tablaClientes_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -149,7 +156,7 @@ namespace GestorOrdenesDeTrabajo.Ventanas.Ventanas_Emergentes
             txtPrecio.Text = minimo.ToString();
             txtCant.Text = "1";
 
-            current = new Refaccion
+            CurrentRefaccion = new Refaccion
             {
                 Id = id,
                 Codigo = code,
@@ -163,7 +170,7 @@ namespace GestorOrdenesDeTrabajo.Ventanas.Ventanas_Emergentes
             if (e.KeyCode == Keys.Enter)
             {
                 string code = txtCodigo.Text;
-                var s = refacciones.Where(el => el.Codigo.Equals(code)).FirstOrDefault();
+                var s = RefaccionesToSelect.Where(el => el.Codigo.Equals(code)).FirstOrDefault();
                 if (s == null)
                     return;
 

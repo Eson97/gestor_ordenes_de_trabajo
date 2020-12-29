@@ -22,7 +22,7 @@ namespace GestorOrdenesDeTrabajo.DB
         public string Nombre { get; set; }
 
         [Required]
-        [StringLength(50)]
+        [StringLength(70)]
         public string Direccion { get; set; }
 
         [Required]

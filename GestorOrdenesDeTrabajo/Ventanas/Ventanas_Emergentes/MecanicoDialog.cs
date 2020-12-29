@@ -19,29 +19,29 @@ namespace GestorOrdenesDeTrabajo.Ventanas.Message
         [DllImport("user32.DLL", EntryPoint = "SendMessage")]
         private extern static void SendMessage(System.IntPtr hwnd, int wmsg, int wparam, int lparam);
 
-        DataTable datatable;
+        DataTable DataTable;
         static MecanicoDialog _Dialog;
         static Mecanico _DialogResult = null;
-        private Mecanico mecanico;
-        private readonly Orden orden;
-        private MecanicoValidator v;
+        private Mecanico CurrentMecanico;
+        private readonly Orden CurrentOrden;
+        private MecanicoValidator MecanicoValidator;
 
-        public MecanicoDialog(Orden o)
+        public MecanicoDialog(Orden orden)
         {
             InitializeComponent();
-            orden = o;
-            v = new MecanicoValidator();
-            datatable = new DataTable();
-            datatable.Columns.Add("ID");
-            datatable.Columns.Add("Nombre");
-            datatable.Columns[0].ReadOnly = true;
-            datatable.Columns[1].ReadOnly = true;
+            CurrentOrden = orden;
+            MecanicoValidator = new MecanicoValidator();
+            DataTable = new DataTable();
+            DataTable.Columns.Add("ID");
+            DataTable.Columns.Add("Nombre");
+            DataTable.Columns[0].ReadOnly = true;
+            DataTable.Columns[1].ReadOnly = true;
             Actualizar();
         }
 
-        public static Mecanico showClientDialog(Orden o)
+        public static Mecanico showClientDialog(Orden orden)
         {
-            _Dialog = new MecanicoDialog(o);
+            _Dialog = new MecanicoDialog(orden);
             _Dialog.ShowDialog();
             return _DialogResult;
         }
@@ -50,12 +50,12 @@ namespace GestorOrdenesDeTrabajo.Ventanas.Message
         {
             Helper.VaciarTexto(txtNombre);
 
-            if (mecanico == null)
+            if (CurrentMecanico == null)
             { lblTittle.Text = "Nuevo"; }
             else
             {
                 lblTittle.Text = "Editar";
-                txtNombre.Text = mecanico.Nombre;
+                txtNombre.Text = CurrentMecanico.Nombre;
             }
 
             dataPanel.Show();
@@ -68,9 +68,9 @@ namespace GestorOrdenesDeTrabajo.Ventanas.Message
             var mecanicos = MecanicoController.I.GetLista();
 
             foreach (Mecanico item in mecanicos)
-                datatable.Rows.Add(new object[] { item.Id, item.Nombre });
+                DataTable.Rows.Add(new object[] { item.Id, item.Nombre });
 
-            tablaMecanicos.DataSource = datatable;
+            tablaMecanicos.DataSource = DataTable;
             tablaMecanicos.Columns[0].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
             tablaMecanicos.Columns[1].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
             tablaMecanicos.Columns[0].Resizable = DataGridViewTriState.False;
@@ -85,13 +85,13 @@ namespace GestorOrdenesDeTrabajo.Ventanas.Message
 
         private void btnNew_Click(object sender, EventArgs e)
         {
-            mecanico = null;
+            CurrentMecanico = null;
             ShowAddEditMecanico();
         }
 
         private void btnEdit_Click(object sender, EventArgs e)
         {
-            if (mecanico == null)
+            if (CurrentMecanico == null)
                 MessageBox.Show("Seleccione un Mecanico de la lista", "Informacion", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
             ShowAddEditMecanico();
@@ -108,57 +108,35 @@ namespace GestorOrdenesDeTrabajo.Ventanas.Message
             if (!isValid)
             { MessageBox.Show("El nombre no puede pasar de 25 caracteres", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning); return; }
 
-            if (mecanico == null)
+            if (CurrentMecanico == null)
             {
                 var newMec = new Mecanico
                 {
                     Nombre = txtNombre.Text
                 };
 
-                var res = v.Validate(newMec);
+                var res = MecanicoValidator.Validate(newMec);
 
                 if (ShowErrorValidation.Valid(res))
-                {
-                    mecanico = MecanicoController.I.Add(newMec);
-                }
+                    CurrentMecanico = MecanicoController.I.Add(newMec);
             }
             else
             {
-                mecanico.Nombre = txtNombre.Text;
+                CurrentMecanico.Nombre = txtNombre.Text;
 
-                var res = v.Validate(mecanico);
+                var res = MecanicoValidator.Validate(CurrentMecanico);
 
                 if (ShowErrorValidation.Valid(res))
-                {
-                    mecanico = MecanicoController.I.Edit(mecanico);
-                }
-
+                    CurrentMecanico = MecanicoController.I.Edit(CurrentMecanico);
             }
 
-            //var nMec = (mecanico == null) ?
-            //    new Mecanico
-            //    {
-            //        Nombre = txtNombre.Text
-            //    }
-            //    :
-            //    new Mecanico
-            //    {
-            //        Id = mecanico.Id,
-            //        Nombre = txtNombre.Text
-            //    };
-
-            //var r = v.Validate(nMec);
-            //if (ShowErrorValidation.Valid(r))
-            //    mecanico = (mecanico == null) ? MecanicoController.I.Add(nMec) : MecanicoController.I.Edit(nMec);
-            
-
-            if (mecanico == null)
-                MessageBox.Show("No se pudo agregar o editar el cliente, intente de nuevo", "Eror", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            if (CurrentMecanico == null)
+                MessageBox.Show("No se pudo agregar o editar el mecanico, intente de nuevo", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
             Actualizar();
 
             Helper.VaciarTexto(txtNombre);
-            mecanico = null;
+            CurrentMecanico = null;
 
             lblTittle.Hide();
             dataPanel.Hide();
@@ -166,7 +144,7 @@ namespace GestorOrdenesDeTrabajo.Ventanas.Message
 
         private void btnCancelar_Click(object sender, EventArgs e)
         {
-            mecanico = null;
+            CurrentMecanico = null;
 
             lblTittle.Hide();
             dataPanel.Hide();
@@ -189,7 +167,7 @@ namespace GestorOrdenesDeTrabajo.Ventanas.Message
 
             Console.WriteLine($"ID:{_DialogResult.Id}\nNombre:{_DialogResult.Nombre}");
 
-            if (MessageDialog.ShowMessageDialog("Asignar mecanico", $"¿Desea asignarle a {nombre} la orden de trabajo {orden.Folio}?", false) == (int)MessageDialogResult.Yes)
+            if (MessageDialog.ShowMessageDialog("Asignar mecanico", $"¿Desea asignarle a {nombre} la orden de trabajo {CurrentOrden.Folio}?", false) == (int)MessageDialogResult.Yes)
                 this.Dispose();
             else _DialogResult = null; //por si se cierra la ventana regrese null y no se asigne un mecanico por error
         }
@@ -203,7 +181,7 @@ namespace GestorOrdenesDeTrabajo.Ventanas.Message
             int id = int.Parse(row.Cells[0].Value as string);
             string nombre = row.Cells[1].Value as string;
 
-            mecanico = new Mecanico()
+            CurrentMecanico = new Mecanico()
             {
                 Id = id,
                 Nombre = nombre
@@ -211,8 +189,8 @@ namespace GestorOrdenesDeTrabajo.Ventanas.Message
 
             Console.WriteLine(
                 $"*****************************" +
-                $"\nID: {mecanico.Id}" +
-                $"\nNombre: {mecanico.Nombre}" +
+                $"\nID: {CurrentMecanico.Id}" +
+                $"\nNombre: {CurrentMecanico.Nombre}" +
                 $"\n*****************************");
         }
 
@@ -255,7 +233,7 @@ namespace GestorOrdenesDeTrabajo.Ventanas.Message
         {
 
             if (txtFilter.Text != "Ingrese el nombre del mecanico")
-                datatable.DefaultView.RowFilter = $"Nombre LIKE '%{txtFilter.Text}%'";
+                DataTable.DefaultView.RowFilter = $"Nombre LIKE '%{txtFilter.Text}%'";
         }
     }
 }

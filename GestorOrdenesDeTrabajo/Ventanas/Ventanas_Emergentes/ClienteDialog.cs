@@ -22,12 +22,12 @@ namespace GestorOrdenesDeTrabajo.Ventanas.Message
         static ClienteDialog _Dialog;
         static Cliente _DialogResult = null;
         private Cliente CurrentCliente;
-        private ClienteValidator v;
+        private ClienteValidator ClienteValidator;
         public ClienteDialog()
         {
             InitializeComponent();
             DataTable = new DataTable();
-            v = new ClienteValidator();
+            ClienteValidator = new ClienteValidator();
             DataTable.Columns.Add("ID");
             DataTable.Columns.Add("Nombre");
             DataTable.Columns.Add("Direccion");
@@ -77,11 +77,6 @@ namespace GestorOrdenesDeTrabajo.Ventanas.Message
             string dir = row.Cells[2].Value as string;
             string tel = row.Cells[3].Value as string;
 
-            var res = v.Validate(_DialogResult);
-
-            if (ShowErrorValidation.Valid(res))
-                Console.WriteLine($"ID:{_DialogResult.Id}\nNombre:{_DialogResult.Nombre}");
-
             _DialogResult = new Cliente()
             {
                 Id = id,
@@ -89,7 +84,6 @@ namespace GestorOrdenesDeTrabajo.Ventanas.Message
                 Direccion = dir,
                 Telefono = tel
             };
-
             this.Dispose();
         }
 
@@ -163,7 +157,7 @@ namespace GestorOrdenesDeTrabajo.Ventanas.Message
                     Nombre = txtNombre.Text,
                     Telefono = txtTel.Text
                 });
-                var res = v.Validate(newCliente);
+                var res = ClienteValidator.Validate(newCliente);
 
                 if (ShowErrorValidation.Valid(res))
                     CurrentCliente = newCliente;
@@ -173,14 +167,14 @@ namespace GestorOrdenesDeTrabajo.Ventanas.Message
                 CurrentCliente.Direccion = txtDir.Text;
                 CurrentCliente.Nombre = txtNombre.Text;
                 CurrentCliente.Telefono = txtTel.Text;
-               
-                var res = v.Validate(CurrentCliente);
+
+                var res = ClienteValidator.Validate(CurrentCliente);
                 if (ShowErrorValidation.Valid(res))
                     CurrentCliente = ClienteController.I.Edit(CurrentCliente);
             }
 
             if (CurrentCliente == null)
-                MessageBox.Show("No se pudo agregar o editar el cliente, intente de nuevo", "Eror", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("No se pudo agregar o editar el cliente, intente de nuevo", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
             Actualizar();
 

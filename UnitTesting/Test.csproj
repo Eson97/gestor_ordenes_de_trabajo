@@ -57,7 +57,8 @@
     <Reference Include="System.Core" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Cliente.cs" />
+    <Compile Include="ClienteControllerTest.cs" />
+    <Compile Include="OrdenControllerTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
