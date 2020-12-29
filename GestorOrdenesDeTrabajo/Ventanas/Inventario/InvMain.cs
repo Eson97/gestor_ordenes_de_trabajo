@@ -1,6 +1,8 @@
 ﻿using GestorOrdenesDeTrabajo.DB;
 using GestorOrdenesDeTrabajo.Enums;
 using GestorOrdenesDeTrabajo.UsesCases;
+using GestorOrdenesDeTrabajo.Utilerias.Eventos;
+using GestorOrdenesDeTrabajo.Validation;
 using GestorOrdenesDeTrabajo.Ventanas.Inventario;
 using GestorOrdenesDeTrabajo.Ventanas.Message;
 using System;
@@ -114,9 +116,8 @@ namespace GestorOrdenesDeTrabajo.OrdenWindow.Inventario
             {
                 DataGridViewRow row = tablaInventario.CurrentRow;
                 int id = int.Parse(row.Cells[0].Value as string);
-                string code = row.Cells[1].Value as string;
                 string pieza = row.Cells[2].Value as string;
-                double minimo = double.Parse(row.Cells[3].Value as string);
+
                 if ((int)MessageDialogResult.Yes == MessageDialog.ShowMessageDialog("Eliminar", $"¿Esta seguro de que desea eliminar '{pieza}' del inventario?", false))
                 {
                     //TODO agregar comprobacion de OrdenRefaccion is empty eliminar definitivo
@@ -203,6 +204,11 @@ namespace GestorOrdenesDeTrabajo.OrdenWindow.Inventario
         {
             if (tablaInventario.Columns[e.ColumnIndex].Name == "Precio Minimo")
                 tablaInventario.Columns[e.ColumnIndex].DefaultCellStyle.Format = "C2"; //asigna formato moneda con 2 decimales
+        }
+
+        private void txtBuscarCodigo_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            Filtro.AlfanumericoSpaceComaPuntoGuion(e);
         }
     }
 }

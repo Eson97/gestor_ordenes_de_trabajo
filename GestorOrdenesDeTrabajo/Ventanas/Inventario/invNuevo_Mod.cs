@@ -2,6 +2,7 @@
 using GestorOrdenesDeTrabajo.UsesCases;
 using GestorOrdenesDeTrabajo.Utilerias.Controles;
 using GestorOrdenesDeTrabajo.Utilerias.Eventos;
+using GestorOrdenesDeTrabajo.Validation;
 using System;
 using System.Windows.Forms;
 
@@ -10,15 +11,19 @@ namespace GestorOrdenesDeTrabajo.Ventanas.Inventario
     public partial class invNuevo_Mod : Form
     {
         private Refaccion refaccion;
+        private RefaccionValidator v;
+
         public invNuevo_Mod()
         {
             InitializeComponent();
+            v = new RefaccionValidator();
         }
 
         public invNuevo_Mod(Refaccion refaccion)
         {
             InitializeComponent();
             this.refaccion = refaccion;
+            v = new RefaccionValidator();
         }
 
         private void btnAceptar_Click(object sender, EventArgs e)
@@ -40,24 +45,32 @@ namespace GestorOrdenesDeTrabajo.Ventanas.Inventario
 
             if (refaccion == null)
             {
-                refaccion = RefaccionController.I.Add(new Refaccion()
+                var toAdd = new Refaccion()
                 {
                     Codigo = code,
                     Descripcion = descripcion,
                     PrecioMinimo = minimo,
-                });
+                };
+
+                var res = v.Validate(toAdd);
+                if (ShowErrorValidation.Valid(res))
+                    refaccion = RefaccionController.I.Add(toAdd);
+
             }
             else
             {
                 refaccion.Codigo = code;
                 refaccion.Descripcion = descripcion;
                 refaccion.PrecioMinimo = minimo;
-                refaccion = RefaccionController.I.Edit(refaccion);
+
+                var res = v.Validate(refaccion);
+                if (ShowErrorValidation.Valid(res))
+                    refaccion = RefaccionController.I.Edit(refaccion);
             }
 
             if (refaccion == null)
-                MessageBox.Show("Codigo de refaccion repetido, introduzca otro", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            
+                MessageBox.Show("Error agregar o editar refaccion", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
             refaccion = null;
             Helper.VaciarTexto(txtCodigo, txtDescripcion, txtPrecioMinimo);
         }
