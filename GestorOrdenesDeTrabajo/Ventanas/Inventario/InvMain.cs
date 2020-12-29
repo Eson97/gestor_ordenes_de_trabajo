@@ -2,7 +2,6 @@
 using GestorOrdenesDeTrabajo.Enums;
 using GestorOrdenesDeTrabajo.UsesCases;
 using GestorOrdenesDeTrabajo.Utilerias.Eventos;
-using GestorOrdenesDeTrabajo.Validation;
 using GestorOrdenesDeTrabajo.Ventanas.Inventario;
 using GestorOrdenesDeTrabajo.Ventanas.Message;
 using System;
@@ -14,23 +13,23 @@ namespace GestorOrdenesDeTrabajo.OrdenWindow.Inventario
 {
     public partial class InvMain : Form
     {
-        DataTable datatable;
+        DataTable Datatable;
         public InvMain()
         {
             InitializeComponent();
 
             tablaInventario.CellBorderStyle = DataGridViewCellBorderStyle.None;
 
-            datatable = new DataTable();
-            datatable.Columns.Add("ID");
-            datatable.Columns.Add("Codigo");
-            datatable.Columns.Add("Pieza");
-            datatable.Columns.Add("Precio Minimo");
-            datatable.Columns[0].ReadOnly = true;
-            datatable.Columns[1].ReadOnly = true;
-            datatable.Columns[2].ReadOnly = true;
-            datatable.Columns[3].ReadOnly = true;
-            datatable.Columns[3].DataType = typeof(decimal);
+            Datatable = new DataTable();
+            Datatable.Columns.Add("ID");
+            Datatable.Columns.Add("Codigo");
+            Datatable.Columns.Add("Pieza");
+            Datatable.Columns.Add("Precio Minimo");
+            Datatable.Columns[0].ReadOnly = true;
+            Datatable.Columns[1].ReadOnly = true;
+            Datatable.Columns[2].ReadOnly = true;
+            Datatable.Columns[3].ReadOnly = true;
+            Datatable.Columns[3].DataType = typeof(decimal);
             Actualizar();
         }
 
@@ -41,9 +40,9 @@ namespace GestorOrdenesDeTrabajo.OrdenWindow.Inventario
 
             var refacciones = RefaccionController.I.GetLista();
             foreach (Refaccion item in refacciones)
-                datatable.Rows.Add(new object[] { item.Id, item.Codigo, item.Descripcion, item.PrecioMinimo });
+                Datatable.Rows.Add(new object[] { item.Id, item.Codigo, item.Descripcion, item.PrecioMinimo });
 
-            tablaInventario.DataSource = datatable;
+            tablaInventario.DataSource = Datatable;
             tablaInventario.Columns[0].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
             tablaInventario.Columns[1].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
             tablaInventario.Columns[2].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
@@ -120,7 +119,6 @@ namespace GestorOrdenesDeTrabajo.OrdenWindow.Inventario
 
                 if ((int)MessageDialogResult.Yes == MessageDialog.ShowMessageDialog("Eliminar", $"¿Esta seguro de que desea eliminar '{pieza}' del inventario?", false))
                 {
-                    //TODO agregar comprobacion de OrdenRefaccion is empty eliminar definitivo
                     bool deleted = RefaccionController.I.Delete(id);
                     if (deleted)
                         MessageBox.Show("Eliminado con exito", "Exito", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -155,7 +153,7 @@ namespace GestorOrdenesDeTrabajo.OrdenWindow.Inventario
         private void txtBuscarCodigo_TextChanged(object sender, EventArgs e)
         {
             if (txtBuscarCodigo.Text != "Ingrese <Codigo> o <Pieza> a buscar...")
-                datatable.DefaultView.RowFilter = $"Codigo LIKE '{txtBuscarCodigo.Text}%' OR Pieza LIKE '{txtBuscarCodigo.Text}%' ";
+                Datatable.DefaultView.RowFilter = $"Codigo LIKE '{txtBuscarCodigo.Text}%' OR Pieza LIKE '{txtBuscarCodigo.Text}%' ";
         }
 
         private void txtBuscarCodigo_Enter(object sender, EventArgs e)
@@ -178,7 +176,6 @@ namespace GestorOrdenesDeTrabajo.OrdenWindow.Inventario
 
         private void tablaInventario_CellDoubleClick_1(object sender, DataGridViewCellEventArgs e)
         {
-            Console.WriteLine("Se dio doble click :D");
             //TODO añadir validacion para permiso de usuario
             if (e.RowIndex > -1)
             {

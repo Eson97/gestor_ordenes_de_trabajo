@@ -66,9 +66,18 @@ namespace GestorOrdenesDeTrabajo.UsesCases
             {
                 using (Entities db = new Entities())
                 {
+                    bool isUsed = db.OrdenRefaccion.Any(el => el.IdRefaccion == id);
+                    isUsed &= db.OrdenRefaccionGarantia.Any(el => el.IdRefaccion == id);
                     Refaccion toDelete = db.Refaccion.Find(id);
-                    toDelete.IsDeleted = true;
-                    db.Entry(toDelete).State = EntityState.Modified;
+                    if (isUsed)
+                    {
+                        toDelete.IsDeleted = true;
+                        db.Entry(toDelete).State = EntityState.Modified;
+                    }
+                    else
+                    {
+                        db.Refaccion.Remove(toDelete);
+                    }
                     db.SaveChanges();
                 }
                 return true;
