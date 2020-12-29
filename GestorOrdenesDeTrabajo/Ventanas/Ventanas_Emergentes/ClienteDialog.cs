@@ -22,12 +22,12 @@ namespace GestorOrdenesDeTrabajo.Ventanas.Message
         static ClienteDialog _Dialog;
         static Cliente _DialogResult = null;
         private Cliente CurrentCliente;
-        private ClienteValidator v;
+        private ClienteValidator ClienteValidator;
         public ClienteDialog()
         {
             InitializeComponent();
             DataTable = new DataTable();
-            v = new ClienteValidator();
+            ClienteValidator = new ClienteValidator();
             DataTable.Columns.Add("ID");
             DataTable.Columns.Add("Nombre");
             DataTable.Columns.Add("Direccion");
@@ -77,7 +77,7 @@ namespace GestorOrdenesDeTrabajo.Ventanas.Message
             string dir = row.Cells[2].Value as string;
             string tel = row.Cells[3].Value as string;
 
-            var res = v.Validate(_DialogResult);
+            var res = ClienteValidator.Validate(_DialogResult);
 
             if (ShowErrorValidation.Valid(res))
                 Console.WriteLine($"ID:{_DialogResult.Id}\nNombre:{_DialogResult.Nombre}");
@@ -163,7 +163,7 @@ namespace GestorOrdenesDeTrabajo.Ventanas.Message
                     Nombre = txtNombre.Text,
                     Telefono = txtTel.Text
                 });
-                var res = v.Validate(newCliente);
+                var res = ClienteValidator.Validate(newCliente);
 
                 if (ShowErrorValidation.Valid(res))
                     CurrentCliente = newCliente;
@@ -174,7 +174,7 @@ namespace GestorOrdenesDeTrabajo.Ventanas.Message
                 CurrentCliente.Nombre = txtNombre.Text;
                 CurrentCliente.Telefono = txtTel.Text;
                
-                var res = v.Validate(CurrentCliente);
+                var res = ClienteValidator.Validate(CurrentCliente);
                 if (ShowErrorValidation.Valid(res))
                     CurrentCliente = ClienteController.I.Edit(CurrentCliente);
             }
