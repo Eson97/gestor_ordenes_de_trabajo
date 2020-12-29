@@ -10,20 +10,20 @@ namespace GestorOrdenesDeTrabajo.Ventanas.Inventario
 {
     public partial class invNuevo_Mod : Form
     {
-        private Refaccion refaccion;
-        private RefaccionValidator v;
+        private Refaccion CurrentRefaccion;
+        private RefaccionValidator Validator;
 
         public invNuevo_Mod()
         {
             InitializeComponent();
-            v = new RefaccionValidator();
+            Validator = new RefaccionValidator();
         }
 
         public invNuevo_Mod(Refaccion refaccion)
         {
             InitializeComponent();
-            this.refaccion = refaccion;
-            v = new RefaccionValidator();
+            this.CurrentRefaccion = refaccion;
+            Validator = new RefaccionValidator();
         }
 
         private void btnAceptar_Click(object sender, EventArgs e)
@@ -43,7 +43,7 @@ namespace GestorOrdenesDeTrabajo.Ventanas.Inventario
             { MessageBox.Show("El precio no es valido", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning); return; }
             minimo = Math.Round(minimo, 2);
 
-            if (refaccion == null)
+            if (CurrentRefaccion == null)
             {
                 var toAdd = new Refaccion()
                 {
@@ -52,26 +52,26 @@ namespace GestorOrdenesDeTrabajo.Ventanas.Inventario
                     PrecioMinimo = minimo,
                 };
 
-                var res = v.Validate(toAdd);
+                var res = Validator.Validate(toAdd);
                 if (ShowErrorValidation.Valid(res))
-                    refaccion = RefaccionController.I.Add(toAdd);
+                    CurrentRefaccion = RefaccionController.I.Add(toAdd);
 
             }
             else
             {
-                refaccion.Codigo = code;
-                refaccion.Descripcion = descripcion;
-                refaccion.PrecioMinimo = minimo;
+                CurrentRefaccion.Codigo = code;
+                CurrentRefaccion.Descripcion = descripcion;
+                CurrentRefaccion.PrecioMinimo = minimo;
 
-                var res = v.Validate(refaccion);
+                var res = Validator.Validate(CurrentRefaccion);
                 if (ShowErrorValidation.Valid(res))
-                    refaccion = RefaccionController.I.Edit(refaccion);
+                    CurrentRefaccion = RefaccionController.I.Edit(CurrentRefaccion);
             }
 
-            if (refaccion == null)
+            if (CurrentRefaccion == null)
                 MessageBox.Show("Error agregar o editar refaccion", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
-            refaccion = null;
+            CurrentRefaccion = null;
             Helper.VaciarTexto(txtCodigo, txtDescripcion, txtPrecioMinimo);
         }
 
@@ -82,11 +82,11 @@ namespace GestorOrdenesDeTrabajo.Ventanas.Inventario
 
         private void invNuevo_Mod_Load(object sender, EventArgs e)
         {
-            if (refaccion != null)
+            if (CurrentRefaccion != null)
             {
-                txtCodigo.Text = refaccion.Codigo;
-                txtDescripcion.Text = refaccion.Descripcion;
-                txtPrecioMinimo.Text = refaccion.PrecioMinimo.ToString();
+                txtCodigo.Text = CurrentRefaccion.Codigo;
+                txtDescripcion.Text = CurrentRefaccion.Descripcion;
+                txtPrecioMinimo.Text = CurrentRefaccion.PrecioMinimo.ToString();
             }
         }
 
