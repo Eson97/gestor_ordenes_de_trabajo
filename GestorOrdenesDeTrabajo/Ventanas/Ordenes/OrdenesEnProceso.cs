@@ -2,6 +2,7 @@
 using GestorOrdenesDeTrabajo.DB;
 using GestorOrdenesDeTrabajo.Enums;
 using GestorOrdenesDeTrabajo.UsesCases;
+using GestorOrdenesDeTrabajo.Validation;
 using GestorOrdenesDeTrabajo.Ventanas.Ventanas_Emergentes;
 using System;
 using System.Collections.Generic;
@@ -14,12 +15,16 @@ namespace GestorOrdenesDeTrabajo.Ventanas.Ordenes
 {
     public partial class OrdenesEnProceso : Form
     {
-        Orden current;
+        Orden CurrentOrden;
         OrdenStatus Estado;
+        private OrdenValidator OrdenValidator;
+        private OrdenHistorialValidator OrdenHistorialValidator;
         public List<OrdenItemList> ListaOrdenes { get; private set; }
 
         public OrdenesEnProceso(OrdenStatus Estado)
         {
+            OrdenValidator = new OrdenValidator();
+            OrdenHistorialValidator = new OrdenHistorialValidator();
             InitializeComponent();
             this.Estado = Estado;
             loadOrdenes();
@@ -50,8 +55,8 @@ namespace GestorOrdenesDeTrabajo.Ventanas.Ordenes
                 this.flpOrdenList.Controls.Add(item);
                 item.btnAction.Click += (s, e) =>
                 {
-                    current = item.Orden;
-                    openSubPanel(new OrdenesEnProceso_AddRem(current, Estado));
+                    CurrentOrden = item.Orden;
+                    openSubPanel(new OrdenesEnProceso_AddRem(CurrentOrden, Estado));
                 };
             }
         }
@@ -108,22 +113,30 @@ namespace GestorOrdenesDeTrabajo.Ventanas.Ordenes
             if (!isValidWarranty) { MessageBox.Show("La garantia ha vencido", "Informacion", MessageBoxButtons.OK, MessageBoxIcon.Information); return; }
 
             orden.Status = (int)OrdenStatus.GARANTIA;
-            orden = OrdenController.I.Edit(orden);
+            //validar Orden antes de modificar
+            var res = OrdenValidator.Validate(orden);
+            if (ShowErrorValidation.Valid(res))
+                orden = OrdenController.I.Edit(orden);
 
             if (orden == null)
                 MessageBox.Show("Error al cambiar el status de la orden", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
-            //Agrega el estado de la orden al historial
-            var saved = OrdenHistorialController.I.Add(new OrdenHistorial()
+            var ordenHistorial = new OrdenHistorial()
             {
                 IdOrden = orden.Id,
                 FechaStatus = DateTime.Now,
                 Status = (int)OrdenStatus.GARANTIA,
-            });
+            };
 
-            if (saved == null)
-                MessageBox.Show("No se puede agregar al historial de ordenes", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-
+            //Agrega el estado de la orden al historial
+            res = OrdenHistorialValidator.Validate(ordenHistorial);
+            if (ShowErrorValidation.Valid(res))
+            {
+                //Agrega el estado de la orden al historial
+                var saved = OrdenHistorialController.I.Add(ordenHistorial);
+                if (saved == null)
+                    MessageBox.Show("No se puede agregar al historial de ordenes", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
             loadOrdenes();
         }
     }

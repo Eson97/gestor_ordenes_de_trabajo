@@ -103,5 +103,23 @@ namespace GestorOrdenesDeTrabajo.UsesCases
             return new List<Cliente>();
         }
 
+        public Cliente Get(int id)
+        {
+            Cliente element = null;
+            try
+            {
+                using (Entities db = new Entities())
+                {
+                    element = db.Cliente.Find(id);
+                }
+                return element;
+            }
+            catch (Exception e)
+            {
+                Log.Write("Ha ocurrido un error " + e.Message);
+            }
+            return element;
+        }
+
     }
 }
