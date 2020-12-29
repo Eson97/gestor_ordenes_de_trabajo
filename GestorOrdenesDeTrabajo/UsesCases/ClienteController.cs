@@ -62,7 +62,7 @@ namespace GestorOrdenesDeTrabajo.UsesCases
 
         public Cliente Edit(Cliente element)
         {
-            if (element.Id <= 0) return null;
+            if (element == null) return null;
             try
             {
                 using (Entities db = new Entities())
