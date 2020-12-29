@@ -9,18 +9,23 @@ using GestorOrdenesDeTrabajo.CustomComponents;
 using GestorOrdenesDeTrabajo.Ventanas.Message;
 using GestorOrdenesDeTrabajo.DB;
 using GestorOrdenesDeTrabajo.Ventanas.Ventanas_Emergentes;
+using GestorOrdenesDeTrabajo.Validation;
 
 namespace GestorOrdenesDeTrabajo.Ventanas.Ordenes
 {
     public partial class OrdenesEnEspera : Form
     {
         private List<OrdenItemList> ListaOrdenes;
-        private Orden orden;
-        private Mecanico mecanico;
+        private Orden CurrentOrden;
+        private Mecanico CurrentMecanico;
         private readonly OrdenStatus Estado;
+        private OrdenValidator OrdenValidator;
+        private OrdenHistorialValidator OrdenHistorialValidator;
 
         public OrdenesEnEspera(OrdenStatus Estado)
         {
+            OrdenValidator = new OrdenValidator();
+            OrdenHistorialValidator = new OrdenHistorialValidator();
             this.Estado = Estado;
             InitializeComponent();
             showOrdenes();
@@ -39,35 +44,44 @@ namespace GestorOrdenesDeTrabajo.Ventanas.Ordenes
                         this.flpList.Controls.Add(item);
                         item.btnAction.Click += (s, e) =>
                         {
-                            orden = item.Orden;
-                            mecanico = MecanicoDialog.showClientDialog(orden);
-                            if (mecanico == null) return;
+                            CurrentOrden = item.Orden;
+                            CurrentMecanico = MecanicoDialog.showClientDialog(CurrentOrden);
+                            if (CurrentMecanico == null) return;
 
-                            orden.Status = AssignNextStatusOrder();
-                            orden = OrdenController.I.Edit(orden);
-                            if (orden == null)
+                            CurrentOrden.Status = AssignNextStatusOrder();
+
+                            //validar Orden antes de modificar
+                            var res = OrdenValidator.Validate(CurrentOrden);
+                            if (ShowErrorValidation.Valid(res))
+                                CurrentOrden = OrdenController.I.Edit(CurrentOrden);
+
+                            if (CurrentOrden == null)
                             { MessageBox.Show("No se puede cambiar el status, intente de nuevo", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error); return; }
 
                             var ordenMecanico = OrdenMecanicoController.I.Add(new OrdenMecanico()
                             {
-                                IdOrden = orden.Id,
-                                IdMecanico = mecanico.Id
+                                IdOrden = CurrentOrden.Id,
+                                IdMecanico = CurrentMecanico.Id
                             });
 
                             if (ordenMecanico == null)
                             { MessageBox.Show("No se puede asignar el mecanico a la orden", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error); return; }
 
-                            //Agrega el estado de la orden al historial
-                            var saved = OrdenHistorialController.I.Add(new OrdenHistorial()
+                            var oh = new OrdenHistorial()
                             {
-                                IdOrden = orden.Id,
+                                IdOrden = CurrentOrden.Id,
                                 FechaStatus = DateTime.Now,
                                 Status = AssignNextStatusOrder()
-                            });
+                            };
 
-                            if (saved == null)
-                                MessageBox.Show("No se puede agregar al historial de ordenes", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-
+                            res = OrdenHistorialValidator.Validate(oh);
+                            if (ShowErrorValidation.Valid(res))
+                            {
+                                //Agrega el estado de la orden al historial
+                                var saved = OrdenHistorialController.I.Add(oh);
+                                if (saved == null)
+                                    MessageBox.Show("No se puede agregar al historial de ordenes", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            }
                             //Repaint controls with new data
                             showOrdenes();
                         };
@@ -77,30 +91,39 @@ namespace GestorOrdenesDeTrabajo.Ventanas.Ordenes
                         this.flpList.Controls.Add(item);
                         item.btnAction.Click += (s, e) =>
                         {
-                            orden = item.Orden;
+                            CurrentOrden = item.Orden;
 
-                            var aux = EntregarDialog.ShowEntregarOrden(orden);
+                            var aux = EntregarDialog.ShowEntregarOrden(CurrentOrden);
                             if (!aux.Result) return;
 
-                            orden.TipoPago = (int)aux.MetodoPago;
-                            orden.FechaEntrega = aux.FechaEntrega;
-                            orden.Referencia = aux.Referencia;
-                            orden.Status = AssignNextStatusOrder();
-                            orden = OrdenController.I.Edit(orden);
+                            CurrentOrden.TipoPago = (int)aux.MetodoPago;
+                            CurrentOrden.FechaEntrega = aux.FechaEntrega;
+                            CurrentOrden.Referencia = aux.Referencia;
+                            CurrentOrden.Status = AssignNextStatusOrder();
 
-                            if (orden == null)
+                            //validar Orden antes de modificar
+                            var res = OrdenValidator.Validate(CurrentOrden);
+                            if (ShowErrorValidation.Valid(res))
+                                CurrentOrden = OrdenController.I.Edit(CurrentOrden);
+
+                            if (CurrentOrden == null)
                             { MessageBox.Show("No se puede cambiar el status, intente de nuevo", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error); return; }
 
-                            //Agrega el estado de la orden al historial
-                            var saved = OrdenHistorialController.I.Add(new OrdenHistorial()
+                            var ordenHistorial = new OrdenHistorial()
                             {
-                                IdOrden = orden.Id,
+                                IdOrden = CurrentOrden.Id,
                                 FechaStatus = aux.FechaEntrega,
                                 Status = AssignNextStatusOrder()
-                            });
-                            if (saved == null)
-                                MessageBox.Show("No se puede agregar al historial de ordenes", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            };
 
+                            res = OrdenHistorialValidator.Validate(ordenHistorial);
+                            if (ShowErrorValidation.Valid(res))
+                            {
+                                //Agrega el estado de la orden al historial
+                                var saved = OrdenHistorialController.I.Add(ordenHistorial);
+                                if (saved == null)
+                                    MessageBox.Show("No se puede agregar al historial de ordenes", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            }
                             //Repaint controls with new data
                             showOrdenes();
                         };
@@ -109,28 +132,37 @@ namespace GestorOrdenesDeTrabajo.Ventanas.Ordenes
                         this.flpList.Controls.Add(item);
                         item.btnAction.Click += (s, e) =>
                         {
-                            orden = item.Orden;
+                            CurrentOrden = item.Orden;
 
-                            var aux = EntregarDialog.ShowEntregarOrden(orden);
+                            var aux = EntregarDialog.ShowEntregarOrden(CurrentOrden);
                             if (!aux.Result) return;
 
-                            orden.FechaEntrega = aux.FechaEntrega;
-                            orden.Status = AssignNextStatusOrder();
-                            orden = OrdenController.I.Edit(orden);
+                            CurrentOrden.FechaEntrega = aux.FechaEntrega;
+                            CurrentOrden.Status = AssignNextStatusOrder();
 
-                            if (orden == null)
+                            //validar Orden antes de modificar
+                            var res = OrdenValidator.Validate(CurrentOrden);
+                            if (ShowErrorValidation.Valid(res))
+                                CurrentOrden = OrdenController.I.Edit(CurrentOrden);
+
+                            if (CurrentOrden == null)
                             { MessageBox.Show("No se puede cambiar el status, intente de nuevo", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error); return; }
 
-                            //Agrega el estado de la orden al historial
-                            var saved = OrdenHistorialController.I.Add(new OrdenHistorial()
+                            var ordenHistorial = new OrdenHistorial()
                             {
-                                IdOrden = orden.Id,
+                                IdOrden = CurrentOrden.Id,
                                 FechaStatus = aux.FechaEntrega,
                                 Status = AssignNextStatusOrder()
-                            });
-                            if (saved == null)
-                                MessageBox.Show("No se puede agregar al historial de ordenes", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            };
 
+                            res = OrdenHistorialValidator.Validate(ordenHistorial);
+                            if (ShowErrorValidation.Valid(res))
+                            {
+                                //Agrega el estado de la orden al historial
+                                var saved = OrdenHistorialController.I.Add(ordenHistorial);
+                                if (saved == null)
+                                    MessageBox.Show("No se puede agregar al historial de ordenes", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            }
                             //Repaint controls with new data
                             showOrdenes();
                         };
