@@ -1,6 +1,7 @@
 ﻿using GestorOrdenesDeTrabajo.DB;
 using GestorOrdenesDeTrabajo.Enums;
 using GestorOrdenesDeTrabajo.UsesCases;
+using GestorOrdenesDeTrabajo.Utilerias.Eventos;
 using System;
 using System.Data;
 using System.Drawing;
@@ -12,7 +13,8 @@ namespace GestorOrdenesDeTrabajo.Ventanas.Buscar
     {
         DataTable datatable;
         DataGridViewCellStyle rowStyleCancelada;
-
+        DateTime initDate;
+        DateTime finDate;
         public SrchMain()
         {
             InitializeComponent();
@@ -32,7 +34,7 @@ namespace GestorOrdenesDeTrabajo.Ventanas.Buscar
             rowStyleCancelada.BackColor = Color.Red;
             rowStyleCancelada.ForeColor = Color.White;
 
-            Actualizar();
+            Actualizar(DateTime.MinValue, DateTime.MaxValue);
         }
 
         void openSubPanel(Form Panel)
@@ -48,18 +50,11 @@ namespace GestorOrdenesDeTrabajo.Ventanas.Buscar
             newPanel.Show();
         }
 
-       
-        /**
-         * @todo Modificar Actualizar por rango de fechas
-         * @body Se tiene que agregar el filtro por fechas ya que a la larga se hara mas pesada la consulta, igual y que por default solo se muestren las del dia o ninguna
-         */
-
-        void Actualizar()
+        void Actualizar(DateTime initDate, DateTime finDate)
         {
-            if (tablaOrdenes.RowCount != 0)
-                tablaOrdenes.Rows.Clear();
-            
-            var ordenes = OrdenController.I.GetLista();
+            while (tablaOrdenes.RowCount > 0) tablaOrdenes.Rows.RemoveAt(0);
+
+            var ordenes = OrdenController.I.GetListaBetween(initDate, finDate);
             foreach (Orden item in ordenes)
                 datatable.Rows.Add(item.Id, item.Folio, item.Cliente.Nombre, OrdenStatusManager.ToString(item.Status));
 
@@ -106,15 +101,7 @@ namespace GestorOrdenesDeTrabajo.Ventanas.Buscar
 
         private void tablaOrdenes_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
         {
-            //foreach (DataGridViewRow row in tablaOrdenes.Rows)
-            //{
-            //    bool cancelada = row.Cells["Estado"].Value.ToString() == OrdenStatusManager.ToString((int)OrdenStatus.CANCELADA);
-            //    if (cancelada)
-            //        row.DefaultCellStyle.BackColor = Color.Firebrick;
-            //    else row.DefaultCellStyle.BackColor = Color.FromKnownColor(KnownColor.ControlDark);
-            //}
-
-            if(tablaOrdenes.Columns[e.ColumnIndex].Name == "Estado")
+            if (tablaOrdenes.Columns[e.ColumnIndex].Name == "Estado")
             {
                 if (tablaOrdenes.Rows[e.RowIndex].Cells["Estado"].Value.ToString() == OrdenStatusManager.ToString((int)OrdenStatus.CANCELADA))
                     tablaOrdenes.Rows[e.RowIndex].DefaultCellStyle.BackColor = Color.Firebrick;
@@ -141,7 +128,14 @@ namespace GestorOrdenesDeTrabajo.Ventanas.Buscar
         }
         private void btnMostrar_Click(object sender, EventArgs e)
         {
+            if (initDate == null || finDate == null)
+            {
+                if (finDate < initDate) finDatePicker.Value = initDate; //si el rango no es valido se corrige
 
+                MessageBox.Show("Seleccione un periodo que desee mostrar", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error); return;
+            }
+
+            Actualizar(initDate, finDate);
         }
 
         private void txtSrchFolio_Leave(object sender, EventArgs e)
@@ -180,12 +174,32 @@ namespace GestorOrdenesDeTrabajo.Ventanas.Buscar
             int folio = int.Parse(row.Cells[1].Value as string);
 
             var orden = OrdenController.I.SearchByFolio(folio);
-            
+
             if (orden != null)
             {
                 var mecanicosByOrden = MecanicoController.I.searchMecanicosByOrden(orden.Id);
                 openSubPanel(new SrchDetailInfo(orden, mecanicosByOrden));
             }
+        }
+
+        private void finDatePicker_ValueChanged(object sender, EventArgs e)
+        {
+            finDate = finDatePicker.Value;
+        }
+
+        private void initDatePicker_ValueChanged(object sender, EventArgs e)
+        {
+            initDate = initDatePicker.Value;
+        }
+
+        private void txtBuscarCodigo_Cliente_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            Filtro.AlfanumericoSpaceComaPuntoGuion(e);
+        }
+
+        private void txtSrchFolio_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            Filtro.Numeros(e);
         }
     }
 }

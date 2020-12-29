@@ -45,10 +45,10 @@
             this.panel5 = new System.Windows.Forms.Panel();
             this.btnMostrar = new System.Windows.Forms.Button();
             this.panel4 = new System.Windows.Forms.Panel();
-            this.customDateTimePicker2 = new GestorOrdenesDeTrabajo.Clases.CustomDateTimePicker();
             this.label2 = new System.Windows.Forms.Label();
-            this.customDateTimePicker1 = new GestorOrdenesDeTrabajo.Clases.CustomDateTimePicker();
             this.label1 = new System.Windows.Forms.Label();
+            this.finDatePicker = new GestorOrdenesDeTrabajo.Clases.CustomDateTimePicker();
+            this.initDatePicker = new GestorOrdenesDeTrabajo.Clases.CustomDateTimePicker();
             this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
             this.panel3.SuspendLayout();
@@ -180,6 +180,7 @@
             this.txtBuscarCodigo_Cliente.Text = "Ingrese <Folio> o <Cliente> a buscar...";
             this.txtBuscarCodigo_Cliente.TextChanged += new System.EventHandler(this.txtBuscarCodigo_Cliente_TextChanged);
             this.txtBuscarCodigo_Cliente.Enter += new System.EventHandler(this.txtBuscarCodigo_Cliente_Enter);
+            this.txtBuscarCodigo_Cliente.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtBuscarCodigo_Cliente_KeyPress);
             this.txtBuscarCodigo_Cliente.Leave += new System.EventHandler(this.txtBuscarCodigo_Cliente_Leave);
             // 
             // panel2
@@ -190,9 +191,9 @@
             this.panel2.Controls.Add(this.panel5);
             this.panel2.Controls.Add(this.btnMostrar);
             this.panel2.Controls.Add(this.panel4);
-            this.panel2.Controls.Add(this.customDateTimePicker2);
+            this.panel2.Controls.Add(this.finDatePicker);
             this.panel2.Controls.Add(this.label2);
-            this.panel2.Controls.Add(this.customDateTimePicker1);
+            this.panel2.Controls.Add(this.initDatePicker);
             this.panel2.Controls.Add(this.label1);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel2.Location = new System.Drawing.Point(8, 8);
@@ -214,6 +215,7 @@
             this.txtSrchFolio.Text = "Numero de Orden";
             this.txtSrchFolio.Enter += new System.EventHandler(this.txtSrchFolio_Enter);
             this.txtSrchFolio.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtSrchFolio_KeyDown);
+            this.txtSrchFolio.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtSrchFolio_KeyPress);
             this.txtSrchFolio.Leave += new System.EventHandler(this.txtSrchFolio_Leave);
             // 
             // panel6
@@ -277,16 +279,6 @@
             this.panel4.Size = new System.Drawing.Size(28, 34);
             this.panel4.TabIndex = 9;
             // 
-            // customDateTimePicker2
-            // 
-            this.customDateTimePicker2.Dock = System.Windows.Forms.DockStyle.Left;
-            this.customDateTimePicker2.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.customDateTimePicker2.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.customDateTimePicker2.Location = new System.Drawing.Point(272, 0);
-            this.customDateTimePicker2.Name = "customDateTimePicker2";
-            this.customDateTimePicker2.Size = new System.Drawing.Size(139, 37);
-            this.customDateTimePicker2.TabIndex = 8;
-            // 
             // label2
             // 
             this.label2.Dock = System.Windows.Forms.DockStyle.Left;
@@ -298,16 +290,6 @@
             this.label2.Text = "Hasta:";
             this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
-            // customDateTimePicker1
-            // 
-            this.customDateTimePicker1.Dock = System.Windows.Forms.DockStyle.Left;
-            this.customDateTimePicker1.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.customDateTimePicker1.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.customDateTimePicker1.Location = new System.Drawing.Point(58, 0);
-            this.customDateTimePicker1.Name = "customDateTimePicker1";
-            this.customDateTimePicker1.Size = new System.Drawing.Size(139, 37);
-            this.customDateTimePicker1.TabIndex = 6;
-            // 
             // label1
             // 
             this.label1.Dock = System.Windows.Forms.DockStyle.Left;
@@ -318,6 +300,28 @@
             this.label1.TabIndex = 5;
             this.label1.Text = "De:";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // finDatePicker
+            // 
+            this.finDatePicker.Dock = System.Windows.Forms.DockStyle.Left;
+            this.finDatePicker.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.finDatePicker.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.finDatePicker.Location = new System.Drawing.Point(272, 0);
+            this.finDatePicker.Name = "finDatePicker";
+            this.finDatePicker.Size = new System.Drawing.Size(139, 37);
+            this.finDatePicker.TabIndex = 8;
+            this.finDatePicker.ValueChanged += new System.EventHandler(this.finDatePicker_ValueChanged);
+            // 
+            // initDatePicker
+            // 
+            this.initDatePicker.Dock = System.Windows.Forms.DockStyle.Left;
+            this.initDatePicker.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.initDatePicker.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.initDatePicker.Location = new System.Drawing.Point(58, 0);
+            this.initDatePicker.Name = "initDatePicker";
+            this.initDatePicker.Size = new System.Drawing.Size(139, 37);
+            this.initDatePicker.TabIndex = 6;
+            this.initDatePicker.ValueChanged += new System.EventHandler(this.initDatePicker_ValueChanged);
             // 
             // SrchMain
             // 
@@ -354,9 +358,9 @@
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.TextBox txtBuscarCodigo_Cliente;
         private System.Windows.Forms.DataGridView tablaOrdenes;
-        private Clases.CustomDateTimePicker customDateTimePicker2;
+        private Clases.CustomDateTimePicker finDatePicker;
         private System.Windows.Forms.Label label2;
-        private Clases.CustomDateTimePicker customDateTimePicker1;
+        private Clases.CustomDateTimePicker initDatePicker;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button btnMostrar;
         private System.Windows.Forms.Panel panel4;

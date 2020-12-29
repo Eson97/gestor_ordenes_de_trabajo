@@ -96,6 +96,32 @@ namespace GestorOrdenesDeTrabajo.UsesCases
             return null;
         }
 
+        public List<Orden> GetListaBetween(DateTime initDate, DateTime finDate)
+        {
+            List<Orden> lista = null;
+            try
+            {
+                using (Entities db = new Entities())
+                {
+                    db.Configuration.LazyLoadingEnabled = true;
+                    lista = db.Orden
+                        .AsNoTracking()
+                        .Where(el => DbFunctions.TruncateTime(el.FechaEntrega) >= initDate.Date && DbFunctions.TruncateTime(el.FechaEntrega) <= finDate.Date)
+                        .Include(el => el.Cliente)
+                        .OrderBy(cp => cp.Folio)
+                        .ToList();
+                }
+                return lista;
+            }
+            catch (Exception e)
+            {
+                string s = e.Message;
+                Log.Write("Ha ocurrido un error " + s);
+            }
+            //Retorna lista vacia para evitar excepciones en llamada
+            return new List<Orden>();
+        }
+
         public List<Orden> GetLista(int status)
         {
             List<Orden> lista = null;
