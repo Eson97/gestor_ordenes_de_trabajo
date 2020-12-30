@@ -5,6 +5,7 @@ using GestorOrdenesDeTrabajo.Utilerias.Eventos;
 using GestorOrdenesDeTrabajo.Ventanas.Inventario;
 using GestorOrdenesDeTrabajo.Ventanas.Message;
 using System;
+using System.Collections.Generic;
 using System.Data;
 using System.Drawing;
 using System.Windows.Forms;
@@ -14,9 +15,11 @@ namespace GestorOrdenesDeTrabajo.OrdenWindow.Inventario
     public partial class InvMain : Form
     {
         DataTable Datatable;
+        private bool canEdit = true;
         public InvMain()
         {
             InitializeComponent();
+            InitPermisos();
 
             tablaInventario.CellBorderStyle = DataGridViewCellBorderStyle.None;
 
@@ -31,6 +34,57 @@ namespace GestorOrdenesDeTrabajo.OrdenWindow.Inventario
             Datatable.Columns[3].ReadOnly = true;
             Datatable.Columns[3].DataType = typeof(decimal);
             Actualizar();
+        }
+
+        private void InitPermisos()
+        {
+            if (CurrentUser.User == null)
+                return;
+            //permisos = await Task.Run(() => UsuarioPermisoController.I.GetListaPermisoByUsuario(currentUser.Id));
+            Permission(CurrentUser.Permisos);
+        }
+
+        private void DeniedPermission(params Control[] control)
+        {
+            canEdit = false;
+
+            foreach (Control c in control)
+            {
+                c.Enabled = false;
+            }
+        }
+        private object CanEdit()
+        {
+            btnNuevo.Enabled = true;
+            btnModificar.Enabled = true;
+            btnEliminar.Enabled = true;
+            canEdit = true;
+            return default;
+        }
+
+        private void Permission(IList<Permiso> permisos)
+        {
+            Button[] buttons = { btnNuevo,btnModificar,btnEliminar,btnImportar,btnExportar };
+
+            DeniedPermission(buttons);
+
+            if (permisos != null)
+            {
+                int a = (int)Permisos.INVENTARIO;
+                Console.WriteLine(a.ToString());
+                foreach (Permiso item in permisos)
+                {
+                    object p = item.Id switch
+                    {
+                        (int)Permisos.MOD_INVENTARIO => CanEdit(),
+                        (int)Permisos.EXP_INVENTARIO => btnImportar.Enabled = true,
+                        (int)Permisos.IMP_INVENTARIO => btnExportar.Enabled = true,
+                        _ => -1
+                    };
+                    _ = p;
+
+                }
+            }
         }
 
         public void Actualizar()
@@ -90,10 +144,10 @@ namespace GestorOrdenesDeTrabajo.OrdenWindow.Inventario
             if (tablaInventario.CurrentRow.Index != -1)
             {
                 DataGridViewRow row = tablaInventario.CurrentRow;
-                int id = int.Parse(row.Cells[0].Value as string);
-                string code = row.Cells[1].Value as string;
-                string pieza = row.Cells[2].Value as string;
-                double minimo = double.Parse(row.Cells[3].Value as string);
+                int id = int.Parse(row.Cells[0].Value.ToString());
+                string code = row.Cells[1].Value.ToString();
+                string pieza = row.Cells[2].Value.ToString();
+                double minimo = double.Parse(row.Cells[3].Value.ToString());
 
                 Refaccion toEdit = new Refaccion()
                 {
@@ -114,8 +168,8 @@ namespace GestorOrdenesDeTrabajo.OrdenWindow.Inventario
             if (tablaInventario.CurrentRow.Index != -1)
             {
                 DataGridViewRow row = tablaInventario.CurrentRow;
-                int id = int.Parse(row.Cells[0].Value as string);
-                string pieza = row.Cells[2].Value as string;
+                int id = int.Parse(row.Cells[0].Value.ToString());
+                string pieza = row.Cells[2].Value.ToString();
 
                 if ((int)MessageDialogResult.Yes == MessageDialog.ShowMessageDialog("Eliminar", $"¿Esta seguro de que desea eliminar '{pieza}' del inventario?", false))
                 {
@@ -176,13 +230,14 @@ namespace GestorOrdenesDeTrabajo.OrdenWindow.Inventario
 
         private void tablaInventario_CellDoubleClick_1(object sender, DataGridViewCellEventArgs e)
         {
-            //TODO añadir validacion para permiso de usuario
+            if (!canEdit) return;
+
             if (e.RowIndex > -1)
             {
                 DataGridViewRow row = tablaInventario.CurrentRow;
-                int id = int.Parse(row.Cells[0].Value as string);
-                string code = row.Cells[1].Value as string;
-                string pieza = row.Cells[2].Value as string;
+                int id = int.Parse(row.Cells[0].Value.ToString());
+                string code = row.Cells[1].Value.ToString();
+                string pieza = row.Cells[2].Value.ToString();
                 double minimo = double.Parse(row.Cells[3].Value.ToString());
 
                 Refaccion toEdit = new Refaccion()

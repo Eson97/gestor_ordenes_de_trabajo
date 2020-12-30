@@ -9,6 +9,7 @@ using System.Runtime.InteropServices;
 using System.Windows.Forms;
 using GestorOrdenesDeTrabajo.DB;
 using GestorOrdenesDeTrabajo.Validation;
+using System.Collections.Generic;
 
 namespace GestorOrdenesDeTrabajo.Ventanas.Message
 {
@@ -29,6 +30,7 @@ namespace GestorOrdenesDeTrabajo.Ventanas.Message
         public MecanicoDialog(Orden orden)
         {
             InitializeComponent();
+            InitPermisos();
             CurrentOrden = orden;
             MecanicoValidator = new MecanicoValidator();
             DataTable = new DataTable();
@@ -37,6 +39,44 @@ namespace GestorOrdenesDeTrabajo.Ventanas.Message
             DataTable.Columns[0].ReadOnly = true;
             DataTable.Columns[1].ReadOnly = true;
             Actualizar();
+        }
+
+        private void InitPermisos()
+        {
+            if (CurrentUser.User == null)
+                return;
+            //permisos = await Task.Run(() => UsuarioPermisoController.I.GetListaPermisoByUsuario(currentUser.Id));
+            Permission(CurrentUser.Permisos);
+        }
+
+        private void DeniedPermission(params Control[] control)
+        {
+            foreach (Control c in control)
+            {
+                c.Enabled = false;
+            }
+        }
+
+        private void Permission(IList<Permiso> permisos)
+        {
+            Button[] buttons = { btnNew, btnEdit };
+
+            DeniedPermission(buttons);
+
+            if (permisos != null)
+            {
+                int a = (int)Permisos.INVENTARIO;
+                Console.WriteLine(a.ToString());
+                foreach (Permiso item in permisos)
+                {
+                    if (item.Id == (int)Permisos.MOD_MECANICOS)
+                    {
+                        btnNew.Enabled = true;
+                        btnEdit.Enabled = true;
+                    }
+
+                }
+            }
         }
 
         public static Mecanico showClientDialog(Orden orden)

@@ -1,8 +1,10 @@
 ﻿using GestorOrdenesDeTrabajo.DB;
+using GestorOrdenesDeTrabajo.Enums;
 using GestorOrdenesDeTrabajo.UsesCases;
 using GestorOrdenesDeTrabajo.Utilerias.Controles;
 using GestorOrdenesDeTrabajo.Validation;
 using System;
+using System.Collections.Generic;
 using System.Data;
 using System.Drawing;
 using System.Runtime.InteropServices;
@@ -26,6 +28,7 @@ namespace GestorOrdenesDeTrabajo.Ventanas.Message
         public ClienteDialog()
         {
             InitializeComponent();
+            InitPermisos();
             DataTable = new DataTable();
             ClienteValidator = new ClienteValidator();
             DataTable.Columns.Add("ID");
@@ -37,6 +40,44 @@ namespace GestorOrdenesDeTrabajo.Ventanas.Message
             DataTable.Columns[2].ReadOnly = true;
             DataTable.Columns[3].ReadOnly = true;
             Actualizar();
+        }
+
+        private void InitPermisos()
+        {
+            if (CurrentUser.User == null)
+                return;
+            //permisos = await Task.Run(() => UsuarioPermisoController.I.GetListaPermisoByUsuario(currentUser.Id));
+            Permission(CurrentUser.Permisos);
+        }
+
+        private void DeniedPermission(params Control[] control)
+        {
+            foreach (Control c in control)
+            {
+                c.Enabled = false;
+            }
+        }
+
+        private void Permission(IList<Permiso> permisos)
+        {
+            Button[] buttons = { btnNew,btnEdit };
+
+            DeniedPermission(buttons);
+
+            if (permisos != null)
+            {
+                int a = (int)Permisos.INVENTARIO;
+                Console.WriteLine(a.ToString());
+                foreach (Permiso item in permisos)
+                {
+                    if(item.Id == (int)Permisos.MOD_CLIENTES)
+                    {
+                        btnNew.Enabled = true;
+                        btnEdit.Enabled = true;
+                    }
+
+                }
+            }
         }
 
         public static Cliente showClientDialog()
@@ -105,7 +146,6 @@ namespace GestorOrdenesDeTrabajo.Ventanas.Message
                 Direccion = dir,
                 Telefono = tel
             };
-            Console.WriteLine($"ID:{CurrentCliente.Id}\nNombre:{CurrentCliente.Nombre}");
         }
 
         private void ShowAddEditCliente()
