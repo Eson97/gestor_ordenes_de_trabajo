@@ -7,6 +7,7 @@ using GestorOrdenesDeTrabajo.Ventanas.Message;
 using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Diagnostics;
 using System.Drawing;
 using System.Windows.Forms;
 
@@ -16,6 +17,7 @@ namespace GestorOrdenesDeTrabajo.OrdenWindow.Inventario
     {
         DataTable Datatable;
         private bool canEdit = true;
+        private Excel.ExcelController xlsx = new Excel.ExcelController();
         public InvMain()
         {
             InitializeComponent();
@@ -191,12 +193,23 @@ namespace GestorOrdenesDeTrabajo.OrdenWindow.Inventario
 
         private void btnImportar_Click(object sender, EventArgs e)
         {
-            openSubPanel(this, "Importar Desde Excel");
+            if ((int)MessageDialogResult.Yes == MessageDialog.ShowMessageDialog("Confirmacion", "¿Desea importar refacciones desde un excel?\nEsto puede tardar unos minutos", false))
+            {
+
+                using(var file = new OpenFileDialog { Filter = @"Excel files (*.xls or .xlsx)|.xls;*.xls", Multiselect = false })
+                {
+                    if(file.ShowDialog() == DialogResult.OK)
+                        xlsx.ImportExcelFrom(file.FileName);
+                }
+            }
         }
 
         private void btnExportar_Click(object sender, EventArgs e)
         {
-            openSubPanel(this, "Exportar Desde Excel");
+            if((int)MessageDialogResult.Yes == MessageDialog.ShowMessageDialog("Confirmacion","¿Desea exportar las refacciones a un excel?\nEsto puede tardar unos minutos", false))
+            {
+                xlsx.CreateExcelRefacciones();
+            }
         }
 
         private void btnActualizar_Click(object sender, EventArgs e)

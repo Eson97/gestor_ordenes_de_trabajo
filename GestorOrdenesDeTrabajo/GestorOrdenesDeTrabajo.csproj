@@ -47,6 +47,9 @@
     <Reference Include="FluentValidation, Version=9.0.0.0, Culture=neutral, PublicKeyToken=7de548da2fbae0f0, processorArchitecture=MSIL">
       <HintPath>packages\FluentValidation.9.3.0\lib\net461\FluentValidation.dll</HintPath>
     </Reference>
+    <Reference Include="Microsoft.Office.Interop.Excel, Version=15.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c, processorArchitecture=MSIL">
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
@@ -120,6 +123,7 @@
     <Compile Include="Enums\OrdenStatus.cs" />
     <Compile Include="Enums\Permisos.cs" />
     <Compile Include="Enums\TipoPago.cs" />
+    <Compile Include="Excel\ExcelController.cs" />
     <Compile Include="Inicio.cs">
       <SubType>Form</SubType>
     </Compile>
