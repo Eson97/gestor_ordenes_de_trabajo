@@ -37,6 +37,7 @@ namespace GestorOrdenesDeTrabajo.Ventanas.Ventanas_Emergentes
 
         private void btnIngresar_Click(object sender, EventArgs e)
         {
+
             bool isValid = Helper.Llenos(txtUser, txtPass);
 
             if (!isValid)

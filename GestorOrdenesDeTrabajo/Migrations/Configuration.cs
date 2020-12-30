@@ -76,51 +76,61 @@
             {
                 new Permiso
                 {
+                    Id=(int)Permisos.INVENTARIO,
                     Descripcion="Acceso Inventario",
                     IsEnabled=true,
                 },
                 new Permiso
                 {
+                    Id=(int)Permisos.MOD_INVENTARIO,
                     Descripcion="Modificar Inventario",
                     IsEnabled=true,
                 },
                 new Permiso
                 {
+                    Id=(int)Permisos.IMP_INVENTARIO,
                     Descripcion="Importar Inventario",
                     IsEnabled=true,
                 },
                 new Permiso
                 {
+                    Id=(int)Permisos.EXP_INVENTARIO,
                     Descripcion="Exportar Inventario",
                     IsEnabled=true,
                 },
                 new Permiso
                 {
+                    Id=(int)Permisos.ORDENES,
                     Descripcion="Manejo de Ordenes",
                     IsEnabled=true,
                 },
                 new Permiso
                 {
+                    Id=(int)Permisos.BUSCAR,
                     Descripcion="Acceso Buscar Ordenes",
                     IsEnabled=true,
                 },
                 new Permiso
                 {
+                    Id=(int)Permisos.ESTADISTICAS,
                     Descripcion="Acceso Estadisticas",
                     IsEnabled=true,
                 },
                 new Permiso
                 {
+                    Id=(int)Permisos.USUARIOS,
                     Descripcion="Acceso Usuarios",
                     IsEnabled=true,
                 },
                 new Permiso
                 {
+                    Id=(int)Permisos.MOD_CLIENTES,
                     Descripcion="Modificar Clientes",
                     IsEnabled=true,
                 },
                 new Permiso
                 {
+                    Id=(int)Permisos.MOD_MECANICOS,
                     Descripcion="Modificar Mecanicos",
                     IsEnabled=true,
                 },

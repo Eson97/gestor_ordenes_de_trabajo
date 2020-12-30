@@ -64,17 +64,20 @@ namespace GestorOrdenesDeTrabajo
 
             if (permisos != null)
             {
+                int a = (int)Permisos.INVENTARIO;
+                Console.WriteLine(a.ToString());
                 foreach (Permiso item in permisos)
                 {
-                    _ = (item.Id switch
+                    object p = item.Id switch
                     {
-                        (int)Permisos.INVENTARIO => btnBuscar.Visible = true,
+                        (int)Permisos.INVENTARIO => btnInventario.Visible = true,
                         (int)Permisos.ORDENES => btnOrdenes.Visible = true,
                         (int)Permisos.BUSCAR => btnBuscar.Visible = true,
                         (int)Permisos.ESTADISTICAS => btnStats.Visible = true,
                         (int)Permisos.USUARIOS => btnUsuarios.Visible = true,
-                        _ => throw new NotImplementedException()
-                    });
+                        _ => -1
+                    };
+                    _ = p;
 
                 }
             }

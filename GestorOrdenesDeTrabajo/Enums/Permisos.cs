@@ -8,15 +8,15 @@ namespace GestorOrdenesDeTrabajo.Enums
 {
     enum Permisos
     {
-        INVENTARIO = 0,
-        MOD_INVENTARIO = 1,
-        IMP_INVENTARIO = 2,
-        EXP_INVENTARIO = 3,
-        ORDENES = 4,
-        BUSCAR = 5,
-        ESTADISTICAS = 6,
-        USUARIOS = 7,
-        MOD_CLIENTES = 8,
-        MOD_MECANICOS = 9
+        INVENTARIO = 1,
+        MOD_INVENTARIO = 2,
+        IMP_INVENTARIO = 3,
+        EXP_INVENTARIO = 4,
+        ORDENES = 5,
+        BUSCAR = 6,
+        ESTADISTICAS = 7,
+        USUARIOS = 8,
+        MOD_CLIENTES = 9,
+        MOD_MECANICOS = 10
     }
 }
