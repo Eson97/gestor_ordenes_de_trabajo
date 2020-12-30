@@ -35,6 +35,9 @@ namespace GestorOrdenesDeTrabajo.Ventanas.Buscar
             rowStyleCancelada.ForeColor = Color.White;
 
             Actualizar(DateTime.MinValue, DateTime.MaxValue);
+
+            initDate = initDatePicker.Value;
+            finDate = finDatePicker.Value;
         }
 
         void openSubPanel(Form Panel)
@@ -128,13 +131,7 @@ namespace GestorOrdenesDeTrabajo.Ventanas.Buscar
         }
         private void btnMostrar_Click(object sender, EventArgs e)
         {
-            if (initDate == null || finDate == null)
-            {
-                if (finDate < initDate) finDatePicker.Value = initDate; //si el rango no es valido se corrige
-
-                MessageBox.Show("Seleccione un periodo que desee mostrar", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error); return;
-            }
-
+            if (finDate < initDate) finDatePicker.Value = initDate; //si el rango no es valido se corrige
             Actualizar(initDate, finDate);
         }
 

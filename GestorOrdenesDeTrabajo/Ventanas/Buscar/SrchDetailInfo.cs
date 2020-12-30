@@ -41,6 +41,7 @@ namespace GestorOrdenesDeTrabajo.Ventanas.Buscar
             lblMecanico.Text = mecanicos;
             lblMet_Pago.Text = TipoPagoManager.ToString(orden.TipoPago ?? -1);
             lblReferencia.Text = orden.Referencia ?? "INDEFINIDA";
+            lblEquipo.Text = orden.Equipo;
         }
 
         private void btnPiezas_Click(object sender, EventArgs e)

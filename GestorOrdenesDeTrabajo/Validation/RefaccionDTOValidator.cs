@@ -16,7 +16,7 @@ namespace GestorOrdenesDeTrabajo.Validation
             RuleFor(el => el.Descripcion).NotEmpty();
             RuleFor(el => el.PrecioUnitrio).NotEmpty().GreaterThanOrEqualTo(0);
             RuleFor(el => el.Cantidad).GreaterThan(0);
-            RuleFor(el => el.Total).GreaterThan(0);
+            //RuleFor(el => el.Total).GreaterThan(0);
         }
     }
 }

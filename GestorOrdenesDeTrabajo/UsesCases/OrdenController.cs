@@ -106,7 +106,7 @@ namespace GestorOrdenesDeTrabajo.UsesCases
                     db.Configuration.LazyLoadingEnabled = true;
                     lista = db.Orden
                         .AsNoTracking()
-                        .Where(el => DbFunctions.TruncateTime(el.FechaEntrega) >= initDate.Date && DbFunctions.TruncateTime(el.FechaEntrega) <= finDate.Date)
+                        .Where(el => DbFunctions.TruncateTime(el.FechaRecepcion) >= initDate.Date && DbFunctions.TruncateTime(el.FechaRecepcion) <= finDate.Date)
                         .Include(el => el.Cliente)
                         .OrderBy(cp => cp.Folio)
                         .ToList();
