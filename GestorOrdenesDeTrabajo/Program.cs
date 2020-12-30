@@ -21,8 +21,8 @@ namespace GestorOrdenesDeTrabajo
 
             //CON ESTO YA FUNKA, PEEEERO NO SE QUE TANTO IMPACTE AL RENDIMIENTO EL RESTART, LO PUEDO HACER DISTINTO
 
-            //Application.Run(new LoginDialog());
-            Application.Run(new Main());
+            Application.Run(new LoginDialog());
+            //Application.Run(new Main());
 
 
 

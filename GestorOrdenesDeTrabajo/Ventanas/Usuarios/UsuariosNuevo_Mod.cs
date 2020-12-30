@@ -74,18 +74,29 @@ namespace GestorOrdenesDeTrabajo.Ventanas.Usuarios
             }
             else
             {
+                var isCurrenUser = false;
+                if (cUser.Id == CurrentUser.User.Id)
+                {
+                    isCurrenUser = true;
+                    if (MessageBox.Show("Se reiniciara la aplicacion para aplicar cambios\n¿Desea continuar?", "Advertencia", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.No) return;
+                }
                 cUser.Usuario1 = txtUsuario.Text;
                 cUser.Password = txtPassword.Text;
                 var res = UsuarioValidator.Validate(cUser);
                 if (ShowErrorValidation.Valid(res))
                     cUser = UsuarioController.I.Edit(cUser);
+                if(cUser!=null && isCurrenUser)
+                {
+                    Application.Restart();
+                }
             }
 
             if (cUser == null)
                 MessageBox.Show("No se pudo agregar o editar el usuario", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
+
             cUser = null;
-            Helper.VaciarTexto(txtUsuario, txtPassword);
+            this.Dispose();
         }
 
         private void btnCancel_Click(object sender, EventArgs e)
@@ -108,12 +119,7 @@ namespace GestorOrdenesDeTrabajo.Ventanas.Usuarios
         private void btnShowHidePass_Click(object sender, EventArgs e)
         {
             ShowPass = !ShowPass;
-
             txtPassword.UseSystemPasswordChar = ShowPass;
-            if (ShowPass)
-                btnShowHidePass.Text = "Ver";
-            else
-                btnShowHidePass.Text = "Ocultar";
         }
     }
 }
