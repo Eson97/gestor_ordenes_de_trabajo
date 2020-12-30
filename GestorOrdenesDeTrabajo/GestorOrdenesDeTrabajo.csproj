@@ -66,6 +66,7 @@
     <Compile Include="Auxiliares\MecanicoDTO.cs" />
     <Compile Include="Auxiliares\OrdenMecanicoDTO.cs" />
     <Compile Include="Auxiliares\RefaccionDTO.cs" />
+    <Compile Include="CurrentUser.cs" />
     <Compile Include="CustomComponents\CustomDateTimePicker.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -117,6 +118,7 @@
     <Compile Include="DB\UsuarioPermiso.cs" />
     <Compile Include="Enums\MessageDialogResult.cs" />
     <Compile Include="Enums\OrdenStatus.cs" />
+    <Compile Include="Enums\Permisos.cs" />
     <Compile Include="Enums\TipoPago.cs" />
     <Compile Include="Inicio.cs">
       <SubType>Form</SubType>
