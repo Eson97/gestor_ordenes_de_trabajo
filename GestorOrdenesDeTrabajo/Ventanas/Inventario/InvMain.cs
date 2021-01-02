@@ -18,6 +18,7 @@ namespace GestorOrdenesDeTrabajo.OrdenWindow.Inventario
         DataTable Datatable;
         private bool canEdit = true;
         private Excel.ExcelController xlsx = new Excel.ExcelController();
+        List<Refaccion> refacciones;
         public InvMain()
         {
             InitializeComponent();
@@ -94,7 +95,7 @@ namespace GestorOrdenesDeTrabajo.OrdenWindow.Inventario
             while (tablaInventario.RowCount != 0)
                 tablaInventario.Rows.RemoveAt(0);
 
-            var refacciones = RefaccionController.I.GetLista();
+            refacciones = RefaccionController.I.GetLista();
             foreach (Refaccion item in refacciones)
                 Datatable.Rows.Add(new object[] { item.Id, item.Codigo, item.Descripcion, item.PrecioMinimo });
 
@@ -208,7 +209,7 @@ namespace GestorOrdenesDeTrabajo.OrdenWindow.Inventario
         {
             if((int)MessageDialogResult.Yes == MessageDialog.ShowMessageDialog("Confirmacion","¿Desea exportar las refacciones a un excel?\nEsto puede tardar unos minutos", false))
             {
-                xlsx.CreateExcelRefacciones();
+                xlsx.CreateExcelRefacciones(refacciones);
             }
         }
 

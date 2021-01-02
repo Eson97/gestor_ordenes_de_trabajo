@@ -91,8 +91,18 @@ namespace GestorOrdenesDeTrabajo.Excel
                 //Se agregan los valores a la BD
                 foreach(var item in refacciones)
                 {
-                    Console.WriteLine($"Id: {item.Id} codigo: {item.Codigo} descripcion: {item.Descripcion} minimo: {item.PrecioMinimo}");
-                    //TODO agregar refacciones a la BD - Tomar en cuenta que en caso de ya estar registrado el producto, este debe de editarse en lugar de agregarse nuevamente
+                    var refaccion = new Refaccion
+                    {
+                        Id = item.Id,
+                        Codigo = item.Codigo,
+                        Descripcion = item.Descripcion,
+                        PrecioMinimo = item.PrecioMinimo,
+                        IsDeleted = false
+                    };
+
+                    Console.WriteLine($"Id: {refaccion.Id} codigo: {refaccion.Codigo} descripcion: {refaccion.Descripcion} minimo: {refaccion.PrecioMinimo}");
+                    if (refaccion.Id != -1) ; //agregar
+                    else; //editar
                 }
 
                 return true;
@@ -105,13 +115,10 @@ namespace GestorOrdenesDeTrabajo.Excel
         }
 
 
-        public bool CreateExcelRefacciones()
+        public bool CreateExcelRefacciones(List<Refaccion> refacciones)
         {
             try
             {
-                //Obtenemos las refacciones desde la BD
-                var refacciones = RefaccionController.I.GetLista();
-
                 //Los escribimos en el excel
                 WriteExcelFileWithRefacciones(refacciones);
 
