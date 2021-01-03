@@ -52,8 +52,8 @@ namespace GestorOrdenesDeTrabajo.Excel
             }
         }
 
-        private  List<Refaccion> ReadExcelFileForPiezas(string filePath)
-        {   
+        private List<Refaccion> ReadExcelFileForPiezas(string filePath)
+        {
             List<Refaccion> p = new List<Refaccion>();
             xlsx.Application xlApp = new xlsx.Application();
             xlsx.Workbook xlWorkbook = xlApp.Workbooks.Open(filePath);
@@ -67,6 +67,12 @@ namespace GestorOrdenesDeTrabajo.Excel
                 string codigo = Convert.ToString((xlRange.Cells[Fila, 2] as xlsx.Range).Value);
                 string descripcion = Convert.ToString((xlRange.Cells[Fila, 3] as xlsx.Range).Value);
                 decimal minimo = Convert.ToDecimal((xlRange.Cells[Fila, 4] as xlsx.Range).Value);
+
+                //Desde aqui se pueden procesar los datos, si alguno no tiene descripcion, codigo o precio se puede descartar
+                //Si se aceptan valores sin codigo eliminar la comprobacion, para refacciones nuevas el id puede ser 0 osea celda vacia, en celda puede ser vacio o un numero negativo
+                if (codigo == null || descripcion == null || minimo < 0.0M)
+                    continue;
+
                 p.Add(new Refaccion
                 {
                     Id = id,
@@ -86,10 +92,10 @@ namespace GestorOrdenesDeTrabajo.Excel
             try
             {
                 //Obtenemos los valores desde el excel
-                List<Refaccion> refacciones = ReadExcelFileForPiezas(filePath); 
+                List<Refaccion> refacciones = ReadExcelFileForPiezas(filePath);
 
                 //Se agregan los valores a la BD
-                foreach(var item in refacciones)
+                foreach (var item in refacciones)
                 {
                     var refaccion = new Refaccion
                     {
@@ -99,6 +105,10 @@ namespace GestorOrdenesDeTrabajo.Excel
                         PrecioMinimo = item.PrecioMinimo,
                         IsDeleted = false
                     };
+                    //Si el id==0, puede ser nuevo.Revisar el codigo y descripcion en la DB, en caso encontrarlos se edita el precio?
+                    //Si el codigo existe se editan los demas datos?
+                    //Si la descripcion se encuentra pero lo demas es diferente se agrega o edita?
+                    //Si se encuentra un elemento con los mismos valores se edita el precio minimo?
 
                     Console.WriteLine($"Id: {refaccion.Id} codigo: {refaccion.Codigo} descripcion: {refaccion.Descripcion} minimo: {refaccion.PrecioMinimo}");
                     if (refaccion.Id != -1) ; //agregar
@@ -107,9 +117,9 @@ namespace GestorOrdenesDeTrabajo.Excel
 
                 return true;
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
-                MessageBox.Show($"A ocurrido un error:\n\n{ex.Message}","Error",MessageBoxButtons.OK,MessageBoxIcon.Error);
+                MessageBox.Show($"A ocurrido un error:\n\n{ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             return false;
         }
