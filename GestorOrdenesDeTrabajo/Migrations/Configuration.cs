@@ -211,14 +211,14 @@
                },
                 new Refaccion
                {
-                   Codigo="1",
+                   Codigo="12",
                    Descripcion="Rodillo",
                    IsDeleted=false,
                    PrecioMinimo=12.00M,
                },
                 new Refaccion
                {
-                   Codigo="1",
+                   Codigo="123",
                    Descripcion="Desarmadores",
                    IsDeleted=false,
                    PrecioMinimo=12.00M,
