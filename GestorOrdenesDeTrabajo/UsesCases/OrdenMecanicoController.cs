@@ -76,8 +76,9 @@ namespace GestorOrdenesDeTrabajo.UsesCases
                     var list = db.OrdenMecanico
                         .AsNoTracking()
                         .Where(el => DbFunctions.TruncateTime(el.Orden.FechaEntrega) >= initDate.Date && DbFunctions.TruncateTime(el.Orden.FechaEntrega) <= finDate.Date
-                        && el.Orden.Status == (int)OrdenStatus.ENTREGADA 
-                        || el.Orden.Status == (int)OrdenStatus.GARANTIA_POR_ENTREGAR)
+                        && el.Orden.Status == (int)OrdenStatus.ENTREGADA
+                        || el.Orden.Status == (int)OrdenStatus.GARANTIA_POR_ENTREGAR
+                        || el.Orden.Status == (int)OrdenStatus.GARANTIA_ENTREGADA)
                         .Select(el => el.Mecanico);
 
                     lista = list.Intersect(db.Mecanico)
@@ -108,7 +109,9 @@ namespace GestorOrdenesDeTrabajo.UsesCases
                     lista = db.OrdenMecanico
                         .AsNoTracking()
                         .Where(el => DbFunctions.TruncateTime(el.Orden.FechaEntrega) >= initDate.Date && DbFunctions.TruncateTime(el.Orden.FechaEntrega) <= finDate.Date
-                        && el.Orden.Status == (int)OrdenStatus.ENTREGADA)
+                        && el.Orden.Status == (int)OrdenStatus.ENTREGADA
+                        || el.Orden.Status == (int)OrdenStatus.GARANTIA_POR_ENTREGAR
+                        || el.Orden.Status == (int)OrdenStatus.GARANTIA_ENTREGADA)
                         .Select(el => new OrdenMecanicoDTO()
                         {
                             Id = el.Id,

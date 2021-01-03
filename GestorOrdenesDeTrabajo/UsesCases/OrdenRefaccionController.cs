@@ -48,11 +48,13 @@ namespace GestorOrdenesDeTrabajo.UsesCases
             {
                 using (Entities db = new Entities())
                 {
-                    lista = db.OrdenRefaccion
+                    var list = db.OrdenRefaccion
                         .AsNoTracking()
                         .Where(el => DbFunctions.TruncateTime(el.Orden.FechaEntrega) >= initDate.Date && DbFunctions.TruncateTime(el.Orden.FechaEntrega) <= finDate.Date
-                        && el.Orden.Status == (int)OrdenStatus.ENTREGADA
-                        && el.Orden.TipoPago == (int)tipoPago)
+                        && el.Orden.TipoPago == (int)tipoPago
+                        && (el.Orden.Status == (int)OrdenStatus.ENTREGADA
+                        || el.Orden.Status == (int)OrdenStatus.GARANTIA_POR_ENTREGAR
+                        || el.Orden.Status == (int)OrdenStatus.GARANTIA_ENTREGADA))
                         .Select(el => new RefaccionDTO()
                         {
                             Id = el.Refaccion.Id,
@@ -61,8 +63,8 @@ namespace GestorOrdenesDeTrabajo.UsesCases
                             //Cantidad = el.Cantidad,
                             //PrecioUnitrio = el.PrecioUnitario,
                             Total = el.PrecioUnitario * el.Cantidad
-                        })
-                        .ToList();
+                        });
+                    lista = list.ToList();
                 }
                 return lista;
             }
@@ -86,7 +88,9 @@ namespace GestorOrdenesDeTrabajo.UsesCases
                     lista = db.OrdenRefaccion
                         .AsNoTracking()
                         .Where(el => DbFunctions.TruncateTime(el.Orden.FechaEntrega) >= initDate.Date && DbFunctions.TruncateTime(el.Orden.FechaEntrega) <= finDate.Date
-                        && el.Orden.Status >= (int)OrdenStatus.ENTREGADA)
+                        && el.Orden.Status == (int)OrdenStatus.ENTREGADA
+                        || el.Orden.Status == (int)OrdenStatus.GARANTIA_POR_ENTREGAR
+                        || el.Orden.Status == (int)OrdenStatus.GARANTIA_ENTREGADA)
                         .Select(el => new RefaccionDTO()
                         {
                             Id = el.Refaccion.Id,
