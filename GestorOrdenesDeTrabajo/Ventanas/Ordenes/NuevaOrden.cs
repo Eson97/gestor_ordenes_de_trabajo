@@ -57,7 +57,7 @@ namespace GestorOrdenesDeTrabajo.Ventanas.Ordenes
         private void btnAceptar_Click(object sender, EventArgs e)
         {
             bool isEmpty = !Helper.Llenos(txtEquipo, txtObservaciones, txtFolio);
-            if (cliente == null && isEmpty)
+            if (cliente == null || isEmpty)
                 return;
 
             int folio = int.Parse(txtFolio.Text);

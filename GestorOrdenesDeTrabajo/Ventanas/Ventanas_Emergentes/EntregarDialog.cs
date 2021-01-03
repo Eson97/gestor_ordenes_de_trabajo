@@ -23,7 +23,7 @@ namespace GestorOrdenesDeTrabajo.Ventanas.Ventanas_Emergentes
         private static string _Referencia;
         private static bool _Result = false;
         private static OrdenEntregaValidator OrdenValidator;
-
+        private static OrdenStatus _status;
         Orden CurrentOrden;
 
         public EntregarDialog(Orden orden)
@@ -33,9 +33,9 @@ namespace GestorOrdenesDeTrabajo.Ventanas.Ventanas_Emergentes
             this.CurrentOrden = orden;
             this.lblTittle.Text = $"Orden: {orden.Folio}";
 
-            OrdenStatus status = (OrdenStatus)Enum.Parse(typeof(OrdenStatus), orden.Status.ToString());
+            _status = (OrdenStatus)Enum.Parse(typeof(OrdenStatus), orden.Status.ToString());
 
-            switch (status)
+            switch (_status)
             {
                 case OrdenStatus.GARANTIA_POR_ENTREGAR:
                     cbFormaDePago.Enabled = false;
@@ -76,13 +76,24 @@ namespace GestorOrdenesDeTrabajo.Ventanas.Ventanas_Emergentes
         {
             if (MessageDialog.ShowMessageDialog("", "¿Toda la infotmacion ingresada es correcta?", false) == (int)MessageDialogResult.No) return;
 
-            _MetodoPago = (TipoPago)Enum.Parse(typeof(TipoPago), cbFormaDePago.SelectedValue.ToString());
-            _FechaEntrega = cdtpFechaEntrega.Value;
-            _Referencia = txtRef.Text;
+            switch (_status)
+            {
+                case OrdenStatus.GARANTIA_POR_ENTREGAR:
+                    _FechaEntrega = cdtpFechaEntrega.Value;
+                    CurrentOrden.FechaEntrega = _FechaEntrega;
+                    break;
+                case OrdenStatus.POR_ENTREGAR:
+                    _MetodoPago = (TipoPago)Enum.Parse(typeof(TipoPago), cbFormaDePago.SelectedValue.ToString());
+                    _FechaEntrega = cdtpFechaEntrega.Value;
+                    _Referencia = txtRef.Text;
+                    CurrentOrden.Referencia = _Referencia;
+                    CurrentOrden.FechaEntrega = _FechaEntrega;
+                    CurrentOrden.TipoPago = (int)_MetodoPago;
+                    break;
+                default:
+                    break;
+            }
 
-            CurrentOrden.Referencia = _Referencia;
-            CurrentOrden.FechaEntrega = _FechaEntrega;
-            CurrentOrden.TipoPago = (int)_MetodoPago;
 
             var res = OrdenValidator.Validate(CurrentOrden);
             if (ShowErrorValidation.Valid(res))
