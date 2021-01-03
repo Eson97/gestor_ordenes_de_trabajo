@@ -60,7 +60,7 @@ namespace GestorOrdenesDeTrabajo.Ventanas.Message
 
         private void Permission(IList<Permiso> permisos)
         {
-            Button[] buttons = { btnNew,btnEdit };
+            Button[] buttons = { btnNew, btnEdit };
 
             DeniedPermission(buttons);
 
@@ -70,7 +70,7 @@ namespace GestorOrdenesDeTrabajo.Ventanas.Message
                 Console.WriteLine(a.ToString());
                 foreach (Permiso item in permisos)
                 {
-                    if(item.Id == (int)Permisos.MOD_CLIENTES)
+                    if (item.Id == (int)Permisos.MOD_CLIENTES)
                     {
                         btnNew.Enabled = true;
                         btnEdit.Enabled = true;
@@ -191,16 +191,17 @@ namespace GestorOrdenesDeTrabajo.Ventanas.Message
 
             if (CurrentCliente == null)
             {
-                var newCliente = ClienteController.I.Add(new Cliente
+                var newCliente = new Cliente
                 {
                     Direccion = txtDir.Text,
                     Nombre = txtNombre.Text,
                     Telefono = txtTel.Text
-                });
+                };
+
                 var res = ClienteValidator.Validate(newCliente);
 
                 if (ShowErrorValidation.Valid(res))
-                    CurrentCliente = newCliente;
+                    CurrentCliente = ClienteController.I.Add(newCliente);
             }
             else
             {
