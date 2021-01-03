@@ -86,7 +86,7 @@ namespace GestorOrdenesDeTrabajo.UsesCases
                     lista = db.OrdenRefaccion
                         .AsNoTracking()
                         .Where(el => DbFunctions.TruncateTime(el.Orden.FechaEntrega) >= initDate.Date && DbFunctions.TruncateTime(el.Orden.FechaEntrega) <= finDate.Date
-                        && el.Orden.Status == (int)OrdenStatus.ENTREGADA)
+                        && el.Orden.Status >= (int)OrdenStatus.ENTREGADA)
                         .Select(el => new RefaccionDTO()
                         {
                             Id = el.Refaccion.Id,
