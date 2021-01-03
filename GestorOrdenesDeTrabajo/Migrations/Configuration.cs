@@ -36,6 +36,7 @@
             InitOrdenMecanico(context);
             InitOrdenRefaccion(context);
             InitOrdenRefaccionGarantia(context);
+            InitPermisoUsuario(context);
         }
 
         private void InitUsuario(Entities db)
@@ -266,22 +267,30 @@
                 new OrdenRefaccion
                 {
                     IdOrden=1,
-                    IdRefaccion=1
+                    IdRefaccion=1,
+                    PrecioUnitario=1200,
+                    Cantidad=1
                 },
                 new OrdenRefaccion
                 {
                     IdOrden=1,
-                    IdRefaccion=2
+                    IdRefaccion=2,
+                    PrecioUnitario=1200,
+                    Cantidad=1
                 },
                 new OrdenRefaccion
                 {
                     IdOrden=1,
-                    IdRefaccion=3
+                    IdRefaccion=3,
+                    PrecioUnitario=1200,
+                    Cantidad=1
                 },
                 new OrdenRefaccion
                 {
                     IdOrden=1,
-                    IdRefaccion=4
+                    IdRefaccion=4,
+                    PrecioUnitario=1200,
+                    Cantidad=1
                 },
             };
             foreach (var item in ordenRefacciones)
@@ -297,7 +306,9 @@
                 new OrdenRefaccionGarantia
                 {
                     IdOrden=1,
-                    IdRefaccion=4
+                    IdRefaccion=4,
+                    PrecioUnitario=1000,
+                    Cantidad=1
                 }
             };
             foreach (var item in ordenRefacciones)
@@ -314,7 +325,8 @@
                new OrdenMecanico
                {
                    IdOrden=1,
-                   IdMecanico=1
+                   IdMecanico=1,
+                   CostoManoObra=2000,
                },
             };
 
@@ -325,14 +337,59 @@
             }
         }
 
-        private void InitPermisoUsuaro(Entities db)
+        private void InitPermisoUsuario(Entities db)
         {
             var permisoUsuario = new UsuarioPermiso[]
             {
                 new UsuarioPermiso
                 {
                     IdPermiso=1,
-                    IdUsuario=1
+                    IdUsuario=2
+                },
+                new UsuarioPermiso
+                {
+                    IdPermiso=2,
+                    IdUsuario=2
+                },
+                new UsuarioPermiso
+                {
+                    IdPermiso=3,
+                    IdUsuario=2
+                },
+                new UsuarioPermiso
+                {
+                    IdPermiso=4,
+                    IdUsuario=2
+                },
+                new UsuarioPermiso
+                {
+                    IdPermiso=5,
+                    IdUsuario=2
+                },
+                new UsuarioPermiso
+                {
+                    IdPermiso=6,
+                    IdUsuario=2
+                },
+                new UsuarioPermiso
+                {
+                    IdPermiso=7,
+                    IdUsuario=2
+                },
+                new UsuarioPermiso
+                {
+                    IdPermiso=8,
+                    IdUsuario=2
+                },
+                new UsuarioPermiso
+                {
+                    IdPermiso=9,
+                    IdUsuario=2
+                },
+                new UsuarioPermiso
+                {
+                    IdPermiso=10,
+                    IdUsuario=2
                 },
             };
             foreach (var item in permisoUsuario)
