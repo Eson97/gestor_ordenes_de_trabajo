@@ -70,13 +70,13 @@ namespace GestorOrdenesDeTrabajo.Excel
                 string codigo = Convert.ToString((xlRange.Cells[Fila, 2] as xlsx.Range).Value);
                 string descripcion = Convert.ToString((xlRange.Cells[Fila, 3] as xlsx.Range).Value);
                 decimal minimo = Convert.ToDecimal((xlRange.Cells[Fila, 4] as xlsx.Range).Value);
-                toAdd.Add(new Refaccion()
-                {
-                    Id = id,
-                    Codigo = codigo,
-                    Descripcion = descripcion,
-                    PrecioMinimo = minimo
-                });
+                //    toAdd.Add(new
+                //    {
+                //        Id = id,
+                //        Codigo = codigo,
+                //        Descripcion = descripcion,
+                //        PrecioMinimo = minimo
+                //    });
             }
             xlWorkbook.Close(false);
             xlApp.Quit();
@@ -88,8 +88,8 @@ namespace GestorOrdenesDeTrabajo.Excel
         {
             Dictionary<string, Refaccion> exist = RefaccionController.I.GetDictionary();
 
-            List<Refaccion> toAdd = new List<Refaccion>();
-            List<Refaccion> toEdit = new List<Refaccion>();
+            Dictionary<string, Refaccion> toAdd = new Dictionary<string, Refaccion>();
+            Dictionary<string, Refaccion> toEdit = new Dictionary<string, Refaccion>();
 
             //Agregar para mostrar elementos repetidos si existen
             //List<Refaccion> repeated = new List<Refaccion>();
@@ -106,21 +106,17 @@ namespace GestorOrdenesDeTrabajo.Excel
 
                 if (item.Id != 0 && isSaved)
                 {
-                    //Cambiar List por Dictionary y revisar repetidos al ir agregando
-                    //if (!toEdit.ContainsKey(codigo))
-                    //{
-                    toEdit.Add(item);
-                    //}
+                    //Revisar repetidos al ir agregando
+                    if (!toEdit.ContainsKey(item.Codigo))
+                        toEdit.Add(item.Codigo, item);
                 }
                 else if (!isSaved)
                 {
-                    //if (!toAdd.ContainsKey(codigo))
-                    //{
-                    toAdd.Add(item);
-                    //}
+                    if (!toAdd.ContainsKey(item.Codigo))
+                        toAdd.Add(item.Codigo, item);
                 }
             }
-            return (toAdd, toEdit);
+            return (toAdd.Values.ToList(), toEdit.Values.ToList());
         }
 
         public bool ImportExcelFrom(string filePath)
@@ -130,6 +126,8 @@ namespace GestorOrdenesDeTrabajo.Excel
                 //Obtenemos los valores desde el excel
                 var refaccionesFromExcel = ReadExcelFileForPiezas(filePath);
                 var result = Validate(refaccionesFromExcel);
+                return true;
+
                 List<Refaccion> toAdd = result.Item1;
                 List<Refaccion> toEdit = result.Item2;
 
