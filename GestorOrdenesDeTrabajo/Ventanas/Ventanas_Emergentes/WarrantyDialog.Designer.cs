@@ -29,8 +29,8 @@ namespace GestorOrdenesDeTrabajo.Ventanas.Ventanas_Emergentes
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.topPanel = new System.Windows.Forms.Panel();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.panel5 = new System.Windows.Forms.Panel();
@@ -58,30 +58,28 @@ namespace GestorOrdenesDeTrabajo.Ventanas.Ventanas_Emergentes
             this.topPanel.BackColor = System.Drawing.Color.Maroon;
             this.topPanel.Dock = System.Windows.Forms.DockStyle.Top;
             this.topPanel.Location = new System.Drawing.Point(0, 0);
-            this.topPanel.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.topPanel.Name = "topPanel";
-            this.topPanel.Size = new System.Drawing.Size(1203, 37);
+            this.topPanel.Size = new System.Drawing.Size(902, 30);
             this.topPanel.TabIndex = 0;
             this.topPanel.MouseDown += new System.Windows.Forms.MouseEventHandler(this.topPanel_MouseDown);
             // 
             // tableLayoutPanel1
             // 
             this.tableLayoutPanel1.ColumnCount = 4;
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 7F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 600F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 5F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 450F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 7F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 5F));
             this.tableLayoutPanel1.Controls.Add(this.panel5, 2, 1);
             this.tableLayoutPanel1.Controls.Add(this.panel2, 1, 1);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 37);
-            this.tableLayoutPanel1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 30);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 3;
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 6F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 5F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 6F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(1203, 345);
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 5F));
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(902, 280);
             this.tableLayoutPanel1.TabIndex = 1;
             // 
             // panel5
@@ -97,20 +95,18 @@ namespace GestorOrdenesDeTrabajo.Ventanas.Ventanas_Emergentes
             this.panel5.Controls.Add(this.label3);
             this.panel5.Controls.Add(this.label1);
             this.panel5.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel5.Location = new System.Drawing.Point(611, 10);
-            this.panel5.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.panel5.Location = new System.Drawing.Point(458, 8);
             this.panel5.Name = "panel5";
-            this.panel5.Size = new System.Drawing.Size(581, 325);
+            this.panel5.Size = new System.Drawing.Size(436, 264);
             this.panel5.TabIndex = 2;
             // 
             // lblMaquina
             // 
             this.lblMaquina.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblMaquina.ForeColor = System.Drawing.SystemColors.ControlDark;
-            this.lblMaquina.Location = new System.Drawing.Point(125, 126);
-            this.lblMaquina.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblMaquina.Location = new System.Drawing.Point(94, 102);
             this.lblMaquina.Name = "lblMaquina";
-            this.lblMaquina.Size = new System.Drawing.Size(420, 25);
+            this.lblMaquina.Size = new System.Drawing.Size(315, 20);
             this.lblMaquina.TabIndex = 14;
             this.lblMaquina.Text = "...";
             // 
@@ -119,10 +115,9 @@ namespace GestorOrdenesDeTrabajo.Ventanas.Ventanas_Emergentes
             this.lblFechaEntrega.AutoSize = true;
             this.lblFechaEntrega.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblFechaEntrega.ForeColor = System.Drawing.SystemColors.ControlDark;
-            this.lblFechaEntrega.Location = new System.Drawing.Point(341, 187);
-            this.lblFechaEntrega.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblFechaEntrega.Location = new System.Drawing.Point(256, 152);
             this.lblFechaEntrega.Name = "lblFechaEntrega";
-            this.lblFechaEntrega.Size = new System.Drawing.Size(90, 25);
+            this.lblFechaEntrega.Size = new System.Drawing.Size(71, 20);
             this.lblFechaEntrega.TabIndex = 13;
             this.lblFechaEntrega.Text = "00/00/00";
             // 
@@ -130,10 +125,9 @@ namespace GestorOrdenesDeTrabajo.Ventanas.Ventanas_Emergentes
             // 
             this.lblCliente.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblCliente.ForeColor = System.Drawing.SystemColors.ControlDark;
-            this.lblCliente.Location = new System.Drawing.Point(125, 86);
-            this.lblCliente.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblCliente.Location = new System.Drawing.Point(94, 70);
             this.lblCliente.Name = "lblCliente";
-            this.lblCliente.Size = new System.Drawing.Size(420, 25);
+            this.lblCliente.Size = new System.Drawing.Size(315, 20);
             this.lblCliente.TabIndex = 12;
             this.lblCliente.Text = "...";
             // 
@@ -142,10 +136,9 @@ namespace GestorOrdenesDeTrabajo.Ventanas.Ventanas_Emergentes
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.ForeColor = System.Drawing.SystemColors.ControlDark;
-            this.label2.Location = new System.Drawing.Point(145, 187);
-            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label2.Location = new System.Drawing.Point(109, 152);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(173, 25);
+            this.label2.Size = new System.Drawing.Size(141, 20);
             this.label2.TabIndex = 11;
             this.label2.Text = "Fecha de Entrega:";
             // 
@@ -154,10 +147,9 @@ namespace GestorOrdenesDeTrabajo.Ventanas.Ventanas_Emergentes
             this.txtFolio.BackColor = System.Drawing.SystemColors.ControlDark;
             this.txtFolio.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtFolio.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtFolio.Location = new System.Drawing.Point(224, 25);
-            this.txtFolio.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtFolio.Location = new System.Drawing.Point(168, 20);
             this.txtFolio.Name = "txtFolio";
-            this.txtFolio.Size = new System.Drawing.Size(253, 30);
+            this.txtFolio.Size = new System.Drawing.Size(190, 26);
             this.txtFolio.TabIndex = 10;
             // 
             // btnCancelar
@@ -169,10 +161,9 @@ namespace GestorOrdenesDeTrabajo.Ventanas.Ventanas_Emergentes
             this.btnCancelar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnCancelar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnCancelar.ForeColor = System.Drawing.SystemColors.ControlDark;
-            this.btnCancelar.Location = new System.Drawing.Point(299, 249);
-            this.btnCancelar.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnCancelar.Location = new System.Drawing.Point(224, 202);
             this.btnCancelar.Name = "btnCancelar";
-            this.btnCancelar.Size = new System.Drawing.Size(169, 46);
+            this.btnCancelar.Size = new System.Drawing.Size(127, 37);
             this.btnCancelar.TabIndex = 7;
             this.btnCancelar.Text = "Cancelar";
             this.btnCancelar.UseVisualStyleBackColor = false;
@@ -187,10 +178,9 @@ namespace GestorOrdenesDeTrabajo.Ventanas.Ventanas_Emergentes
             this.btnGarantia.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnGarantia.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnGarantia.ForeColor = System.Drawing.SystemColors.ControlDark;
-            this.btnGarantia.Location = new System.Drawing.Point(121, 249);
-            this.btnGarantia.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnGarantia.Location = new System.Drawing.Point(91, 202);
             this.btnGarantia.Name = "btnGarantia";
-            this.btnGarantia.Size = new System.Drawing.Size(169, 46);
+            this.btnGarantia.Size = new System.Drawing.Size(127, 37);
             this.btnGarantia.TabIndex = 6;
             this.btnGarantia.Text = "Garantia";
             this.btnGarantia.UseVisualStyleBackColor = false;
@@ -201,10 +191,9 @@ namespace GestorOrdenesDeTrabajo.Ventanas.Ventanas_Emergentes
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label5.ForeColor = System.Drawing.SystemColors.ControlDark;
-            this.label5.Location = new System.Drawing.Point(24, 126);
-            this.label5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label5.Location = new System.Drawing.Point(18, 102);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(94, 25);
+            this.label5.Size = new System.Drawing.Size(74, 20);
             this.label5.TabIndex = 4;
             this.label5.Text = "Maquina:";
             // 
@@ -213,10 +202,9 @@ namespace GestorOrdenesDeTrabajo.Ventanas.Ventanas_Emergentes
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.ForeColor = System.Drawing.SystemColors.ControlDark;
-            this.label3.Location = new System.Drawing.Point(24, 86);
-            this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label3.Location = new System.Drawing.Point(18, 70);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(87, 25);
+            this.label3.Size = new System.Drawing.Size(70, 20);
             this.label3.TabIndex = 2;
             this.label3.Text = "Cliente:";
             // 
@@ -225,10 +213,9 @@ namespace GestorOrdenesDeTrabajo.Ventanas.Ventanas_Emergentes
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.SystemColors.ControlDark;
-            this.label1.Location = new System.Drawing.Point(145, 25);
-            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label1.Location = new System.Drawing.Point(109, 20);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(66, 25);
+            this.label1.Size = new System.Drawing.Size(53, 20);
             this.label1.TabIndex = 0;
             this.label1.Text = "Folio:";
             // 
@@ -237,10 +224,9 @@ namespace GestorOrdenesDeTrabajo.Ventanas.Ventanas_Emergentes
             this.panel2.Controls.Add(this.tablaOrdenes);
             this.panel2.Controls.Add(this.txtFilter);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel2.Location = new System.Drawing.Point(11, 10);
-            this.panel2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.panel2.Location = new System.Drawing.Point(8, 8);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(592, 325);
+            this.panel2.Size = new System.Drawing.Size(444, 264);
             this.panel2.TabIndex = 0;
             // 
             // tablaOrdenes
@@ -248,32 +234,32 @@ namespace GestorOrdenesDeTrabajo.Ventanas.Ventanas_Emergentes
             this.tablaOrdenes.AllowUserToAddRows = false;
             this.tablaOrdenes.AllowUserToDeleteRows = false;
             this.tablaOrdenes.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(35)))), ((int)(((byte)(35)))));
+            this.tablaOrdenes.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
             this.tablaOrdenes.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            dataGridViewCellStyle7.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle7.ForeColor = System.Drawing.SystemColors.ControlLight;
-            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
-            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.SystemColors.ControlLight;
-            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.tablaOrdenes.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle7;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.ControlLight;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.ControlLight;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.tablaOrdenes.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
             this.tablaOrdenes.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.tablaOrdenes.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tablaOrdenes.EnableHeadersVisualStyles = false;
-            this.tablaOrdenes.Location = new System.Drawing.Point(0, 37);
-            this.tablaOrdenes.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tablaOrdenes.Location = new System.Drawing.Point(0, 31);
             this.tablaOrdenes.Name = "tablaOrdenes";
             this.tablaOrdenes.ReadOnly = true;
             this.tablaOrdenes.RowHeadersVisible = false;
             this.tablaOrdenes.RowHeadersWidth = 51;
-            dataGridViewCellStyle8.BackColor = System.Drawing.SystemColors.ControlDark;
-            dataGridViewCellStyle8.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle8.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.SystemColors.ControlLight;
-            this.tablaOrdenes.RowsDefaultCellStyle = dataGridViewCellStyle8;
+            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.ControlDark;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle4.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.ControlLight;
+            this.tablaOrdenes.RowsDefaultCellStyle = dataGridViewCellStyle4;
             this.tablaOrdenes.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.tablaOrdenes.Size = new System.Drawing.Size(592, 288);
+            this.tablaOrdenes.Size = new System.Drawing.Size(444, 233);
             this.tablaOrdenes.TabIndex = 4;
             this.tablaOrdenes.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.tablaOrdenes_CellDoubleClick);
             // 
@@ -285,9 +271,8 @@ namespace GestorOrdenesDeTrabajo.Ventanas.Ventanas_Emergentes
             this.txtFilter.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtFilter.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
             this.txtFilter.Location = new System.Drawing.Point(0, 0);
-            this.txtFilter.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.txtFilter.Name = "txtFilter";
-            this.txtFilter.Size = new System.Drawing.Size(592, 37);
+            this.txtFilter.Size = new System.Drawing.Size(444, 31);
             this.txtFilter.TabIndex = 3;
             this.txtFilter.Text = "Ingrese Folio de la orden";
             this.txtFilter.TextChanged += new System.EventHandler(this.txtFilter_TextChanged);
@@ -296,15 +281,15 @@ namespace GestorOrdenesDeTrabajo.Ventanas.Ventanas_Emergentes
             // 
             // WarrantyDialog
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(25)))), ((int)(((byte)(25)))));
-            this.ClientSize = new System.Drawing.Size(1203, 382);
+            this.ClientSize = new System.Drawing.Size(902, 310);
             this.Controls.Add(this.tableLayoutPanel1);
             this.Controls.Add(this.topPanel);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "WarrantyDialog";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "WarrantyDialog";
             this.tableLayoutPanel1.ResumeLayout(false);
             this.panel5.ResumeLayout(false);

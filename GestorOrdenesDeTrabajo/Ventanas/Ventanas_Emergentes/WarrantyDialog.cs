@@ -37,6 +37,7 @@ namespace GestorOrdenesDeTrabajo.Ventanas.Ventanas_Emergentes
             DataTable.Columns[2].ReadOnly = true;
             DataTable.Columns[3].ReadOnly = true;
             DataTable.Columns[4].ReadOnly = true;
+            DataTable.Columns[4].DataType = typeof(DateTime);
             FillTable();
 
             CurrentOrden = null;
@@ -72,6 +73,7 @@ namespace GestorOrdenesDeTrabajo.Ventanas.Ventanas_Emergentes
             tablaOrdenes.Columns[1].Resizable = DataGridViewTriState.True;
             tablaOrdenes.Columns[2].Resizable = DataGridViewTriState.True;
             tablaOrdenes.Columns[0].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            tablaOrdenes.Columns[4].DefaultCellStyle.Format = "dd/MM/yyyy";
         }
 
         private void txtFilter_Enter(object sender, EventArgs e)
@@ -119,12 +121,11 @@ namespace GestorOrdenesDeTrabajo.Ventanas.Ventanas_Emergentes
             int folio = int.Parse(row.Cells[1].Value.ToString());
             string cliente = row.Cells[2].Value as string;
             string maquina = row.Cells[3].Value as string;
-            string fecha = row.Cells[4].Value as string;
-
+            DateTime fecha = (DateTime)row.Cells[4].Value;
 
             txtFolio.Text = folio.ToString();
             lblCliente.Text = cliente;
-            lblFechaEntrega.Text = DateTime.Parse(fecha).ToShortDateString();
+            lblFechaEntrega.Text = fecha.ToShortDateString();
             lblMaquina.Text = maquina;
 
             CurrentOrden = new Orden()
@@ -138,18 +139,9 @@ namespace GestorOrdenesDeTrabajo.Ventanas.Ventanas_Emergentes
         {
             var filtro = txtFilter.Text;
 
-            if (filtro.Length == 0 || filtro.Equals("Ingrese Folio de la orden"))
-                return;
+            if (!filtro.Equals("Ingrese Folio de la orden"))
+                DataTable.DefaultView.RowFilter = $"Folio LIKE '%{filtro}%'";
 
-            var tempOrdenes = Ordenes.Where(el => el.Folio.ToString().Contains(filtro)).ToList();
-
-            while (tablaOrdenes.RowCount != 0)
-                tablaOrdenes.Rows.RemoveAt(0);
-
-            foreach (Orden item in tempOrdenes)
-            {
-                DataTable.Rows.Add(new object[] { item.Id, item.Folio, item.Cliente.Nombre, item.Equipo, item.FechaEntrega });
-            }
         }
     }
 }
