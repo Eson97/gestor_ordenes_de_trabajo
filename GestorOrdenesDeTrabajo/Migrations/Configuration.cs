@@ -225,7 +225,7 @@
                },
                 new Refaccion
                {
-                   Codigo="1",
+                   Codigo="1234",
                    Descripcion="Eliminado",
                    IsDeleted=true,
                    PrecioMinimo=12.00M,

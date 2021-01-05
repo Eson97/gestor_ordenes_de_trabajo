@@ -20,6 +20,26 @@ namespace GestorOrdenesDeTrabajo.UsesCases
                 return Instance;
             }
         }
+
+
+        public bool AddRange(List<Refaccion> elements)
+        {
+            try
+            {
+                using (Entities db = new Entities())
+                {
+                    db.Refaccion.AddRange(elements);
+                    db.SaveChanges();
+                }
+                return true;
+            }
+            catch (Exception e)
+            {
+                Log.Write("Ha ocurrido un error " + e.Message);
+            }
+            return false;
+        }
+
         /// <summary>
         /// Agrega el elemento si no existe, si existe actualiza los datos e isDeleted=false
         /// </summary>
@@ -117,6 +137,32 @@ namespace GestorOrdenesDeTrabajo.UsesCases
         }
 
         /// <summary>
+        /// No edita el elemento si el codigo existe y no coincide con la refaccion
+        /// </summary>
+        /// <param name="element"></param>
+        /// <returns>Editada o null si el codigo existe</returns>
+        public Refaccion EditOnImport(Refaccion element)
+        {
+            if (element.Id <= 0) return null;
+            try
+            {
+                using (Entities db = new Entities())
+                {
+                    var codeExist = db.Refaccion.Any(el => el.Codigo.Equals(element.Codigo));
+                    if (!codeExist)
+                        return null;
+                    db.Entry(element).State = EntityState.Modified;
+                    db.SaveChanges();
+                }
+                return element;
+            }
+            catch (Exception e)
+            {
+                Log.Write("Ha ocurrido un error " + e.Message);
+            }
+            return null;
+        }
+        /// <summary>
         /// Consulta lista
         /// </summary>
         /// <returns>Retorna lista sin eliminados o lista vacia</returns>
@@ -142,6 +188,36 @@ namespace GestorOrdenesDeTrabajo.UsesCases
             }
             //Retorna lista vacia para evitar excepciones en llamada
             return new List<Refaccion>();
+        }
+
+        public Dictionary<string, Refaccion> GetDictionary()
+        {
+            Dictionary<string, Refaccion> lista = null;
+            try
+            {
+                using (Entities db = new Entities())
+                {
+                    var refaccions = db.Refaccion
+                        .Where(el => !el.IsDeleted)
+                        .AsNoTracking()
+                        .Select(
+                        refaccion => new
+                        {
+                            refaccion.Codigo,
+                            refaccion
+                        });
+
+                    lista = refaccions.ToDictionary(key => key.Codigo, el => el.refaccion);
+                }
+                return lista;
+            }
+            catch (Exception e)
+            {
+                string s = e.Message;
+                Log.Write("Ha ocurrido un error " + s);
+            }
+            //Retorna lista vacia para evitar excepciones en llamada
+            return new Dictionary<string, Refaccion>();
         }
 
         public List<Refaccion> GetListaByOrden(int IdOrden)
