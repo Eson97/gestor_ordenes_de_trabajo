@@ -3,6 +3,7 @@ using GestorOrdenesDeTrabajo.DB;
 using GestorOrdenesDeTrabajo.Enums;
 using GestorOrdenesDeTrabajo.UsesCases;
 using GestorOrdenesDeTrabajo.Validation;
+using GestorOrdenesDeTrabajo.Ventanas.Message;
 using GestorOrdenesDeTrabajo.Ventanas.Ventanas_Emergentes;
 using System;
 using System.Collections.Generic;
@@ -109,8 +110,11 @@ namespace GestorOrdenesDeTrabajo.Ventanas.Ordenes
 
             orden = OrdenController.I.GetOrdenById(orden.Id);
 
-            bool isValidWarranty = orden.FechaEntrega >= DateTime.Now.AddMonths(-3);
-            if (!isValidWarranty) { MessageBox.Show("La garantia ha vencido", "Informacion", MessageBoxButtons.OK, MessageBoxIcon.Information); return; }
+            //Si la orden se entrego hace mas de 3 meses, y se aprueba por el usuario se edita
+            bool isInvalidWarranty = orden.FechaEntrega <= DateTime.Now.AddMonths(-3);
+            isInvalidWarranty = isInvalidWarranty ? MessageDialog.ShowMessageDialog("Confirmacion", "La garantia ha vencido\n¿Desea agregar la orden aun asi?", false) == (int)MessageDialogResult.Yes : false;
+            if (!isInvalidWarranty)
+                return;
 
             orden.Status = (int)OrdenStatus.GARANTIA;
             //validar Orden antes de modificar
