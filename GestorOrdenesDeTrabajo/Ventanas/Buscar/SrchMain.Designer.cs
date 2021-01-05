@@ -45,10 +45,10 @@
             this.panel5 = new System.Windows.Forms.Panel();
             this.btnMostrar = new System.Windows.Forms.Button();
             this.panel4 = new System.Windows.Forms.Panel();
-            this.finDatePicker = new GestorOrdenesDeTrabajo.Clases.CustomDateTimePicker();
             this.label2 = new System.Windows.Forms.Label();
-            this.initDatePicker = new GestorOrdenesDeTrabajo.Clases.CustomDateTimePicker();
             this.label1 = new System.Windows.Forms.Label();
+            this.finDatePicker = new GestorOrdenesDeTrabajo.Clases.CustomDateTimePicker();
+            this.initDatePicker = new GestorOrdenesDeTrabajo.Clases.CustomDateTimePicker();
             this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
             this.panel3.SuspendLayout();
@@ -107,7 +107,7 @@
             this.containerPanel.Location = new System.Drawing.Point(3, 3);
             this.containerPanel.Name = "containerPanel";
             this.containerPanel.Size = new System.Drawing.Size(531, 538);
-            this.containerPanel.TabIndex = 0;
+            this.containerPanel.TabIndex = 24;
             // 
             // panel3
             // 
@@ -149,7 +149,7 @@
             this.tablaOrdenes.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tablaOrdenes.EnableHeadersVisualStyles = false;
             this.tablaOrdenes.GridColor = System.Drawing.SystemColors.ControlLight;
-            this.tablaOrdenes.Location = new System.Drawing.Point(0, 31);
+            this.tablaOrdenes.Location = new System.Drawing.Point(0, 37);
             this.tablaOrdenes.Name = "tablaOrdenes";
             this.tablaOrdenes.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
             this.tablaOrdenes.RowHeadersVisible = false;
@@ -161,8 +161,9 @@
             this.tablaOrdenes.RowTemplate.ReadOnly = true;
             this.tablaOrdenes.RowTemplate.Resizable = System.Windows.Forms.DataGridViewTriState.False;
             this.tablaOrdenes.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.tablaOrdenes.Size = new System.Drawing.Size(491, 507);
-            this.tablaOrdenes.TabIndex = 4;
+            this.tablaOrdenes.Size = new System.Drawing.Size(491, 501);
+            this.tablaOrdenes.TabIndex = 23;
+            this.tablaOrdenes.TabStop = false;
             this.tablaOrdenes.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.tablaOrdenes_CellDoubleClick);
             this.tablaOrdenes.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.tablaOrdenes_CellFormatting);
             // 
@@ -175,8 +176,8 @@
             this.txtBuscarCodigo_Cliente.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
             this.txtBuscarCodigo_Cliente.Location = new System.Drawing.Point(0, 0);
             this.txtBuscarCodigo_Cliente.Name = "txtBuscarCodigo_Cliente";
-            this.txtBuscarCodigo_Cliente.Size = new System.Drawing.Size(491, 31);
-            this.txtBuscarCodigo_Cliente.TabIndex = 3;
+            this.txtBuscarCodigo_Cliente.Size = new System.Drawing.Size(491, 37);
+            this.txtBuscarCodigo_Cliente.TabIndex = 22;
             this.txtBuscarCodigo_Cliente.Text = "Ingrese <Folio> o <Cliente> a buscar...";
             this.txtBuscarCodigo_Cliente.TextChanged += new System.EventHandler(this.txtBuscarCodigo_Cliente_TextChanged);
             this.txtBuscarCodigo_Cliente.Enter += new System.EventHandler(this.txtBuscarCodigo_Cliente_Enter);
@@ -210,8 +211,8 @@
             this.txtSrchFolio.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
             this.txtSrchFolio.Location = new System.Drawing.Point(700, 0);
             this.txtSrchFolio.Name = "txtSrchFolio";
-            this.txtSrchFolio.Size = new System.Drawing.Size(178, 31);
-            this.txtSrchFolio.TabIndex = 14;
+            this.txtSrchFolio.Size = new System.Drawing.Size(178, 37);
+            this.txtSrchFolio.TabIndex = 21;
             this.txtSrchFolio.Text = "Numero de Orden";
             this.txtSrchFolio.Enter += new System.EventHandler(this.txtSrchFolio_Enter);
             this.txtSrchFolio.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtSrchFolio_KeyDown);
@@ -239,7 +240,7 @@
             this.btnBuscarFolio.Location = new System.Drawing.Point(906, 0);
             this.btnBuscarFolio.Name = "btnBuscarFolio";
             this.btnBuscarFolio.Size = new System.Drawing.Size(100, 34);
-            this.btnBuscarFolio.TabIndex = 12;
+            this.btnBuscarFolio.TabIndex = 17;
             this.btnBuscarFolio.Text = "Buscar";
             this.btnBuscarFolio.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             this.btnBuscarFolio.UseVisualStyleBackColor = false;
@@ -265,7 +266,7 @@
             this.btnMostrar.Location = new System.Drawing.Point(439, 0);
             this.btnMostrar.Name = "btnMostrar";
             this.btnMostrar.Size = new System.Drawing.Size(146, 34);
-            this.btnMostrar.TabIndex = 10;
+            this.btnMostrar.TabIndex = 40;
             this.btnMostrar.Text = "Mostrar";
             this.btnMostrar.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             this.btnMostrar.UseVisualStyleBackColor = false;
@@ -279,17 +280,6 @@
             this.panel4.Size = new System.Drawing.Size(28, 34);
             this.panel4.TabIndex = 9;
             // 
-            // finDatePicker
-            // 
-            this.finDatePicker.Dock = System.Windows.Forms.DockStyle.Left;
-            this.finDatePicker.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.finDatePicker.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.finDatePicker.Location = new System.Drawing.Point(272, 0);
-            this.finDatePicker.Name = "finDatePicker";
-            this.finDatePicker.Size = new System.Drawing.Size(139, 31);
-            this.finDatePicker.TabIndex = 8;
-            this.finDatePicker.ValueChanged += new System.EventHandler(this.finDatePicker_ValueChanged);
-            // 
             // label2
             // 
             this.label2.Dock = System.Windows.Forms.DockStyle.Left;
@@ -300,17 +290,6 @@
             this.label2.TabIndex = 7;
             this.label2.Text = "Hasta:";
             this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            // 
-            // initDatePicker
-            // 
-            this.initDatePicker.Dock = System.Windows.Forms.DockStyle.Left;
-            this.initDatePicker.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.initDatePicker.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.initDatePicker.Location = new System.Drawing.Point(58, 0);
-            this.initDatePicker.Name = "initDatePicker";
-            this.initDatePicker.Size = new System.Drawing.Size(139, 31);
-            this.initDatePicker.TabIndex = 6;
-            this.initDatePicker.ValueChanged += new System.EventHandler(this.initDatePicker_ValueChanged);
             // 
             // label1
             // 
@@ -323,9 +302,31 @@
             this.label1.Text = "De:";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
+            // finDatePicker
+            // 
+            this.finDatePicker.Dock = System.Windows.Forms.DockStyle.Left;
+            this.finDatePicker.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.finDatePicker.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.finDatePicker.Location = new System.Drawing.Point(272, 0);
+            this.finDatePicker.Name = "finDatePicker";
+            this.finDatePicker.Size = new System.Drawing.Size(139, 37);
+            this.finDatePicker.TabIndex = 19;
+            this.finDatePicker.ValueChanged += new System.EventHandler(this.finDatePicker_ValueChanged);
+            // 
+            // initDatePicker
+            // 
+            this.initDatePicker.Dock = System.Windows.Forms.DockStyle.Left;
+            this.initDatePicker.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.initDatePicker.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.initDatePicker.Location = new System.Drawing.Point(58, 0);
+            this.initDatePicker.Name = "initDatePicker";
+            this.initDatePicker.Size = new System.Drawing.Size(139, 37);
+            this.initDatePicker.TabIndex = 18;
+            this.initDatePicker.ValueChanged += new System.EventHandler(this.initDatePicker_ValueChanged);
+            // 
             // SrchMain
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(11F, 24F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(14F, 29F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(25)))), ((int)(((byte)(25)))));
             this.ClientSize = new System.Drawing.Size(1050, 605);

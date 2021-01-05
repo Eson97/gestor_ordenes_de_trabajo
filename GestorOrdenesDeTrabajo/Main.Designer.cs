@@ -45,6 +45,7 @@
             this.btnStats = new System.Windows.Forms.Button();
             this.btnBuscar = new System.Windows.Forms.Button();
             this.dynamicPanel = new System.Windows.Forms.Panel();
+            this.btnGarantiaEntregar = new System.Windows.Forms.Button();
             this.btnEnGarantia = new System.Windows.Forms.Button();
             this.btnPorEntregar = new System.Windows.Forms.Button();
             this.btnEnProceso = new System.Windows.Forms.Button();
@@ -60,7 +61,6 @@
             this.lblTitle = new System.Windows.Forms.Label();
             this.containerPanel = new System.Windows.Forms.Panel();
             this.TimeGetter = new System.Windows.Forms.Timer(this.components);
-            this.btnGarantiaEntregar = new System.Windows.Forms.Button();
             this.bottomPanel.SuspendLayout();
             this.topPanel.SuspendLayout();
             this.sidePanel.SuspendLayout();
@@ -77,7 +77,7 @@
             this.bottomPanel.Controls.Add(this.label1);
             this.bottomPanel.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.bottomPanel.Location = new System.Drawing.Point(0, 862);
-            this.bottomPanel.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.bottomPanel.Margin = new System.Windows.Forms.Padding(4);
             this.bottomPanel.Name = "bottomPanel";
             this.bottomPanel.Size = new System.Drawing.Size(1600, 38);
             this.bottomPanel.TabIndex = 0;
@@ -144,7 +144,7 @@
             this.topPanel.Controls.Add(this.lblWindowTit);
             this.topPanel.Dock = System.Windows.Forms.DockStyle.Top;
             this.topPanel.Location = new System.Drawing.Point(0, 0);
-            this.topPanel.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.topPanel.Margin = new System.Windows.Forms.Padding(4);
             this.topPanel.Name = "topPanel";
             this.topPanel.Size = new System.Drawing.Size(1600, 44);
             this.topPanel.TabIndex = 1;
@@ -159,7 +159,7 @@
             this.btnMinWindow.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnMinWindow.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnMinWindow.Location = new System.Drawing.Point(1468, 0);
-            this.btnMinWindow.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnMinWindow.Margin = new System.Windows.Forms.Padding(4);
             this.btnMinWindow.Name = "btnMinWindow";
             this.btnMinWindow.Size = new System.Drawing.Size(44, 44);
             this.btnMinWindow.TabIndex = 4;
@@ -176,7 +176,7 @@
             this.btnMax.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnMax.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnMax.Location = new System.Drawing.Point(1512, 0);
-            this.btnMax.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnMax.Margin = new System.Windows.Forms.Padding(4);
             this.btnMax.Name = "btnMax";
             this.btnMax.Size = new System.Drawing.Size(44, 44);
             this.btnMax.TabIndex = 2;
@@ -193,7 +193,7 @@
             this.btnCloseWindow.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnCloseWindow.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnCloseWindow.Location = new System.Drawing.Point(1556, 0);
-            this.btnCloseWindow.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnCloseWindow.Margin = new System.Windows.Forms.Padding(4);
             this.btnCloseWindow.Name = "btnCloseWindow";
             this.btnCloseWindow.Size = new System.Drawing.Size(44, 44);
             this.btnCloseWindow.TabIndex = 1;
@@ -228,7 +228,7 @@
             this.sidePanel.Controls.Add(this.btnMenu);
             this.sidePanel.Dock = System.Windows.Forms.DockStyle.Left;
             this.sidePanel.Location = new System.Drawing.Point(0, 44);
-            this.sidePanel.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.sidePanel.Margin = new System.Windows.Forms.Padding(4);
             this.sidePanel.Name = "sidePanel";
             this.sidePanel.Size = new System.Drawing.Size(288, 818);
             this.sidePanel.TabIndex = 2;
@@ -245,7 +245,7 @@
             this.btnUsuarios.Image = ((System.Drawing.Image)(resources.GetObject("btnUsuarios.Image")));
             this.btnUsuarios.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnUsuarios.Location = new System.Drawing.Point(0, 639);
-            this.btnUsuarios.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnUsuarios.Margin = new System.Windows.Forms.Padding(4);
             this.btnUsuarios.Name = "btnUsuarios";
             this.btnUsuarios.Size = new System.Drawing.Size(288, 62);
             this.btnUsuarios.TabIndex = 12;
@@ -265,7 +265,7 @@
             this.btnStats.Image = ((System.Drawing.Image)(resources.GetObject("btnStats.Image")));
             this.btnStats.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnStats.Location = new System.Drawing.Point(0, 577);
-            this.btnStats.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnStats.Margin = new System.Windows.Forms.Padding(4);
             this.btnStats.Name = "btnStats";
             this.btnStats.Size = new System.Drawing.Size(288, 62);
             this.btnStats.TabIndex = 11;
@@ -285,7 +285,7 @@
             this.btnBuscar.Image = ((System.Drawing.Image)(resources.GetObject("btnBuscar.Image")));
             this.btnBuscar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnBuscar.Location = new System.Drawing.Point(0, 515);
-            this.btnBuscar.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnBuscar.Margin = new System.Windows.Forms.Padding(4);
             this.btnBuscar.Name = "btnBuscar";
             this.btnBuscar.Size = new System.Drawing.Size(288, 62);
             this.btnBuscar.TabIndex = 10;
@@ -304,10 +304,30 @@
             this.dynamicPanel.Controls.Add(this.btnNueva);
             this.dynamicPanel.Dock = System.Windows.Forms.DockStyle.Top;
             this.dynamicPanel.Location = new System.Drawing.Point(0, 215);
-            this.dynamicPanel.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.dynamicPanel.Margin = new System.Windows.Forms.Padding(4);
             this.dynamicPanel.Name = "dynamicPanel";
             this.dynamicPanel.Size = new System.Drawing.Size(288, 300);
             this.dynamicPanel.TabIndex = 9;
+            // 
+            // btnGarantiaEntregar
+            // 
+            this.btnGarantiaEntregar.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnGarantiaEntregar.FlatAppearance.BorderSize = 0;
+            this.btnGarantiaEntregar.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(35)))), ((int)(((byte)(35)))));
+            this.btnGarantiaEntregar.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(55)))), ((int)(((byte)(55)))));
+            this.btnGarantiaEntregar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnGarantiaEntregar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnGarantiaEntregar.ForeColor = System.Drawing.SystemColors.ControlDark;
+            this.btnGarantiaEntregar.Location = new System.Drawing.Point(0, 250);
+            this.btnGarantiaEntregar.Margin = new System.Windows.Forms.Padding(4);
+            this.btnGarantiaEntregar.Name = "btnGarantiaEntregar";
+            this.btnGarantiaEntregar.Size = new System.Drawing.Size(288, 50);
+            this.btnGarantiaEntregar.TabIndex = 9;
+            this.btnGarantiaEntregar.Text = "En Garantia Por Entregar";
+            this.btnGarantiaEntregar.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnGarantiaEntregar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnGarantiaEntregar.UseVisualStyleBackColor = true;
+            this.btnGarantiaEntregar.Click += new System.EventHandler(this.btnGarantiaEntregar_Click);
             // 
             // btnEnGarantia
             // 
@@ -319,10 +339,10 @@
             this.btnEnGarantia.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnEnGarantia.ForeColor = System.Drawing.SystemColors.ControlDark;
             this.btnEnGarantia.Location = new System.Drawing.Point(0, 200);
-            this.btnEnGarantia.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnEnGarantia.Margin = new System.Windows.Forms.Padding(4);
             this.btnEnGarantia.Name = "btnEnGarantia";
             this.btnEnGarantia.Size = new System.Drawing.Size(288, 50);
-            this.btnEnGarantia.TabIndex = 14;
+            this.btnEnGarantia.TabIndex = 8;
             this.btnEnGarantia.Text = "En Garantia";
             this.btnEnGarantia.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnEnGarantia.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
@@ -339,10 +359,10 @@
             this.btnPorEntregar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnPorEntregar.ForeColor = System.Drawing.SystemColors.ControlDark;
             this.btnPorEntregar.Location = new System.Drawing.Point(0, 150);
-            this.btnPorEntregar.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnPorEntregar.Margin = new System.Windows.Forms.Padding(4);
             this.btnPorEntregar.Name = "btnPorEntregar";
             this.btnPorEntregar.Size = new System.Drawing.Size(288, 50);
-            this.btnPorEntregar.TabIndex = 13;
+            this.btnPorEntregar.TabIndex = 7;
             this.btnPorEntregar.Text = "Por Entregar";
             this.btnPorEntregar.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnPorEntregar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
@@ -359,10 +379,10 @@
             this.btnEnProceso.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnEnProceso.ForeColor = System.Drawing.SystemColors.ControlDark;
             this.btnEnProceso.Location = new System.Drawing.Point(0, 100);
-            this.btnEnProceso.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnEnProceso.Margin = new System.Windows.Forms.Padding(4);
             this.btnEnProceso.Name = "btnEnProceso";
             this.btnEnProceso.Size = new System.Drawing.Size(288, 50);
-            this.btnEnProceso.TabIndex = 12;
+            this.btnEnProceso.TabIndex = 6;
             this.btnEnProceso.Text = "En Proceso";
             this.btnEnProceso.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnEnProceso.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
@@ -379,10 +399,10 @@
             this.btnEnEspera.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnEnEspera.ForeColor = System.Drawing.SystemColors.ControlDark;
             this.btnEnEspera.Location = new System.Drawing.Point(0, 50);
-            this.btnEnEspera.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnEnEspera.Margin = new System.Windows.Forms.Padding(4);
             this.btnEnEspera.Name = "btnEnEspera";
             this.btnEnEspera.Size = new System.Drawing.Size(288, 50);
-            this.btnEnEspera.TabIndex = 11;
+            this.btnEnEspera.TabIndex = 5;
             this.btnEnEspera.Text = "En Espera";
             this.btnEnEspera.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnEnEspera.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
@@ -399,10 +419,10 @@
             this.btnNueva.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnNueva.ForeColor = System.Drawing.SystemColors.ControlDark;
             this.btnNueva.Location = new System.Drawing.Point(0, 0);
-            this.btnNueva.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnNueva.Margin = new System.Windows.Forms.Padding(4);
             this.btnNueva.Name = "btnNueva";
             this.btnNueva.Size = new System.Drawing.Size(288, 50);
-            this.btnNueva.TabIndex = 10;
+            this.btnNueva.TabIndex = 4;
             this.btnNueva.Text = "Nueva";
             this.btnNueva.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnNueva.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
@@ -419,10 +439,10 @@
             this.btnLogOut.ForeColor = System.Drawing.SystemColors.Control;
             this.btnLogOut.Image = ((System.Drawing.Image)(resources.GetObject("btnLogOut.Image")));
             this.btnLogOut.Location = new System.Drawing.Point(0, 756);
-            this.btnLogOut.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnLogOut.Margin = new System.Windows.Forms.Padding(4);
             this.btnLogOut.Name = "btnLogOut";
             this.btnLogOut.Size = new System.Drawing.Size(288, 62);
-            this.btnLogOut.TabIndex = 8;
+            this.btnLogOut.TabIndex = 13;
             this.btnLogOut.UseVisualStyleBackColor = true;
             this.btnLogOut.Click += new System.EventHandler(this.btnLogOut_Click);
             // 
@@ -438,7 +458,7 @@
             this.btnOrdenes.Image = ((System.Drawing.Image)(resources.GetObject("btnOrdenes.Image")));
             this.btnOrdenes.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnOrdenes.Location = new System.Drawing.Point(0, 153);
-            this.btnOrdenes.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnOrdenes.Margin = new System.Windows.Forms.Padding(4);
             this.btnOrdenes.Name = "btnOrdenes";
             this.btnOrdenes.Size = new System.Drawing.Size(288, 62);
             this.btnOrdenes.TabIndex = 3;
@@ -458,7 +478,7 @@
             this.btnInventario.Image = ((System.Drawing.Image)(resources.GetObject("btnInventario.Image")));
             this.btnInventario.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnInventario.Location = new System.Drawing.Point(0, 91);
-            this.btnInventario.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnInventario.Margin = new System.Windows.Forms.Padding(4);
             this.btnInventario.Name = "btnInventario";
             this.btnInventario.Size = new System.Drawing.Size(288, 62);
             this.btnInventario.TabIndex = 2;
@@ -470,7 +490,7 @@
             // 
             this.logoPanel.Dock = System.Windows.Forms.DockStyle.Top;
             this.logoPanel.Location = new System.Drawing.Point(0, 62);
-            this.logoPanel.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.logoPanel.Margin = new System.Windows.Forms.Padding(4);
             this.logoPanel.Name = "logoPanel";
             this.logoPanel.Size = new System.Drawing.Size(288, 29);
             this.logoPanel.TabIndex = 1;
@@ -486,7 +506,7 @@
             this.btnMenu.ForeColor = System.Drawing.SystemColors.Control;
             this.btnMenu.Image = ((System.Drawing.Image)(resources.GetObject("btnMenu.Image")));
             this.btnMenu.Location = new System.Drawing.Point(0, 0);
-            this.btnMenu.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnMenu.Margin = new System.Windows.Forms.Padding(4);
             this.btnMenu.Name = "btnMenu";
             this.btnMenu.Size = new System.Drawing.Size(288, 62);
             this.btnMenu.TabIndex = 0;
@@ -499,7 +519,7 @@
             this.titlePanel.Controls.Add(this.lblTitle);
             this.titlePanel.Dock = System.Windows.Forms.DockStyle.Top;
             this.titlePanel.Location = new System.Drawing.Point(288, 44);
-            this.titlePanel.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.titlePanel.Margin = new System.Windows.Forms.Padding(4);
             this.titlePanel.Name = "titlePanel";
             this.titlePanel.Size = new System.Drawing.Size(1312, 62);
             this.titlePanel.TabIndex = 3;
@@ -514,7 +534,7 @@
             this.btnClosePanel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnClosePanel.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnClosePanel.Location = new System.Drawing.Point(1250, 0);
-            this.btnClosePanel.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnClosePanel.Margin = new System.Windows.Forms.Padding(4);
             this.btnClosePanel.Name = "btnClosePanel";
             this.btnClosePanel.Size = new System.Drawing.Size(62, 62);
             this.btnClosePanel.TabIndex = 1;
@@ -541,7 +561,7 @@
             this.containerPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(25)))), ((int)(((byte)(25)))));
             this.containerPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.containerPanel.Location = new System.Drawing.Point(288, 106);
-            this.containerPanel.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.containerPanel.Margin = new System.Windows.Forms.Padding(4);
             this.containerPanel.Name = "containerPanel";
             this.containerPanel.Size = new System.Drawing.Size(1312, 756);
             this.containerPanel.TabIndex = 4;
@@ -551,26 +571,6 @@
             // 
             this.TimeGetter.Interval = 10;
             this.TimeGetter.Tick += new System.EventHandler(this.DateTimeGetter_Tick);
-            // 
-            // btnGarantiaEntregar
-            // 
-            this.btnGarantiaEntregar.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btnGarantiaEntregar.FlatAppearance.BorderSize = 0;
-            this.btnGarantiaEntregar.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(35)))), ((int)(((byte)(35)))));
-            this.btnGarantiaEntregar.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(55)))), ((int)(((byte)(55)))));
-            this.btnGarantiaEntregar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnGarantiaEntregar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnGarantiaEntregar.ForeColor = System.Drawing.SystemColors.ControlDark;
-            this.btnGarantiaEntregar.Location = new System.Drawing.Point(0, 250);
-            this.btnGarantiaEntregar.Margin = new System.Windows.Forms.Padding(4);
-            this.btnGarantiaEntregar.Name = "btnGarantiaEntregar";
-            this.btnGarantiaEntregar.Size = new System.Drawing.Size(288, 50);
-            this.btnGarantiaEntregar.TabIndex = 15;
-            this.btnGarantiaEntregar.Text = "En Garantia Por Entregar";
-            this.btnGarantiaEntregar.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnGarantiaEntregar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnGarantiaEntregar.UseVisualStyleBackColor = true;
-            this.btnGarantiaEntregar.Click += new System.EventHandler(this.btnGarantiaEntregar_Click);
             // 
             // Main
             // 

@@ -53,69 +53,69 @@ namespace GestorOrdenesDeTrabajo.Excel
             }
         }
 
-        private List<Refaccion> ReadExcelFileForPiezas(string filePath)
-        {
-            List<Refaccion> toAdd = new List<Refaccion>();
-
-            xlsx.Application xlApp = new xlsx.Application();
-            xlsx.Workbook xlWorkbook = xlApp.Workbooks.Open(filePath);
-            xlsx.Worksheet xlWorksheet = xlWorkbook.Sheets[1];
-            xlsx.Range xlRange = xlWorksheet.UsedRange;
-            int Fila;
-            int ultimaFilaConDatos = xlWorksheet.get_Range("B" + xlWorksheet.Rows.Count).get_End(xlsx.XlDirection.xlUp).Row;
-
-            for (Fila = 2; Fila <= ultimaFilaConDatos; Fila++)
-            {
-                int id = Convert.ToInt32((xlRange.Cells[Fila, 1] as xlsx.Range).Value);
-                string codigo = Convert.ToString((xlRange.Cells[Fila, 2] as xlsx.Range).Value);
-                string descripcion = Convert.ToString((xlRange.Cells[Fila, 3] as xlsx.Range).Value);
-                decimal minimo = Convert.ToDecimal((xlRange.Cells[Fila, 4] as xlsx.Range).Value);
-                //    toAdd.Add(new
-                //    {
-                //        Id = id,
-                //        Codigo = codigo,
-                //        Descripcion = descripcion,
-                //        PrecioMinimo = minimo
-                //    });
-            }
-            xlWorkbook.Close(false);
-            xlApp.Quit();
-
-            return toAdd;
-        }
-
-        public (List<Refaccion>, List<Refaccion>) Validate(List<Refaccion> valores)
+        private (List<Refaccion>, List<Refaccion>) ReadExcelFileForPiezas(string filePath)
         {
             Dictionary<string, Refaccion> exist = RefaccionController.I.GetDictionary();
-
             Dictionary<string, Refaccion> toAdd = new Dictionary<string, Refaccion>();
             Dictionary<string, Refaccion> toEdit = new Dictionary<string, Refaccion>();
 
             //Agregar para mostrar elementos repetidos si existen
             //List<Refaccion> repeated = new List<Refaccion>();
 
-            foreach (var item in valores)
+            xlsx.Application xlApp = new xlsx.Application();
+            xlsx.Workbook xlWorkbook = xlApp.Workbooks.Open(filePath);
+            xlsx.Worksheet xlWorksheet = xlWorkbook.Sheets[1];
+            xlsx.Range xlRange = xlWorksheet.UsedRange;
+
+            int Fila;
+            int ultimaFilaConDatos = xlWorksheet.get_Range("B" + xlWorksheet.Rows.Count).get_End(xlsx.XlDirection.xlUp).Row;
+
+            //Obtiene array por filas
+            object[,] values = (object[,])xlRange.Value;
+
+            for (Fila = 2; Fila <= ultimaFilaConDatos; Fila++)
             {
+                //Valores en Fila,Columna
+                int id = Convert.ToInt32(values[Fila, 1]);
+                string codigo = Convert.ToString(values[Fila, 2]);
+                string descripcion = Convert.ToString(values[Fila, 3]);
+                decimal minimo = Convert.ToDecimal(values[Fila, 4]);
 
                 //Revisar que los datos sean consistentes
-                if (item.Codigo == null || item.Descripcion == null || item.PrecioMinimo < 0.0M)
+                if (codigo == null || descripcion == null || minimo < 0.0M)
                     continue;
 
                 //Revisar si se encuentra el codigo en la DB compleidad O(1)
-                bool isSaved = exist.ContainsKey(item.Codigo);
+                bool isSaved = exist.ContainsKey(codigo);
 
-                if (item.Id != 0 && isSaved)
+                if (id != 0 && isSaved)
                 {
                     //Revisar repetidos al ir agregando
-                    if (!toEdit.ContainsKey(item.Codigo))
-                        toEdit.Add(item.Codigo, item);
+                    if (!toEdit.ContainsKey(codigo))
+                        toEdit.Add(codigo, new Refaccion
+                        {
+                            Codigo = codigo,
+                            Descripcion = descripcion,
+                            PrecioMinimo = minimo,
+                            IsDeleted = false
+                        });
                 }
                 else if (!isSaved)
                 {
-                    if (!toAdd.ContainsKey(item.Codigo))
-                        toAdd.Add(item.Codigo, item);
+                    if (!toAdd.ContainsKey(codigo))
+                        toAdd.Add(codigo, new Refaccion
+                        {
+                            Codigo = codigo,
+                            Descripcion = descripcion,
+                            PrecioMinimo = minimo,
+                            IsDeleted = false
+                        });
                 }
             }
+
+            xlWorkbook.Close(false);
+            xlApp.Quit();
+
             return (toAdd.Values.ToList(), toEdit.Values.ToList());
         }
 
@@ -124,9 +124,7 @@ namespace GestorOrdenesDeTrabajo.Excel
             try
             {
                 //Obtenemos los valores desde el excel
-                var refaccionesFromExcel = ReadExcelFileForPiezas(filePath);
-                var result = Validate(refaccionesFromExcel);
-                return true;
+                var result = ReadExcelFileForPiezas(filePath);
 
                 List<Refaccion> toAdd = result.Item1;
                 List<Refaccion> toEdit = result.Item2;
@@ -138,8 +136,6 @@ namespace GestorOrdenesDeTrabajo.Excel
                 //Se agregan los valores a la BD
                 foreach (var item in toEdit)
                 {
-                    //Console.WriteLine($"Id: {item.Id} codigo: {item.Codigo} descripcion: {item.Descripcion} minimo: {item.PrecioMinimo}");
-
                     var edited = RefaccionController.I.EditOnImport(item);
                     if (edited == null)
                     { throw new Exception($"No se pudieron editar algunas refacciones, revice el formato\nID:{item.Id}, Codigo:{item.Codigo}, Descripcion:{item.Descripcion}"); }

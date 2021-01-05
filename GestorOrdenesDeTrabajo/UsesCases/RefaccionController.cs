@@ -5,6 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
+using System.Threading.Tasks;
 
 namespace GestorOrdenesDeTrabajo.UsesCases
 {
@@ -139,22 +140,27 @@ namespace GestorOrdenesDeTrabajo.UsesCases
         /// <summary>
         /// No edita el elemento si el codigo existe y no coincide con la refaccion
         /// </summary>
-        /// <param name="element"></param>
+        /// <param name="toEdit"></param>
         /// <returns>Editada o null si el codigo existe</returns>
-        public Refaccion EditOnImport(Refaccion element)
+        public Refaccion EditOnImport(Refaccion toEdit)
         {
-            if (element.Id <= 0) return null;
             try
             {
                 using (Entities db = new Entities())
                 {
-                    var codeExist = db.Refaccion.Any(el => el.Codigo.Equals(element.Codigo));
+                    var codeExist = db.Refaccion.Any(el => el.Codigo.Equals(toEdit.Codigo));
                     if (!codeExist)
                         return null;
+                    var element = db.Refaccion.Where(el => el.Codigo.Equals(toEdit.Codigo)).FirstOrDefault();
+
+                    element.Descripcion = toEdit.Descripcion;
+                    element.PrecioMinimo = toEdit.PrecioMinimo;
+                    element.IsDeleted = false;
                     db.Entry(element).State = EntityState.Modified;
                     db.SaveChanges();
+                    toEdit = element;
                 }
-                return element;
+                return toEdit;
             }
             catch (Exception e)
             {
@@ -162,6 +168,7 @@ namespace GestorOrdenesDeTrabajo.UsesCases
             }
             return null;
         }
+
         /// <summary>
         /// Consulta lista
         /// </summary>
@@ -174,9 +181,9 @@ namespace GestorOrdenesDeTrabajo.UsesCases
                 using (Entities db = new Entities())
                 {
                     lista = db.Refaccion
+                        .AsNoTracking()
                         .Where(el => !el.IsDeleted)
                         .OrderBy(cp => cp.Descripcion)
-                        .AsNoTracking()
                         .ToList();
                 }
                 return lista;

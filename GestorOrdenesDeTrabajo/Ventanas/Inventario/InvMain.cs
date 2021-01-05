@@ -9,6 +9,8 @@ using System.Collections.Generic;
 using System.Data;
 using System.Diagnostics;
 using System.Drawing;
+using System.Linq;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace GestorOrdenesDeTrabajo.OrdenWindow.Inventario
@@ -26,17 +28,17 @@ namespace GestorOrdenesDeTrabajo.OrdenWindow.Inventario
 
             tablaInventario.CellBorderStyle = DataGridViewCellBorderStyle.None;
 
-            Datatable = new DataTable();
-            Datatable.Columns.Add("ID");
-            Datatable.Columns.Add("Codigo");
-            Datatable.Columns.Add("Pieza");
-            Datatable.Columns.Add("Precio Minimo");
-            Datatable.Columns[0].ReadOnly = true;
-            Datatable.Columns[1].ReadOnly = true;
-            Datatable.Columns[2].ReadOnly = true;
-            Datatable.Columns[3].ReadOnly = true;
-            Datatable.Columns[3].DataType = typeof(decimal);
-            Actualizar();
+            //Datatable = new DataTable();
+            //Datatable.Columns.Add("ID");
+            //Datatable.Columns.Add("Codigo");
+            //Datatable.Columns.Add("Pieza");
+            //Datatable.Columns.Add("Precio Minimo");
+            //Datatable.Columns[0].ReadOnly = true;
+            //Datatable.Columns[1].ReadOnly = true;
+            //Datatable.Columns[2].ReadOnly = true;
+            //Datatable.Columns[3].ReadOnly = true;
+            //Datatable.Columns[3].DataType = typeof(decimal);
+            ActualizarAsync();
         }
 
         private void InitPermisos()
@@ -67,7 +69,7 @@ namespace GestorOrdenesDeTrabajo.OrdenWindow.Inventario
 
         private void Permission(IList<Permiso> permisos)
         {
-            Button[] buttons = { btnNuevo,btnModificar,btnEliminar,btnImportar,btnExportar };
+            Button[] buttons = { btnNuevo, btnModificar, btnEliminar, btnImportar, btnExportar };
 
             DeniedPermission(buttons);
 
@@ -90,25 +92,23 @@ namespace GestorOrdenesDeTrabajo.OrdenWindow.Inventario
             }
         }
 
-        public void Actualizar()
+        public async void ActualizarAsync()
         {
-            while (tablaInventario.RowCount != 0)
-                tablaInventario.Rows.RemoveAt(0);
+            //while (tablaInventario.RowCount != 0)
+            //    tablaInventario.Rows.RemoveAt(0);
 
-            refacciones = RefaccionController.I.GetLista();
-            foreach (Refaccion item in refacciones)
-                Datatable.Rows.Add(new object[] { item.Id, item.Codigo, item.Descripcion, item.PrecioMinimo });
+            refacciones = await Task.Run(() => RefaccionController.I.GetLista());
 
-            tablaInventario.DataSource = Datatable;
-            tablaInventario.Columns[0].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
-            tablaInventario.Columns[1].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
-            tablaInventario.Columns[2].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            tablaInventario.Columns[3].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
-            tablaInventario.Columns[0].Resizable = DataGridViewTriState.False;
-            tablaInventario.Columns[1].Resizable = DataGridViewTriState.True;
-            tablaInventario.Columns[2].Resizable = DataGridViewTriState.True;
-            tablaInventario.Columns[3].Resizable = DataGridViewTriState.True;
-            tablaInventario.Columns[3].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+            //foreach (Refaccion item in refacciones)
+            //    Datatable.Rows.Add(new object[] { item.Id, item.Codigo, item.Descripcion, item.PrecioMinimo });
+
+            tablaInventario.DataSource = refacciones.Select(el => new
+            {
+                Id = el.Id,
+                Codigo = el.Codigo,
+                Descripcion = el.Descripcion,
+                PrecioMinimo = el.PrecioMinimo
+            }).ToList();
         }
 
         void openSubPanel(Form Panel, string Tittle)
@@ -197,9 +197,9 @@ namespace GestorOrdenesDeTrabajo.OrdenWindow.Inventario
             if ((int)MessageDialogResult.Yes == MessageDialog.ShowMessageDialog("Confirmacion", "¿Desea importar refacciones desde un excel?\nEsto puede tardar unos minutos", false))
             {
 
-                using(var file = new OpenFileDialog { Filter = @"Excel files (*.xls or .xlsx)|.xls;*.xls", Multiselect = false })
+                using (var file = new OpenFileDialog { Filter = @"Excel files (*.xls or .xlsx)|.xls;*.xls", Multiselect = false })
                 {
-                    if(file.ShowDialog() == DialogResult.OK)
+                    if (file.ShowDialog() == DialogResult.OK)
                         xlsx.ImportExcelFrom(file.FileName);
                 }
             }
@@ -207,7 +207,7 @@ namespace GestorOrdenesDeTrabajo.OrdenWindow.Inventario
 
         private void btnExportar_Click(object sender, EventArgs e)
         {
-            if((int)MessageDialogResult.Yes == MessageDialog.ShowMessageDialog("Confirmacion","¿Desea exportar las refacciones a un excel?\nEsto puede tardar unos minutos", false))
+            if ((int)MessageDialogResult.Yes == MessageDialog.ShowMessageDialog("Confirmacion", "¿Desea exportar las refacciones a un excel?\nEsto puede tardar unos minutos", false))
             {
                 xlsx.CreateExcelRefacciones(refacciones);
             }
@@ -215,13 +215,23 @@ namespace GestorOrdenesDeTrabajo.OrdenWindow.Inventario
 
         private void btnActualizar_Click(object sender, EventArgs e)
         {
-            Actualizar();
+            ActualizarAsync();
         }
 
         private void txtBuscarCodigo_TextChanged(object sender, EventArgs e)
         {
+            if (refacciones == null)
+                return;
+
             if (txtBuscarCodigo.Text != "Ingrese <Codigo> o <Pieza> a buscar...")
-                Datatable.DefaultView.RowFilter = $"Codigo LIKE '{txtBuscarCodigo.Text}%' OR Pieza LIKE '{txtBuscarCodigo.Text}%' ";
+                tablaInventario.DataSource = refacciones.Where(el => el.Codigo.Contains(txtBuscarCodigo.Text)).Select(el => new
+                {
+                    Id = el.Id,
+                    Codigo = el.Codigo,
+                    Descripcion = el.Descripcion,
+                    PrecioMinimo = el.PrecioMinimo
+                }).ToList();
+            //Datatable.DefaultView.RowFilter = $"Codigo LIKE '{txtBuscarCodigo.Text}%' OR Pieza LIKE '{txtBuscarCodigo.Text}%' ";
         }
 
         private void txtBuscarCodigo_Enter(object sender, EventArgs e)
