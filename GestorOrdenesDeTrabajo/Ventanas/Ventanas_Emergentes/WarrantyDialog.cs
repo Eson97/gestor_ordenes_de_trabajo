@@ -124,7 +124,7 @@ namespace GestorOrdenesDeTrabajo.Ventanas.Ventanas_Emergentes
 
             txtFolio.Text = folio.ToString();
             lblCliente.Text = cliente;
-            lblFechaEntrega.Text = fecha;
+            lblFechaEntrega.Text = DateTime.Parse(fecha).ToShortDateString();
             lblMaquina.Text = maquina;
 
             CurrentOrden = new Orden()
