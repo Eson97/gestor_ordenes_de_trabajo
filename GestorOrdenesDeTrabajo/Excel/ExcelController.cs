@@ -5,51 +5,55 @@ using xlsx = Microsoft.Office.Interop.Excel;
 using System.Windows.Forms;
 using GestorOrdenesDeTrabajo.UsesCases;
 using System.Linq;
+using System.Data;
 
 namespace GestorOrdenesDeTrabajo.Excel
 {
     class ExcelController
     {
-        private void WriteExcelFileWithRefacciones(List<Refaccion> list)
+        private void WriteExcelFileWithRefacciones(DataTable dt)
         {
             using (SaveFileDialog fichero = new SaveFileDialog { Filter = @"Excel files (*.xls or .xlsx)|.xls;*.xls" })
             {
                 if (fichero.ShowDialog() == DialogResult.OK)
                 {
+                    int ColumnsCount = dt.Columns.Count;
+                    int RowsCount = dt.Rows.Count;
+                    object[] Header = new object[ColumnsCount]; 
+                    object[,] Cells = new object[RowsCount, ColumnsCount];
+
                     xlsx.Application xlApp = new xlsx.Application();
-                    xlsx.Workbook xlWorkbook = xlApp.Workbooks.Add(xlsx.XlWBATemplate.xlWBATWorksheet);
-                    xlsx.Worksheet xlWorksheet = (xlsx.Worksheet)xlWorkbook.Worksheets.get_Item(1);
-                    xlsx.Range xlRange = xlWorksheet.UsedRange;
+                    xlApp.Workbooks.Add();
+                    xlsx.Worksheet Worksheet = xlApp.ActiveSheet;
 
-                    int Fila = xlWorksheet.get_Range("A" + xlWorksheet.Rows.Count).get_End(xlsx.XlDirection.xlUp).Row;
+                    // obtenemos los encabezados de la tabla    
+                    for (int i = 0; i < ColumnsCount; i++)
+                        Header[i] = dt.Columns[i].ColumnName;
 
-                    xlWorksheet.Cells[Fila, 1] = "ID";//Columna A
-                    xlWorksheet.Cells[Fila, 2] = "Codigo";//Columna B
-                    xlWorksheet.Cells[Fila, 3] = "Descripcion";//Columna C
-                    xlWorksheet.Cells[Fila, 4] = "Minimo";//Columna D
+                    // obtenemos la informacion de la tabla
+                    for (int j = 0; j < RowsCount; j++)
+                        for (int i = 0; i < ColumnsCount; i++) 
+                            Cells[j, i] = dt.Rows[j][i];
 
-                    Fila++;
-                    DateTime ini = DateTime.Now;
-                    foreach (var item in list)
-                    {
-                        xlWorksheet.Cells[Fila, 1] = item.Id;//Columna A
-                        xlWorksheet.Cells[Fila, 2] = item.Codigo;//Columna B
-                        xlWorksheet.Cells[Fila, 3] = item.Descripcion;//Columna C
-                        xlWorksheet.Cells[Fila, 4] = item.PrecioMinimo;//Columna D
-                        Fila++;
-                    }
-                    DateTime fin = DateTime.Now;
-                    Console.WriteLine("inicio: " + ini.TimeOfDay);
-                    Console.WriteLine("Fin:    " + fin.TimeOfDay);
+                    // agregamos encabezados en la hoja y les damos formato
+                    xlsx.Range HeaderRange = Worksheet.get_Range((xlsx.Range)(Worksheet.Cells[1, 1]), (xlsx.Range)(Worksheet.Cells[1, ColumnsCount]));
+                    HeaderRange.Value = Header;
+                    HeaderRange.Interior.Color = System.Drawing.ColorTranslator.ToOle(System.Drawing.Color.DimGray);
+                    HeaderRange.Font.Bold = true;
+                    HeaderRange.Borders.LineStyle = xlsx.XlLineStyle.xlContinuous;
 
-                    xlWorkbook.SaveAs(fichero.FileName, xlsx.XlFileFormat.xlWorkbookNormal,
-                                    System.Reflection.Missing.Value, System.Reflection.Missing.Value, false, false,
-                                    xlsx.XlSaveAsAccessMode.xlShared, false, false,
-                                    System.Reflection.Missing.Value, System.Reflection.Missing.Value, System.Reflection.Missing.Value);
-                    xlWorkbook.Close(true);
+                    // agregamos la informacion en la hoja
+                    xlsx.Range DataRange = Worksheet.get_Range((xlsx.Range)(Worksheet.Cells[2, 1]), (xlsx.Range)(Worksheet.Cells[RowsCount + 1, ColumnsCount]));
+                    DataRange.EntireColumn.NumberFormat = "@"; //da formato de texto, previene que el codigo "00001" se cambie a "1" en excel
+                    DataRange.Value = Cells;
+                    DataRange.Borders.LineStyle = xlsx.XlLineStyle.xlDash;
+                    DataRange.EntireColumn.AutoFit();
+
+                    Worksheet.SaveAs(fichero.FileName);
+                    xlApp.Workbooks.Close();
                     xlApp.Quit();
-                }
 
+                }
             }
         }
 
@@ -151,7 +155,7 @@ namespace GestorOrdenesDeTrabajo.Excel
         }
 
 
-        public bool CreateExcelRefacciones(List<Refaccion> refacciones)
+        public bool CreateExcelRefacciones(DataTable refacciones)
         {
             try
             {

@@ -114,7 +114,14 @@ namespace GestorOrdenesDeTrabajo.OrdenWindow.Inventario
             Datatable.Columns[1].ColumnName = ("Codigo");
             Datatable.Columns[2].ColumnName = ("Pieza");
             Datatable.Columns[3].ColumnName = ("Precio Minimo");
+
+            Datatable.Columns[0].DataType = typeof(int);
+            Datatable.Columns[1].DataType = typeof(string);
+            Datatable.Columns[2].DataType = typeof(string);
+            Datatable.Columns[3].DataType = typeof(decimal);
+
             tablaInventario.DataSource = Datatable;
+            //tablaInventario.Columns[0].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
         }
 
         void openSubPanel(Form Panel, string Tittle)
@@ -215,7 +222,7 @@ namespace GestorOrdenesDeTrabajo.OrdenWindow.Inventario
         {
             if ((int)MessageDialogResult.Yes == MessageDialog.ShowMessageDialog("Confirmacion", "¿Desea exportar las refacciones a un excel?\nEsto puede tardar unos minutos", false))
             {
-                xlsx.CreateExcelRefacciones(refacciones);
+                xlsx.CreateExcelRefacciones(Datatable);
             }
         }
 

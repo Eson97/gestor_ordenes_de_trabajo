@@ -199,6 +199,10 @@ namespace GestorOrdenesDeTrabajo.UsesCases
             return new List<Refaccion>();
         }
 
+        /// <summary>
+        /// Obtiene todos los datos guardados
+        /// </summary>
+        /// <returns><see cref="DataTable"/> sin eliminados </returns>
         public DataTable GetAllData()
         {
             //DateTime ini = DateTime.Now;
