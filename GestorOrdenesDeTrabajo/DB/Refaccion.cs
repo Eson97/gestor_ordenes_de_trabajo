@@ -19,11 +19,11 @@ namespace GestorOrdenesDeTrabajo.DB
         public int Id { get; set; }
 
         [Required]
-        [StringLength(20)]
+        [StringLength(30)]
         public string Codigo { get; set; }
 
         [Required]
-        [StringLength(50)]
+        [StringLength(100)]
         public string Descripcion { get; set; }
 
         public decimal PrecioMinimo { get; set; }

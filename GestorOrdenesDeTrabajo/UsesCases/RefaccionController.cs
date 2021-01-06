@@ -6,6 +6,8 @@ using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
 using System.Threading.Tasks;
+using System.Data;
+using System.Reflection;
 
 namespace GestorOrdenesDeTrabajo.UsesCases
 {
@@ -195,6 +197,44 @@ namespace GestorOrdenesDeTrabajo.UsesCases
             }
             //Retorna lista vacia para evitar excepciones en llamada
             return new List<Refaccion>();
+        }
+
+        public DataTable GetAllData()
+        {
+            //DateTime ini = DateTime.Now;
+            using (Entities db = new Entities())
+            {
+                var dt = new DataTable();
+                var conn = db.Database.Connection;
+                var connectionState = conn.State;
+                try
+                {
+                    if (connectionState != ConnectionState.Open) conn.Open();
+                    using var cmd = conn.CreateCommand();
+                    cmd.CommandText =
+                        "SELECT [Id],[Codigo],[Descripcion],[PrecioMinimo]" +
+                        "FROM[OrdenesDeTrabajo].[dbo].[Refaccion]" +
+                        "WHERE[IsDeleted] = 0";
+                    cmd.CommandType = CommandType.Text;
+                    using var reader = cmd.ExecuteReader();
+                    dt.Load(reader);
+                }
+                catch (Exception ex)
+                {
+                    Log.Write($"ha ocurrido un error: {ex.Message}");
+                }
+                finally
+                {
+                    if (connectionState != ConnectionState.Closed) conn.Close();
+                }
+                //DateTime fin = DateTime.Now;
+                //TimeSpan res = fin - ini;
+                //double seg = res.TotalMilliseconds / 1000;
+                //double rps = dt.Rows.Count / seg;
+                //Console.WriteLine($"ms: {seg}\nrow/s:{rps}");
+
+                return dt;
+            }
         }
 
         public Dictionary<string, Refaccion> GetDictionary()

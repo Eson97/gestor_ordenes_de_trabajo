@@ -130,15 +130,15 @@ namespace GestorOrdenesDeTrabajo.Excel
                 List<Refaccion> toEdit = result.Item2;
 
                 bool added = RefaccionController.I.AddRange(toAdd);
-                if (!added)
-                { throw new Exception("No se pudieron agregar algunas refacciones, revice el formato"); }
+                //if (!added)
+                { /*throw new Exception("No se pudieron agregar algunas refacciones, revice el formato");*/ }
 
                 //Se agregan los valores a la BD
                 foreach (var item in toEdit)
                 {
                     var edited = RefaccionController.I.EditOnImport(item);
-                    if (edited == null)
-                    { throw new Exception($"No se pudieron editar algunas refacciones, revice el formato\nID:{item.Id}, Codigo:{item.Codigo}, Descripcion:{item.Descripcion}"); }
+                    //if (edited == null)
+                    //{ throw new Exception($"No se pudieron editar algunas refacciones, revice el formato\nID:{item.Id}, Codigo:{item.Codigo}, Descripcion:{item.Descripcion}"); }
                 }
 
                 return true;

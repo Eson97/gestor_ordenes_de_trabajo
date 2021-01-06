@@ -97,18 +97,24 @@ namespace GestorOrdenesDeTrabajo.OrdenWindow.Inventario
             //while (tablaInventario.RowCount != 0)
             //    tablaInventario.Rows.RemoveAt(0);
 
-            refacciones = await Task.Run(() => RefaccionController.I.GetLista());
+            //refacciones = await Task.Run(() => RefaccionController.I.GetLista());
 
             //foreach (Refaccion item in refacciones)
             //    Datatable.Rows.Add(new object[] { item.Id, item.Codigo, item.Descripcion, item.PrecioMinimo });
 
-            tablaInventario.DataSource = refacciones.Select(el => new
-            {
-                Id = el.Id,
-                Codigo = el.Codigo,
-                Descripcion = el.Descripcion,
-                PrecioMinimo = el.PrecioMinimo
-            }).ToList();
+            //tablaInventario.DataSource = refacciones.Select(el => new
+            //{
+            //    Id = el.Id,
+            //    Codigo = el.Codigo,
+            //    Descripcion = el.Descripcion,
+            //    PrecioMinimo = el.PrecioMinimo
+            //}).ToList();
+            Datatable = await Task.Run(() => RefaccionController.I.GetAllData());
+            Datatable.Columns[0].ColumnName = ("ID");
+            Datatable.Columns[1].ColumnName = ("Codigo");
+            Datatable.Columns[2].ColumnName = ("Pieza");
+            Datatable.Columns[3].ColumnName = ("Precio Minimo");
+            tablaInventario.DataSource = Datatable;
         }
 
         void openSubPanel(Form Panel, string Tittle)
@@ -220,18 +226,18 @@ namespace GestorOrdenesDeTrabajo.OrdenWindow.Inventario
 
         private void txtBuscarCodigo_TextChanged(object sender, EventArgs e)
         {
-            if (refacciones == null)
-                return;
+            //if (refacciones == null)
+            //    return;
 
             if (txtBuscarCodigo.Text != "Ingrese <Codigo> o <Pieza> a buscar...")
-                tablaInventario.DataSource = refacciones.Where(el => el.Codigo.Contains(txtBuscarCodigo.Text)).Select(el => new
-                {
-                    Id = el.Id,
-                    Codigo = el.Codigo,
-                    Descripcion = el.Descripcion,
-                    PrecioMinimo = el.PrecioMinimo
-                }).ToList();
-            //Datatable.DefaultView.RowFilter = $"Codigo LIKE '{txtBuscarCodigo.Text}%' OR Pieza LIKE '{txtBuscarCodigo.Text}%' ";
+                //tablaInventario.DataSource = refacciones.Where(el => el.Codigo.Contains(txtBuscarCodigo.Text)).Select(el => new
+                //{
+                //    Id = el.Id,
+                //    Codigo = el.Codigo,
+                //    Descripcion = el.Descripcion,
+                //    PrecioMinimo = el.PrecioMinimo
+                //}).ToList();
+                Datatable.DefaultView.RowFilter = $"Codigo LIKE '{txtBuscarCodigo.Text}%' OR Pieza LIKE '{txtBuscarCodigo.Text}%' ";
         }
 
         private void txtBuscarCodigo_Enter(object sender, EventArgs e)
