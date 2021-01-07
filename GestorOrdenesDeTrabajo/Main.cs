@@ -25,6 +25,8 @@ namespace GestorOrdenesDeTrabajo
 
         bool isSidePanelContracted;
         bool isDynamicPanelContracted;
+
+        Form Son;
         //private Usuario currentUser;
         //IList<Permiso> permisos;
         public Main()
@@ -83,6 +85,13 @@ namespace GestorOrdenesDeTrabajo
             }
         }
 
+        void DisposeSon()
+        {
+            Son.Dispose();
+            Son = null;
+            GC.Collect();
+        }
+
         void openPanel(Form Panel, string Tittle, object sender)
         {
             //Muestra/Oculta el boton para cerrar ventana
@@ -104,13 +113,14 @@ namespace GestorOrdenesDeTrabajo
 
             //Abre nueva ventana en el panel contenedor
             if (this.containerPanel.Controls.Count > 0)
-                this.containerPanel.Controls.RemoveAt(0);
-            Form newPanel = Panel as Form;
-            newPanel.TopLevel = false;
-            newPanel.Dock = DockStyle.Fill;
-            this.containerPanel.Controls.Add(newPanel);
-            this.containerPanel.Tag = newPanel;
-            newPanel.Show();
+                DisposeSon();
+            
+            Son = Panel as Form;
+            Son.TopLevel = false;
+            Son.Dock = DockStyle.Fill;
+            this.containerPanel.Controls.Add(Son);
+            this.containerPanel.Tag = Son;
+            Son.Show();
 
 
         }
