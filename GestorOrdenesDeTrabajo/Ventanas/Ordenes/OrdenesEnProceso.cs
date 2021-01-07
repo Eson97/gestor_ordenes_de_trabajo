@@ -110,11 +110,23 @@ namespace GestorOrdenesDeTrabajo.Ventanas.Ordenes
 
             orden = OrdenController.I.GetOrdenById(orden.Id);
 
+            /* Siempre entra en el if si la garantia es valida
+             * 
             //Si la orden se entrego hace mas de 3 meses, y se aprueba por el usuario se edita
             bool isInvalidWarranty = orden.FechaEntrega <= DateTime.Now.AddMonths(-3);
             isInvalidWarranty = isInvalidWarranty ? MessageDialog.ShowMessageDialog("Confirmacion", "La garantia ha vencido\n¿Desea agregar la orden aun asi?", false) == (int)MessageDialogResult.Yes : false;
             if (!isInvalidWarranty)
                 return;
+            */
+            bool ForceWarranty = false;
+            bool isInvalidWarranty = orden.FechaEntrega <= DateTime.Now.AddMonths(-3);
+            if (!isInvalidWarranty) 
+                ForceWarranty = MessageDialog.ShowMessageDialog("Confirmacion", "La garantia ha vencido\n¿Desea agregar la orden aun asi?", false) == (int)MessageDialogResult.Yes;
+
+            if (!isInvalidWarranty && !ForceWarranty) //Si no es valida y no se va a forzar la garantia: no continua
+                return;
+
+            //si es valida la garantia O se va a forzar: continua
 
             orden.Status = (int)OrdenStatus.GARANTIA;
             //validar Orden antes de modificar

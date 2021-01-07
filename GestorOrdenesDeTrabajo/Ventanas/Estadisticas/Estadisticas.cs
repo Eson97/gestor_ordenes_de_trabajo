@@ -19,6 +19,7 @@ namespace GestorOrdenesDeTrabajo.Ventanas.Estadisticas
             InitializeComponent();
             _initDate = cdtpInit.Value;
             _finDate = cdtpFin.Value;
+            chart1.Legends.Clear();
         }
 
         void loadGrafica()
@@ -132,9 +133,9 @@ namespace GestorOrdenesDeTrabajo.Ventanas.Estadisticas
 
         private void DrawChart()
         {
-            chart1.Series.Clear();
+            //chart1.Series.Clear();
 
-            string Serie = "Series1";
+            //string Serie = "Series1";
             var values = Enum.GetValues(typeof(OrdenStatus));
 
             int[] y = new int[values.Length];
@@ -148,23 +149,27 @@ namespace GestorOrdenesDeTrabajo.Ventanas.Estadisticas
                 i++;
             }
 
-            chart1.Series.Add(Serie);
-            chart1.Series[Serie].Points.DataBindXY(x, y);
-            chart1.Series[Serie].BorderWidth = 5;
-            chart1.Series[Serie].ChartType = SeriesChartType.Pie;
-            chart1.Series[Serie].IsValueShownAsLabel = true;
-            chart1.Series[Serie]["RadarDrawingStyle"] = "Line";
-            chart1.Series[Serie]["CircularLabelsStyle"] = "Horizontal";
+            //chart1.Series.Add(Serie);
+            chart1.Series[0].Points.DataBindXY(x, y);
+            chart1.ChartAreas[0].AxisX.LabelStyle.Angle = -45;
+            chart1.ChartAreas[0].AxisX.LabelStyle.ForeColor = Color.FromKnownColor(KnownColor.ControlLight);
+            chart1.ChartAreas[0].AxisY.LabelStyle.ForeColor = Color.FromKnownColor(KnownColor.ControlLight);
+            chart1.ChartAreas[0].AxisX.MajorTickMark.LineColor = Color.FromKnownColor(KnownColor.ControlDark);
+            chart1.ChartAreas[0].AxisY.MajorTickMark.LineColor = Color.FromKnownColor(KnownColor.ControlDark);
+            //chart1.Series[0].BorderWidth = 5;
+            //chart1.Series[0].IsValueShownAsLabel = true;
+            //chart1.Series[0]["RadarDrawingStyle"] = "Line";
+            //chart1.Series[0]["CircularLabelsStyle"] = "Horizontal";
             //chart1.Series[Serie]["AreaDrawingStyle"] = AreaDrawingStyle[(AreaSelected) ? 0 : 1];
             //chart1.ChartAreas["ChartArea1"].AxisX.Maximum = esc;
             //chart1.ChartAreas["ChartArea1"].AxisY.Maximum = esc;
-            chart1.ChartAreas["ChartArea1"].AxisX.MajorGrid.LineWidth = 1;
-            chart1.ChartAreas["ChartArea1"].AxisY.MajorGrid.LineWidth = 1;
-            chart1.ChartAreas["ChartArea1"].AxisX.MajorGrid.LineColor = Color.LightGray;
-            chart1.ChartAreas["ChartArea1"].AxisY.MajorGrid.LineColor = Color.LightGray;
-            chart1.ChartAreas["ChartArea1"].AxisX.LineColor = chart1.BackColor;
-            chart1.ChartAreas["ChartArea1"].AxisY.LineColor = Color.Black;
-            chart1.ChartAreas["ChartArea1"].Area3DStyle.Enable3D = false;
+            //chart1.ChartAreas["ChartArea1"].AxisX.MajorGrid.LineWidth = 1;
+            //chart1.ChartAreas["ChartArea1"].AxisY.MajorGrid.LineWidth = 1;
+            //chart1.ChartAreas["ChartArea1"].AxisX.MajorGrid.LineColor = Color.LightGray;
+            //chart1.ChartAreas["ChartArea1"].AxisY.MajorGrid.LineColor = Color.LightGray;
+            //chart1.ChartAreas["ChartArea1"].AxisX.LineColor = chart1.BackColor;
+            //chart1.ChartAreas["ChartArea1"].AxisY.LineColor = Color.LightGray;
+            //chart1.ChartAreas["ChartArea1"].Area3DStyle.Enable3D = false;
         }
     }
 }

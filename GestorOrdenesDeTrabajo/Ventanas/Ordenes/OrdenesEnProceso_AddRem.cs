@@ -67,15 +67,13 @@ namespace GestorOrdenesDeTrabajo.Ventanas.Ordenes
                 DataTable.Rows.Add(new object[] { item.Id, item.Codigo, item.Descripcion, item.Cantidad, item.PrecioUnitrio });
 
             tablaRefacciones.DataSource = DataTable;
-            tablaRefacciones.Columns[0].AutoSizeMode = DataGridViewAutoSizeColumnMode.ColumnHeader;
-            tablaRefacciones.Columns[1].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
-            tablaRefacciones.Columns[2].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
-            tablaRefacciones.Columns[3].AutoSizeMode = DataGridViewAutoSizeColumnMode.ColumnHeader;
             tablaRefacciones.Columns[0].Resizable = DataGridViewTriState.True;
             tablaRefacciones.Columns[1].Resizable = DataGridViewTriState.True;
             tablaRefacciones.Columns[2].Resizable = DataGridViewTriState.True;
-            tablaRefacciones.Columns[1].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            tablaRefacciones.Columns[2].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+            tablaRefacciones.Columns[0].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+            tablaRefacciones.Columns[3].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+            tablaRefacciones.Columns[0].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            tablaRefacciones.Columns[3].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
 
         }
 

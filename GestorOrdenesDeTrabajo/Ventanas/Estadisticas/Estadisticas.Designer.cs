@@ -72,12 +72,12 @@ namespace GestorOrdenesDeTrabajo.Ventanas.Estadisticas
             // tableLayoutPanel1
             // 
             this.tableLayoutPanel1.ColumnCount = 5;
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 27F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 7F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 5F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 28F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 27F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 21F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanel1.Controls.Add(this.btnReporte, 1, 1);
             this.tableLayoutPanel1.Controls.Add(this.groupBox1, 3, 2);
             this.tableLayoutPanel1.Controls.Add(this.chart1, 1, 2);
@@ -86,16 +86,15 @@ namespace GestorOrdenesDeTrabajo.Ventanas.Estadisticas
             this.tableLayoutPanel1.Controls.Add(this.panel1, 3, 1);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
-            this.tableLayoutPanel1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 6;
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 25F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 62F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 50F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 6F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 5F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 25F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(1400, 745);
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(1050, 605);
             this.tableLayoutPanel1.TabIndex = 0;
             // 
             // btnReporte
@@ -108,10 +107,9 @@ namespace GestorOrdenesDeTrabajo.Ventanas.Estadisticas
             this.btnReporte.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnReporte.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnReporte.ForeColor = System.Drawing.SystemColors.ControlDark;
-            this.btnReporte.Location = new System.Drawing.Point(31, 29);
-            this.btnReporte.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnReporte.Location = new System.Drawing.Point(23, 23);
             this.btnReporte.Name = "btnReporte";
-            this.btnReporte.Size = new System.Drawing.Size(661, 48);
+            this.btnReporte.Size = new System.Drawing.Size(496, 39);
             this.btnReporte.TabIndex = 9;
             this.btnReporte.Text = "Reporte ➤";
             this.btnReporte.UseVisualStyleBackColor = false;
@@ -129,11 +127,9 @@ namespace GestorOrdenesDeTrabajo.Ventanas.Estadisticas
             this.groupBox1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox1.ForeColor = System.Drawing.SystemColors.ControlDark;
-            this.groupBox1.Location = new System.Drawing.Point(707, 91);
-            this.groupBox1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBox1.Location = new System.Drawing.Point(530, 73);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.groupBox1.Size = new System.Drawing.Size(661, 305);
+            this.groupBox1.Size = new System.Drawing.Size(496, 249);
             this.groupBox1.TabIndex = 5;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Ingresos";
@@ -146,6 +142,12 @@ namespace GestorOrdenesDeTrabajo.Ventanas.Estadisticas
             this.chart1.BorderlineColor = System.Drawing.SystemColors.ControlLight;
             this.chart1.BorderlineDashStyle = System.Windows.Forms.DataVisualization.Charting.ChartDashStyle.Solid;
             this.chart1.BorderlineWidth = 0;
+            chartArea1.AxisX.LineColor = System.Drawing.SystemColors.ControlDark;
+            chartArea1.AxisX.MajorGrid.LineColor = System.Drawing.Color.Empty;
+            chartArea1.AxisX.MajorGrid.LineDashStyle = System.Windows.Forms.DataVisualization.Charting.ChartDashStyle.NotSet;
+            chartArea1.AxisY.LineColor = System.Drawing.SystemColors.ControlDark;
+            chartArea1.AxisY.MajorGrid.LineColor = System.Drawing.SystemColors.ControlDarkDark;
+            chartArea1.AxisY.MajorGrid.LineDashStyle = System.Windows.Forms.DataVisualization.Charting.ChartDashStyle.Dash;
             chartArea1.BackColor = System.Drawing.Color.Transparent;
             chartArea1.BackSecondaryColor = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(55)))), ((int)(((byte)(55)))));
             chartArea1.BorderDashStyle = System.Windows.Forms.DataVisualization.Charting.ChartDashStyle.Solid;
@@ -160,18 +162,20 @@ namespace GestorOrdenesDeTrabajo.Ventanas.Estadisticas
             legend1.ForeColor = System.Drawing.SystemColors.ControlLight;
             legend1.Name = "Legend1";
             this.chart1.Legends.Add(legend1);
-            this.chart1.Location = new System.Drawing.Point(31, 91);
-            this.chart1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.chart1.Location = new System.Drawing.Point(23, 73);
             this.chart1.Name = "chart1";
+            this.chart1.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.None;
+            this.chart1.PaletteCustomColors = new System.Drawing.Color[] {
+        System.Drawing.Color.Maroon};
             series1.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(35)))), ((int)(((byte)(35)))));
             series1.ChartArea = "ChartArea1";
-            series1.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Doughnut;
             series1.IsValueShownAsLabel = true;
+            series1.LabelForeColor = System.Drawing.SystemColors.ControlLight;
             series1.Legend = "Legend1";
             series1.Name = "Series1";
-            series1.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.Chocolate;
+            series1.YValuesPerPoint = 2;
             this.chart1.Series.Add(series1);
-            this.chart1.Size = new System.Drawing.Size(661, 305);
+            this.chart1.Size = new System.Drawing.Size(496, 249);
             this.chart1.TabIndex = 0;
             this.chart1.Text = "Ordenes";
             title1.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -190,11 +194,9 @@ namespace GestorOrdenesDeTrabajo.Ventanas.Estadisticas
             this.groupBox2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox2.ForeColor = System.Drawing.SystemColors.ControlDark;
-            this.groupBox2.Location = new System.Drawing.Point(31, 410);
-            this.groupBox2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBox2.Location = new System.Drawing.Point(23, 333);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.groupBox2.Size = new System.Drawing.Size(661, 305);
+            this.groupBox2.Size = new System.Drawing.Size(496, 249);
             this.groupBox2.TabIndex = 2;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Refacciones";
@@ -208,10 +210,9 @@ namespace GestorOrdenesDeTrabajo.Ventanas.Estadisticas
             this.btnDetalleRefaccion.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnDetalleRefaccion.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnDetalleRefaccion.ForeColor = System.Drawing.SystemColors.ControlDark;
-            this.btnDetalleRefaccion.Location = new System.Drawing.Point(457, 249);
-            this.btnDetalleRefaccion.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnDetalleRefaccion.Location = new System.Drawing.Point(343, 202);
             this.btnDetalleRefaccion.Name = "btnDetalleRefaccion";
-            this.btnDetalleRefaccion.Size = new System.Drawing.Size(193, 48);
+            this.btnDetalleRefaccion.Size = new System.Drawing.Size(145, 39);
             this.btnDetalleRefaccion.TabIndex = 7;
             this.btnDetalleRefaccion.Text = "Detalles ➤";
             this.btnDetalleRefaccion.UseVisualStyleBackColor = false;
@@ -225,11 +226,9 @@ namespace GestorOrdenesDeTrabajo.Ventanas.Estadisticas
             this.groupBox3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupBox3.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox3.ForeColor = System.Drawing.SystemColors.ControlDark;
-            this.groupBox3.Location = new System.Drawing.Point(707, 410);
-            this.groupBox3.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBox3.Location = new System.Drawing.Point(530, 333);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.groupBox3.Size = new System.Drawing.Size(661, 305);
+            this.groupBox3.Size = new System.Drawing.Size(496, 249);
             this.groupBox3.TabIndex = 3;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Costo Servicio";
@@ -243,10 +242,9 @@ namespace GestorOrdenesDeTrabajo.Ventanas.Estadisticas
             this.btnDetalleServicio.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnDetalleServicio.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnDetalleServicio.ForeColor = System.Drawing.SystemColors.ControlDark;
-            this.btnDetalleServicio.Location = new System.Drawing.Point(456, 249);
-            this.btnDetalleServicio.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnDetalleServicio.Location = new System.Drawing.Point(342, 202);
             this.btnDetalleServicio.Name = "btnDetalleServicio";
-            this.btnDetalleServicio.Size = new System.Drawing.Size(193, 48);
+            this.btnDetalleServicio.Size = new System.Drawing.Size(145, 39);
             this.btnDetalleServicio.TabIndex = 8;
             this.btnDetalleServicio.Text = "Detalles ➤";
             this.btnDetalleServicio.UseVisualStyleBackColor = false;
@@ -259,10 +257,9 @@ namespace GestorOrdenesDeTrabajo.Ventanas.Estadisticas
             this.panel1.Controls.Add(this.label2);
             this.panel1.Controls.Add(this.cdtpInit);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel1.Location = new System.Drawing.Point(707, 29);
-            this.panel1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.panel1.Location = new System.Drawing.Point(530, 23);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(661, 54);
+            this.panel1.Size = new System.Drawing.Size(496, 44);
             this.panel1.TabIndex = 4;
             // 
             // btnMostrar
@@ -274,10 +271,9 @@ namespace GestorOrdenesDeTrabajo.Ventanas.Estadisticas
             this.btnMostrar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnMostrar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnMostrar.ForeColor = System.Drawing.SystemColors.ControlDark;
-            this.btnMostrar.Location = new System.Drawing.Point(399, 4);
-            this.btnMostrar.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnMostrar.Location = new System.Drawing.Point(299, 3);
             this.btnMostrar.Name = "btnMostrar";
-            this.btnMostrar.Size = new System.Drawing.Size(135, 36);
+            this.btnMostrar.Size = new System.Drawing.Size(101, 29);
             this.btnMostrar.TabIndex = 3;
             this.btnMostrar.Text = "Mostrar";
             this.btnMostrar.UseVisualStyleBackColor = false;
@@ -288,10 +284,9 @@ namespace GestorOrdenesDeTrabajo.Ventanas.Estadisticas
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.ForeColor = System.Drawing.SystemColors.ControlDark;
-            this.label2.Location = new System.Drawing.Point(188, 9);
-            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label2.Location = new System.Drawing.Point(141, 7);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(22, 29);
+            this.label2.Size = new System.Drawing.Size(17, 24);
             this.label2.TabIndex = 1;
             this.label2.Text = "-";
             // 
@@ -323,12 +318,11 @@ namespace GestorOrdenesDeTrabajo.Ventanas.Estadisticas
             0,
             0,
             0});
-            this.ipTotal.Location = new System.Drawing.Point(449, 177);
-            this.ipTotal.Margin = new System.Windows.Forms.Padding(4);
-            this.ipTotal.MaximumSize = new System.Drawing.Size(225, 79);
+            this.ipTotal.Location = new System.Drawing.Point(337, 144);
+            this.ipTotal.MaximumSize = new System.Drawing.Size(169, 64);
             this.ipTotal.MoneyFormat = true;
             this.ipTotal.Name = "ipTotal";
-            this.ipTotal.Size = new System.Drawing.Size(151, 79);
+            this.ipTotal.Size = new System.Drawing.Size(113, 64);
             this.ipTotal.TabIndex = 6;
             this.ipTotal.Titulo = "Total";
             // 
@@ -340,12 +334,11 @@ namespace GestorOrdenesDeTrabajo.Ventanas.Estadisticas
             0,
             0,
             0});
-            this.ipNeto.Location = new System.Drawing.Point(291, 177);
-            this.ipNeto.Margin = new System.Windows.Forms.Padding(4);
-            this.ipNeto.MaximumSize = new System.Drawing.Size(225, 79);
+            this.ipNeto.Location = new System.Drawing.Point(218, 144);
+            this.ipNeto.MaximumSize = new System.Drawing.Size(169, 64);
             this.ipNeto.MoneyFormat = true;
             this.ipNeto.Name = "ipNeto";
-            this.ipNeto.Size = new System.Drawing.Size(151, 79);
+            this.ipNeto.Size = new System.Drawing.Size(113, 64);
             this.ipNeto.TabIndex = 5;
             this.ipNeto.Titulo = "Neto";
             // 
@@ -357,12 +350,11 @@ namespace GestorOrdenesDeTrabajo.Ventanas.Estadisticas
             0,
             0,
             0});
-            this.ipCredito.Location = new System.Drawing.Point(60, 177);
-            this.ipCredito.Margin = new System.Windows.Forms.Padding(4);
-            this.ipCredito.MaximumSize = new System.Drawing.Size(225, 79);
+            this.ipCredito.Location = new System.Drawing.Point(45, 144);
+            this.ipCredito.MaximumSize = new System.Drawing.Size(169, 64);
             this.ipCredito.MoneyFormat = true;
             this.ipCredito.Name = "ipCredito";
-            this.ipCredito.Size = new System.Drawing.Size(151, 79);
+            this.ipCredito.Size = new System.Drawing.Size(113, 64);
             this.ipCredito.TabIndex = 4;
             this.ipCredito.Titulo = "Credito";
             // 
@@ -374,12 +366,11 @@ namespace GestorOrdenesDeTrabajo.Ventanas.Estadisticas
             0,
             0,
             0});
-            this.ipTransfe.Location = new System.Drawing.Point(493, 47);
-            this.ipTransfe.Margin = new System.Windows.Forms.Padding(4);
-            this.ipTransfe.MaximumSize = new System.Drawing.Size(225, 79);
+            this.ipTransfe.Location = new System.Drawing.Point(370, 38);
+            this.ipTransfe.MaximumSize = new System.Drawing.Size(169, 64);
             this.ipTransfe.MoneyFormat = true;
             this.ipTransfe.Name = "ipTransfe";
-            this.ipTransfe.Size = new System.Drawing.Size(151, 79);
+            this.ipTransfe.Size = new System.Drawing.Size(113, 64);
             this.ipTransfe.TabIndex = 3;
             this.ipTransfe.Titulo = "Transfe";
             // 
@@ -391,12 +382,11 @@ namespace GestorOrdenesDeTrabajo.Ventanas.Estadisticas
             0,
             0,
             0});
-            this.ipCheque.Location = new System.Drawing.Point(335, 47);
-            this.ipCheque.Margin = new System.Windows.Forms.Padding(4);
-            this.ipCheque.MaximumSize = new System.Drawing.Size(225, 79);
+            this.ipCheque.Location = new System.Drawing.Point(251, 38);
+            this.ipCheque.MaximumSize = new System.Drawing.Size(169, 64);
             this.ipCheque.MoneyFormat = true;
             this.ipCheque.Name = "ipCheque";
-            this.ipCheque.Size = new System.Drawing.Size(151, 79);
+            this.ipCheque.Size = new System.Drawing.Size(113, 64);
             this.ipCheque.TabIndex = 2;
             this.ipCheque.Titulo = "Cheque";
             // 
@@ -408,12 +398,11 @@ namespace GestorOrdenesDeTrabajo.Ventanas.Estadisticas
             0,
             0,
             0});
-            this.ipTerminal.Location = new System.Drawing.Point(176, 47);
-            this.ipTerminal.Margin = new System.Windows.Forms.Padding(4);
-            this.ipTerminal.MaximumSize = new System.Drawing.Size(225, 79);
+            this.ipTerminal.Location = new System.Drawing.Point(132, 38);
+            this.ipTerminal.MaximumSize = new System.Drawing.Size(169, 64);
             this.ipTerminal.MoneyFormat = true;
             this.ipTerminal.Name = "ipTerminal";
-            this.ipTerminal.Size = new System.Drawing.Size(151, 79);
+            this.ipTerminal.Size = new System.Drawing.Size(113, 64);
             this.ipTerminal.TabIndex = 1;
             this.ipTerminal.Titulo = "Terminal";
             // 
@@ -425,12 +414,11 @@ namespace GestorOrdenesDeTrabajo.Ventanas.Estadisticas
             0,
             0,
             0});
-            this.ipEfectivo.Location = new System.Drawing.Point(17, 47);
-            this.ipEfectivo.Margin = new System.Windows.Forms.Padding(4);
-            this.ipEfectivo.MaximumSize = new System.Drawing.Size(225, 79);
+            this.ipEfectivo.Location = new System.Drawing.Point(13, 38);
+            this.ipEfectivo.MaximumSize = new System.Drawing.Size(169, 64);
             this.ipEfectivo.MoneyFormat = true;
             this.ipEfectivo.Name = "ipEfectivo";
-            this.ipEfectivo.Size = new System.Drawing.Size(151, 79);
+            this.ipEfectivo.Size = new System.Drawing.Size(113, 64);
             this.ipEfectivo.TabIndex = 0;
             this.ipEfectivo.Titulo = "Efectivo";
             // 
@@ -442,12 +430,11 @@ namespace GestorOrdenesDeTrabajo.Ventanas.Estadisticas
             0,
             0,
             0});
-            this.ipRefTotal.Location = new System.Drawing.Point(409, 50);
-            this.ipRefTotal.Margin = new System.Windows.Forms.Padding(4);
-            this.ipRefTotal.MaximumSize = new System.Drawing.Size(225, 79);
+            this.ipRefTotal.Location = new System.Drawing.Point(307, 41);
+            this.ipRefTotal.MaximumSize = new System.Drawing.Size(169, 64);
             this.ipRefTotal.MoneyFormat = false;
             this.ipRefTotal.Name = "ipRefTotal";
-            this.ipRefTotal.Size = new System.Drawing.Size(151, 79);
+            this.ipRefTotal.Size = new System.Drawing.Size(113, 64);
             this.ipRefTotal.TabIndex = 4;
             this.ipRefTotal.Titulo = "Total";
             // 
@@ -459,12 +446,11 @@ namespace GestorOrdenesDeTrabajo.Ventanas.Estadisticas
             0,
             0,
             0});
-            this.ipCostoRef.Location = new System.Drawing.Point(208, 150);
-            this.ipCostoRef.Margin = new System.Windows.Forms.Padding(4);
-            this.ipCostoRef.MaximumSize = new System.Drawing.Size(225, 79);
+            this.ipCostoRef.Location = new System.Drawing.Point(156, 122);
+            this.ipCostoRef.MaximumSize = new System.Drawing.Size(169, 64);
             this.ipCostoRef.MoneyFormat = true;
             this.ipCostoRef.Name = "ipCostoRef";
-            this.ipCostoRef.Size = new System.Drawing.Size(225, 79);
+            this.ipCostoRef.Size = new System.Drawing.Size(169, 64);
             this.ipCostoRef.TabIndex = 3;
             this.ipCostoRef.Titulo = "Ingresos";
             // 
@@ -476,12 +462,11 @@ namespace GestorOrdenesDeTrabajo.Ventanas.Estadisticas
             0,
             0,
             0});
-            this.ipRefGarantia.Location = new System.Drawing.Point(251, 50);
-            this.ipRefGarantia.Margin = new System.Windows.Forms.Padding(4);
-            this.ipRefGarantia.MaximumSize = new System.Drawing.Size(225, 79);
+            this.ipRefGarantia.Location = new System.Drawing.Point(188, 41);
+            this.ipRefGarantia.MaximumSize = new System.Drawing.Size(169, 64);
             this.ipRefGarantia.MoneyFormat = false;
             this.ipRefGarantia.Name = "ipRefGarantia";
-            this.ipRefGarantia.Size = new System.Drawing.Size(151, 79);
+            this.ipRefGarantia.Size = new System.Drawing.Size(113, 64);
             this.ipRefGarantia.TabIndex = 2;
             this.ipRefGarantia.Titulo = "Garantia";
             // 
@@ -493,12 +478,11 @@ namespace GestorOrdenesDeTrabajo.Ventanas.Estadisticas
             0,
             0,
             0});
-            this.ipRefUsadas.Location = new System.Drawing.Point(92, 50);
-            this.ipRefUsadas.Margin = new System.Windows.Forms.Padding(4);
-            this.ipRefUsadas.MaximumSize = new System.Drawing.Size(225, 79);
+            this.ipRefUsadas.Location = new System.Drawing.Point(69, 41);
+            this.ipRefUsadas.MaximumSize = new System.Drawing.Size(169, 64);
             this.ipRefUsadas.MoneyFormat = false;
             this.ipRefUsadas.Name = "ipRefUsadas";
-            this.ipRefUsadas.Size = new System.Drawing.Size(151, 79);
+            this.ipRefUsadas.Size = new System.Drawing.Size(113, 64);
             this.ipRefUsadas.TabIndex = 1;
             this.ipRefUsadas.Titulo = "Cobradas";
             // 
@@ -510,12 +494,11 @@ namespace GestorOrdenesDeTrabajo.Ventanas.Estadisticas
             0,
             0,
             0});
-            this.infoPanel2.Location = new System.Drawing.Point(335, 70);
-            this.infoPanel2.Margin = new System.Windows.Forms.Padding(4);
-            this.infoPanel2.MaximumSize = new System.Drawing.Size(225, 79);
+            this.infoPanel2.Location = new System.Drawing.Point(251, 57);
+            this.infoPanel2.MaximumSize = new System.Drawing.Size(169, 64);
             this.infoPanel2.MoneyFormat = true;
             this.infoPanel2.Name = "infoPanel2";
-            this.infoPanel2.Size = new System.Drawing.Size(225, 79);
+            this.infoPanel2.Size = new System.Drawing.Size(169, 64);
             this.infoPanel2.TabIndex = 6;
             this.infoPanel2.Titulo = "Ingreso Servicio";
             // 
@@ -527,12 +510,11 @@ namespace GestorOrdenesDeTrabajo.Ventanas.Estadisticas
             0,
             0,
             0});
-            this.ipTotalServicio.Location = new System.Drawing.Point(101, 70);
-            this.ipTotalServicio.Margin = new System.Windows.Forms.Padding(4);
-            this.ipTotalServicio.MaximumSize = new System.Drawing.Size(225, 79);
+            this.ipTotalServicio.Location = new System.Drawing.Point(76, 57);
+            this.ipTotalServicio.MaximumSize = new System.Drawing.Size(169, 64);
             this.ipTotalServicio.MoneyFormat = false;
             this.ipTotalServicio.Name = "ipTotalServicio";
-            this.ipTotalServicio.Size = new System.Drawing.Size(225, 79);
+            this.ipTotalServicio.Size = new System.Drawing.Size(169, 64);
             this.ipTotalServicio.TabIndex = 5;
             this.ipTotalServicio.Titulo = "Mecanicos";
             // 
@@ -540,10 +522,9 @@ namespace GestorOrdenesDeTrabajo.Ventanas.Estadisticas
             // 
             this.cdtpFin.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cdtpFin.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.cdtpFin.Location = new System.Drawing.Point(219, 4);
-            this.cdtpFin.Margin = new System.Windows.Forms.Padding(4);
+            this.cdtpFin.Location = new System.Drawing.Point(164, 3);
             this.cdtpFin.Name = "cdtpFin";
-            this.cdtpFin.Size = new System.Drawing.Size(171, 34);
+            this.cdtpFin.Size = new System.Drawing.Size(129, 29);
             this.cdtpFin.TabIndex = 2;
             this.cdtpFin.ValueChanged += new System.EventHandler(this.cdtpFin_ValueChanged);
             // 
@@ -551,23 +532,21 @@ namespace GestorOrdenesDeTrabajo.Ventanas.Estadisticas
             // 
             this.cdtpInit.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cdtpInit.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.cdtpInit.Location = new System.Drawing.Point(4, 4);
-            this.cdtpInit.Margin = new System.Windows.Forms.Padding(4);
+            this.cdtpInit.Location = new System.Drawing.Point(3, 3);
             this.cdtpInit.Name = "cdtpInit";
-            this.cdtpInit.Size = new System.Drawing.Size(175, 34);
+            this.cdtpInit.Size = new System.Drawing.Size(132, 29);
             this.cdtpInit.TabIndex = 0;
             this.cdtpInit.ValueChanged += new System.EventHandler(this.cdtpInit_ValueChanged);
             // 
             // Estadisticas
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(25)))), ((int)(((byte)(25)))));
-            this.ClientSize = new System.Drawing.Size(1400, 745);
+            this.ClientSize = new System.Drawing.Size(1050, 605);
             this.Controls.Add(this.tableLayoutPanel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.MinimumSize = new System.Drawing.Size(1400, 745);
+            this.MinimumSize = new System.Drawing.Size(1050, 605);
             this.Name = "Estadisticas";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Estadisticas";

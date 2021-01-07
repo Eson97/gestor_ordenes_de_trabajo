@@ -34,7 +34,7 @@ namespace GestorOrdenesDeTrabajo.Ventanas.Buscar
             rowStyleCancelada.BackColor = Color.Red;
             rowStyleCancelada.ForeColor = Color.White;
 
-            Actualizar(DateTime.MinValue, DateTime.MaxValue);
+            Actualizar(DateTime.Today, DateTime.Today);
 
             initDate = initDatePicker.Value;
             finDate = finDatePicker.Value;
