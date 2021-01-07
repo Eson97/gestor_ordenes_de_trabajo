@@ -4,6 +4,7 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Runtime.InteropServices;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 using GestorOrdenesDeTrabajo.Auxiliares;
 using GestorOrdenesDeTrabajo.DB;
@@ -21,50 +22,61 @@ namespace GestorOrdenesDeTrabajo.Ventanas.Ventanas_Emergentes
         [DllImport("user32.DLL", EntryPoint = "SendMessage")]
         private extern static void SendMessage(System.IntPtr hwnd, int wmsg, int wparam, int lparam);
 
-        DataTable DataTable;
+        DataTable datatable;
         static SelectRefaccionDialog _Dialog;
         static List<RefaccionDTO> Refacciones;
         private readonly Orden CurrentOrden;
         private Refaccion CurrentRefaccion;
-        private List<Refaccion> RefaccionesToSelect;
+        //private List<Refaccion> RefaccionesToSelect;
         private RefaccionDTOValidator RefaccionValidator;
         public SelectRefaccionDialog(Orden o)
         {
             InitializeComponent();
             Refacciones = new List<RefaccionDTO>();
             RefaccionValidator = new RefaccionDTOValidator();
-            this.CurrentOrden = o;
-            DataTable = new DataTable();
-            DataTable.Columns.Add("ID");
-            DataTable.Columns.Add("Codigo");
-            DataTable.Columns.Add("Descripcion");
-            DataTable.Columns.Add("Precio Minimo");
-            DataTable.Columns[0].ReadOnly = true;
-            DataTable.Columns[1].ReadOnly = true;
-            DataTable.Columns[2].ReadOnly = true;
-            DataTable.Columns[3].ReadOnly = true;
+            this.CurrentOrden = o; 
+            TablaRefacciones.CellBorderStyle = DataGridViewCellBorderStyle.None;
+            //DataTable = new DataTable();
+            //DataTable.Columns.Add("ID");
+            //DataTable.Columns.Add("Codigo");
+            //DataTable.Columns.Add("Descripcion");
+            //DataTable.Columns.Add("Precio Minimo");
+            //DataTable.Columns[0].ReadOnly = true;
+            //DataTable.Columns[1].ReadOnly = true;
+            //DataTable.Columns[2].ReadOnly = true;
+            //DataTable.Columns[3].ReadOnly = true;
             FillTable();
         }
 
-        private void FillTable()
+        private async void FillTable()
         {
-            while (TablaRefacciones.RowCount != 0)
-                TablaRefacciones.Rows.RemoveAt(0);
+            datatable = await Task.Run(() => RefaccionController.I.GetAllData());
+            datatable.Columns[0].ColumnName = ("ID");
+            datatable.Columns[1].ColumnName = ("Codigo");
+            datatable.Columns[2].ColumnName = ("Descripcion");
+            datatable.Columns[3].ColumnName = ("Precio Minimo");
+            
+            datatable.Columns[0].DataType = typeof(int);
+            datatable.Columns[1].DataType = typeof(string);
+            datatable.Columns[2].DataType = typeof(string);
+            datatable.Columns[3].DataType = typeof(decimal);
 
-            RefaccionesToSelect = RefaccionController.I.GetLista().ToList();
-            foreach (Refaccion item in RefaccionesToSelect)
-                DataTable.Rows.Add(new object[] { item.Id, item.Codigo, item.Descripcion, item.PrecioMinimo });
+            //while (TablaRefacciones.RowCount != 0)
+            //    TablaRefacciones.Rows.RemoveAt(0);
 
-            TablaRefacciones.DataSource = DataTable;
-            TablaRefacciones.Columns[0].AutoSizeMode = DataGridViewAutoSizeColumnMode.ColumnHeader;
-            TablaRefacciones.Columns[1].AutoSizeMode = DataGridViewAutoSizeColumnMode.ColumnHeader;
-            TablaRefacciones.Columns[2].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            TablaRefacciones.Columns[3].AutoSizeMode = DataGridViewAutoSizeColumnMode.ColumnHeader;
-            TablaRefacciones.Columns[0].Resizable = DataGridViewTriState.True;
-            TablaRefacciones.Columns[1].Resizable = DataGridViewTriState.True;
-            TablaRefacciones.Columns[2].Resizable = DataGridViewTriState.True;
-            TablaRefacciones.Columns[3].Resizable = DataGridViewTriState.True;
-            TablaRefacciones.Columns[0].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            //foreach (Refaccion item in RefaccionesToSelect)
+            //    DataTable.Rows.Add(new object[] { item.Id, item.Codigo, item.Descripcion, item.PrecioMinimo });
+
+            TablaRefacciones.DataSource = datatable;
+            //TablaRefacciones.Columns[0].AutoSizeMode = DataGridViewAutoSizeColumnMode.ColumnHeader;
+            //TablaRefacciones.Columns[1].AutoSizeMode = DataGridViewAutoSizeColumnMode.ColumnHeader;
+            //TablaRefacciones.Columns[2].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            //TablaRefacciones.Columns[3].AutoSizeMode = DataGridViewAutoSizeColumnMode.ColumnHeader;
+            //TablaRefacciones.Columns[0].Resizable = DataGridViewTriState.True;
+            //TablaRefacciones.Columns[1].Resizable = DataGridViewTriState.True;
+            //TablaRefacciones.Columns[2].Resizable = DataGridViewTriState.True;
+            //TablaRefacciones.Columns[3].Resizable = DataGridViewTriState.True;
+            //TablaRefacciones.Columns[0].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
         }
 
         public static List<RefaccionDTO> showSRDialog(Orden o)
@@ -136,8 +148,8 @@ namespace GestorOrdenesDeTrabajo.Ventanas.Ventanas_Emergentes
 
         private void txtFilter_TextChanged(object sender, EventArgs e)
         {
-            if (txtFilter.Text != "Ingrese el codigo o el nombre de la pieza")
-                DataTable.DefaultView.RowFilter = $"Descripcion LIKE '%{txtFilter.Text}%'";
+            if (txtFilter.Text != "Ingrese el codigo o el nombre de la pieza" && datatable!=null)
+                datatable.DefaultView.RowFilter = $"Descripcion LIKE '%{txtFilter.Text}%' OR Codigo LIKE '%{txtFilter.Text}%'";
         }
 
         private void tablaClientes_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -149,7 +161,7 @@ namespace GestorOrdenesDeTrabajo.Ventanas.Ventanas_Emergentes
             int id = int.Parse(row.Cells[0].Value.ToString());
             string code = row.Cells[1].Value as string;
             string desc = row.Cells[2].Value as string;
-            decimal minimo = decimal.Parse(row.Cells[3].Value as string);
+            decimal minimo = decimal.Parse(row.Cells[3].Value.ToString());
 
             txtCodigo.Text = code;
             lblDesc.Text = desc;
@@ -170,15 +182,30 @@ namespace GestorOrdenesDeTrabajo.Ventanas.Ventanas_Emergentes
             if (e.KeyCode == Keys.Enter)
             {
                 string code = txtCodigo.Text;
-                var s = RefaccionesToSelect.Where(el => el.Codigo.Equals(code)).FirstOrDefault();
-                if (s == null)
-                    return;
+                //var s = RefaccionesToSelect.Where(el => el.Codigo.Equals(code)).FirstOrDefault();
+                //if (s == null)
+                //    return;
+
+                //txtCant.Text = "1";
+                //txtCodigo.Text = s.Codigo;
+                //lblDesc.Text = s.Descripcion;
+                //txtPrecio.Text = s.PrecioMinimo.ToString();
+                var refaccion = RefaccionController.I.SearchByCode(code);
+                
+                if (refaccion == null) return;
 
                 txtCant.Text = "1";
-                txtCodigo.Text = s.Codigo;
-                lblDesc.Text = s.Descripcion;
-                txtPrecio.Text = s.PrecioMinimo.ToString();
+                lblDesc.Text = refaccion.Descripcion;
+                txtPrecio.Text = refaccion.PrecioMinimo.ToString();
+
+                CurrentRefaccion = refaccion;
             }
+        }
+
+        private void TablaRefacciones_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
+        {
+            if (TablaRefacciones.Columns[e.ColumnIndex].Name == "Precio Minimo")
+                TablaRefacciones.Columns[e.ColumnIndex].DefaultCellStyle.Format = "C2"; //asigna formato moneda con 2 decimales
         }
     }
 }

@@ -141,6 +141,7 @@
             // 
             this.TablaRefacciones.AllowUserToAddRows = false;
             this.TablaRefacciones.AllowUserToDeleteRows = false;
+            this.TablaRefacciones.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.TablaRefacciones.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(35)))), ((int)(((byte)(35)))));
             this.TablaRefacciones.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
             dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
@@ -169,6 +170,7 @@
             this.TablaRefacciones.Size = new System.Drawing.Size(544, 262);
             this.TablaRefacciones.TabIndex = 2;
             this.TablaRefacciones.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.tablaClientes_CellClick);
+            this.TablaRefacciones.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.TablaRefacciones_CellFormatting);
             // 
             // txtFilter
             // 

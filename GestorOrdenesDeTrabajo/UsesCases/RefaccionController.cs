@@ -216,7 +216,7 @@ namespace GestorOrdenesDeTrabajo.UsesCases
                     if (connectionState != ConnectionState.Open) conn.Open();
                     using var cmd = conn.CreateCommand();
                     cmd.CommandText =
-                        "SELECT [Id],[Codigo],[Descripcion],[PrecioMinimo]" +
+                        "SELECT TOP (50000) [Id],[Codigo],[Descripcion],[PrecioMinimo]" +
                         "FROM[OrdenesDeTrabajo].[dbo].[Refaccion]" +
                         "WHERE[IsDeleted] = 0";
                     cmd.CommandType = CommandType.Text;
@@ -294,6 +294,27 @@ namespace GestorOrdenesDeTrabajo.UsesCases
             }
             //Retorna lista vacia para evitar excepciones en llamada
             return new List<Refaccion>();
+        }
+
+        public Refaccion SearchByCode(string code)
+        {
+            Refaccion refaccion;
+            try
+            {
+                using (Entities db = new Entities())
+                {
+                    refaccion = db.Refaccion
+                        .Where(el => el.Codigo.Equals(code))
+                        .FirstOrDefault();
+                }
+                return refaccion;
+            }
+            catch (Exception e)
+            {
+                string s = e.Message;
+                Log.Write("Ha ocurrido un error " + s);
+                return null;
+            }
         }
     }
 }
